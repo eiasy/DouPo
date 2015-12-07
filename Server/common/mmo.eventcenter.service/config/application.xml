@@ -1,0 +1,25 @@
+<application
+    appid="1"
+    appkey="event_key"
+    appname="event"
+    chargekey="event_key"
+    codeversion="1010"
+    version="1" mainserver="true" servertype="3">
+
+    <belong
+        productid="10002"
+        productname="充值代理服务器" />
+
+    <log
+        product="event"
+        dirlinux="/data/dplog"
+        dirsublinux="event"
+        dirsubwin="event"
+        dirwin="E:/workspace/logs"
+        stdoutlinux="WARN"
+        stdoutwin="WARN,stdout"
+        loglvlinux="WARN"
+		loglvwin="INFO"
+        zone="true" />
+        
+</application>

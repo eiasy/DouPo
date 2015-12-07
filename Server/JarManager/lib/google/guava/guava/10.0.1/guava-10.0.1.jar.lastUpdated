@@ -1,0 +1,4 @@
+#NOTE: This is an internal implementation file, its format can be changed without prior notice.
+#Mon Jun 29 12:04:26 CST 2015
+default-http\://repo.maven.apache.org/maven2/.lastUpdated=1435550666952
+http\://repo.maven.apache.org/maven2/.error=Could not transfer artifact com.google.guava\:guava\:jar\:10.0.1 from/to central (http\://repo.maven.apache.org/maven2)\: connection timed out to http\://repo.maven.apache.org/maven2/com/google/guava/guava/10.0.1/guava-10.0.1.jar

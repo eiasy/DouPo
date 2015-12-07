@@ -1,0 +1,55 @@
+﻿===============【字典表获取方式】=================
+//方式一：List方式
+DictList.dictAchievementList;
+//方式二：Map方式-根据id取某个对象的  ***key是String类型的***
+DictMap.dictAchievementMap.get(key);
+//方式三：Map_List方式   在一个类里边配置的GenerDictTemplate的mapList， 
+DictMapList.dictFightSoulUpgradePropMap.get(fightSoulId)
+
+
+===============【实例表获取方式】=================
+//方式一：取多条
+getInstPlayerCardDAL().getList("", instPlayerId);
+//方式二：取单条
+getInstPlayerCardDAL().getModel(id, instPlayerId);
+
+
+===============【在main方法中调试】=================
+//先调用一下方法，才能执行逻辑代码块
+SpringUtil.getSpringContext();
+DictData.loadDictData();
+
+
+
+public static void mapFilter1() {
+		Map<String, Persion> user = new HashMap<String, Persion>();
+		
+		Persion p1 = new Persion();
+		p1.setAge(10);
+		p1.setSex(1);
+		p1.setName("zhang");
+		
+		Persion p2 = new Persion();
+		p2.setAge(20);
+		p2.setSex(1);
+		p2.setName("wang");
+		
+		Persion p3 = new Persion();
+		p3.setAge(30);
+		p3.setSex(0);
+		p3.setName("li");
+		
+		user.put("1", p1);
+		user.put("2", p2);
+		user.put("3", p3);
+		
+		Map<String, Persion> filtedMap = Maps.filterValues(user,
+				new Predicate<Persion>() {
+					public boolean apply(Persion p) {
+						return p.getAge() >= 20 && p.getAge() <23;
+					}
+				});
+		System.out.println(filtedMap);
+
+	}
+

@@ -1,0 +1,7 @@
+<configs>
+	<files>
+	</files>
+	<parameters>
+		<parameter name="LOGGER_HTTP" value="0" />
+	</parameters>
+</configs>

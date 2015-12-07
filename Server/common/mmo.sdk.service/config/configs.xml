@@ -1,0 +1,19 @@
+<configs>
+	<files>
+		<file name="application" file="${user.dir}/config/application.xml" />
+		<file name="db_sdk_doupo" file="${user.dir}/config/dbConfig.properties" />
+		<file name="log-template" file="${user.dir}/config/template/log4j-login.properties" />
+		<file name="log-config" file="${user.dir}/config/rl-logConfig.properties" />
+		<file name="dir_classes_linux" file="${user.dir}/classes" />
+		<file name="dir_classes_win" file="../mmo.sdk.clazz\bin" />
+		<file name="client_version" file="${user.dir}/config/client.version.xml" />
+		<file name="link.common" file="${user.dir}/config/link/link.common.xml" />
+	</files>
+	<parameters>
+		<parameter name="link_file_common" value="link.common" />
+	</parameters>
+	<nets>
+		<net name="sdk" port="12002" desc="监听SDK返回的数据" />
+		<net name="account_listener" url="http://192.168.1.102:12006/" />
+	</nets>
+</configs>

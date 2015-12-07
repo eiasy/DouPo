@@ -1,0 +1,14 @@
+eclipse.preferences.version=1
+encoding//config/server/list_all_2=UTF-8
+encoding//config/server/list_all_3=UTF-8
+encoding//config/server/list_all_4=UTF-8
+encoding//config/server/list_rec_2=UTF-8
+encoding//config/server/list_rec_3=UTF-8
+encoding//config/server/list_rec_4=UTF-8
+encoding//config/server/list_test_2=UTF-8
+encoding//config/server/list_test_3=UTF-8
+encoding//config/server/list_test_4=UTF-8
+encoding//src/mmo/common/module/sdk/http/LoadServerListRun.java=UTF-8
+encoding//src/mmo/common/module/sdk/util/Account_Verify_JinLi.java=UTF-8
+encoding//src/mmo/common/module/sdk/util/XmlUtil.java=UTF-8
+encoding/build.gradle=UTF-8

@@ -1,0 +1,22 @@
+<configs>
+	<files>
+		<file name="servers_all_2" file="${user.dir}/config/server/list_all_2" />
+		<file name="servers_all_3" file="${user.dir}/config/server/list_all_3" />
+		<file name="servers_all_4" file="${user.dir}/config/server/list_all_4" />
+		<file name="servers_suggest_2" file="${user.dir}/config/server/list_rec_2" />
+		<file name="servers_suggest_3" file="${user.dir}/config/server/list_rec_3" />
+		<file name="servers_suggest_4" file="${user.dir}/config/server/list_rec_4" />
+		<file name="servers_test_2" file="${user.dir}/config/server/list_test_2" />
+		<file name="servers_test_3" file="${user.dir}/config/server/list_test_3" />
+		<file name="servers_test_4" file="${user.dir}/config/server/list_test_4" />
+		<file name="servers_all_5" file="${user.dir}/config/server/list_all_5" />
+		<file name="servers_suggest_5" file="${user.dir}/config/server/list_rec_5" />
+		<file name="servers_test_5" file="${user.dir}/config/server/list_test_5" />
+	</files>
+	<parameters>
+		<parameter name="server_platform" value="2,3,4,5" />
+		<parameter name="sub_2" value="20047" desc="指定分区开始截取子分区列表" />
+		<parameter name="sub_pre_2" value="Y" desc="字符" />
+		
+	</parameters>
+</configs>

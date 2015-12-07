@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+     http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+     http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+     http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+     http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">   
+	
+	<bean id="SdkConfig" class="com.huayi.doupo.base.config.sdk.SdkConfig" scope="prototype">
+		<property name="sdkMap">
+            <map>
+                <entry key="uc"> <ref bean="ucConfig" /> </entry>
+                <entry key="baidu"> <ref bean="baiduConfig" /> </entry>
+                <entry key="xiaomi"> <ref bean="xiaomiConfig" /> </entry>
+                <entry key="360"> <ref bean="360Config" /> </entry>
+            </map>
+        </property>
+	</bean>
+	
+	<bean id="ucConfig" class="java.util.HashMap">
+	    <constructor-arg>
+	       <map>
+               <entry key="testUrl" value="http://sdk.test4.g.uc.cn/"/>
+               <entry key="normalUrl" value="http://sdk.g.uc.cn/"/>
+               <entry key="prefix" value="cp/"/>
+               <entry key="verifySession" value="account.verifySession"/>
+               <entry key="cpId" value="53997"/>
+               <entry key="appId" value="559542"/>
+               <entry key="apiKey" value="620ee84f9ca1bb90af1f0307fd93251d"/>
+	       </map>
+	    </constructor-arg>
+	</bean>
+	
+	<bean id="baiduConfig" class="java.util.HashMap">
+	    <constructor-arg>
+	       <map>
+               <entry key="normalUrl" value="http://querysdkapi.91.com/CpLoginStateQuery.ashx"/>
+               <entry key="appId" value="6283134"/>
+               <entry key="key" value="mYfVM4g7GxSdWV6GBf5FMY0v"/>
+               <entry key="appsecret" value="YUWN7AkWUDD9Kdp8NaFs4jW4T9V7po9g"/>
+	       </map>
+	    </constructor-arg>
+	</bean>
+	
+	<bean id="xiaomiConfig" class="java.util.HashMap">
+	    <constructor-arg>
+	       <map>
+               <entry key="normalUrl" value="http://mis.migc.xiaomi.com/api/biz/service/verifySession.do"/>
+               <entry key="appId" value="2882303761517350957"/>
+               <entry key="key" value="5991735074957"/>
+               <entry key="appsecret" value="4UmhkpwXm98AuprG4/g5zg=="/>
+	       </map>
+	    </constructor-arg>
+	</bean>
+	
+	<bean id="360Config" class="java.util.HashMap">
+	    <constructor-arg>
+	       <map>
+               <entry key="normalUrl" value="https://openapi.360.cn/user/me"/>
+               <entry key="appId" value="202587971"/>
+               <entry key="key" value="324c339f04d31a267bd509fdfc887600"/>
+               <entry key="appsecret" value="2f70c0c31293f4c2216f4a53910aa0cc"/>
+	       </map>
+	    </constructor-arg>
+	</bean>
+	
+</beans>
+

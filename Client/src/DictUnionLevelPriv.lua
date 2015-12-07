@@ -1,0 +1,12 @@
+DictUnionLevelPriv={}
+DictUnionLevelPriv["1"]={id=1,exp=1000,grade="1_1;2_2;3_17",num=20,description=""}
+DictUnionLevelPriv["2"]={id=2,exp=1200,grade="1_1;2_2;3_20",num=23,description=""}
+DictUnionLevelPriv["3"]={id=3,exp=2100,grade="1_1;2_2;3_23",num=26,description=""}
+DictUnionLevelPriv["4"]={id=4,exp=3600,grade="1_1;2_2;3_26",num=29,description=""}
+DictUnionLevelPriv["5"]={id=5,exp=6100,grade="1_1;2_2;3_29",num=32,description=""}
+DictUnionLevelPriv["6"]={id=6,exp=10400,grade="1_1;2_2;3_32",num=35,description=""}
+DictUnionLevelPriv["7"]={id=7,exp=17500,grade="1_1;2_2;3_35",num=38,description=""}
+DictUnionLevelPriv["8"]={id=8,exp=29400,grade="1_1;2_2;3_38",num=41,description=""}
+DictUnionLevelPriv["9"]={id=9,exp=49000,grade="1_1;2_2;3_41",num=44,description=""}
+DictUnionLevelPriv["10"]={id=10,exp=81500,grade="1_1;2_2;3_44",num=47,description=""}
+DictUnionLevelPriv["11"]={id=11,exp=0,grade="1_1;2_2;3_47",num=50,description=""}

@@ -1,0 +1,6 @@
+#NOTE: This is an internal implementation file, its format can be changed without prior notice.
+#Sat Sep 28 15:18:11 CST 2013
+http\://www.terracotta.org/download/reflector/snapshots/.error=
+default-http\://www.terracotta.org/download/reflector/releases/.lastUpdated=1380352691045
+http\://www.terracotta.org/download/reflector/releases/.error=Could not transfer artifact org.terracotta.internal\:statistics\:jar\:1.0.1 from/to terracotta-releases (http\://www.terracotta.org/download/reflector/releases)\: No response received after 60000
+http\://www.terracotta.org/download/reflector/snapshots/.lastUpdated=1380352565235

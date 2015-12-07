@@ -1,0 +1,6 @@
+<clients>
+	<links>
+		<link key="appstore.client.code" />
+		<link key="android.client.code" />
+	</links>
+</clients>

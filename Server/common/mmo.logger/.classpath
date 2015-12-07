@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk1.7.0_65_64"/>
+	<classpathentry kind="lib" path="/JarManager/lib/log4j/log4j-1.2.16.jar"/>
+	<classpathentry kind="lib" path="/JarManager/lib/slf4j/slf4j-api-1.7.6.jar"/>
+	<classpathentry kind="lib" path="/JarManager/lib/mina/mina2.0.7.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/mmo.mutual"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/mmo.bean"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/mmo.application"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/mmo.tools"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

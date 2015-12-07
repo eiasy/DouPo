@@ -1,0 +1,17 @@
+<configs>
+	<files>
+		<file name="charge.parameter" file="${user.dir}/config/link/link.charge.parameter.xml" />
+		<file name="notice.game" file="${user.dir}/config/link/link.notice.game.xml" />
+		<file name="appstore.parameter" file="${user.dir}/config/link/link.appstore.xml" />
+		<file name="link.ad" file="${user.dir}/config/link/link.ad.xml" />
+	</files>
+	<parameters>
+		<parameter name="LOGGER_HTTP" value="1" />
+		<parameter name="link_file_charge_parameter" value="charge.parameter" />
+		<parameter name="link_file_notice_game" value="notice.game" />
+		<parameter name="link_file_appstore" value="appstore.parameter" />
+		<parameter name="link_file_ad" value="link.ad" />
+		<parameter name="push_event_switch" value="false" />
+		<parameter name="push_event_url" value="http://192.168.1.34:12008/datacenter/event" />
+	</parameters>
+</configs>

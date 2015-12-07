@@ -1,0 +1,4 @@
+#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
+#Fri Aug 15 17:07:56 CST 2014
+org.springframework.security.taglibs-3.0.5.RELEASE.jar>=
+org.springframework.security.taglibs-3.0.5.RELEASE.pom>=

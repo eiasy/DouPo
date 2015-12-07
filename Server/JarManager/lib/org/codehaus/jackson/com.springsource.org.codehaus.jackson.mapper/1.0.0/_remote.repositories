@@ -1,0 +1,4 @@
+#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
+#Fri Aug 15 17:08:00 CST 2014
+com.springsource.org.codehaus.jackson.mapper-1.0.0.pom>=
+com.springsource.org.codehaus.jackson.mapper-1.0.0.jar>=

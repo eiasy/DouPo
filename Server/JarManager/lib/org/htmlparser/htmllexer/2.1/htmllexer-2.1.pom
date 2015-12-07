@@ -1,0 +1,27 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>htmllexer</artifactId>
+  <name>HTML Lexer Jar</name>
+  <description>HTML Lexer is the low level lexical analyzer.</description>
+  <url>http://htmlparser.org</url>
+  <parent>
+    <artifactId>HTMLParserProject</artifactId>
+    <groupId>org.htmlparser</groupId>
+    <version>2.1</version>
+  </parent>
+  <build>
+    <finalName>${project.artifactId}</finalName>
+    <plugins>
+      <plugin>
+        <artifactId>maven-jar-plugin</artifactId>        
+        <configuration>
+          <archive>
+            <manifest>
+              <mainClass>org.htmlparser.lexer.Lexer</mainClass>
+            </manifest>
+          </archive>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+</project>

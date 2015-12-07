@@ -1,0 +1,18 @@
+<configs>
+	<nets>
+		<net name="qq_check_charge_test" url="http://opensdktest.tencent.com/mpay/get_balance_m" />
+		<net name="wx_check_charge_test" url="http://opensdktest.tencent.com/mpay/get_balance_m" />
+		<net name="qq_check_charge" url="http://opensdktest.tencent.com/mpay/get_balance_m" />
+		<net name="wx_check_charge" url="http://opensdktest.tencent.com/mpay/get_balance_m" />
+
+		<net name="qq_cost_test" url="http://opensdktest.tencent.com/mpay/get_balance_m" />
+		<net name="wx_cost_test" url="http://opensdktest.tencent.com/mpay/get_balance_m" />
+		<net name="qq_cost" url="http://opensdktest.tencent.com/mpay/get_balance_m" />
+		<net name="wx_cost" url="http://opensdktest.tencent.com/mpay/get_balance_m" />
+		
+		<net name="2_2" url="http://192.168.1.43:8889/30000" />
+		<net name="2_99999" url="http://192.168.1.102:8889/30000" />
+		<net name="2_3" url="http://192.168.1.34:8889/30000" />
+		<net name="5_3" url="http://192.168.1.34:8889/30000" />
+	</nets>
+</configs>

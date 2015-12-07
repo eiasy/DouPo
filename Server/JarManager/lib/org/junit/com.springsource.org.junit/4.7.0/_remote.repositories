@@ -1,0 +1,4 @@
+#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
+#Fri Aug 15 17:08:00 CST 2014
+com.springsource.org.junit-4.7.0.pom>=
+com.springsource.org.junit-4.7.0.jar>=

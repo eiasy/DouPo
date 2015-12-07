@@ -1,0 +1,8 @@
+<configs>
+	<parameters>
+		<parameter name="need_active_code" value="false" />
+		<parameter name="white_list" value="true" />
+		<parameter name="white_channels" value="com.doupo.qihu,com.doupo.baidu,com.doupo.huawei,com.doupo.am,com.doupo.coolmart,com.doupo.lenovo,com.doupo.nearme.gamecenter,com.doupo.uc,com.doupo.vivo,com.doupo.mi,com.doupo.y2game,com.doupo.anzhi,com.doupo.wdj,com.doupo.mzw,com.doupo.youku,com.doupo.pps,com.doupo.pptv,com.doupo.wyx,com.doupo.sougou,com.doupo.m4399,com.doupo.zhuoyi.zy,com.doupo.gfan,com.doupo.sy37,com.doupo.mz,com.doupo.ouwan,com.doupo.downjoy,com.doupo.ewan,com.doupo.zhangyue.zy" />
+		<parameter name="white_list_message" value="封测缘尽,公测再续前缘." />
+	</parameters>
+</configs>

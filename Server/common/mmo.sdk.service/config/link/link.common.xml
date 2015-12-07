@@ -1,0 +1,19 @@
+<configs>
+	<files>
+		<file name="application" file="${user.dir}/config/application.xml" />
+		<file name="db_sdk_doupo" file="${user.dir}/config/dbConfig.properties" />
+		<file name="charge.parameter" file="${user.dir}/config/link/link.channel.parameter.xml" />
+		<file name="server.list" file="${user.dir}/config/link/link.server.xml" />
+		<file name="log-template" file="${user.dir}/config/template/log4j-login.properties" />
+		<file name="log-config" file="${user.dir}/config/rl-logConfig.properties" />
+		<file name="dir_classes_linux" file="${user.dir}/classes" />
+		<file name="dir_classes_win" file="../mmo.sdk.clazz\bin" />
+		<file name="appstore.client.code" file="${user.dir}/config/link/appstore.client.version.xml" />
+		<file name="android.client.code" file="${user.dir}/config/link/android.client.version.xml" />
+	</files>
+	<parameters>
+		<parameter name="LOGGER_HTTP" value="1" />
+		<parameter name="link_file_channel_parameter" value="charge.parameter" />
+		<parameter name="link_file_server_list" value="server.list" />
+	</parameters>
+</configs>

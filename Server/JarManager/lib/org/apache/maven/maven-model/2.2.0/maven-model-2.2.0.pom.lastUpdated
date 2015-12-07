@@ -1,0 +1,8 @@
+#NOTE: This is an internal implementation file, its format can be changed without prior notice.
+#Sat Sep 28 15:40:16 CST 2013
+http\://www.terracotta.org/download/reflector/snapshots/.error=
+http\://www.terracotta.org/download/reflector/releases/.lastUpdated=1380354006587
+default-http\://repo.maven.apache.org/maven2/.lastUpdated=1380354016594
+http\://www.terracotta.org/download/reflector/releases/.error=
+http\://repo.maven.apache.org/maven2/.error=Could not transfer artifact org.apache.maven\:maven-model\:pom\:2.2.0 from/to central (http\://repo.maven.apache.org/maven2)\: connection timed out to http\://repo.maven.apache.org/maven2/org/apache/maven/maven-model/2.2.0/maven-model-2.2.0.pom
+http\://www.terracotta.org/download/reflector/snapshots/.lastUpdated=1380354005588

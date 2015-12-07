@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="false">
+
+	<property name="basePath" value="E:/data" />   
+
+	<property name="serverId" value="1" />   
+
+	<!-- 控制台输出 -->
+	<appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+		<filter class="ch.qos.logback.classic.filter.ThresholdFilter">
+			<level>INFO</level>
+		</filter>
+		<encoder>
+			<pattern>%d{yyyy-MM-dd HH:mm:ss} %level [%t]  %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<!-- Info 配置 -->
+	<appender name="infoRolling" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${basePath}/s${serverId}/info${serverId}/info${serverId}-%d{yyyy-MM-dd}.log
+			</fileNamePattern>
+			<maxHistory>10</maxHistory>
+		</rollingPolicy>
+		<encoder>
+			<pattern>%d{yyyy-MM-dd HH:mm:ss} %level [%t]  %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<!-- 异步处理 -->
+	<appender name="info" class="ch.qos.logback.classic.AsyncAppender">
+		<!-- = -->
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<level>INFO</level>
+			<onMatch>ACCEPT</onMatch>
+			<onMismatch>DENY</onMismatch>
+		</filter> 
+		<!-- 设置为不丢失日志. 默认为：如果队列的80%已满,则会丢弃TRACT、DEBUG、INFO级别的日志 -->
+		<discardingThreshold>0</discardingThreshold>
+		<!-- 更改默认的队列的深度,该值会影响性能.默认值为256 -->
+        <queueSize>256</queueSize>
+        <!-- 添加附加的appender,最多只能添加一个 -->
+		<appender-ref ref="infoRolling" />
+	</appender>
+
+	<!-- Error 配置 -->
+	<appender name="errorRolling" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${basePath}/s${serverId}/error${serverId}/error${serverId}-%d{yyyy-MM-dd}.log</fileNamePattern>
+			<maxHistory>10</maxHistory>
+		</rollingPolicy>
+		<encoder>
+			<pattern>%d{yyyy-MM-dd HH:mm:ss} %level [%t]  %msg%n</pattern>
+		</encoder>
+	</appender>
+
+	<appender name="error" class="ch.qos.logback.classic.AsyncAppender">
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<level>ERROR</level>
+			<onMatch>ACCEPT</onMatch>
+			<onMismatch>DENY</onMismatch>
+		</filter>  
+		<appender-ref ref="errorRolling" />
+		<discardingThreshold>0</discardingThreshold>
+	</appender>
+	
+	<!-- 创建角色 -->
+	<appender name="createRoleRolling" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${basePath}/s${serverId}/createRole${serverId}/createRole${serverId}-%d{yyyy-MM-dd}.log</fileNamePattern>
+			<maxHistory>10</maxHistory>
+		</rollingPolicy>
+		<encoder>
+			<pattern>LNL|%d{yyyy-MM-dd HH:mm:ss}|%m%n</pattern>
+		</encoder>
+	</appender>
+	<appender name="createRoleInfo" class="ch.qos.logback.classic.AsyncAppender">
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<level>INFO</level>
+			<onMatch>ACCEPT</onMatch>
+			<onMismatch>DENY</onMismatch>
+		</filter> 
+		<discardingThreshold>0</discardingThreshold>
+        <queueSize>256</queueSize>
+		<appender-ref ref="createRoleRolling" />
+	</appender>
+	<logger name="createRole" level="INFO" additivity="false">
+   	 	<appender-ref ref="createRoleInfo" />
+    </logger>
+    
+    <!-- 创建角色失败 -->
+	<appender name="createRoleFaildRolling" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${basePath}/s${serverId}/createRoleFaild${serverId}/createRoleFaild${serverId}-%d{yyyy-MM-dd}.log</fileNamePattern>
+			<maxHistory>10</maxHistory>
+		</rollingPolicy>
+		<encoder>
+			<pattern>LNL|%d{yyyy-MM-dd HH:mm:ss}|%m%n</pattern>
+		</encoder>
+	</appender>
+	<appender name="createRoleFaildInfo" class="ch.qos.logback.classic.AsyncAppender">
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<level>INFO</level>
+			<onMatch>ACCEPT</onMatch>
+			<onMismatch>DENY</onMismatch>
+		</filter> 
+		<discardingThreshold>0</discardingThreshold>
+        <queueSize>256</queueSize>
+		<appender-ref ref="createRoleFaildRolling" />
+	</appender>
+	<logger name="createRoleFaild" level="INFO" additivity="false">
+   	 	<appender-ref ref="createRoleFaildInfo" />
+    </logger>
+    
+    <!-- 角色登录 -->
+	<appender name="roleLoginRolling" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${basePath}/s${serverId}/roleLogin${serverId}/roleLogin${serverId}-%d{yyyy-MM-dd}.log</fileNamePattern>
+			<maxHistory>10</maxHistory>
+		</rollingPolicy>
+		<encoder>
+			<pattern>LNL|%d{yyyy-MM-dd HH:mm:ss}|%m%n</pattern>
+		</encoder>
+	</appender>
+	<appender name="roleLoginInfo" class="ch.qos.logback.classic.AsyncAppender">
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<level>INFO</level>
+			<onMatch>ACCEPT</onMatch>
+			<onMismatch>DENY</onMismatch>
+		</filter> 
+		<discardingThreshold>0</discardingThreshold>
+        <queueSize>256</queueSize>
+		<appender-ref ref="roleLoginRolling" />
+	</appender>
+	<logger name="roleLogin" level="INFO" additivity="false">
+   	 	<appender-ref ref="roleLoginInfo" />
+    </logger>
+    
+    <!-- 角色登录失败 -->
+	<appender name="roleLoginFaildRolling" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${basePath}/s${serverId}/roleLoginFaild${serverId}/roleLoginFaild${serverId}-%d{yyyy-MM-dd}.log</fileNamePattern>
+			<maxHistory>10</maxHistory>
+		</rollingPolicy>
+		<encoder>
+			<pattern>LNL|%d{yyyy-MM-dd HH:mm:ss}|%m%n</pattern>
+		</encoder>
+	</appender>
+	<appender name="roleLoginFaildInfo" class="ch.qos.logback.classic.AsyncAppender">
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<level>INFO</level>
+			<onMatch>ACCEPT</onMatch>
+			<onMismatch>DENY</onMismatch>
+		</filter> 
+		<discardingThreshold>0</discardingThreshold>
+        <queueSize>256</queueSize>
+		<appender-ref ref="roleLoginFaildRolling" />
+	</appender>
+	<logger name="roleLoginFaild" level="INFO" additivity="false">
+   	 	<appender-ref ref="roleLoginFaildInfo" />
+    </logger>
+	
+	<!-- 充值 -->
+	<appender name="rechargeRolling" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${basePath}/s${serverId}/recharge${serverId}/recharge${serverId}-%d{yyyy-MM-dd}.log</fileNamePattern>
+			<maxHistory>10</maxHistory>
+		</rollingPolicy>
+		<encoder>
+			<pattern>LNL|%d{yyyy-MM-dd HH:mm:ss}|%m%n</pattern>
+		</encoder>
+	</appender>
+	<appender name="rechargeInfo" class="ch.qos.logback.classic.AsyncAppender">
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<level>INFO</level>
+			<onMatch>ACCEPT</onMatch>
+			<onMismatch>DENY</onMismatch>
+		</filter> 
+		<discardingThreshold>0</discardingThreshold>
+        <queueSize>256</queueSize>
+		<appender-ref ref="rechargeRolling" />
+	</appender>
+	<logger name="recharge" level="INFO" additivity="false">
+   	 	<appender-ref ref="rechargeInfo" />
+    </logger>
+    
+    <!-- 道具(物品)加减法 -->
+	<appender name="thingsRolling" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${basePath}/s${serverId}/things${serverId}/things${serverId}-%d{yyyy-MM-dd}.log</fileNamePattern>
+			<maxHistory>10</maxHistory>
+		</rollingPolicy>
+		<encoder>
+			<pattern>LNL|%d{yyyy-MM-dd HH:mm:ss}|%m%n</pattern>
+		</encoder>
+	</appender>
+	<appender name="thingsInfo" class="ch.qos.logback.classic.AsyncAppender">
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<level>INFO</level>
+			<onMatch>ACCEPT</onMatch>
+			<onMismatch>DENY</onMismatch>
+		</filter> 
+		<discardingThreshold>0</discardingThreshold>
+        <queueSize>256</queueSize>
+		<appender-ref ref="thingsRolling" />
+	</appender>
+	<logger name="things" level="INFO" additivity="false">
+   	 	<appender-ref ref="thingsInfo" />
+    </logger>
+    
+    <!-- 元宝加减法 -->
+	<appender name="goldRolling" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${basePath}/s${serverId}/gold${serverId}/gold${serverId}-%d{yyyy-MM-dd}.log</fileNamePattern>
+			<maxHistory>10</maxHistory>
+		</rollingPolicy>
+		<encoder>
+			<pattern>LNL|%d{yyyy-MM-dd HH:mm:ss}|%m%n</pattern>
+		</encoder>
+	</appender>
+	<appender name="goldInfo" class="ch.qos.logback.classic.AsyncAppender">
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<level>INFO</level>
+			<onMatch>ACCEPT</onMatch>
+			<onMismatch>DENY</onMismatch>
+		</filter> 
+		<discardingThreshold>0</discardingThreshold>
+        <queueSize>256</queueSize>
+		<appender-ref ref="goldRolling" />
+	</appender>
+	<logger name="gold" level="INFO" additivity="false">
+   	 	<appender-ref ref="goldInfo" />
+    </logger>
+    
+	<!-- 招募相关 -->
+	<appender name="recruitRolling" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${basePath}/s${serverId}/recruit${serverId}/recruit${serverId}-%d{yyyy-MM-dd}.log</fileNamePattern>
+			<maxHistory>10</maxHistory>
+		</rollingPolicy>
+		<encoder>
+			<pattern>LNL|%d{yyyy-MM-dd HH:mm:ss}|%m%n</pattern>
+		</encoder>
+	</appender>
+	<appender name="recruitInfo" class="ch.qos.logback.classic.AsyncAppender">
+		<filter class="ch.qos.logback.classic.filter.LevelFilter">
+			<level>INFO</level>
+			<onMatch>ACCEPT</onMatch>
+			<onMismatch>DENY</onMismatch>
+		</filter> 
+		<discardingThreshold>0</discardingThreshold>
+        <queueSize>256</queueSize>
+		<appender-ref ref="recruitRolling" />
+	</appender>
+	<logger name="recruit" level="INFO" additivity="false">
+   	 	<appender-ref ref="recruitInfo" />
+    </logger> 
+	 
+	<logger name="game" level="INFO" additivity="false">
+		<appender-ref ref="console" />
+		<appender-ref ref="info" />
+		<appender-ref ref="error" />
+	</logger>
+	
+</configuration>

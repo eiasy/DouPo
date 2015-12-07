@@ -1,0 +1,13 @@
+eclipse.preferences.version=1
+encoding//src/mmo/common/module/clazz/event/context/AdminLogin.java=UTF-8
+encoding//src/mmo/common/module/clazz/event/context/AdminOperateAppConfig.java=UTF-8
+encoding//src/mmo/common/module/clazz/event/context/AdminSelectAppConfig.java=UTF-8
+encoding//src/mmo/common/module/clazz/event/context/AdminSelectCharge.java=UTF-8
+encoding//src/mmo/common/module/clazz/event/context/AdminSelectCreateOrder.java=UTF-8
+encoding//src/mmo/common/module/clazz/event/context/AdminSelectFinishCharge.java=UTF-8
+encoding//src/mmo/common/module/clazz/event/context/AdminSelectGetGold.java=UTF-8
+encoding//src/mmo/common/module/clazz/event/context/AdminSelectGoods.java=UTF-8
+encoding//src/mmo/common/module/clazz/event/context/AdminSelectPlayer.java=UTF-8
+encoding//src/mmo/common/module/clazz/event/context/AdminSelectRole.java=UTF-8
+encoding//src/mmo/common/module/clazz/event/context/Event_Trigger.java=UTF-8
+encoding/<project>=UTF-8

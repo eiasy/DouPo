@@ -1,0 +1,147 @@
+<configs>
+	<parameters>
+		<parameter name="charge_close_all" value="false" desc="true关闭所有渠道充值（不区分大小写）" />
+		<parameter name="charge_close_all_notice" value="false" desc="暂时无法充值" />
+		<parameter name="charge_close_uc_notice" value="0" desc="暂时无法充值" />
+		<parameter name="charge_close_uc" value="0" desc="关闭该额度以上的充值" />
+		<parameter name="notifyUri_uc" value="http://shop.huayigame.com/201" />
+		<parameter name="notifyUri_360" value="http://shop.huayigame.com/202" />
+		<parameter name="notifyUri_xiaomi" value="http://shop.huayigame.com/203" />
+		<parameter name="notifyUri_oppo" value="http://shop.huayigame.com/204" />
+		<parameter name="notifyUri_vivo" value="http://shop.huayigame.com/205" />
+		<parameter name="notifyUri_baidu" value="http://shop.huayigame.com/206" />
+		<parameter name="notifyUri_huawei" value="http://shop.huayigame.com/207" />
+		<parameter name="notifyUri_jinli" value="http://shop.huayigame.com/208" />
+		<parameter name="notifyUri_kupai" value="http://shop.huayigame.com/209" />
+		<parameter name="notifyUri_lianxiang" value="http://shop.huayigame.com/210" />
+		<parameter name="notifyUri_yiyou" value="http://shop.huayigame.com/211" />
+		<parameter name="notifyUri_yijie" value="http://shop.huayigame.com/227" />
+		<parameter name="notifyUri_qq" value="http://shop.huayigame.com/230" />
+		<parameter name="qq_charge_record" value="http://shop.huayigame.com/231" />
+
+		<parameter name="chukong_private_key" value="A302E360DEBAA6C2EDBA8D7F3CDF09B7" />
+		<parameter name="chukong_login_url"
+			value="http://oauth.anysdk.com/api/User/LoginOauth/" />
+		<!-- UC参数 -->
+		<parameter name="uc_mode" value="test" />
+		<parameter name="uc_testUrl" value="http://sdk.test4.g.uc.cn/" />
+		<parameter name="uc_normalUrl" value="http://sdk.g.uc.cn/" />
+		<parameter name="uc_prefix" value="cp/" />
+		<parameter name="uc_verifySession" value="account.verifySession" />
+		<parameter name="uc_cpId" value="53997" />
+		<parameter name="uc_appId" value="559542" />
+		<parameter name="uc_apiKey" value="620ee84f9ca1bb90af1f0307fd93251d" />
+
+		<!-- 百度参数 -->
+		<parameter name="baidu_normalUrl"
+			value="http://querysdkapi.91.com/CpLoginStateQuery.ashx" />
+		<parameter name="baidu_appId" value="6283134" />
+		<parameter name="baidu_key" value="mYfVM4g7GxSdWV6GBf5FMY0v" />
+		<parameter name="baidu_appsecret" value="YUWN7AkWUDD9Kdp8NaFs4jW4T9V7po9g" />
+
+		<!-- 小米参数 -->
+		<parameter name="xiaomi_normalUrl"
+			value="http://mis.migc.xiaomi.com/api/biz/service/verifySession.do" />
+		<parameter name="xiaomi_appId" value="2882303761517350957" />
+		<parameter name="xiaomi_key" value="5991735074957" />
+		<parameter name="xiaomi_appsecret" value="4UmhkpwXm98AuprG4/g5zg==" />
+
+		<!-- 360参数 -->
+		<parameter name="360_normalUrl" value="https://openapi.360.cn/user/me" />
+		<parameter name="360_appId" value="202587971" />
+		<parameter name="360_key" value="7c65edbc2590c42845ded070cdeed6b7" />
+		<parameter name="360_appsecret" value="250dff4fae3ab7d9f6b35acafa530147" />
+
+		<!-- 酷派参数 -->
+		<parameter name="kupai_platformPubKey"
+			value="MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC9RjeqIC1Myc91zcHDbTnxVog3QJpcdkKKcxkSnq3PwdDTZjl6E1F75j43MFCIfbUWB5KbK5zFKVRervfuCrm5rJNzxQaqRb5E+HYxF0ML18ZsXSLpJg/2W/zeiSwDkc6ksU//GNuZXwPtHvz8VJ+NQMUxVxBkzyukhgGAHymFDQIDAQAB" />
+		<parameter name="kupai_appPriKey"
+			value="MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAJDm2Ved8/bXCaiQGYuyF3bNv4FLtEo5X2OCWzToQYWoGazFIsoPOpAg7U28th5qVOQW/ReVCZCcN5aixzJHWfpdujelqQvVpEWwBLlg0QMhwfKtrOqW7Okggv+r2Qe4kWac04ZhS9WLDAekHJSPpg6RDUTme39/ubZh3bulEYQfAgMBAAECgYBJJE3HPVLdYXRdosdSTYYskPS+1jDeWpF80FsrnKUeS1kSbbv+1KsR/5zpZX1kYvYQ4E3G7pMSbNhecDIuffe7dL4Dz6FQi0PEkTGEQXHtKmdDdEd7zyuNj54qDGkI1fC7uqzKzLRm08qjtVQLGWySJ7HMClIoWcNuTw3Az81ZWQJBAOXxAx/U9CKY83RpNsY3FBq7RWkbIAwBx/AIvcKLe2Xj9Dpx/lUqxQJL/VNSXaFcQKYSpF4/1ll/MvfdI+lKtt0CQQChUrE3nxT6id8dL7tCI+J5EPRrfrr5rZBGfvcRK+QiAVPuCP2bqa1owVgglJkvF/6PgGnpj0Vaa1PnNkqxDrErAkAbWW5Is/iRwOV8HCOSsexnPY0E8l/+bZvNVgzT/ekgdluPNA3PLXYfTtCDv5E5ZxKdbiw0tZ0WKgXy60+hKOzVAkBJ73AxIcOnn5CV+85C3ddpzQ94RLjEvXsmFAJ/6DHCNAGXUp+IvBcxr4sIQ5KBNuoAMsZXuMX8TrxBd2x8AVPJAkEAznUf2e+VRhcVN8FcMk5mdfwxAOZyPxtuHNUUyyB+TKWl5X2tznuhDGvVxgWMS+TJoUZMAtoFRu+IROwI3zeL0A==" />
+		<parameter name="kupai_appkey" value="ab4ccc315a1e43f49c2eb40409341cd9" />
+		<parameter name="kupai_url" value="https://openapi.coolyun.com/oauth2/token" />
+		<parameter name="kupai_appId" value="5000001443" />
+
+		<!-- 华为参数 -->
+		<parameter name="huawei_appId" value="10299561" />
+		<parameter name="huawei_url" value="https://api.vmall.com/rest.php" />
+		<parameter name="huawei_cpId" value="900086000023285674" />
+		<parameter name="huawei_appsecret" value="ahk8vp6xcmwg3u06bjjxotqm8l1eryjt" />
+		<parameter name="huawei_payId" value="900086000023285674" />
+		<parameter name="huawei_payPubKey"
+			value="MFwwDQYJKoZIhvcNAQEBBQADSwAwSAJBANGVfMPxkrBu9VSOu6LHY5hicMycJ5TSS/QHdZoqkKqTgKnCkZ3HqI+l0vGDdUnuT9lEJTQipO2QBqKhARkJw7ECAwEAAQ==" />
+		<parameter name="huawei_payPriKey"
+			value="MIIBVQIBADANBgkqhkiG9w0BAQEFAASCAT8wggE7AgEAAkEA0ZV8w/GSsG71VI67osdjmGJwzJwnlNJL9Ad1miqQqpOAqcKRnceoj6XS8YN1Se5P2UQlNCKk7ZAGoqEBGQnDsQIDAQABAkARIADY1eVhiz96kEsequIlcm27GktVqrVQFEf0t+OoPE0yqUL1/+PrV6srJjou8+oScFYsPWoVVcLQxWKVZnZ9AiEA/ncl1MtqibQMJJTvvow2bNApw/aoOJp31jLmv6tyafsCIQDS2QzP+rgNEBxbkhm+z8jC2GrOyJCjK3iO+InDeFhlQwIgb5VLr44rf4rGMFxm7MWLMBfv2JCWn4uMtQ7JBI9nsnUCIQCnxbYAOAwDuPIXmyWJQ2UIRZSXfdg5PfnsKa/VLgmIaQIhAKEEdJaOVUd/taIvUTmO7weOrsCRhNdBReNrJPPoxlZJ" />
+		<parameter name="huawei_flowSecKey"
+			value="MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAJF6eMUkmSoNY1RoCidylXMag2Toj2NCTFbZMEqslNUcdB3hHo0090BR2aOFUROeKGsh1CLjhq+cMs4nBE5ahR/CbBtfU8as/fefWG8w2J1W9QSzX+OlyzgFWoNPNrTDtqnbvlI75tTmko/uMOy1Bi9VdzJxSzYAx9t9awM1m6EpAgMBAAECgYBcyzz7qxOTkkSYk2BetyUC7ZeAJyNHEgP1pcW67AhnQyYB5RWCxpUrzsm/FwuXMtvfMg3JT04a98wkWRjTDcQ5dvd6bs5HLqE7khd7nMwAY5Ot3Izyrm0aPv4XCxANtBF0jo5W24/oNiUZeMPNLu/rAmo+EiHfGoqSpe3Uh0DCcQJBAPe1e2ttYPqBnZWbGKTGvzIIluLBv5XxNrvjJ2O10ehIV+CEAqJM9Bp5ofw6vdi0pJv5Jtf9orvMlqCB1U2FoOUCQQCWWQSBpzKyic+amHFpSCyFcvOMcNpNeOMZ9FlSi27cyIpuleLZ7bqSN8jKutkp2nfH98ZC07BIQoOWbV/fGa71AkEA4D2qPNYHtL8hqQ1+gaxp6SFddmluxo5WvkAkqF8wZtcWtmjK+aIwWMdDnNKQilz9pzUltOInL1tGAIeIUWVnAQJAapVYuIFLU36XCkWfwL9FsKU5OwqV9+4HMVMkL3xhb2tLl/HyDASYCyg41F95rE4QNFbW2nEvu0pL9sw69vJCMQJACNuU9SRVcdfnM7Xl1fAAK5C6MHKIzddXgH0x4vIHpnAPhyu38s0rmrvRY6tJUk69TMDkDMl+pSRsvLJkhI/xtw==" />
+
+		<!-- 联想参数 -->
+		<parameter name="lianxiang_appId" value="1506250746412.app.ln" />
+		<parameter name="lianxiang_url"
+			value="http://passport.lenovo.com/interserver/authen/1.2/getaccountid" />
+		<parameter name="lianxiang_key"
+			value="MIICdwIBADANBgkqhkiG9w0BAQEFAASCAmEwggJdAgEAAoGBAM9Z3oFoT7gN1KtTeK7wYv6OVdZciFKSkhtbV3EzwxGk5WU10y3dxhApFBvMfqOzzU07QAAKB36nYz2gfiK5U9EBtRseuI3jvfWGnOd6pq8WfjnIxBHZTODuEfpkXzw5idlcVTUeiPeBFSGwH0RfyU2pjaXVWIi9gSyKLGtg3TW3AgMBAAECgYBL/xBCNc0iFE+iC5Hr7EccLWbgjkGYogfS5wOBhgs06E77bWLdKK9zNNsd5TF1Jm1UpSar3QEqNod1CuGwMGS7SQ6fOBs8sVLx9CUe9RXlNdCv5UpMLTBjEDUJsstrYNj5kyLlVZasWjUjtvO8+iQGYhTMNVwzbGs/Pz2M/FC6AQJBAOql1PCqu2NufJwx6Z8LRMJIz2XYwQEJS6yyjVf/SL5curXCfID5/7bZHsA1hUXfM5LZzIYOewbWquQEP9+XXncCQQDiOCeKqlALP8qxIaz2indgjSzDaairn4kkTBgAQXJZPPPj9PsdaL/vDURq6OUF3f00d8HW7+xIvAgJ3NabQnLBAkEA3JACqDKkL+O0SBH2uuQZvtI3+VEUose9FVlE2TmChEWfz6g/5fCY+KQAbsYgPzx+OwR1ZnGIHTZ9rhV8gMzFIwJBAMmg/XV1mcR9Bj9c4ZoZDo/rJMPDsAfQOV81x4qqyq3JSySaHRw4WiJKs/mKPV8+Xknel9HopLSri4qm4E0gK8ECQDVGmosaekFKqvZphFk+FUztQAsfoN/IRe44MhIRkTVa3BxoHqz51ntzcAUFYKOaqupL0U776oPUNSTWjswh5wk=" />
+
+		<!-- OPPO参数 -->
+		<parameter name="oppo_appId" value="3835" />
+		<parameter name="oppo_key" value="Bj2WwN6BiFscOoCc0Go888coo" />
+		<parameter name="oppo_appsecret" value="73681fE4d7ee6c9c5F0A5dEB16110B92" />
+		<parameter name="opp_public_key"
+			value="MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCmreYIkPwVovKR8rLHWlFVw7YDfm9uQOJKL89Smt6ypXGVdrAKKl0wNYc3/jecAoPi2ylChfa2iRu5gunJyNmpWZzlCNRIau55fxGW0XEu553IiprOZcaw5OuYGlf60ga8QT6qToP0/dpiL/ZbmNUO9kUhosIjEu22uFgR+5cYyQIDAQAB" />
+
+		<!-- VIVO参数 -->
+		<parameter name="vivo_cpId" value="20150416163403658020" />
+		<parameter name="vivo_url"
+			value="https://usrsys.inner.bbk.com/auth/user/info" />
+		<parameter name="vivo_cpKey" value="839be607cb25d503bf69fc71674d7395" />
+		<parameter name="vivo_appId" value="5cf0c8eb1b6efb9b3db1b7966621c415" />
+
+		<!-- 安智参数 -->
+		<parameter name="anzhi_appId" value="1434685273y2Iok5qL7btXz0sVU7w1" />
+		<parameter name="anzhi_appsecret" value="dXDi0E18GWN9Avh0E3zNh3LR" />
+
+		<!-- 金立参数 -->
+		<parameter name="jinli_appId" value="" />
+		<parameter name="jinli_url" value="https://id.gionee.com/account/verify.do" />
+		<parameter name="jinli_apiKey" value="7662417B52DE4DE7B0F91D4EA44F6B07" />
+		<parameter name="jinli_secretKey" value="7F85249CB2AE427BBB3E8D77B99A37FE" />
+		<parameter name="jinli_publicKey"
+			value="MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCWkK67I1lTugDf5vT8EN67n75tCs9iaUrTVGZ98E/rtB8ODZDafA0Q89w70N11VPuJToUmZICrzFWEZREnrpZ/K8yqj4q0NCa0FaMtHNTdPfsnKJW+pwYRnZlsQpK8G/rD+05EH0Ghrmn4dhFT9NjBpLYbW0Iivrp9JDqUQntYkQIDAQAB" />
+		<parameter name="jinli_privateKey"
+			value="MIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBAIo5w26FlUzTiQwtxJpW45aGsT0qZyTNPCEfb4bHi1sYUQW2Nck+wVTEN44nU0KgE7bvWWjeCHD1YpJsFdu0YuXcJCGGVxLYQi79Le76ELznxHImTWDDh6EMJ0JmbuhXFHud8jcZiAYrJAtiLAIN12DhRZ7Kzk1CiSQtusbVhurJAgMBAAECgYBPK5CdYBPIoiyP9jLyd6v5ToJ71yqmsIqtKhU17FsMPRxDGj8qWjBfvddYK3wL4CYKlILwhqPtFw9zcEcAxQwTZOqoy2ppBCD92bhYjR2f0+3MsKGLWUeC9GhY4XyoEYCLXKXhf/2pqnaZk+62SVCVjraPzXVekJD0dyb2T53DEQJBANS0g1/xIreetuzScfa92aky6OGrXKq4n6xO/+k9uUM8YVytbyrCJ7g/YSHyfSdhlkYxEr6o50LMU++S8Aw39P0CQQCmXFN92w3Iok9L2Kqbodsqc8UP97xmbWIYZaRSeaYVl7rncs0I7t9sVmMhAgKa6qNnGs3jEYSl8VVk/8MLpvy9AkAcVXdynlJ7lz7SyS25Ko0GBuwSs5sCetl6QIPCdCBrnm1xxQCb94UG/BpaRUz6o/s6mmrezu0Pbtx3e2FSn1mZAkEAoyEVnewXcA34w98KLOJiDxbGvgmnbKkF7/Z7U4SGH9ZRKHOiKohR/eIYAl3+P/qlkIzwJyEeebpUil1h3SM54QJAYnaMdMaSKzv4pzkRqeBH3nxKJXmaactKIGMNge7P9hSXKVhmebqHYMBn0+gWBja7deZUepn3aD41BWXMORToZA==" />
+
+		<!-- 益游参数 -->
+		<parameter name="yiyou_appId" value="57" />
+		<parameter name="yiyou_url"
+			value="http://android.y2game.net/openapi/checksession.php" />
+		<parameter name="yiyou_appkey" value="WRKyxFlAlWwhsU7Bvju0xlttbKqtwIaY" />
+		<parameter name="yiyou_appsecret"
+			value="Jxkhu2XxnuXjgTWkuHZNSSHqNTar5IYz5Pe1Dbxw4fXhf061wV4YIXsQbAlQLLkI" />
+
+		<!-- 易接参数 -->
+		<parameter name="yijie_app" value="42649F49-5DF2AFE2" />
+		<parameter name="yijie_url" value="http://sync.1sdk.cn/login/check.html" />
+		<parameter name="yijie_public_key" value="0RI6CQZSJB6EPXSI1QW331D1ZBMP51B7" />
+		
+		
+		<!-- 手Q -->
+		<parameter name="qq_charge_test" value="false" />
+		<parameter name="qq_AppId" value="1104824416" />
+		<parameter name="qq_Appkey_test" value="kMQ3DKH4FbaMO0zN" />
+		<parameter name="qq_Appkey" value="nMpJr3fSBrnDShUQzoqBAuorwKj0TUTn" />
+		<parameter name="qq_check_charge_test" value="http://opensdktest.tencent.com/mpay/get_balance_m" />
+		<parameter name="qq_check_charge" value="http://msdk.qq.com/mpay/get_balance_m" />
+		<parameter name="qq_cost_test" value="http://msdktest.qq.com/mpay/pay_m" />
+		<parameter name="qq_cost" value="http://msdk.qq.com/mpay/pay_m" />
+		<!-- 微信 -->
+		<parameter name="wx_charge_test" value="false" />
+		<parameter name="wx_AppId" value="1104824416" />
+		<parameter name="wx_Appkey_test" value="240c549257b9e8158e70255a3b9384be" />
+		<parameter name="wx_Appkey" value="nMpJr3fSBrnDShUQzoqBAuorwKj0TUTn" />
+		<parameter name="wx_check_charge_test" value="http://opensdktest.tencent.com/mpay/get_balance_m" />
+		<parameter name="wx_check_charge" value="http://msdk.qq.com/mpay/get_balance_m" />
+		<parameter name="wx_cost_test" value="http://msdktest.qq.com/mpay/pay_m" />
+		<parameter name="wx_cost" value="http://msdk.qq.com/mpay/pay_m" />
+		
+
+	</parameters>
+</configs>

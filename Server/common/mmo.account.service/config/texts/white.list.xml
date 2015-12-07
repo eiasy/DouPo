@@ -1,0 +1,33 @@
+<lists>
+	<channel value="uc">
+		<id value="" />
+	</channel>
+	<channel value="360">
+		<id value="" />
+	</channel>
+	<channel value="baidu">
+		<id value="1316304845" />
+	</channel>
+	<channel value="xiaomi">
+		<id value="" />
+	</channel>
+	<channel value="vivo">
+		<id value="" />
+	</channel>
+	<channel value="oppo">
+		<id value="" />
+	</channel>
+	<channel value="huawei">
+		<id value="900086000031188928" />
+	</channel>
+	<channel value="kupai">
+		<id value="" />
+	</channel>
+	<channel value="lianxiang">
+		<id value="" />
+	</channel>
+	<channel value="yiyou">
+		<id value="" />
+	</channel>
+	<ip value="192.167.1.177,192.167.1.178" />
+</lists>

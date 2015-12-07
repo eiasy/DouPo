@@ -1,0 +1,9 @@
+2015-10-13 13:37:15,483 +0800 写入文件报错#E:\workspace\PROJECT\DoupoOnline\trunk\common\mmo.module.gm.new/\xls\files\game.parameter.xls
+java.io.IOException: 拒绝访问。
+	at java.io.WinNTFileSystem.createFileExclusively(Native Method)
+	at java.io.File.createNewFile(File.java:947)
+	at mmo.tools.util.FileUtil.writeDataToFile(FileUtil.java:164)
+	at mmo.tools.util.FileUtil.rename(FileUtil.java:79)
+	at mmo.module.gm.xml.XLSManager.rename(XLSManager.java:87)
+	at mmo.module.gm.xml.XLSManager.loadXLS(XLSManager.java:56)
+	at mmo.module.gm.GMDestop.<clinit>(GMDestop.java:22)

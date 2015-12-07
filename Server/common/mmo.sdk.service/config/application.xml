@@ -1,0 +1,25 @@
+<application
+    appid="1"
+    appkey="sdk_key"
+    appname="sdk"
+    chargekey="chargeKey"
+    codeversion="1010"
+    version="1" mainserver="true" servertype="7">
+
+    <belong
+        productid="10003"
+        productname="验证渠道账号" />
+
+    <log
+        product="sdk"
+        dirlinux="/data/dplog"
+        dirsublinux="sdk"
+        dirsubwin="sdk"
+        dirwin="E:/workspace/logs"
+        stdoutlinux="WARN"
+        stdoutwin="WARN,stdout"
+        loglvlinux="WARN"
+		loglvwin="INFO"
+        zone="true" />
+        
+</application>

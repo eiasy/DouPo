@@ -1,0 +1,7 @@
+<configs>
+	<parameters>
+		<parameter name="ad_shike_notify_url" value="http://t.appshike.com/itry_cooperate.groovy" />
+		<parameter name="ad_shike_source" value="doupocangqiong" />
+
+	</parameters>
+</configs>

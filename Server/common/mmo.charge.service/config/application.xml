@@ -1,0 +1,25 @@
+<application
+    appid="1"
+    appkey="charge_key"
+    appname="charge"
+    chargekey="charge_key"
+    codeversion="1010"
+    version="1" mainserver="true" servertype="3">
+
+    <belong
+        productid="10002"
+        productname="充值代理服务器" />
+
+    <log
+        product="charge"
+        dirlinux="/data/dplog"
+        dirsublinux="charge"
+        dirsubwin="charge"
+        dirwin="E:/workspace/logs"
+        stdoutlinux="WARN"
+        stdoutwin="WARN,stdout"
+        loglvlinux="WARN"
+		loglvwin="INFO"
+        zone="true" />
+        
+</application>

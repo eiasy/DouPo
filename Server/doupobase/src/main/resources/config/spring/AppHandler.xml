@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+     http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+     http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+     http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
+     http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">   
+	
+	<bean id="PlayerHandler" class="com.huayi.doupo.logic.handler.PlayerHandler" scope="prototype" />
+	
+	<bean id="ThingHandler" class="com.huayi.doupo.logic.handler.ThingHandler" scope="prototype" />
+	
+	<bean id="SysHandler" class="com.huayi.doupo.logic.handler.SysHandler" scope="prototype" />
+	
+	<bean id="EquipHandler" class="com.huayi.doupo.logic.handler.EquipHandler" scope="prototype" />
+	
+	<bean id="CardHandler" class="com.huayi.doupo.logic.handler.CardHandler" scope="prototype" />
+	
+	<bean id="KungFuHandler" class="com.huayi.doupo.logic.handler.KungFuHandler" scope="prototype" />
+	
+	<bean id="FireHandler" class="com.huayi.doupo.logic.handler.FireHandler" scope="prototype" />
+	
+	<bean id="PillHandler" class="com.huayi.doupo.logic.handler.PillHandler" scope="prototype" />
+	
+	<bean id="PagodaHandler" class="com.huayi.doupo.logic.handler.PagodaHandler" scope="prototype" />
+	
+	<bean id="ChapterHandler" class="com.huayi.doupo.logic.handler.ChapterHandler" scope="prototype" />
+	
+	<bean id="LootHandler" class="com.huayi.doupo.logic.handler.LootHandler" scope="prototype" />
+	
+	<bean id="ManualSkillHandler" class="com.huayi.doupo.logic.handler.ManualSkillHandler" scope="prototype" />
+	
+	<bean id="ActivityHandler" class="com.huayi.doupo.logic.handler.ActivityHandler" scope="prototype" />
+	
+	<bean id="GmHandler" class="com.huayi.doupo.logic.handler.GmHandler" scope="prototype" />
+	
+	<bean id="ArenaHandler" class="com.huayi.doupo.logic.handler.ArenaHandler" scope="prototype" />
+	
+	<bean id="MagicHandler" class="com.huayi.doupo.logic.handler.MagicHandler" scope="prototype" />
+	
+	<bean id="WorldBossHandler" class="com.huayi.doupo.logic.handler.WorldBossHandler" scope="prototype" />
+	
+	<bean id="BeautyCardHandler" class="com.huayi.doupo.logic.handler.BeautyCardHandler" scope="prototype" />
+	
+	<bean id="UnionHandler" class="com.huayi.doupo.logic.handler.UnionHandler" scope="prototype" />
+
+	<bean id="MineWarHandler" class="com.huayi.doupo.logic.handler.MineWarHandler" scope="prototype" />
+	
+	<bean id="FightSoulHandler" class="com.huayi.doupo.logic.handler.FightSoulHandler" scope="prototype" />
+	
+	<bean id="WingHandler" class="com.huayi.doupo.logic.handler.WingHandler" scope="prototype" />
+
+	<bean id="YFireHandler" class="com.huayi.doupo.logic.handler.YFireHandler" scope="prototype" />
+
+</beans>
+

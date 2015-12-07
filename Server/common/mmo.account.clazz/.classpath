@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk1.7.0_65_64"/>
+	<classpathentry kind="lib" path="/JarManager/lib/commons/commons-beanutils-1.8.3.jar"/>
+	<classpathentry kind="lib" path="/JarManager/lib/commons/commons-beanutils-bean-collections-1.8.3.jar"/>
+	<classpathentry kind="lib" path="/JarManager/lib/commons/commons-beanutils-core-1.8.3.jar"/>
+	<classpathentry kind="lib" path="/JarManager/lib/commons/commons-codec-1.6.jar"/>
+	<classpathentry kind="lib" path="/JarManager/lib/commons/commons-collections-3.2.1.jar"/>
+	<classpathentry kind="lib" path="/JarManager/lib/commons/commons-io-2.4-sources.jar"/>
+	<classpathentry kind="lib" path="/JarManager/lib/commons/commons-io-2.4.jar"/>
+	<classpathentry kind="lib" path="/JarManager/lib/commons/commons-lang-2.6.jar"/>
+	<classpathentry kind="lib" path="/JarManager/lib/commons/commons-logging-1.1.1.jar"/>
+	<classpathentry kind="lib" path="/JarManager/lib/httpclient/4.5/httpclient-4.5.jar"/>
+	<classpathentry kind="lib" path="/JarManager/lib/httpcore/4.4.1/httpcore-4.4.1.jar"/>
+	<classpathentry kind="lib" path="/JarManager/lib/jdom-2.0.4/jdom-2.0.4.jar"/>
+	<classpathentry kind="lib" path="/JarManager/lib/json/ezmorph-1.0.6.jar"/>
+	<classpathentry kind="lib" path="/JarManager/lib/json/json-lib-2.4-jdk15.jar"/>
+	<classpathentry kind="lib" path="/JarManager/lib/json/morph-1.1.1.jar"/>
+	<classpathentry kind="lib" path="/JarManager/lib/log4j/log4j-1.2.16.jar"/>
+	<classpathentry kind="lib" path="/JarManager/lib/mina/mina2.0.7.jar"/>
+	<classpathentry kind="lib" path="/JarManager/lib/poi/poi-3.9-20121203.jar"/>
+	<classpathentry kind="lib" path="/JarManager/lib/slf4j/slf4j-api-1.7.6.jar"/>
+	<classpathentry kind="lib" path="/JarManager/lib/game/mmo.applicaton.jar"/>
+	<classpathentry kind="lib" path="/JarManager/lib/game/mmo.bean.jar"/>
+	<classpathentry kind="lib" path="/JarManager/lib/game/mmo.logger.jar"/>
+	<classpathentry kind="lib" path="/JarManager/lib/game/mmo.mutual.jar"/>
+	<classpathentry kind="lib" path="/JarManager/lib/game/mmo.tools.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/mmo.account.service"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

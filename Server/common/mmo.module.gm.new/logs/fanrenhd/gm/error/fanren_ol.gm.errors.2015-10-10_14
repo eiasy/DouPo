@@ -1,0 +1,28 @@
+2015-10-10 14:30:40,145 +0800 操作数据异常#
+net.sf.json.JSONException: JSONObject["code"] not found.
+	at net.sf.json.JSONObject.getString(JSONObject.java:2092)
+	at mmo.module.gm.gui.composite.CompositeAppConfig.addOrUpdate(CompositeAppConfig.java:441)
+	at mmo.module.gm.gui.composite.CompositeAppConfig.access$5(CompositeAppConfig.java:369)
+	at mmo.module.gm.gui.composite.CompositeAppConfig$9.widgetSelected(CompositeAppConfig.java:359)
+	at org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:234)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1053)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:4066)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3657)
+	at org.eclipse.jface.window.Window.runEventLoop(Window.java:825)
+	at org.eclipse.jface.window.Window.open(Window.java:801)
+	at mmo.module.gm.GMDestop.main(GMDestop.java:33)
+2015-10-10 14:32:13,440 +0800 操作数据异常#
+net.sf.json.JSONException: JSONObject["code"] not found.
+	at net.sf.json.JSONObject.getString(JSONObject.java:2092)
+	at mmo.module.gm.gui.composite.CompositeAppConfig.addOrUpdate(CompositeAppConfig.java:442)
+	at mmo.module.gm.gui.composite.CompositeAppConfig.access$5(CompositeAppConfig.java:369)
+	at mmo.module.gm.gui.composite.CompositeAppConfig$9.widgetSelected(CompositeAppConfig.java:359)
+	at org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:234)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1053)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:4066)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3657)
+	at org.eclipse.jface.window.Window.runEventLoop(Window.java:825)
+	at org.eclipse.jface.window.Window.open(Window.java:801)
+	at mmo.module.gm.GMDestop.main(GMDestop.java:33)

@@ -1,0 +1,6 @@
+enable=1
+skippable=0
+url=http://dpres.huayigame.com/res/
+RELEASE=1
+SERVERS_IP=192.168.1.42
+SERVERS_PORT=7000

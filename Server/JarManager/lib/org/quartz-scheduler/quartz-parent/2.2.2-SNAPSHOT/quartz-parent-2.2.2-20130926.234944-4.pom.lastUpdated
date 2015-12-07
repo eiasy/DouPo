@@ -1,0 +1,4 @@
+#NOTE: This is an internal implementation file, its format can be changed without prior notice.
+#Sat Sep 28 15:14:09 CST 2013
+http\://www.terracotta.org/download/reflector/snapshots/.error=Could not transfer artifact org.quartz-scheduler\:quartz-parent\:pom\:2.2.2-20130926.234944-4 from/to terracotta-snapshots (http\://www.terracotta.org/download/reflector/snapshots)\: No response received after 60000
+default-http\://www.terracotta.org/download/reflector/snapshots/.lastUpdated=1380352449389

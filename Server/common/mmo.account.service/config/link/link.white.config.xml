@@ -1,0 +1,8 @@
+<configs>
+	<parameters>
+		<parameter name="need_active_code" value="false" />
+		<parameter name="white_list" value="false" />
+		<parameter name="white_channels" value="uc" />
+		<parameter name="white_list_message" value="服务器即将开启" />
+	</parameters>
+</configs>

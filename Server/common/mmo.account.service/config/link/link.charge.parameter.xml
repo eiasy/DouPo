@@ -1,0 +1,20 @@
+<configs>
+	<parameters>
+		<parameter name="notifyUri_uc" value="http://shop.huayigame.com/201" />
+		<parameter name="notifyUri_360" value="http://shop.huayigame.com/202" />
+		<parameter name="notifyUri_xiaomi" value="http://shop.huayigame.com/203" />
+		<parameter name="notifyUri_oppo" value="http://shop.huayigame.com/204" />
+		<parameter name="notifyUri_vivo" value="http://shop.huayigame.com/205" />
+		<parameter name="notifyUri_baidu" value="http://shop.huayigame.com/206" />
+		<parameter name="notifyUri_huawei" value="http://shop.huayigame.com/207" />
+		<parameter name="notifyUri_jinli" value="http://shop.huayigame.com/208" />
+		<parameter name="notifyUri_kupai" value="http://shop.huayigame.com/209" />
+		<parameter name="notifyUri_lianxiang" value="http://shop.huayigame.com/210" />
+		<parameter name="notifyUri_yiyou" value="http://shop.huayigame.com/211" />
+		<parameter name="notifyUri_yiyou_ios" value="http://receipt.huayigame.com/228" />
+		<parameter name="notifyUri_yijie" value="http://shop.huayigame.com/227" />
+		<parameter name="notifyUri_qq" value="http://receipt.huayigame.com/230" />
+		<parameter name="notifyUri_anysdk_ios" value="http://shop.huayigame.com/232" />
+
+	</parameters>
+</configs>

@@ -1,0 +1,26 @@
+<application
+    appid="1"
+    appkey="GM工具"
+    appname="GM工具"
+    chargekey=""
+    codeversion="0.9.9"
+    version="1" >
+
+    <belong
+        productid="3"
+        productname="GM工具" />
+
+    <net
+        connnectmax="4000"
+        entermax="3000" />
+
+    <log
+        dirlinux="/home/fanren/frlogs/"
+        dirsublinux="gm"
+        dirsubwin="gm"
+        dirwin="E:/workspace/logs/"
+        stdoutlinux=""
+        stdoutwin=",stdout"
+        zone="false" />
+
+</application>

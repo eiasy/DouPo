@@ -1,0 +1,16 @@
+DictRestore={}
+DictRestore["1"]={id=1,qualityId=1,starLevelId=1,gold=10,description=""}
+DictRestore["2"]={id=2,qualityId=2,starLevelId=1,gold=15,description=""}
+DictRestore["3"]={id=3,qualityId=2,starLevelId=2,gold=20,description=""}
+DictRestore["4"]={id=4,qualityId=2,starLevelId=3,gold=25,description=""}
+DictRestore["5"]={id=5,qualityId=3,starLevelId=1,gold=30,description=""}
+DictRestore["6"]={id=6,qualityId=3,starLevelId=2,gold=35,description=""}
+DictRestore["7"]={id=7,qualityId=3,starLevelId=3,gold=40,description=""}
+DictRestore["8"]={id=8,qualityId=3,starLevelId=4,gold=45,description=""}
+DictRestore["9"]={id=9,qualityId=4,starLevelId=0,gold=50,description=""}
+DictRestore["10"]={id=10,qualityId=4,starLevelId=1,gold=60,description=""}
+DictRestore["11"]={id=11,qualityId=4,starLevelId=2,gold=70,description=""}
+DictRestore["12"]={id=12,qualityId=4,starLevelId=3,gold=80,description=""}
+DictRestore["13"]={id=13,qualityId=4,starLevelId=4,gold=90,description=""}
+DictRestore["14"]={id=14,qualityId=4,starLevelId=5,gold=100,description=""}
+DictRestore["15"]={id=15,qualityId=4,starLevelId=6,gold=110,description=""}

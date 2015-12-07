@@ -1,0 +1,8 @@
+eclipse.preferences.version=1
+encoding//src/mmo/common/module/service/charge=UTF-8
+encoding//src/mmo/common/module/service/charge/service/base/AppStoreService.java=UTF-8
+encoding//src/mmo/common/module/service/charge/service/base/QQChargeService.java=UTF-8
+encoding//src/mmo/common/module/service/charge/xls/appstore/XlsAppStore.java=UTF-8
+encoding//src/mmo/common/module/service/charge/xls/appstore/sheet/SheetAppStore.java=UTF-8
+encoding//src/mmo/common/proto/ProtobufMessage.java=UTF-8
+encoding/build.gradle=UTF-8

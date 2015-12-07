@@ -1,0 +1,29 @@
+<application
+    appid="1"
+    appkey="account_key"
+    appname="account"
+    chargekey="charge_key"
+    codeversion="1010"
+    version="1" mainserver="true" servertype="3">
+    <redirect
+        flag="false"
+        ip="192.168.4.203"
+        port="6504" />
+
+    <belong
+        productid="10001"
+        productname="账号缓存服务器" />
+
+    <log
+        product="account"
+        dirlinux="/data/dplog"
+        dirsublinux="account"
+        dirsubwin="account"
+        dirwin="E:/workspace/logs"
+        stdoutlinux="WARN"
+        stdoutwin="WARN,stdout"
+        loglvlinux="WARN"
+		loglvwin="INFO"
+        zone="true" />
+        
+</application>

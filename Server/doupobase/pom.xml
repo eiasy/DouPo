@@ -1,0 +1,353 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.huayigame.doupo</groupId>
+  <artifactId>base</artifactId>
+  <version>0.0.1</version>
+  <packaging>jar</packaging>
+
+  <build>
+	
+	<!-- 插件管理器配置-->
+	<!-- 解决myeclipse自带的maven-dependency-plugin缺少pluginManagement的配置 -->
+	<pluginManagement>
+		<plugins>
+			<plugin>
+				<groupId>org.eclipse.m2e</groupId>
+				<artifactId>lifecycle-mapping</artifactId>
+				<version>1.0.0</version>
+				<configuration>
+					<lifecycleMappingMetadata>
+						<pluginExecutions>
+							<pluginExecution>
+								<pluginExecutionFilter>
+									<groupId>org.apache.avro</groupId>
+									<artifactId>avro-maven-plugin</artifactId>
+									<versionRange>[${avro.version},)</versionRange>
+									<goals>
+										<goal>idl-protocol</goal>
+										<goal>schema</goal>
+									</goals>
+								</pluginExecutionFilter>
+								<action>
+									<execute />
+								</action>
+							</pluginExecution>
+							<pluginExecution>
+								<pluginExecutionFilter>
+									<groupId>org.apache.maven.plugins</groupId>
+									<artifactId>maven-dependency-plugin</artifactId>
+									<versionRange>[2.4,)</versionRange>
+									<goals>
+										<goal>copy-dependencies</goal>
+									</goals>
+								</pluginExecutionFilter>
+								<action>
+									<execute />
+								</action>
+							</pluginExecution>
+						</pluginExecutions>
+					</lifecycleMappingMetadata>
+				</configuration>
+			</plugin>
+		</plugins>
+	</pluginManagement>
+
+	<plugins>
+	
+		<!-- 配置jdk编译版本和代码编码 -->
+		<plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.1</version>
+            <configuration>
+                <source>1.7</source>
+                <target>1.7</target>
+                <encoding>UTF8</encoding>
+            </configuration>
+        </plugin>
+        
+       <!-- 配置资源文件编码 -->
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-resources-plugin</artifactId>
+            <version>2.6</version>
+            <configuration>
+                <encoding>UTF-8</encoding>
+            </configuration>
+        </plugin>
+        
+        <!-- 将依赖包拷贝到target指定目录下 -->
+        <plugin>
+			<groupId>org.apache.maven.plugins</groupId>
+			<artifactId>maven-dependency-plugin</artifactId>
+			<version>2.4</version><!--$NO-MVN-MAN-VER$-->
+			<executions>
+				<execution>
+					<id>copy-dependencies</id>
+					<phase>package</phase>
+					<goals>
+						<goal>copy-dependencies</goal>
+					</goals>
+					<configuration>
+						<outputDirectory>${project.build.directory}/lib</outputDirectory>
+					</configuration>
+				</execution>
+			</executions>
+	    </plugin>
+           
+        <!-- 生成带main函数的jar包,并将依赖包也打入包内 ,常用打包插件有三种-->
+         <!-- 1=[maven-jar-plugin(允许配置文件不被打入)] 2=[maven-dependency-plugin(依赖包一起打入)] 3=[maven-shade-plugin(解决2中spring.schemas和spring.spring.handlers问题)]-->
+		<plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-shade-plugin</artifactId>
+            <version>1.4</version>  
+            <executions>
+                <execution>
+                    <phase>package</phase>
+                    <goals>
+                        <goal>shade</goal>
+                    </goals>
+                    <configuration>
+                        <transformers>
+                            <transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+                                <resource>META-INF/spring.handlers</resource>
+                            </transformer>
+                            <transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+                                <resource>META-INF/spring.schemas</resource>
+                            </transformer>
+                            <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                                <!--  <mainClass>com.huayi.doupo.base.util.logic.generate.ClientGener</mainClass>-->
+                            </transformer>
+                        </transformers>
+                    </configuration>
+                </execution>
+            </executions>
+        </plugin>
+		 
+	</plugins>
+  </build>
+
+  <!-- 配置依赖包 -->
+  <dependencies>
+  
+     <dependency>
+    	<groupId>mmotools</groupId>
+    	<artifactId>mmotools</artifactId>
+    	<version>0.1</version>
+    </dependency>
+    
+    <dependency>
+    	<groupId>mmoapplication</groupId>
+    	<artifactId>mmoapplication</artifactId>
+    	<version>0.1</version>
+    </dependency>
+    
+    <dependency>
+    	<groupId>mmomina</groupId>
+    	<artifactId>mmomina</artifactId>
+    	<version>0.1</version>
+    </dependency>
+  
+	<dependency>
+	    <groupId>org.codehaus.jackson</groupId>
+	    <artifactId>jackson-mapper-asl</artifactId>
+	    <version>1.9.11</version>
+	</dependency>
+  
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.11</version>
+    </dependency>
+    
+	<dependency>
+		<groupId>org.springframework</groupId>
+		<artifactId>spring-jdbc</artifactId>
+		<version>4.0.6.RELEASE</version>
+	</dependency>
+	
+	<dependency>
+	    <groupId>org.springframework</groupId>
+	    <artifactId>spring-context</artifactId>
+	    <version>4.0.6.RELEASE</version>
+	</dependency>
+	
+	<dependency>
+	    <groupId>org.springframework</groupId>
+	    <artifactId>spring-web</artifactId>
+	    <version>4.0.6.RELEASE</version>
+	</dependency>
+	
+	<dependency>
+		<groupId>com.google.protobuf</groupId>
+		<artifactId>protobuf-java</artifactId>
+		<version>2.5.0</version>
+	</dependency>
+    
+    <dependency>
+	    <groupId>org.apache.directory.studio</groupId>
+	    <artifactId>org.apache.commons.codec</artifactId>
+	    <version>1.8</version>
+	</dependency>
+	
+	<dependency>
+	    <groupId>commons-net</groupId>
+	    <artifactId>commons-net</artifactId>
+	    <version>1.4.1</version>
+	</dependency>
+	
+	<dependency>
+	    <groupId>org.apache.directory.studio</groupId>
+	    <artifactId>org.apache.commons.collections</artifactId>
+	    <version>3.2.1</version>
+	</dependency>
+	
+	<dependency>
+	    <groupId>commons-beanutils</groupId>
+	    <artifactId>commons-beanutils</artifactId>
+	    <version>1.9.2</version>
+	</dependency>
+    
+    <dependency>
+	    <groupId>org.apache.httpcomponents</groupId>
+	    <artifactId>httpclient</artifactId>
+	    <version>4.3.5</version>
+	</dependency>
+	
+	<dependency>
+		<groupId>commons-httpclient</groupId>
+		<artifactId>commons-httpclient</artifactId>
+		<version>3.1</version>
+	</dependency>
+	
+	<dependency>
+	    <groupId>org.apache.httpcomponents</groupId>
+	    <artifactId>fluent-hc</artifactId>
+	    <version>4.3.4</version>
+	</dependency>
+	
+	<dependency>
+	    <groupId>net.sf.json-lib</groupId>
+	    <artifactId>json-lib</artifactId>
+	    <version>2.4</version>
+	    <classifier>jdk15</classifier>
+	</dependency>
+	
+	<dependency>
+	    <groupId>org.json</groupId>
+	    <artifactId>org.json</artifactId>
+	    <version>chargebee-1.0</version>
+	</dependency>
+	
+	<dependency>
+		<groupId>dom4j</groupId>
+		<artifactId>dom4j</artifactId>
+		<version>1.6.1</version>
+	</dependency>
+	
+	<dependency>
+	    <groupId>org.slf4j</groupId>
+	    <artifactId>slf4j-api</artifactId>
+	    <version>1.7.7</version>
+	</dependency>
+	
+	<dependency>
+	    <groupId>c3p0</groupId>
+	    <artifactId>c3p0</artifactId>
+	    <version>0.9.5</version>
+	</dependency>
+	
+	<dependency>
+	    <groupId>com.mchange</groupId>
+	    <artifactId>mchange-commons-java</artifactId>
+	    <version>0.2.9</version>
+	</dependency>
+    
+	<dependency>
+	    <groupId>mysql</groupId>
+	    <artifactId>mysql-connector-java</artifactId>
+	    <version>5.1.5</version>
+	</dependency>
+	
+	<dependency>
+        <groupId>ch.qos.logback</groupId>
+        <artifactId>logback-core</artifactId>
+	    <version>1.1.2</version>
+	</dependency>
+	
+	<dependency>
+	    <groupId>ch.qos.logback</groupId>
+	    <artifactId>logback-classic</artifactId>
+	    <version>1.1.2</version>
+	</dependency>
+	
+	
+	<!-- 
+	<dependency>
+	    <groupId>org.apache.mina</groupId>
+	    <artifactId>mina-core</artifactId>
+	    <version>2.0.4</version>
+	    <exclusions>
+            <exclusion>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+            </exclusion>
+        </exclusions> 
+	</dependency>
+	 -->
+	<dependency>
+	    <groupId>com.adobe.blazeds</groupId>
+	    <artifactId>blazeds-core</artifactId>
+	    <version>3.2.0.3978</version>
+	</dependency>
+    <!-- 
+	    <dependency>
+		    <groupId>io.netty</groupId>
+		    <artifactId>netty</artifactId>
+		    <version>3.6.3.Final</version>
+		    
+		    <version>5.0.0.Alpha1</version>
+		    
+	    </dependency>
+     -->
+    
+    <dependency>
+		<groupId>io.netty</groupId>
+		<artifactId>netty-all</artifactId>
+		<version>5.0.0.Alpha1</version>
+	</dependency>
+    
+	<dependency>
+	   <groupId>org.quartz-scheduler</groupId>
+	   <artifactId>quartz</artifactId>
+	   <version>1.8.6</version>
+	   <exclusions>
+            <exclusion>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+            </exclusion>
+        </exclusions> 
+	</dependency>
+	
+	<dependency>
+	    <groupId>com.google.guava</groupId>
+	    <artifactId>guava</artifactId>
+	    <version>17.0</version>
+	</dependency>
+	
+	<dependency>
+        <groupId>net.sf.trove4j</groupId>
+        <artifactId>trove4j</artifactId>
+        <version>3.0.3</version>
+    </dependency>
+    
+    <dependency>
+		<groupId>com.google.code.gson</groupId>
+		<artifactId>gson</artifactId>
+		<version>2.2.4</version>
+	</dependency>
+    
+  </dependencies>
+</project>

@@ -1,0 +1,17 @@
+DictWingAdvance={}
+DictWingAdvance["1"]={id=1,wingId=1,starNum=0,smallUiId=16027,bigUiId=16028,openFightPropIdList="",nextStarNumConds="2_306_40",sellSilver=0,convertGold=0,description=""}
+DictWingAdvance["2"]={id=2,wingId=1,starNum=1,smallUiId=16027,bigUiId=16028,openFightPropIdList="2;3",nextStarNumConds="2_307_120",sellSilver=1000,convertGold=50,description=""}
+DictWingAdvance["3"]={id=3,wingId=1,starNum=2,smallUiId=16029,bigUiId=16030,openFightPropIdList="2;3;9",nextStarNumConds="2_308_360",sellSilver=2000,convertGold=100,description=""}
+DictWingAdvance["4"]={id=4,wingId=1,starNum=3,smallUiId=16031,bigUiId=16032,openFightPropIdList="2;3;9;8",nextStarNumConds="",sellSilver=3000,convertGold=150,description=""}
+DictWingAdvance["5"]={id=5,wingId=2,starNum=0,smallUiId=16033,bigUiId=16034,openFightPropIdList="",nextStarNumConds="2_306_40",sellSilver=0,convertGold=0,description=""}
+DictWingAdvance["6"]={id=6,wingId=2,starNum=1,smallUiId=16033,bigUiId=16034,openFightPropIdList="2;3",nextStarNumConds="2_307_120",sellSilver=1000,convertGold=50,description=""}
+DictWingAdvance["7"]={id=7,wingId=2,starNum=2,smallUiId=16035,bigUiId=16036,openFightPropIdList="2;3;9",nextStarNumConds="2_308_360",sellSilver=2000,convertGold=100,description=""}
+DictWingAdvance["8"]={id=8,wingId=2,starNum=3,smallUiId=16037,bigUiId=16038,openFightPropIdList="2;3;9;8",nextStarNumConds="",sellSilver=3000,convertGold=150,description=""}
+DictWingAdvance["9"]={id=9,wingId=3,starNum=0,smallUiId=16039,bigUiId=16040,openFightPropIdList="",nextStarNumConds="2_306_40",sellSilver=0,convertGold=0,description=""}
+DictWingAdvance["10"]={id=10,wingId=3,starNum=1,smallUiId=16039,bigUiId=16040,openFightPropIdList="2;3",nextStarNumConds="2_307_120",sellSilver=1000,convertGold=50,description=""}
+DictWingAdvance["11"]={id=11,wingId=3,starNum=2,smallUiId=16041,bigUiId=16042,openFightPropIdList="2;3;8",nextStarNumConds="2_308_360",sellSilver=2000,convertGold=100,description=""}
+DictWingAdvance["12"]={id=12,wingId=3,starNum=3,smallUiId=16043,bigUiId=16044,openFightPropIdList="2;3;8;9",nextStarNumConds="",sellSilver=3000,convertGold=150,description=""}
+DictWingAdvance["13"]={id=13,wingId=4,starNum=0,smallUiId=16045,bigUiId=16046,openFightPropIdList="",nextStarNumConds="2_306_40",sellSilver=0,convertGold=0,description=""}
+DictWingAdvance["14"]={id=14,wingId=4,starNum=1,smallUiId=16045,bigUiId=16046,openFightPropIdList="2;3",nextStarNumConds="2_307_120",sellSilver=1000,convertGold=50,description=""}
+DictWingAdvance["15"]={id=15,wingId=4,starNum=2,smallUiId=16047,bigUiId=16048,openFightPropIdList="2;3;8",nextStarNumConds="2_308_360",sellSilver=2000,convertGold=100,description=""}
+DictWingAdvance["16"]={id=16,wingId=4,starNum=3,smallUiId=16049,bigUiId=16050,openFightPropIdList="2;3;8;9",nextStarNumConds="",sellSilver=3000,convertGold=150,description=""}

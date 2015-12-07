@@ -1,0 +1,9 @@
+DictPlayerBaseProp={}
+DictPlayerBaseProp["1"]={id=1,name="元宝",smallUiId=1169,bigUiId=0,sname="gold",description="土豪必备，华丽丽的人生需要金灿灿的元宝来衬托！"}
+DictPlayerBaseProp["2"]={id=2,name="银币",smallUiId=1165,bigUiId=0,sname="copper",description="斗气大陆专属流通货币，银币在手，天下我有！"}
+DictPlayerBaseProp["3"]={id=3,name="经验",smallUiId=15003,bigUiId=0,sname="exp",description=""}
+DictPlayerBaseProp["4"]={id=4,name="火能石",smallUiId=1015,bigUiId=0,sname="culture",description="兑换装备必须道具。"}
+DictPlayerBaseProp["5"]={id=5,name="威望",smallUiId=1161,bigUiId=1162,sname="prestige",description="通过竞技场获得，用来在竞技场兑换东西"}
+DictPlayerBaseProp["6"]={id=6,name="等级",smallUiId=0,bigUiId=0,sname="level",description=""}
+DictPlayerBaseProp["7"]={id=7,name="联盟贡献",smallUiId=15066,bigUiId=0,sname="offer",description="可以在联盟商店中兑换道具"}
+DictPlayerBaseProp["8"]={id=8,name="屠魔积分",smallUiId=16053,bigUiId=0,sname="boIntegral",description="世界boss获得"}

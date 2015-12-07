@@ -1,0 +1,21 @@
+<project>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>org.easymock</groupId>
+  <artifactId>easymock</artifactId>
+  <version>2.2</version>
+  <packaging>jar</packaging>
+  <name>EasyMock</name>
+  <url>http://www.easymock.org</url>
+  <description>EasyMock provides Mock Objects for interfaces in JUnit tests by generating them on the fly using Java's proxy mechanism</description>
+  <licenses>
+    <license>
+      <name>MIT License</name>
+      <url>http://www.easymock.org/License.html</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+  <scm>
+    <url>http://cvs.sourceforge.net/viewcvs.py/easymock</url>
+  </scm>
+  <dependencies/>
+</project>

@@ -1,0 +1,415 @@
+<clients>
+	<platform id="2" name="android" strict="false">
+		<parameters>
+			<parameter key="login_url" value="http://dplogin.huayigame.com/v500" />
+			<parameter key="res_url"
+				value="http://dpres.huayigame.com/resource/android" />
+			<parameter key="res_url_test"
+				value="http://dpres.huayigame.com/resource/android-test" />
+		</parameters>
+		<test-ip open="false">
+			<ip>192.168.1.34</ip>
+		</test-ip>
+		<channel id="uc" name="uc">
+			<sub id="com.doupo.uc" name="uc">
+				<parameters>
+					<parameter key="code_version" value="1.3.0" />
+					<parameter key="dl_url" value="http://downloadurl" />
+					<parameter key="notice_url" value="http://dpres.huayigame.com/notice/uc" />
+				</parameters>
+			</sub>
+		</channel>
+		<channel id="baidu" name="baidu">
+			<sub id="com.doupo.baidu" name="baidu">
+				<parameters>
+					<parameter key="code_version" value="1.3.0" />
+					<parameter key="dl_url" value="http://downloadurl" />
+					<parameter key="notice_url" value="http://dpres.huayigame.com/notice/baidu" />
+				</parameters>
+			</sub>
+		</channel>
+		<channel id="xiaomi" name="xiaomi">
+			<sub id="com.doupo.mi" name="xiaomi">
+				<parameters>
+					<parameter key="code_version" value="1.3.0" />
+					<parameter key="dl_url" value="http://downloadurl" />
+					<parameter key="notice_url" value="http://dpres.huayigame.com/notice/xiaomi" />
+				</parameters>
+			</sub>
+		</channel>
+		<channel id="360" name="360">
+			<sub id="com.doupo.qihu" name="360">
+				<parameters>
+					<parameter key="code_version" value="1.3.0" />
+					<parameter key="dl_url" value="http://downloadurl" />
+					<parameter key="notice_url" value="http://dpres.huayigame.com/notice/360" />
+				</parameters>
+			</sub>
+		</channel>
+		<channel id="oppo" name="oppo">
+			<sub id="com.doupo.nearme.gamecenter" name="oppo">
+				<parameters>
+					<parameter key="code_version" value="1.3.0" />
+					<parameter key="dl_url" value="http://downloadurl" />
+					<parameter key="notice_url" value="http://dpres.huayigame.com/notice/oppo" />
+				</parameters>
+			</sub>
+		</channel>
+		<channel id="vivo" name="vivo">
+			<sub id="com.doupo.vivo" name="vivo">
+				<parameters>
+					<parameter key="code_version" value="1.3.0" />
+					<parameter key="dl_url" value="http://downloadurl" />
+					<parameter key="notice_url" value="http://dpres.huayigame.com/notice/vivo" />
+				</parameters>
+			</sub>
+		</channel>
+		<channel id="huawei" name="huawei">
+			<sub id="com.doupo.huawei" name="huawei">
+				<parameters>
+					<parameter key="code_version" value="1.3.0" />
+					<parameter key="dl_url" value="http://downloadurl" />
+					<parameter key="notice_url" value="http://dpres.huayigame.com/notice/huawei" />
+				</parameters>
+			</sub>
+		</channel>
+		<channel id="jinli" name="jinli">
+			<sub id="com.doupo.am" name="jinli">
+				<parameters>
+					<parameter key="code_version" value="1.3.0" />
+					<parameter key="dl_url" value="http://downloadurl" />
+					<parameter key="notice_url" value="http://dpres.huayigame.com/notice/jinli" />
+				</parameters>
+			</sub>
+		</channel>
+		<channel id="kupai" name="kupai">
+			<sub id="com.doupo.coolmart" name="kupai">
+				<parameters>
+					<parameter key="code_version" value="1.3.0" />
+					<parameter key="dl_url" value="http://downloadurl" />
+					<parameter key="notice_url" value="http://dpres.huayigame.com/notice/kupai" />
+				</parameters>
+			</sub>
+		</channel>
+		<channel id="lianxiang" name="lianxiang">
+			<sub id="com.doupo.lenovo" name="lianxiang">
+				<parameters>
+					<parameter key="code_version" value="1.3.0" />
+					<parameter key="dl_url" value="http://downloadurl" />
+					<parameter key="notice_url"
+						value="http://dpres.huayigame.com/notice/lianxiang" />
+				</parameters>
+			</sub>
+		</channel>
+		<channel id="yiyou" name="yiyou">
+			<sub id="com.doupo.y2game" name="y2game">
+				<parameters>
+					<parameter key="code_version" value="1.3.0" />
+					<parameter key="dl_url" value="http://downloadurl" />
+					<parameter key="notice_url" value="http://dpres.huayigame.com/notice/public" />
+				</parameters>
+			</sub>
+			<sub id="com.doupo.zhuoyi.zy" name="卓易">
+				<parameters>
+					<parameter key="code_version" value="1.3.0" />
+					<parameter key="dl_url" value="http://downloadurl" />
+					<parameter key="notice_url" value="http://dpres.huayigame.com/notice/public" />
+				</parameters>
+			</sub>
+
+		</channel>
+		<channel id="anysdk" name="anysdk">
+
+			<sub id="500020" name="爱思助手">
+				<parameters>
+					<parameter key="code_version" value="1.3.0" />
+					<parameter key="dl_url"
+						value="https://itunes.apple.com/cn/app/dou-po-cang-qiong-tian-can/id1012329703?l=zh&amp;ls=1&amp;mt=8" />
+					<parameter key="notice_url" value="http://dpres.huayigame.com/notice/public" />
+					<parameter key="notice_url_pre" value="http://dpres.huayigame.com/notice/public" />
+				</parameters>
+			</sub>
+			<sub id="111221" name="i苹果">
+				<parameters>
+					<parameter key="code_version" value="1.3.0" />
+					<parameter key="dl_url"
+						value="https://itunes.apple.com/cn/app/dou-po-cang-qiong-tian-can/id1012329703?l=zh&amp;ls=1&amp;mt=8" />
+					<parameter key="notice_url" value="http://dpres.huayigame.com/notice/public" />
+					<parameter key="notice_url_pre" value="http://dpres.huayigame.com/notice/public" />
+				</parameters>
+			</sub>
+			<sub id="500002" name="同步推">
+				<parameters>
+					<parameter key="code_version" value="1.3.0" />
+					<parameter key="dl_url"
+						value="https://itunes.apple.com/cn/app/dou-po-cang-qiong-tian-can/id1012329703?l=zh&amp;ls=1&amp;mt=8" />
+					<parameter key="notice_url" value="http://dpres.huayigame.com/notice/public" />
+					<parameter key="notice_url_pre" value="http://dpres.huayigame.com/notice/public" />
+				</parameters>
+			</sub>
+			<sub id="500015" name="快用7659">
+				<parameters>
+					<parameter key="code_version" value="1.3.0" />
+					<parameter key="dl_url"
+						value="https://itunes.apple.com/cn/app/dou-po-cang-qiong-tian-can/id1012329703?l=zh&amp;ls=1&amp;mt=8" />
+					<parameter key="notice_url" value="http://dpres.huayigame.com/notice/public" />
+					<parameter key="notice_url_pre" value="http://dpres.huayigame.com/notice/public" />
+				</parameters>
+			</sub>
+			<sub id="500017" name="海马助手">
+				<parameters>
+					<parameter key="code_version" value="1.3.0" />
+					<parameter key="dl_url"
+						value="https://itunes.apple.com/cn/app/dou-po-cang-qiong-tian-can/id1012329703?l=zh&amp;ls=1&amp;mt=8" />
+					<parameter key="notice_url" value="http://dpres.huayigame.com/notice/public" />
+					<parameter key="notice_url_pre" value="http://dpres.huayigame.com/notice/public" />
+				</parameters>
+			</sub>
+
+			<sub id="500003" name="PP助手">
+				<parameters>
+					<parameter key="code_version" value="1.3.0" />
+					<parameter key="dl_url"
+						value="https://itunes.apple.com/cn/app/dou-po-cang-qiong-tian-can/id1012329703?l=zh&amp;ls=1&amp;mt=8" />
+					<parameter key="notice_url" value="http://dpres.huayigame.com/notice/public" />
+					<parameter key="notice_url_pre" value="http://dpres.huayigame.com/notice/public" />
+				</parameters>
+			</sub>
+			<sub id="500030" name="XY助手">
+				<parameters>
+					<parameter key="code_version" value="1.3.0" />
+					<parameter key="dl_url"
+						value="https://itunes.apple.com/cn/app/dou-po-cang-qiong-tian-can/id1012329703?l=zh&amp;ls=1&amp;mt=8" />
+					<parameter key="notice_url" value="http://dpres.huayigame.com/notice/ios" />
+					<parameter key="notice_url_pre"
+						value="http://dpres.huayigame.com/notice/ios-pre" />
+				</parameters>
+			</sub>
+			<sub id="500004" name="itools">
+				<parameters>
+					<parameter key="code_version" value="1.3.0" />
+					<parameter key="dl_url"
+						value="https://itunes.apple.com/cn/app/dou-po-cang-qiong-tian-can/id1012329703?l=zh&amp;ls=1&amp;mt=8" />
+					<parameter key="notice_url" value="http://dpres.huayigame.com/notice/ios" />
+					<parameter key="notice_url_pre"
+						value="http://dpres.huayigame.com/notice/ios-pre" />
+				</parameters>
+			</sub>
+		</channel>
+		<channel id="yijie" name="yijie">
+			<sub id="com.doupo.anzhi" name="安智">
+				<parameters>
+					<parameter key="code_version" value="1.3.0" />
+					<parameter key="dl_url" value="http://downloadurl" />
+					<parameter key="notice_url" value="http://dpres.huayigame.com/notice/public" />
+				</parameters>
+			</sub>
+			<sub id="com.doupo.wdj" name="豌豆荚">
+				<parameters>
+					<parameter key="code_version" value="1.3.0" />
+					<parameter key="dl_url" value="http://downloadurl" />
+					<parameter key="notice_url" value="http://dpres.huayigame.com/notice/public" />
+				</parameters>
+			</sub>
+			<sub id="com.doupo.mzw" name="拇指玩">
+				<parameters>
+					<parameter key="code_version" value="1.3.0" />
+					<parameter key="dl_url" value="http://downloadurl" />
+					<parameter key="notice_url" value="http://dpres.huayigame.com/notice/public" />
+				</parameters>
+			</sub>
+			<sub id="com.doupo.youku" name="优酷">
+				<parameters>
+					<parameter key="code_version" value="1.3.0" />
+					<parameter key="dl_url" value="http://downloadurl" />
+					<parameter key="notice_url" value="http://dpres.huayigame.com/notice/public" />
+				</parameters>
+			</sub>
+			<sub id="com.doupo.pps" name="爱奇艺">
+				<parameters>
+					<parameter key="code_version" value="1.3.0" />
+					<parameter key="dl_url" value="http://downloadurl" />
+					<parameter key="notice_url" value="http://dpres.huayigame.com/notice/public" />
+				</parameters>
+			</sub>
+			<sub id="com.doupo.pptv" name="pptv">
+				<parameters>
+					<parameter key="code_version" value="1.3.0" />
+					<parameter key="dl_url" value="http://downloadurl" />
+					<parameter key="notice_url" value="http://dpres.huayigame.com/notice/public" />
+				</parameters>
+			</sub>
+			<sub id="com.doupo.wyx" name="新浪">
+				<parameters>
+					<parameter key="code_version" value="1.3.0" />
+					<parameter key="dl_url" value="http://downloadurl" />
+					<parameter key="notice_url" value="http://dpres.huayigame.com/notice/public" />
+				</parameters>
+			</sub>
+			<sub id="com.doupo.sougou" name="搜狗">
+				<parameters>
+					<parameter key="code_version" value="1.3.0" />
+					<parameter key="dl_url" value="http://downloadurl" />
+					<parameter key="notice_url" value="http://dpres.huayigame.com/notice/public" />
+				</parameters>
+			</sub>
+			<sub id="com.doupo.m4399" name="4399">
+				<parameters>
+					<parameter key="code_version" value="1.3.0" />
+					<parameter key="dl_url" value="http://downloadurl" />
+					<parameter key="notice_url" value="http://dpres.huayigame.com/notice/public" />
+				</parameters>
+			</sub>
+			<sub id="com.doupo.zhuoyi.zy" name="卓易">
+				<parameters>
+					<parameter key="code_version" value="1.3.0" />
+					<parameter key="dl_url" value="http://downloadurl" />
+					<parameter key="notice_url" value="http://dpres.huayigame.com/notice/public" />
+				</parameters>
+			</sub>
+			<sub id="com.doupo.gfan" name="机锋">
+				<parameters>
+					<parameter key="code_version" value="1.3.0" />
+					<parameter key="dl_url" value="http://downloadurl" />
+					<parameter key="notice_url" value="http://dpres.huayigame.com/notice/public" />
+				</parameters>
+			</sub>
+			<sub id="com.doupo.sy37" name="37玩">
+				<parameters>
+					<parameter key="code_version" value="1.3.0" />
+					<parameter key="dl_url" value="http://downloadurl" />
+					<parameter key="notice_url" value="http://dpres.huayigame.com/notice/public" />
+				</parameters>
+			</sub>
+			<sub id="com.doupo.mz" name="魅族">
+				<parameters>
+					<parameter key="code_version" value="1.3.0" />
+					<parameter key="dl_url" value="http://downloadurl" />
+					<parameter key="notice_url" value="http://dpres.huayigame.com/notice/public" />
+				</parameters>
+			</sub>
+			<sub id="com.doupo.ouwan" name="偶玩">
+				<parameters>
+					<parameter key="code_version" value="1.3.0" />
+					<parameter key="dl_url" value="http://downloadurl" />
+					<parameter key="notice_url" value="http://dpres.huayigame.com/notice/public" />
+				</parameters>
+			</sub>
+			<sub id="com.doupo.downjoy" name="当乐">
+				<parameters>
+					<parameter key="code_version" value="1.3.0" />
+					<parameter key="dl_url" value="http://downloadurl" />
+					<parameter key="notice_url" value="http://dpres.huayigame.com/notice/public" />
+				</parameters>
+			</sub>
+			<sub id="com.doupo.ewan" name="益玩">
+				<parameters>
+					<parameter key="code_version" value="1.3.0" />
+					<parameter key="dl_url" value="http://downloadurl" />
+					<parameter key="notice_url" value="http://dpres.huayigame.com/notice/public" />
+				</parameters>
+			</sub>
+			<sub id="com.doupo.yy" name="37玩">
+				<parameters>
+					<parameter key="code_version" value="1.3.0" />
+					<parameter key="dl_url" value="http://downloadurl" />
+					<parameter key="notice_url" value="http://dpres.huayigame.com/notice/public" />
+				</parameters>
+			</sub>
+			<sub id="com.tencent.tmgp.dpcqsq" name="37玩">
+				<parameters>
+					<parameter key="code_version" value="1.3.0" />
+					<parameter key="dl_url" value="http://downloadurl" />
+					<parameter key="notice_url" value="http://dpres.huayigame.com/notice/public" />
+				</parameters>
+			</sub>
+
+			<sub id="com.doupo.lewan" name="乐玩">
+				<parameters>
+					<parameter key="code_version" value="1.3.0" />
+					<parameter key="dl_url" value="http://downloadurl" />
+					<parameter key="notice_url" value="http://dpres.huayigame.com/notice/public" />
+					<parameter key="charge_notify"
+						value="http://sdkcallback.huayigame.com/yjcpsrv/cb/2BE115F03999EFA6/42649F495DF2AFE2/sync.html" />
+				</parameters>
+			</sub>
+			<sub id="com.doupo.kugou" name="酷狗">
+				<parameters>
+					<parameter key="code_version" value="1.3.0" />
+					<parameter key="dl_url" value="http://downloadurl" />
+					<parameter key="notice_url" value="http://dpres.huayigame.com/notice/public" />
+					<parameter key="charge_notify"
+						value="http://sdkcallback.huayigame.com/yjcpsrv/cb/60AA725A32D4C67B/42649F495DF2AFE2/sync.html" />
+				</parameters>
+			</sub>
+			<sub id="com.doupo.leshi" name="乐视">
+				<parameters>
+					<parameter key="code_version" value="1.3.0" />
+					<parameter key="dl_url" value="http://downloadurl" />
+					<parameter key="notice_url" value="http://dpres.huayigame.com/notice/public" />
+					<parameter key="charge_notify"
+						value="http://sdkcallback.huayigame.com/yjcpsrv/cb/8DC3001887058B7A/42649F495DF2AFE2/sync.html" />
+				</parameters>
+			</sub>
+			<sub id="com.doupo.waa" name="17waa">
+				<parameters>
+					<parameter key="code_version" value="1.3.0" />
+					<parameter key="dl_url" value="http://downloadurl" />
+					<parameter key="notice_url" value="http://dpres.huayigame.com/notice/public" />
+				</parameters>
+			</sub>
+			<sub id="com.doupo.cc" name="虫虫">
+				<parameters>
+					<parameter key="code_version" value="1.3.0" />
+					<parameter key="dl_url" value="http://downloadurl" />
+					<parameter key="notice_url" value="http://dpres.huayigame.com/notice/public" />
+					<parameter key="charge_notify"
+						value="http://sdkcallback.huayigame.com/yjcpsrv/cb/906363003FC9CACC/42649F495DF2AFE2/sync.html" />
+				</parameters>
+			</sub>
+
+		</channel>
+	</platform>
+	<platform id="4" name="zhangyue" strict="false">
+		<parameters>
+			<parameter key="login_url" value="http://dplogin.huayigame.com/v500" />
+			<parameter key="res_url"
+				value="http://dpres.huayigame.com/resource/zhangyue" />
+			<parameter key="res_url_test"
+				value="http://dpres.huayigame.com/resource/zhangyue-test" />
+		</parameters>
+		<test-ip open="false">
+			<ip>192.168.1.34</ip>
+		</test-ip>
+		<channel id="yijie" name="yijie">
+			<sub id="com.doupo.zhangyue.zy" name="zhangyue">
+				<parameters>
+					<parameter key="code_version" value="1.3.0" />
+					<parameter key="dl_url" value="http://downloadurl" />
+					<parameter key="notice_url"
+						value="http://dpres.huayigame.com/notice/zhangyue" />
+				</parameters>
+			</sub>
+		</channel>
+	</platform>
+	<platform id="5" name="qq" strict="false">
+		<parameters>
+			<parameter key="login_url" value="http://dplogin.huayigame.com/v500" />
+			<parameter key="res_url" value="http://dpres.huayigame.com/resource/qq" />
+			<parameter key="res_url_test"
+				value="http://dpres.huayigame.com/resource/qq-test" />
+		</parameters>
+		<test-ip open="false">
+			<ip>192.168.1.34</ip>
+		</test-ip>
+		<channel id="qq" name="qq">
+			<sub id="com.tencent.tmgp.y2doupo" name="qq">
+				<parameters>
+					<parameter key="code_version" value="1.3.0" />
+					<parameter key="dl_url" value="http://downloadurl" />
+					<parameter key="notice_url" value="http://dpres.huayigame.com/public" />
+				</parameters>
+			</sub>
+		</channel>
+	</platform>
+</clients>

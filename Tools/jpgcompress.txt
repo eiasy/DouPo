@@ -1,0 +1,2 @@
+story_big_map_\w++
+story_small_map_\w++

@@ -1,0 +1,13 @@
+2015-09-02 16:41:52,863 +0800 查询数据异常#
+net.sf.json.JSONException: JSONObject["查询完成"] not found.
+	at net.sf.json.JSONObject.getString(JSONObject.java:2092)
+	at mmo.module.gm.gui.composite.CompositeAdminRole.selectCharge(CompositeAdminRole.java:350)
+	at mmo.module.gm.gui.composite.CompositeAdminRole$5.widgetSelected(CompositeAdminRole.java:161)
+	at org.eclipse.swt.widgets.TypedListener.handleEvent(TypedListener.java:234)
+	at org.eclipse.swt.widgets.EventTable.sendEvent(EventTable.java:84)
+	at org.eclipse.swt.widgets.Widget.sendEvent(Widget.java:1053)
+	at org.eclipse.swt.widgets.Display.runDeferredEvents(Display.java:4066)
+	at org.eclipse.swt.widgets.Display.readAndDispatch(Display.java:3657)
+	at org.eclipse.jface.window.Window.runEventLoop(Window.java:825)
+	at org.eclipse.jface.window.Window.open(Window.java:801)
+	at mmo.module.gm.GMDestop.main(GMDestop.java:33)

@@ -1,0 +1,12 @@
+<configs>
+	<files>
+		<file name="charge.parameter" file="${user.dir}/config/link/link.charge.parameter.xml" />
+		<file name="white.config" file="${user.dir}/config/link/link.white.config.xml" />
+	</files>
+	<parameters>
+		<parameter name="link_file_white_config" value="white.config" />
+		<parameter name="link_file_charge_parameter" value="charge.parameter" />
+		<parameter name="push_event_switch" value="false" />
+		<parameter name="push_event_url" value="http://192.168.1.34:12008/datacenter/event" />
+	</parameters>
+</configs>

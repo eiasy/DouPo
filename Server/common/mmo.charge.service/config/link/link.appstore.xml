@@ -1,0 +1,10 @@
+<configs>
+	<parameters>
+		<parameter name="app_store_order" value="http://127.0.0.1:12005/229" />
+		<parameter name="app_store_mode" value="buy" />
+		<parameter name="app_store_test"
+			value="https://sandbox.itunes.apple.com/verifyReceipt" />
+		<parameter name="app_store_buy" value="https://buy.itunes.apple.com/verifyReceipt" />
+
+	</parameters>
+</configs>

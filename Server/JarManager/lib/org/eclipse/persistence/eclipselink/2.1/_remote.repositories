@@ -1,0 +1,4 @@
+#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
+#Fri Aug 15 17:07:36 CST 2014
+eclipselink-2.1.jar>=
+eclipselink-2.1.pom>=

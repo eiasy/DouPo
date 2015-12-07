@@ -1,0 +1,78 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.huayigame.doupo</groupId>
+  <artifactId>server</artifactId>
+  <version>0.0.1</version>
+  <packaging>jar</packaging>
+
+  <build>
+	<plugins>
+	
+		<!-- 配置jdk编译版本和代码编码 -->
+		<plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-compiler-plugin</artifactId>
+            <version>3.1</version>
+            <configuration>
+                <source>1.7</source>
+                <target>1.7</target>
+                <encoding>UTF8</encoding>
+            </configuration>
+        </plugin>
+        
+        <!-- 配置资源文件编码 -->
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-resources-plugin</artifactId>
+            <version>2.6</version>
+            <configuration>
+                <encoding>UTF-8</encoding>
+            </configuration>
+        </plugin>
+        
+        <!-- 生成带main函数的jar包,并将依赖包也打入包内 -->
+		<plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-shade-plugin</artifactId>
+            <version>1.4</version>
+            <executions>
+                <execution>
+                    <phase>package</phase>
+                    <goals>
+                        <goal>shade</goal>
+                    </goals>
+                    <configuration>
+                        <transformers>
+                            <transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+                                <resource>META-INF/spring.handlers</resource>
+                            </transformer>
+                            <transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+                                <resource>META-INF/spring.schemas</resource>
+                            </transformer>
+                            <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                             	<mainClass>com.huayi.doupo.logic.core.GameServerMain</mainClass>
+                                <!--   <mainClass>com.huayi.doupo.logic.util.gener.ClientGener</mainClass>  -->
+                            </transformer>
+                        </transformers>
+                    </configuration>
+                </execution>
+            </executions>
+        </plugin>
+		 
+	</plugins>
+  </build>
+
+  <!-- 配置依赖包 -->
+  <dependencies>
+  
+	<dependency>
+		<groupId>com.huayigame.doupo</groupId>
+		<artifactId>base</artifactId>
+	    <version>0.0.1</version>
+	</dependency>
+    
+  </dependencies>
+  
+</project>

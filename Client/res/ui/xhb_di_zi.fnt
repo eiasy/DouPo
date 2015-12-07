@@ -1,0 +1,14 @@
+info face="微软雅黑" size=27 bold=0 italic=0 charset="" unicode=1 stretchH=100 smooth=1 aa=1 padding=0,0,0,0 spacing=0,0 outline=0
+common lineHeight=27 base=27 scaleW=190 scaleH=27 pages=1 packed=0 alphaChnl=1 redChnl=0 greenChnl=0 blueChnl=0
+page id=0 file="xhb_di_zi.png"
+chars count=10
+char id=48   x=0    y=0    width=19   height=27   xoffset=0    yoffset=0    xadvance=19   page=0  chnl=15
+char id=49   x=19   y=0    width=19   height=27   xoffset=0    yoffset=0    xadvance=19   page=0  chnl=15
+char id=50   x=38   y=0    width=19   height=27   xoffset=0    yoffset=0    xadvance=19   page=0  chnl=15
+char id=51   x=57   y=0    width=19   height=27   xoffset=0    yoffset=0    xadvance=19   page=0  chnl=15
+char id=52   x=76   y=0    width=19   height=27   xoffset=0    yoffset=0    xadvance=19   page=0  chnl=15
+char id=53   x=95   y=0    width=19   height=27   xoffset=0    yoffset=0    xadvance=19   page=0  chnl=15
+char id=54   x=114  y=0    width=19   height=27   xoffset=0    yoffset=0    xadvance=19   page=0  chnl=15
+char id=55   x=133  y=0    width=19   height=27   xoffset=0    yoffset=0    xadvance=19   page=0  chnl=15
+char id=56   x=152  y=0    width=19   height=27   xoffset=0    yoffset=0    xadvance=19   page=0  chnl=15
+char id=57   x=171  y=0    width=19   height=27   xoffset=0    yoffset=0    xadvance=19   page=0  chnl=15

@@ -1,0 +1,4 @@
+#NOTE: This is an Aether internal implementation file, its format can be changed without prior notice.
+#Fri Aug 15 17:08:04 CST 2014
+guice-2.0.pom>=
+guice-2.0.jar>=

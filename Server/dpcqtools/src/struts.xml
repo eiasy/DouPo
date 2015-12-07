@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+
+<struts>
+
+ <constant name="struts.multipart.maxSize" value="55000000"/>
+
+ <constant name="struts.i18n.encoding" value="UTF-8"></constant>
+ 
+		<package name="struts2" namespace="/" extends="struts-default">
+		
+		<result-types> 
+		   <result-type name="json" class="org.apache.struts2.json.JSONResult"/>
+		</result-types>
+	
+		<action name="login" class="com.hygame.dpcq.action.LoginAction">
+			<result name="success">/home.jsp</result>
+			<result name="input">/index.jsp</result>
+		</action>
+		
+		<action name="user" class="com.hygame.dpcq.action.UserAction">
+			<result name="success">/zhgl.jsp</result>
+			<result name="input">/zhgl.jsp</result>
+			<result name="qxgl">/qxgl.jsp</result>
+		</action>
+		
+		<action name="server" class="com.hygame.dpcq.action.ServerAttributeAction">
+			<result type="json">
+				<param name="root">
+			         result
+		        </param> 
+			</result>
+			<result name="fqpz">/fqpz.jsp</result>
+			<result name="input">/fqpz.jsp</result>
+		</action>
+		
+		<action name="operation" class="com.hygame.dpcq.action.OperationAction">
+			<result  type="json">
+				<param name="root">
+			         result<!-- result是action中设置的变量名，也是页面需要返回的数据，该变量必须有setter和getter方法 -->
+		        </param> 
+			</result>
+			<result name="pzxg">/pzxg.jsp</result>
+		</action>
+		
+		<action name="goods" class="com.hygame.dpcq.action.GoodsAction">
+			<result  type="json">
+				<param name="root">
+			         result<!-- result是action中设置的变量名，也是页面需要返回的数据，该变量必须有setter和getter方法 -->
+		        </param> 
+			</result>
+			<result name="input">/wpff.jsp</result>
+			<result name="wpff" >/wpff.jsp</result>
+			<result name="wpffall" >/wpffall.jsp</result>
+			<result name="selectThing" >/selectThing.jsp</result>
+		</action>
+		
+		<action name="marquee" class="com.hygame.dpcq.action.MarqueeAction">
+				<result type="json">
+				     <param name="root">
+			         	result<!-- result是action中设置的变量名，也是页面需要返回的数据，该变量必须有setter和getter方法 -->
+			         </param> 
+				</result>
+			<result name="input">/pmdgl.jsp</result>
+			<result name="pmdgl" >/pmdgl.jsp</result>
+		</action>
+		
+		<action name="activities" class="com.hygame.dpcq.action.ActivitiesAction">
+			<result  type="json">
+				<param name="root">
+		         	result<!-- result是action中设置的变量名，也是页面需要返回的数据，该变量必须有setter和getter方法 -->
+		        </param> 
+			</result>
+			<result name="input">/hdkg.jsp</result>
+			<result name="hdkg" >/hdkg.jsp</result>
+		</action>
+		
+		<action name="sendmessage" class="com.hygame.dpcq.action.SendMessageAction">
+			<result name="success">/wjzh.jsp</result>
+			<result name="input">/wjzh.jsp</result>
+		</action>  
+		
+		<action name="upload" class="com.hygame.dpcq.action.FileUploadAction">
+			<result name="fail">/fail.jsp</result>
+			<result name="success">/success.jsp</result>
+			<result name="fqpz">/home.jsp</result>
+			<interceptor-ref name="fileUpload">
+                <param name="savePath">/data</param>  
+                <param name="maximumSize">52428800</param>
+            </interceptor-ref>
+            <interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+		
+		<action name="player" class="com.hygame.dpcq.action.PlayerAction">
+			<result type="json">
+			     <param name="root">
+		         	result
+		         </param> 
+			</result>
+			<result name="djzh" >/djzh.jsp</result>
+			<result name="jjzh" >/jjzh.jsp</result>
+		</action>
+		
+	</package>
+
+</struts>    
