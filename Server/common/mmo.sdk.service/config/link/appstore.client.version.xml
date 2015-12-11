@@ -2,10 +2,12 @@
 	<platform id="3" name="ios" strict="false">
 		<parameters>
 			<parameter key="login_url" value="http://dplogin.huayigame.com/v500" />
-			<parameter key="login_url_pre" value="http://dploginios.huayigame.com/v500" />
 			<parameter key="res_url" value="http://dpres.huayigame.com/resource/ios" />
 			<parameter key="res_url_test" value="http://dpres.huayigame.com/resource/ios-test" />
-			<parameter key="res_url_pre" value="http://dpres.huayigame.com/resource/ios-pre" />
+			<parameter key="yiyou_login_url_pre" value="http://dploginios.huayigame.com/v500" />
+			<parameter key="yiyou_res_url_pre" value="http://dpres.huayigame.com/resource/ios-pre" />
+			<parameter key="iosy2game_login_url_pre" value="http://dploginios.huayigame.com/v500" />
+			<parameter key="iosy2game_res_url_pre" value="http://dpres.huayigame.com/resource/ios-pre" />
 		</parameters>
 		<test-ip open="false">
 			<ip>192.168.1.34</ip>
@@ -17,80 +19,23 @@
 					<parameter key="dl_url" value="https://itunes.apple.com/cn/app/dou-po-cang-qiong-tian-can/id1012329703?l=zh&amp;ls=1&amp;mt=8" />
 					<parameter key="notice_url" value="http://dpres.huayigame.com/notice/ios" />
 					<parameter key="notice_url_pre" value="http://dpres.huayigame.com/notice/ios-pre" />
-				</parameters>
-			</sub>
-		
-			<sub id="com.doupo.i4" name="爱思助手">
-				<parameters>
-					<parameter key="code_version" value="1.2.1" />
-					<parameter key="dl_url" value="https://itunes.apple.com/cn/app/dou-po-cang-qiong-tian-can/id1012329703?l=zh&amp;ls=1&amp;mt=8" />
-					<parameter key="notice_url" value="http://dpres.huayigame.com/notice/ios" />
-					<parameter key="notice_url_pre" value="http://dpres.huayigame.com/notice/ios-pre" />
-				</parameters>
-			</sub>
-			<sub id="com.doupo.iapple" name="i苹果">
-				<parameters>
-					<parameter key="code_version" value="1.2.1" />
-					<parameter key="dl_url" value="https://itunes.apple.com/cn/app/dou-po-cang-qiong-tian-can/id1012329703?l=zh&amp;ls=1&amp;mt=8" />
-					<parameter key="notice_url" value="http://dpres.huayigame.com/notice/ios" />
-					<parameter key="notice_url_pre" value="http://dpres.huayigame.com/notice/ios-pre" />
-				</parameters>
-			</sub>
-			<sub id="com.tongbu.doupo.y2game" name="同步推">
-				<parameters>
-					<parameter key="code_version" value="1.2.1" />
-					<parameter key="dl_url" value="https://itunes.apple.com/cn/app/dou-po-cang-qiong-tian-can/id1012329703?l=zh&amp;ls=1&amp;mt=8" />
-					<parameter key="notice_url" value="http://dpres.huayigame.com/notice/ios" />
-					<parameter key="notice_url_pre" value="http://dpres.huayigame.com/notice/ios-pre" />
-				</parameters>
-			</sub>
-			<sub id="com.doupo.7659" name="快用7659">
-				<parameters>
-					<parameter key="code_version" value="1.2.1" />
-					<parameter key="dl_url" value="https://itunes.apple.com/cn/app/dou-po-cang-qiong-tian-can/id1012329703?l=zh&amp;ls=1&amp;mt=8" />
-					<parameter key="notice_url" value="http://dpres.huayigame.com/notice/ios" />
-					<parameter key="notice_url_pre" value="http://dpres.huayigame.com/notice/ios-pre" />
-				</parameters>
-			</sub>
-			<sub id="com.doupo.haima" name="海马">
-				<parameters>
-					<parameter key="code_version" value="1.2.1" />
-					<parameter key="dl_url" value="https://itunes.apple.com/cn/app/dou-po-cang-qiong-tian-can/id1012329703?l=zh&amp;ls=1&amp;mt=8" />
-					<parameter key="notice_url" value="http://dpres.huayigame.com/notice/ios" />
-					<parameter key="notice_url_pre" value="http://dpres.huayigame.com/notice/ios-pre" />
-				</parameters>
-			</sub>
-			
-				<sub id="com.doupo.pp" name="PP助手">
-				<parameters>
-					<parameter key="code_version" value="1.3.0" />
-					<parameter key="dl_url"
-						value="https://itunes.apple.com/cn/app/dou-po-cang-qiong-tian-can/id1012329703?l=zh&amp;ls=1&amp;mt=8" />
-					<parameter key="notice_url" value="http://dpres.huayigame.com/notice/public" />
-					<parameter key="notice_url_pre" value="http://dpres.huayigame.com/notice/public" />
-				</parameters>
-			</sub>
-			<sub id="com.doupo.xy" name="XY助手">
-				<parameters>
-					<parameter key="code_version" value="1.3.0" />
-					<parameter key="dl_url"
-						value="https://itunes.apple.com/cn/app/dou-po-cang-qiong-tian-can/id1012329703?l=zh&amp;ls=1&amp;mt=8" />
-					<parameter key="notice_url" value="http://dpres.huayigame.com/notice/public" />
-					<parameter key="notice_url_pre"
-						value="http://dpres.huayigame.com/notice/public" />
-				</parameters>
-			</sub>
-			<sub id="com.doupo.sky" name="itools">
-				<parameters>
-					<parameter key="code_version" value="1.3.0" />
-					<parameter key="dl_url"
-						value="https://itunes.apple.com/cn/app/dou-po-cang-qiong-tian-can/id1012329703?l=zh&amp;ls=1&amp;mt=8" />
-					<parameter key="notice_url" value="http://dpres.huayigame.com/notice/public" />
-					<parameter key="notice_url_pre"
-						value="http://dpres.huayigame.com/notice/public" />
+					<parameter key="charge_notify"
+						value="http://receipt.huayigame.com/228" />
 				</parameters>
 			</sub>
 		</channel>
+		
+		<channel id="iosy2game" name="iosy2game">
+			<sub id="com.y2game.dp" name="iosy2game">
+				<parameters>
+					<parameter key="code_version" value="1.2.1" />
+					<parameter key="dl_url" value="https://itunes.apple.com/cn/app/dou-po-cang-qiong-tian-can/id1012329703?l=zh&amp;ls=1&amp;mt=8" />
+					<parameter key="notice_url" value="http://dpres.huayigame.com/notice/ios" />
+					<parameter key="notice_url_pre" value="http://dpres.huayigame.com/notice/ios-pre" />
+				</parameters>
+			</sub>
+		</channel>
+			
 	</platform>
 </clients>
 

@@ -147,7 +147,9 @@ public class StaticThing{
 		public static final Integer thing108 = new Integer(108);//鸾凤古琴
 
 		public static final Integer thing109 = new Integer(109);//巧克力
-
+		
+		public static final Integer holdStarThing = new Integer(110);//占星用刷新道具
+		
 		public static final Integer thing200 = new Integer(200);//玄重尺碎片
 
 		public static final Integer thing206 = new Integer(206);//万魂剑碎片

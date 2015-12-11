@@ -1,6 +1,5 @@
 package mmo.common.module.service.charge.appstore;
 
-import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -11,7 +10,7 @@ public class AppStoreShopManager {
 		return instance;
 	}
 
-	private Map<Integer, AppStoreGoods> goodsList = new HashMap<Integer, AppStoreGoods>();
+	private Map<String, AppStoreGoods> goodsList = new HashMap<String, AppStoreGoods>();
 
 	private AppStoreShopManager() {
 
@@ -19,25 +18,12 @@ public class AppStoreShopManager {
 
 	public final void addAppStoreGoods(AppStoreGoods goods) {
 		if (goods != null) {
-			goodsList.put(goods.getGoodsId(), goods);
+			goodsList.put(goods.getProId(), goods);
 		}
-	}
-
-	public final AppStoreGoods getAppStoreGoods(int goodsId) {
-		return goodsList.get(goodsId);
 	}
 
 	public final AppStoreGoods getAppStoreGoods(String proId) {
-		if (proId == null) {
-			return null;
-		}
-		Collection<AppStoreGoods> values = goodsList.values();
-		for (AppStoreGoods goods : values) {
-			if (proId.equals(goods.getProId())) {
-				return goods;
-			}
-		}
-		return null;
+		return goodsList.get(proId);
 	}
 
 }

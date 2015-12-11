@@ -277,7 +277,7 @@
                 <PreSize X="1.0000" Y="0.1356" />
                 <FileData Type="Normal" Path="ui/bb_di.png" Plist="" />
               </AbstractNodeData>
-              <AbstractNodeData Name="image_base_resolve" ActionTag="3" UserData="ignoreSize" Tag="17864" IconVisible="False" LeftMargin="-0.0005" RightMargin="0.0005" TopMargin="133.5007" BottomMargin="467.4993" ctype="ImageViewObjectData">
+              <AbstractNodeData Name="image_base_resolve" Visible="False" ActionTag="3" UserData="ignoreSize" Tag="17864" IconVisible="False" LeftMargin="-0.0005" RightMargin="0.0005" TopMargin="133.5007" BottomMargin="467.4993" ctype="ImageViewObjectData">
                 <Size X="640.0000" Y="535.0000" />
                 <Children>
                   <AbstractNodeData Name="image_base_get" ActionTag="17" UserData="ignoreSize" Tag="17880" IconVisible="False" TopMargin="566.5001" BottomMargin="-292.5001" ctype="ImageViewObjectData">
@@ -595,7 +595,7 @@
                 <PreSize X="1.0000" Y="0.4710" />
                 <FileData Type="Normal" Path="ui/fj2.png" Plist="" />
               </AbstractNodeData>
-              <AbstractNodeData Name="image_base_samsara" ActionTag="37" UserData="ignoreSize" Tag="725874" VisibleForFrame="False" IconVisible="False" TopMargin="144.5000" BottomMargin="446.5000" ctype="ImageViewObjectData">
+              <AbstractNodeData Name="image_base_samsara" ActionTag="37" UserData="ignoreSize" Tag="725874" IconVisible="False" TopMargin="144.5000" BottomMargin="446.5000" ctype="ImageViewObjectData">
                 <Size X="640.0000" Y="545.0000" />
                 <Children>
                   <AbstractNodeData Name="image_base_rinne_get" ActionTag="44" UserData="ignoreSize" Tag="725881" IconVisible="False" LeftMargin="-13.0000" RightMargin="-13.0000" TopMargin="508.5000" BottomMargin="-256.5000" ctype="ImageViewObjectData">
@@ -711,8 +711,8 @@
                         <PreSize X="0.8694" Y="0.5461" />
                         <FileData Type="Normal" Path="ui/tiao_di.png" Plist="" />
                       </AbstractNodeData>
-                      <AbstractNodeData Name="text_hint" ActionTag="18" Tag="725893" IconVisible="False" LeftMargin="82.0000" RightMargin="68.0000" TopMargin="76.5000" BottomMargin="185.5000" FontSize="25" LabelText="轮回可以返还所有消耗的资源及初始英雄哟~！" ctype="TextObjectData">
-                        <Size X="516.0000" Y="31.0000" />
+                      <AbstractNodeData Name="text_hint" ActionTag="18" Tag="725893" IconVisible="False" LeftMargin="82.0000" RightMargin="68.0000" TopMargin="76.5000" BottomMargin="185.5000" FontSize="25" LabelText="轮回返还除异火外所有消耗的资源及初始英雄哟~！" ctype="TextObjectData">
+                        <Size X="566.0000" Y="31.0000" />
                         <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                         <Position X="340.0000" Y="201.0000" />
                         <Scale ScaleX="1.0000" ScaleY="1.0000" />

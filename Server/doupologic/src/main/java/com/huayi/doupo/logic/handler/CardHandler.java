@@ -1123,6 +1123,10 @@ public class CardHandler extends BaseHandler{
 		getInstPlayerCardDAL().update(instPlayerCard, instPlayerId);
 		OrgFrontMsgUtil.orgSyncMsgData(StaticSyncState.update, instPlayerCard, instPlayerCard.getId(), instPlayerCard.getResult(), syncMsgData);
 		
+		//卡牌进阶日志
+		String log = "卡牌进阶：instPlayerId=" + instPlayerId + "要进阶的卡牌=" + DictMap.dictCardMap.get(instPlayerCard.getCardId() + "") + " 进阶条件=" + conds + " 进阶后的品质Id=" + instPlayerCard.getQualityId() + " 进阶后的星级Id=" + instPlayerCard.getStarLevelId();
+		LogUtil.info(log);
+		
 		//验证进阶成就
 		AchievementUtil.advance(instPlayerId, syncMsgData);
 		
@@ -1532,22 +1536,23 @@ public class CardHandler extends BaseHandler{
 		}
 		Map<String, Integer> data = new HashMap<String, Integer>();
 		int exp = FormulaUtil.restoreCardExp(instPlayerCard.getLevel(), instPlayerCard.getExp()); // 返还的经验
-		int stone= CardUtil.getAdvanceStone(advanceList, instPlayerCard.getQualityId(),instPlayerCard.getStarLevelId());
+//		int stone= CardUtil.getAdvanceStone(advanceList, instPlayerCard.getQualityId(),instPlayerCard.getStarLevelId());
 		if (sourceList.size() < 1) {
 			data.put("card", 1);
 		} else {
-			data = CardUtil.decompostCard(advanceList, sourceList, midLevel);
+			data = CardUtil.decompostCard(thingMap,advanceList, sourceList, midLevel);
+//			data = CardUtil.decompostCard(advanceList, sourceList, midLevel);
 			Integer expCount = data.get("exp");
 			if (expCount != null) {
 				exp += expCount;
 			}
-			Integer stoneCount = data.get("stone");
-			if (stoneCount != null) {
-				stone += stoneCount;
-			}
-			if(stone>0){
-				thingMap.put( StaticTableType.DictThing+"_"+83, stone);
-			}
+//			Integer stoneCount = data.get("stone");
+//			if (stoneCount != null) {
+//				stone += stoneCount;
+//			}
+//			if(stone>0){
+//				thingMap.put( StaticTableType.DictThing+"_"+83, stone);
+//			}
 		}
 		// ///////////////////////////////计算经验及金币///////////////////////
 		int copper = exp * DictMapUtil.getSysConfigIntValue(StaticSysConfig.eatExpCopper); // 返还的银票

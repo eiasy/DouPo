@@ -152,6 +152,12 @@ require "DictWingLuck"
 require "CustomDictYFireProp"
 require "CustomDictWorldBoss"
 require "DictWorldBossTimesReward"
+require "DictHoldStarGrade"
+require "DictHoldStarRewardPos"
+require "DictHoldStarZodiac"
+require "DictHoldStarStep"
+require "DictHoldStarGradeReward"
+require "DictHoldStarRewardRefreshTimes"
 
 utils.enterBackgroundTime = 0
 utils.intervalTime = 0
@@ -1848,7 +1854,7 @@ function utils.fightVerifyData()
     return str
 end
 -- 加入套装粒子光效
-function utils.addFrameParticle(item, add , sc )
+function utils.addFrameParticle(item, add , sc , six , offsetW , offsetH )
     if item then
         if item:getChildByName("particle1") then
             item:removeChildByName("particle1")
@@ -1857,11 +1863,24 @@ function utils.addFrameParticle(item, add , sc )
     end
     if add then
         local size = item:getContentSize()
+        local offX , offY = 0 , 0
+        if offsetW then
+            size = cc.size( size.width - offsetW , size.height - offsetH )
+            offX = offsetW / 2 
+            offY = offsetH / 2
+        end
         local particle1 = cc.ParticleSystemQuad:create("particle/ui_anim8_effect.plist")
         particle1:setPositionType(cc.POSITION_TYPE_RELATIVE)
-        local path1 = utils.MyPathFun(0, size.height, size.width, 0.8, 1)
-        particle1:setPosition(cc.p(0, 0))
-        particle1:setName("particle1")
+        local path1 = nil
+        if six then
+            path1 = utils.MyPathFunSix(size.width , size.height , 0.8, 1)
+            particle1:setPosition(cc.p(size.width / 4 , 0 ))
+            particle1:setName("particle1")
+        else
+            path1 = utils.MyPathFun(offX, size.height , size.width, 0.8, 1)
+            particle1:setPosition(cc.p(offX, offY))
+            particle1:setName("particle1")
+        end
         if sc then
             particle1:setScale( sc )
         end
@@ -1869,9 +1888,16 @@ function utils.addFrameParticle(item, add , sc )
         particle1:runAction(path1)
         local particle2 = cc.ParticleSystemQuad:create("particle/ui_anim8_effect.plist")
         particle2:setPositionType(cc.POSITION_TYPE_RELATIVE)
-        local path2 = utils.MyPathFun(0, size.height, size.width, 0.8, 2)
-        particle2:setPosition(cc.p(size.width, size.height))
-        particle2:setName("particle2")
+        local path2 = nil
+        if six then
+            path2 = utils.MyPathFunSix( size.width , size.height , 0.8, 2)
+            particle2:setPosition(cc.p(size.width * 3 / 4, size.height ))
+            particle2:setName("particle2")
+        else
+            path2 = utils.MyPathFun(offX, size.height , size.width, 0.8, 2)
+            particle2:setPosition(cc.p(size.width + offX , size.height + offY ))
+            particle2:setName("particle2")
+        end
         if sc then
             particle2:setScale( sc )
         end
@@ -2844,6 +2870,36 @@ function utils.getDropThing(tableTypeId, tableFieldId, imageType)
         local soulNum = DictQuality[tostring(qualityId)].soulNum
         description = "集齐" .. soulNum .. "个魂魄可以合成卡牌英雄"
         return thingName, thingIcon, description
+    elseif tonumber(tableTypeId) == StaticTableType.DictFightSoul then
+        dictData = DictFightSoul[tostring(tableFieldId)]
+        if dictData then
+            thingName = dictData.name
+            thingIcon = "ui/fight_soul_quality_blue.png"
+            if dictData.fightSoulQualityId == 1 then
+                thingIcon = "ui/fight_soul_quality_orange.png"
+            elseif dictData.fightSoulQualityId == 2 then
+                thingIcon = "ui/fight_soul_quality_purple.png"
+            elseif dictData.fightSoulQualityId == 3 then
+            elseif dictData.fightSoulQualityId == 4 then
+            elseif dictData.fightSoulQualityId == 5 then
+            end
+            local pro = nil
+            for key ,value in pairs( DictFightSoulUpgradeProp )do
+                if value.fightSoulId == dictData.id then
+                    pro = value
+                    break
+                end
+            end
+            description = ""
+            if pro then
+                if pro.fightPropValue >= 1 then
+                    description = DictFightProp[ tostring( pro.fightPropId )].name .."+"..pro.fightPropValue
+                else
+                    description = DictFightProp[ tostring( pro.fightPropId )].name .."+"..( pro.fightPropValue * 100 ) .. "%"
+                end
+            end
+        end
+        return thingName , thingIcon , description
     elseif tonumber(tableTypeId) == StaticTableType.DictPillThing then
         -- 丹材字典表
         dictData = DictPillThing[tostring(tableFieldId)]
@@ -3337,7 +3393,7 @@ end
 --- 战斗接口
 --- param 界面传来的参数
 --- _fightType 战斗类型
-function utils.sendFightData(param, _fightType, callBackFunc)
+function utils.sendFightData(param, _fightType, callBackFunc, cbOfCalcResult)
     if UITalkFly.layer then
         UITalkFly.hide()
     end
@@ -4461,7 +4517,7 @@ function utils.sendFightData(param, _fightType, callBackFunc)
         end
     end
     recursionTab(Fight_INIT_DATA, "Fight_INIT_DATA")
-    UIFightMain.setData(Fight_INIT_DATA, param, _fightType, callBackFunc)
+    UIFightMain.setData(Fight_INIT_DATA, param, _fightType, callBackFunc, cbOfCalcResult)
 end
 
 ----根据表类型添加边框的方法
@@ -4472,7 +4528,12 @@ function utils.addBorderImage(tableTypeId, tableFieldId, image_frame_good)
     if image_frame_good:getChildByTag(littleImageTag) ~= nil then
         image_frame_good:removeChildByTag(littleImageTag)
     end
-    if tonumber(tableTypeId) == StaticTableType.DictCardSoul then
+    if tableTypeId == StaticTableType.DictFightSoul then
+        qualityId = DictFightSoul[tostring(tableFieldId)].fightSoulQualityId
+        --cclog("fightSoul -------->"..qualityId)
+        borderImage = utils.getSoulBorderImage( tonumber( qualityId ) , 1)
+        image_frame_good:loadTexture(borderImage)
+    elseif tonumber(tableTypeId) == StaticTableType.DictCardSoul then
         --- 是魂魄的话要加上角标
         local dictData = DictCardSoul[tostring(tableFieldId)]
         local cardId = dictData.cardId
@@ -4622,6 +4683,22 @@ function utils.MyPathFun(controlX, controlY, width, time, flag)
         else
             path = cc.RepeatForever:create(cc.Sequence:create(bezierBy2, bezierBy1))
         end
+    end
+    return path
+end
+----引导添加粒子旋转的路线 flag 向左 flag向右
+function utils.MyPathFunSix( width , height , time, flag)
+    local path = nil
+    local move1 = cc.MoveBy:create(time / 6 , cc.p( width / 2 , 0))
+    local move2 = cc.MoveBy:create(time / 6 , cc.p( width / 4 , height / 2))
+    local move3 = cc.MoveBy:create(time / 6 , cc.p( -width / 4 , height / 2))
+    local move4 = cc.MoveBy:create(time / 6 , cc.p( -width /2 , 0))
+    local move5 = cc.MoveBy:create(time / 6 , cc.p( -width / 4 , -height / 2))
+    local move6 = cc.MoveBy:create(time / 6 , cc.p( width / 4 , -height / 2))
+    if flag == 1 then
+        path = cc.RepeatForever:create(cc.Sequence:create(move1, move2, move3, move4 , move5 , move6))
+    else
+        path = cc.RepeatForever:create(cc.Sequence:create(move4, move5, move6, move1 , move2 , move3))
     end
     return path
 end

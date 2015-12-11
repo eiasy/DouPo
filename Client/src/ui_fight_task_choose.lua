@@ -810,6 +810,7 @@ function UIFightTaskChoose.init()
 					param.chapterId = chapterId
 					param.barrierId = barrierId
 					if objData.name and FightTaskData.FightData[chapterId] and FightTaskData.FightData[chapterId][barrierId] then
+						FightTaskData.FightData[chapterId][barrierId].record = nil
 						UIFightMain.setData(FightTaskData.FightData[chapterId][barrierId],param,dp.FightType.FIGHT_TASK.COMMON)
 						UIFightMain.loading()
 					else

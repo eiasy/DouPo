@@ -189,7 +189,9 @@ function UIHomePage.init()
 	local btn_change = ccui.Helper:seekNodeByName(UIHomePage.Widget, "btn_change")          --无敌兑换
     local btn_fuli = ccui.Helper:seekNodeByName(UIHomePage.Widget, "btn_fuli")              --福利
     local btn_welfare_recharge = ccui.Helper:seekNodeByName(UIHomePage.Widget, "btn_welfare_recharge")  --充值福利
-
+    local btn_star = ccui.Helper:seekNodeByName(UIHomePage.Widget , "btn_star")--占星
+    btn_star:getChildByName("image_hint"):setVisible(false)
+    btn_star:setVisible(false) --暂时关闭
 	local panel_main = ccui.Helper:seekNodeByName(UIHomePage.Widget, "panel")				--首页弹框
 	local panel_resolve = ccui.Helper:seekNodeByName(UIHomePage.Widget,"panel_resolve") 	--异火
 	local panel_relic = ccui.Helper:seekNodeByName(UIHomePage.Widget,"panel_relic") 		--远古遗迹
@@ -221,6 +223,7 @@ function UIHomePage.init()
     btn_time:setPressedActionEnabled(true)
     btn_change:setPressedActionEnabled(true)
     btn_fuli:setPressedActionEnabled(true)
+    btn_star:setPressedActionEnabled(true)
 
 	btn_recharge:setLocalZOrder(UIHomePage.zOrder.BUTTON)
 	btn_task:setLocalZOrder(UIHomePage.zOrder.BUTTON)
@@ -246,6 +249,7 @@ function UIHomePage.init()
     btn_time:setLocalZOrder(UIHomePage.zOrder.BUTTON)
     btn_change:setLocalZOrder(UIHomePage.zOrder.BUTTON)
     btn_fuli:setLocalZOrder(UIHomePage.zOrder.BUTTON)
+    btn_star:setLocalZOrder(UIHomePage.zOrder.BUTTON)
 
 	panel_resolve:setTouchEnabled(true)
 	panel_relic:setTouchEnabled(true)
@@ -429,8 +433,7 @@ function UIHomePage.init()
 			elseif sender == btn_award then
 				UIManager.pushScene("ui_award_online")
             elseif sender == btn_time then
-				UIManager.hideWidget("ui_team_info")
-				UIManager.showWidget("ui_activity_time")
+                UIActivityTime.show()
 			elseif  sender == btn_task then 
 				UIManager.pushScene("ui_task_day")
 			-- elseif sender == btn_beruty then
@@ -472,7 +475,15 @@ function UIHomePage.init()
                     UIManager.showWidget("ui_team_info", "ui_bag_wing")
                 end
 			elseif  sender == btn_gongfa then
-				UIManager.showWidget("ui_team_info", "ui_bag_gongfa")               
+				UIManager.showWidget("ui_team_info", "ui_bag_gongfa")       
+            elseif sender == btn_star then
+                local level = net.InstPlayer.int["4"]
+                if level < DictHoldStarGrade["1"].openLevel then
+                    UIManager.showToast("战队等级达到"..DictHoldStarGrade["1"].openLevel.."级开启！")
+                else
+                    UIManager.hideWidget("ui_team_info")
+                    UIManager.showWidget("ui_star")   
+                end       
 			elseif sender == btn_activity then
 				UIManager.showWidget("ui_activity_panel")
 			elseif sender == btn_email then
@@ -608,6 +619,7 @@ function UIHomePage.init()
     btn_time:addTouchEventListener(btnTouchEvent)
     btn_change:addTouchEventListener(btnTouchEvent)
     btn_fuli:addTouchEventListener(btnTouchEvent)
+    btn_star:addTouchEventListener(btnTouchEvent)
 
 	panel_resolve:addTouchEventListener(btnTouchEvent)
 	panel_relic:addTouchEventListener(btnTouchEvent)
@@ -622,6 +634,7 @@ function UIHomePage.init()
 	table.insert(_button,btn_time)
     table.insert(_button,btn_welfare_recharge)
 	table.insert(_button,btn_trial)
+    table.insert(_button,btn_prize)
 
 	for key,obj in pairs(_button) do
 		button_Pos[key] = {} 
@@ -697,6 +710,7 @@ function UIHomePage.setup()
 	table.insert(_button,btn_time)
     table.insert(_button,btn_welfare_recharge)
 	table.insert(_button,btn_trial)
+    table.insert(_button,btn_prize)
     local _fuliBtn = {}
     table.insert(_fuliBtn,btn_sign)
 	table.insert(_fuliBtn,btn_lv)
@@ -1016,13 +1030,13 @@ function UIHomePage.setup()
     else
         isShowFuli = true
     end
-	if not btn_task:isVisible() then
-		btn_prize:setPosition(cc.p(temp_Pos.rightX,temp_Pos.rightY))
-		btn_task:setPosition(cc.p(temp_Pos.leftX,temp_Pos.rightY))
-	else
-		btn_prize:setPosition(cc.p(temp_Pos.leftX,temp_Pos.rightY))
+--	if not btn_task:isVisible() then
+--		btn_prize:setPosition(cc.p(temp_Pos.rightX,temp_Pos.rightY))
+--		btn_task:setPosition(cc.p(temp_Pos.leftX,temp_Pos.rightY))
+--	else
+--		btn_prize:setPosition(cc.p(temp_Pos.leftX,temp_Pos.rightY))
 		btn_task:setPosition(cc.p(temp_Pos.rightX,temp_Pos.rightY))
-	end
+--	end
 
 	-----------------美人系统-------------------
 	local btn_beruty = ccui.Helper:seekNodeByName(UIHomePage.Widget, "btn_beruty") --美人系统按钮

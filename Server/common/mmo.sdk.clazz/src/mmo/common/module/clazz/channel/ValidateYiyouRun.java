@@ -52,15 +52,15 @@ public class ValidateYiyouRun extends HandRequestRun {
 			String url = null;
 			// 组织URL和参数
 			if ("ios".equalsIgnoreCase(os)) {
-				appsecret = ProjectCofigs.getParameter("yiyou_appsecret_ios");
-				appid = ProjectCofigs.getParameter("yiyou_appId_ios");
-				appkey = ProjectCofigs.getParameter("yiyou_appkey_ios");
-				url = ProjectCofigs.getParameter("yiyou_url_ios");
+				appsecret = ProjectCofigs.getParameter(channel+"_appsecret_ios");
+				appid = ProjectCofigs.getParameter(channel+"_appId_ios");
+				appkey = ProjectCofigs.getParameter(channel+"_appkey_ios");
+				url = ProjectCofigs.getParameter(channel+"_url_ios");
 			} else {
-				appsecret = ProjectCofigs.getParameter("yiyou_appsecret");
-				appid = ProjectCofigs.getParameter("yiyou_appId");
-				appkey = ProjectCofigs.getParameter("yiyou_appkey");
-				url = ProjectCofigs.getParameter("yiyou_url_android");
+				appsecret = ProjectCofigs.getParameter(channel+"_appsecret");
+				appid = ProjectCofigs.getParameter(channel+"_appId");
+				appkey = ProjectCofigs.getParameter(channel+"_appkey");
+				url = ProjectCofigs.getParameter(channel+"_url_android");
 			}
 			StringBuilder paramBuilder = new StringBuilder();
 			paramBuilder.append("appid=").append(appid).append("&");

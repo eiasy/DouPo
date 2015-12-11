@@ -248,6 +248,7 @@ public class WorldBossStartHandler extends BaseHandler implements Job {
 					rank ++ ;
 					bossRankLogSb.append("rank=" + rank + " instPlayerId=" + obj.getPlayerId() + " 打世界boss总伤害=" + obj.getBossSumHurt() + " 打世界boss总次数=" + obj.getBossFightTimes()).append(";");
 				}
+				bossRankLogSb.append("最后一击玩家Id=").append(WorldBossPlayerMapUtil.lastFightInstPlayerId);
 				LogUtil.info(bossRankLogSb.toString());
 				
 				int index = 0;

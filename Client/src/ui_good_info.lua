@@ -144,6 +144,8 @@ function UIGoodInfo.setup( ... )
         local tempData = DictChip[tostring(param.tableFieldId)]
         local dicData = DictMagic[tostring(tempData.skillOrKungFuId)]
         uiLabelPz:setString(dicData.grade)
+    elseif tonumber(param.tableTypeId) == StaticTableType.DictFightSoul then
+        
 	end
 	UIGoodInfo.Widget:getChildByName("image_di"):getChildByName("text_go"):setVisible(not ui_text_hint:isVisible())
 end

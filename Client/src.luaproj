@@ -105,7 +105,6 @@
     <Compile Include="src\CustomDictYFireProp.lua" />
     <Compile Include="src\DictAchievement.lua" />
     <Compile Include="src\DictAchievementType.lua" />
-    <Compile Include="src\DictactivityExchange.lua" />
     <Compile Include="src\DictActivityFlashSale.lua" />
     <Compile Include="src\DictActivityFund.lua" />
     <Compile Include="src\DictActivityLevelBag.lua" />
@@ -164,6 +163,12 @@
     <Compile Include="src\DictFunctionOpen.lua" />
     <Compile Include="src\DictGenerBoxThing.lua" />
     <Compile Include="src\DictGuipStep.lua" />
+    <Compile Include="src\DictHoldStarGrade.lua" />
+    <Compile Include="src\DictHoldStarGradeReward.lua" />
+    <Compile Include="src\DictHoldStarRewardPos.lua" />
+    <Compile Include="src\DictHoldStarRewardRefreshTimes.lua" />
+    <Compile Include="src\DictHoldStarStep.lua" />
+    <Compile Include="src\DictHoldStarZodiac.lua" />
     <Compile Include="src\DictHoleConsume.lua" />
     <Compile Include="src\DictInitCard.lua" />
     <Compile Include="src\DictKungFu.lua" />
@@ -423,6 +428,9 @@
     <Compile Include="src\ui_soul_install.lua" />
     <Compile Include="src\ui_soul_list.lua" />
     <Compile Include="src\ui_soul_upgrade.lua" />
+    <Compile Include="src\ui_star.lua" />
+    <Compile Include="src\ui_star_lighten.lua" />
+    <Compile Include="src\ui_star_reward.lua" />
     <Compile Include="src\ui_talk.lua" />
     <Compile Include="src\ui_talk_fly.lua" />
     <Compile Include="src\ui_task_day.lua" />

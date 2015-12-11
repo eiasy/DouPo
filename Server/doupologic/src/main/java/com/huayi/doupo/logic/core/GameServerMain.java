@@ -85,7 +85,7 @@ public class GameServerMain {
 
 			ThreadManager.initThread();
 			
-			LogUtil.out("--version-- ++++---- 12-03 12:50 新版世界Boss  轮回导致战斗校验不通过  世界boss bug修改  2  开大宝箱传名次  内网测试版");
+			LogUtil.out(" 2015-12-10 15:03  --version-- ++++---- 占星  , 巅峰强者节日版, 限时兑换gm");
 			
 //			List<InstBlobData> instActivityList = DALFactory.getInstBlobDataDAL().getList(" type = " + IBlobDataType.TYPE_1_ACTIVITY_LUCK + " limit 0,1", 0);
 //			System.out.println("instActivityList.size()="+instActivityList.size());

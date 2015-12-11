@@ -319,6 +319,11 @@ public class ParamConfig {
 	public static List<WorldBossPlayer> worldBossRankList = new ArrayList<WorldBossPlayer>();
 	
 	/**
+	 * 巅峰强者每个阶段的第一名名称,用分号分开
+	 */
+	public static String strogherHeroNumOnes = "";
+	
+	/**
 	 * 获取SDK配置文件中的值
 	 * @author mp
 	 * @date 2015-6-30 下午3:08:43

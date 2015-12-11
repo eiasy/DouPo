@@ -246,6 +246,20 @@ public class GmHandler  extends BaseHandler{
 			//序列化世界boss排行
 			GmUtil.seriWorldBossRank();
 			
+			//持久化巅峰强者每个阶段的第一名玩家昵称
+			List<InstPlayerBigTable> instPlayerBigTableList = getInstPlayerBigTableDAL().getList("instPlayerId = 0 and properties = '" + StaticBigTable.strogerHeroFirstNames + "'", 0);
+			if (instPlayerBigTableList.size() > 0) {
+				InstPlayerBigTable instPlayerBigTable = instPlayerBigTableList.get(0);
+				instPlayerBigTable.setValue1(ParamConfig.strogherHeroNumOnes);
+				getInstPlayerBigTableDAL().update(instPlayerBigTable, 0);
+			} else {
+				InstPlayerBigTable instPlayerBigTable = new InstPlayerBigTable();
+				instPlayerBigTable.setInstPlayerId(0);
+				instPlayerBigTable.setProperties(StaticBigTable.strogerHeroFirstNames);
+				instPlayerBigTable.setValue1(ParamConfig.strogherHeroNumOnes);
+				getInstPlayerBigTableDAL().add(instPlayerBigTable, 0);
+			}
+			
 			//为所有在线玩家发送关服通知
 			for(Entry<String, Player> onlinePlayer : PlayerMapUtil.getMap().entrySet()){
 				String pushChannelId = onlinePlayer.getKey();

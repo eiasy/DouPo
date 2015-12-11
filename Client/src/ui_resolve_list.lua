@@ -108,16 +108,16 @@ local function setScrollViewItem(flag,_Item, _obj)
                       table.insert(addMagic.info,resolveThing[_Item:getTag()])
                 end
             elseif _operateType == UIResolve.operateType.rinne  then
-                if _obj.int["4"] == StaticQuality.red then
-                    sender:setSelected(false)
-                    UIManager.showToast("红卡暂时不能轮回！")
-                    return
-                end
-                if _obj.int["6"] >= 51 then
-                    sender:setSelected(false)
-                    UIManager.showToast("斗皇暂时不能轮回！")
-                    return
-                end
+--                if _obj.int["4"] == StaticQuality.red then
+--                    sender:setSelected(false)
+--                    UIManager.showToast("红卡暂时不能轮回！")
+--                    return
+--                end
+--                if _obj.int["6"] >= 51 then
+--                    sender:setSelected(false)
+--                    UIManager.showToast("斗皇暂时不能轮回！")
+--                    return
+--                end
 
                 if selectedItem  ~= nil then
                     selectedItem:setSelected(false)
@@ -550,9 +550,9 @@ end
 function UIResolve_list.setup()
    local image_hint = UIResolve_list.Widget:getChildByName("image_basemap"):getChildByName("image_hint")
    image_hint:setVisible(false)
-   if _operateType == UIResolve.operateType.rinne then
-    image_hint:setVisible(true)
-   end
+--   if _operateType == UIResolve.operateType.rinne then
+--    image_hint:setVisible(true)
+--   end
    scrollView:removeAllChildren()
     resolveThing={} 
     if _operateType == UIResolve.operateType.resolve then

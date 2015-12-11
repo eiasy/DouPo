@@ -20,6 +20,7 @@ public class DictList {
 	public static List<DictFireSkill> dictFireSkillList = null;
 	public static List<DictActivityLuck> dictActivityLuckList = null;
 	public static List<DictBeautyCardExp> dictBeautyCardExpList = null;
+	public static List<DictHoldStarGradeReward> dictHoldStarGradeRewardList = null;
 	public static List<DictActivityLimitTimeHeroRankReward> dictActivityLimitTimeHeroRankRewardList = null;
 	public static List<DictPillRecipe> dictPillRecipeList = null;
 	public static List<SysGmReward> sysGmRewardList = null;
@@ -45,6 +46,7 @@ public class DictList {
 	public static List<DictRestore> dictRestoreList = null;
 	public static List<DictArenaInterval> dictArenaIntervalList = null;
 	public static List<DictBarrierDrop> dictBarrierDropList = null;
+	public static List<DictHoldStarStep> dictHoldStarStepList = null;
 	public static List<DictActivityStrogerHero> dictActivityStrogerHeroList = null;
 	public static List<DictWingAdvance> dictWingAdvanceList = null;
 	public static List<DictCard> dictCardList = null;
@@ -85,6 +87,7 @@ public class DictList {
 	public static List<DictBarrier> dictBarrierList = null;
 	public static List<DictKungFuQuality> dictKungFuQualityList = null;
 	public static List<DictWorldBossTimesReward> dictWorldBossTimesRewardList = null;
+	public static List<DictHoldStarGrade> dictHoldStarGradeList = null;
 	public static List<DictTrainProp> dictTrainPropList = null;
 	public static List<DictPill> dictPillList = null;
 	public static List<DictBarrierCard> dictBarrierCardList = null;
@@ -96,8 +99,8 @@ public class DictList {
 	public static List<DictRecruitSpecialCard> dictRecruitSpecialCardList = null;
 	public static List<SysStatics> sysStaticsList = null;
 	public static List<DictActivityDailyDeals> dictActivityDailyDealsList = null;
-	public static List<DictFunctionOpen> dictFunctionOpenList = null;
 	public static List<DictTryToPracticeBarrierCard> dictTryToPracticeBarrierCardList = null;
+	public static List<DictFunctionOpen> dictFunctionOpenList = null;
 	public static List<DictQuality> dictQualityList = null;
 	public static List<DictPagodaFormation> dictPagodaFormationList = null;
 	public static List<DictColor> dictColorList = null;
@@ -124,6 +127,7 @@ public class DictList {
 	public static List<DictRecruitCard> dictRecruitCardList = null;
 	public static List<DictWingLuck> dictWingLuckList = null;
 	public static List<DictActivityStarStore> dictActivityStarStoreList = null;
+//	public static List<DictUnionWar> dictUnionWarList = null;
 	public static List<DictEquipSuit> dictEquipSuitList = null;
 	public static List<DictCoefficient> dictCoefficientList = null;
 	public static List<DictAuctionHJY> dictAuctionHJYList = null;
@@ -138,6 +142,7 @@ public class DictList {
 	public static List<DictFireSkillChange> dictFireSkillChangeList = null;
 	public static List<DictHJYStore> dictHJYStoreList = null;
 	public static List<DictActivityMonthCardStoreTemp> dictActivityMonthCardStoreTempList = null;
+	public static List<DictHoldStarZodiac> dictHoldStarZodiacList = null;
 	public static List<DictUnionStore> dictUnionStoreList = null;
 	public static List<DictPillType> dictPillTypeList = null;
 	public static List<DictWorldBossStore> dictWorldBossStoreList = null;
@@ -152,6 +157,7 @@ public class DictList {
 	public static List<DictWorldBoss> dictWorldBossList = null;
 	public static List<DictWingStrengthen> dictWingStrengthenList = null;
 	public static List<DictTryToPractice> dictTryToPracticeList = null;
+	public static List<DictHoldStarRewardPos> dictHoldStarRewardPosList = null;
 	public static List<DictSysConfig> dictSysConfigList = null;
 	public static List<DictThing> dictThingList = null;
 	public static List<DictTableType> dictTableTypeList = null;
@@ -169,6 +175,7 @@ public class DictList {
 	public static List<DictThingType> dictThingTypeList = null;
 	public static List<DictCardLuck> dictCardLuckList = null;
 	public static List<DictArenaReward> dictArenaRewardList = null;
+	public static List<DictHoldStarRewardRefreshTimes> dictHoldStarRewardRefreshTimesList = null;
 	public static List<DictStarLevel> dictStarLevelList = null;
 	public static List<DictAchievement> dictAchievementList = null;
 	public static List<DictLootNPC> dictLootNPCList = null;

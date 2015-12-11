@@ -675,3 +675,6 @@ DictGenerBoxThing["673"]={id=673,type=1022,tableTypeId=6,tableFieldId=8,value=1,
 DictGenerBoxThing["674"]={id=674,type=1022,tableTypeId=6,tableFieldId=47,value=1,chance=-4,description=""}
 DictGenerBoxThing["675"]={id=675,type=1022,tableTypeId=6,tableFieldId=67,value=1,chance=-4,description=""}
 DictGenerBoxThing["676"]={id=676,type=1022,tableTypeId=6,tableFieldId=86,value=1,chance=-4,description=""}
+DictGenerBoxThing["677"]={id=677,type=1023,tableTypeId=2,tableFieldId=87,value=3000,chance=-3,description=""}
+DictGenerBoxThing["678"]={id=678,type=1023,tableTypeId=2,tableFieldId=300,value=30,chance=-3,description=""}
+DictGenerBoxThing["679"]={id=679,type=1023,tableTypeId=16,tableFieldId=5,value=6,chance=-3,description=""}

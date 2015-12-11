@@ -103,6 +103,7 @@ public class TokenValidateDoupoRun {
 						ThreadManager.requestHttp(channel, run);
 						return null;
 					}
+					case "iosy2game":
 					case "yiyou": {
 						HandRequestRun run = (HandRequestRun) sdk.getClass("mmo.common.module.clazz.channel.ValidateYiyouRun").newInstance();
 						run.setRequest(request);

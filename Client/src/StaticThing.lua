@@ -146,6 +146,8 @@ StaticThing = {
 
 		thing109 = 109, --巧克力
 
+		holdStarThing = 110, --占星石
+
 		thing200 = 200, --玄重尺碎片
 
 		thing206 = 206, --万魂剑碎片
@@ -317,6 +319,8 @@ StaticThing = {
 		thing1021 = 1021, --玄重套装礼盒
 
 		thing1022 = 1022, --骨皇套装礼盒
+
+		thing1023 = 1023, --超级境界宝盒
 
 		lihezuidazhi = 1200 --幸运礼盒
 

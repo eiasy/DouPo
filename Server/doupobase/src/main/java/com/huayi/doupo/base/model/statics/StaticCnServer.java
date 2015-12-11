@@ -493,4 +493,15 @@ public class StaticCnServer {
 	public static final String fail_boss_opened = new String("已领大宝箱");
 	
 	public static final String fail_boss_noAdd = new String("您未参与世界Boss活动");
+	
+	public static final String fail_holdStar_haveHold = new String("抱歉,您已在其他占星台占星");
+	
+	public static final String fail_holdStar_maxHold = new String("超过最大占星次数");
+	
+	public static final String fail_holdStar_thingNoEnough = new String("刷新道具数量不足");
+	
+	public static final String fail_holdStar_noVip = new String("刷新次数不足,请提升vip等级");
+	
+	public static final String fail_holdStar_noGetThings = new String("无可领取的物品");
+	
 }

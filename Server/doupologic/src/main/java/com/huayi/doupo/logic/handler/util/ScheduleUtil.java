@@ -9,6 +9,7 @@ import java.util.concurrent.TimeUnit;
 
 import com.google.common.collect.Lists;
 import com.huayi.doupo.base.config.ParamConfig;
+import com.huayi.doupo.base.dal.factory.DALFactory;
 import com.huayi.doupo.base.model.DictActivityStrogerHero;
 import com.huayi.doupo.base.model.dict.DictData;
 import com.huayi.doupo.base.model.dict.DictList;
@@ -16,6 +17,7 @@ import com.huayi.doupo.base.model.player.PlayerMemObj;
 import com.huayi.doupo.base.model.player.PlayerMemObjMapUtil;
 import com.huayi.doupo.base.model.socket.Player;
 import com.huayi.doupo.base.model.statics.StaticActivity;
+import com.huayi.doupo.base.model.statics.StaticActivityHoliday;
 import com.huayi.doupo.base.model.statics.StaticSysConfig;
 import com.huayi.doupo.base.util.base.CollectionUtil;
 import com.huayi.doupo.base.util.base.DateUtil;
@@ -80,59 +82,76 @@ public class ScheduleUtil {
 				@Override
 				public void run() {
 					
-					//是否在活动期内
-					if (ActivityUtil.isInActivity(StaticActivity.StrongHero)) {
-						//按积分降序排序最强英雄积分map
-						Map<Integer, Integer> map = new HashMap<Integer, Integer>();
-						for (Entry<Integer, Integer> entry : ParamConfig.strogerHeroJifenMap.entrySet()) {
-							map.put(entry.getKey(), entry.getValue());
-						}
-						Map<Integer, Integer> sortedMap = CollectionUtil.sortByValueDown(map);
-						int rank = 0;
-						LogUtil.info(DateUtil.getCurrTime() + " 巅峰英雄12点积分排行情况[playerId, jifen] = " + sortedMap);
-						
-						for (Entry<Integer, Integer> entry : sortedMap.entrySet()) {
-							rank ++;
-							if (rank > DictMapUtil.getSysConfigIntValue(StaticSysConfig.strogerHeroRewardNum)) {
-								break;
+					try {
+						//是否在活动期内
+						if (ActivityUtil.isInActivity(StaticActivity.StrongHero)) {
+							
+							String fristName = "";
+							
+							//按积分降序排序最强英雄积分map
+							Map<Integer, Integer> map = new HashMap<Integer, Integer>();
+							for (Entry<Integer, Integer> entry : ParamConfig.strogerHeroJifenMap.entrySet()) {
+								map.put(entry.getKey(), entry.getValue());
 							}
-							int instPlayerId = entry.getKey();
-							Player player = PlayerMapUtil.getPlayerByPlayerId(instPlayerId);
-							//在线玩家
-							if(player != null){
-								String things = "";
-								List<DictActivityStrogerHero> activityStrogerHeroList = DictList.dictActivityStrogerHeroList;
-								for (DictActivityStrogerHero obj : activityStrogerHeroList) {
-									if (DictMapUtil.getSysConfigIntValue(StaticSysConfig.strogerHeroRewardTime1) == obj.getRewardTimePoint() && rank == obj.getRank()) {
-										things = obj.getRewards();
-										break;
-									}
+							Map<Integer, Integer> sortedMap = CollectionUtil.sortByValueDown(map);
+							int rank = 0;
+							LogUtil.info(DateUtil.getCurrTime() + " 巅峰英雄12点积分排行情况[playerId, jifen] = " + sortedMap);
+							
+							for (Entry<Integer, Integer> entry : sortedMap.entrySet()) {
+								rank ++;
+								if (rank > DictMapUtil.getSysConfigIntValue(StaticSysConfig.strogerHeroRewardNum)) {
+									break;
 								}
-								if (things.length() > 0) {
-									try {
-										MessageData otherSyncMsgData = new MessageData();
-										ActivityUtil.addInstPlayerAward(instPlayerId, 3, things, DateUtil.getCurrTime(), "您在巅峰强者活动中排名为" + rank + ",获得奖励：", otherSyncMsgData);
-										MessageUtil.sendSyncMsgToOne(player.getOpenId(), otherSyncMsgData);
-									} catch (Exception e) {
-										e.printStackTrace();
-									}
+								int instPlayerId = entry.getKey();
+								Player player = PlayerMapUtil.getPlayerByPlayerId(instPlayerId);
+								
+								if (rank == 1) {
+									fristName = DALFactory.getInstPlayerDAL().getModel(instPlayerId, 0).getName();
 								}
-							} else {
-								//不在线玩家,放入缓存,停服后序列化此map
-								if (ParamConfig.strogerRankRewardMap.containsKey(instPlayerId)) {
-									ConcurrentHashMap<String, Integer> innerMap = ParamConfig.strogerRankRewardMap.get(instPlayerId);
-									innerMap.put(DateUtil.getCurrTime(), rank);
-//								System.out.println("schedule update map " + ParamConfig.strogerRankRewardMap);
+								
+								//在线玩家
+								if(player != null){
+									String things = "";
+									List<DictActivityStrogerHero> activityStrogerHeroList = DictList.dictActivityStrogerHeroList;
+									for (DictActivityStrogerHero obj : activityStrogerHeroList) {
+										if (DictMapUtil.getSysConfigIntValue(StaticSysConfig.strogerHeroRewardTime1) == obj.getRewardTimePoint() && rank == obj.getRank()) {
+											things = obj.getRewards();
+											break;
+										}
+									}
+									if (things.length() > 0) {
+										try {
+											MessageData otherSyncMsgData = new MessageData();
+											ActivityUtil.addInstPlayerAward(instPlayerId, 3, things, DateUtil.getCurrTime(), "您在巅峰强者活动中排名为" + rank + ",获得奖励：", otherSyncMsgData);
+											MessageUtil.sendSyncMsgToOne(player.getOpenId(), otherSyncMsgData);
+										} catch (Exception e) {
+											e.printStackTrace();
+										}
+									}
 								} else {
-									ConcurrentHashMap<String, Integer> innerMap = new ConcurrentHashMap<String, Integer>();
-									innerMap.put(DateUtil.getCurrTime(), rank);
-									ParamConfig.strogerRankRewardMap.put(instPlayerId, innerMap);
-//								System.out.println("schedule add map " + ParamConfig.strogerRankRewardMap);
+									//不在线玩家,放入缓存,停服后序列化此map
+									if (ParamConfig.strogerRankRewardMap.containsKey(instPlayerId)) {
+										ConcurrentHashMap<String, Integer> innerMap = ParamConfig.strogerRankRewardMap.get(instPlayerId);
+										innerMap.put(DateUtil.getCurrTime(), rank);
+//									System.out.println("schedule update map " + ParamConfig.strogerRankRewardMap);
+									} else {
+										ConcurrentHashMap<String, Integer> innerMap = new ConcurrentHashMap<String, Integer>();
+										innerMap.put(DateUtil.getCurrTime(), rank);
+										ParamConfig.strogerRankRewardMap.put(instPlayerId, innerMap);
+//									System.out.println("schedule add map " + ParamConfig.strogerRankRewardMap);
+									}
 								}
 							}
+							
+							//看此活动是否为节日版 , 如果为节日版需清空积分
+							if (ActivityUtil.isInHolidayActivity(StaticActivityHoliday.strogerHeroHoliday)) {
+								ParamConfig.strogerHeroJifenMap.clear();
+							}
+							ParamConfig.strogherHeroNumOnes = ParamConfig.strogherHeroNumOnes + fristName + ";";
 						}
+					} catch (Exception e) {
+						LogUtil.error("最强英雄12点发奖调度器 Error", e);
 					}
-					
 				}
 			}, delayMill, 24 * 60 * 60 * 1000, TimeUnit.MILLISECONDS);
 		} catch (Exception e) {
@@ -167,55 +186,70 @@ public class ScheduleUtil {
 				@Override
 				public void run() {
 					
-					//是否在活动期内
-					if (ActivityUtil.isInActivity(StaticActivity.StrongHero)) {
-						
-						//按积分降序排序最强英雄积分map
-						Map<Integer, Integer> map = new HashMap<Integer, Integer>();
-						for (Entry<Integer, Integer> entry : ParamConfig.strogerHeroJifenMap.entrySet()) {
-							map.put(entry.getKey(), entry.getValue());
-						}
-						Map<Integer, Integer> sortedMap = CollectionUtil.sortByValueDown(map);
-						int rank = 0;
-						LogUtil.info(DateUtil.getCurrTime() + " 巅峰英雄21点积分排行情况[playerId, jifen] = " + sortedMap);
-						for (Entry<Integer, Integer> entry : sortedMap.entrySet()) {
-							rank ++;
-							if (rank > DictMapUtil.getSysConfigIntValue(StaticSysConfig.strogerHeroRewardNum)) {
-								break;
+					try {
+						//是否在活动期内
+						if (ActivityUtil.isInActivity(StaticActivity.StrongHero)) {
+							String fristName = ""; 
+							//按积分降序排序最强英雄积分map
+							Map<Integer, Integer> map = new HashMap<Integer, Integer>();
+							for (Entry<Integer, Integer> entry : ParamConfig.strogerHeroJifenMap.entrySet()) {
+								map.put(entry.getKey(), entry.getValue());
 							}
-							int instPlayerId = entry.getKey();
-							Player player = PlayerMapUtil.getPlayerByPlayerId(instPlayerId);
-							//在线玩家
-							if(player != null){
-								String things = "";
-								List<DictActivityStrogerHero> activityStrogerHeroList = DictList.dictActivityStrogerHeroList;
-								for (DictActivityStrogerHero obj : activityStrogerHeroList) {
-									if (DictMapUtil.getSysConfigIntValue(StaticSysConfig.strogerHeroRewardTime2) == obj.getRewardTimePoint() && rank == obj.getRank()) {
-										things = obj.getRewards();
-										break;
-									}
+							Map<Integer, Integer> sortedMap = CollectionUtil.sortByValueDown(map);
+							int rank = 0;
+							LogUtil.info(DateUtil.getCurrTime() + " 巅峰英雄21点积分排行情况[playerId, jifen] = " + sortedMap);
+							for (Entry<Integer, Integer> entry : sortedMap.entrySet()) {
+								rank ++;
+								if (rank > DictMapUtil.getSysConfigIntValue(StaticSysConfig.strogerHeroRewardNum)) {
+									break;
 								}
-								if (things.length() > 0) {
-									try {
-										MessageData otherSyncMsgData = new MessageData();
-										ActivityUtil.addInstPlayerAward(instPlayerId, 3, things, DateUtil.getCurrTime(), "您在巅峰强者活动中排名为" + rank + ",获得奖励：", otherSyncMsgData);
-										MessageUtil.sendSyncMsgToOne(player.getOpenId(), otherSyncMsgData);
-									} catch (Exception e) {
-										e.printStackTrace();
-									}
+								int instPlayerId = entry.getKey();
+								Player player = PlayerMapUtil.getPlayerByPlayerId(instPlayerId);
+								
+								if (rank == 1) {
+									fristName = DALFactory.getInstPlayerDAL().getModel(instPlayerId, 0).getName();
 								}
-							} else {
-								//不在线玩家,放入缓存,停服后序列化此map
-								if (ParamConfig.strogerRankRewardMap.containsKey(instPlayerId)) {
-									ConcurrentHashMap<String, Integer> innerMap = ParamConfig.strogerRankRewardMap.get(instPlayerId);
-									innerMap.put(DateUtil.getCurrTime(), rank);
+								
+								//在线玩家
+								if(player != null){
+									String things = "";
+									List<DictActivityStrogerHero> activityStrogerHeroList = DictList.dictActivityStrogerHeroList;
+									for (DictActivityStrogerHero obj : activityStrogerHeroList) {
+										if (DictMapUtil.getSysConfigIntValue(StaticSysConfig.strogerHeroRewardTime2) == obj.getRewardTimePoint() && rank == obj.getRank()) {
+											things = obj.getRewards();
+											break;
+										}
+									}
+									if (things.length() > 0) {
+										try {
+											MessageData otherSyncMsgData = new MessageData();
+											ActivityUtil.addInstPlayerAward(instPlayerId, 3, things, DateUtil.getCurrTime(), "您在巅峰强者活动中排名为" + rank + ",获得奖励：", otherSyncMsgData);
+											MessageUtil.sendSyncMsgToOne(player.getOpenId(), otherSyncMsgData);
+										} catch (Exception e) {
+											e.printStackTrace();
+										}
+									}
 								} else {
-									ConcurrentHashMap<String, Integer> innerMap = new ConcurrentHashMap<String, Integer>();
-									innerMap.put(DateUtil.getCurrTime(), rank);
-									ParamConfig.strogerRankRewardMap.put(instPlayerId, innerMap);
+									//不在线玩家,放入缓存,停服后序列化此map
+									if (ParamConfig.strogerRankRewardMap.containsKey(instPlayerId)) {
+										ConcurrentHashMap<String, Integer> innerMap = ParamConfig.strogerRankRewardMap.get(instPlayerId);
+										innerMap.put(DateUtil.getCurrTime(), rank);
+									} else {
+										ConcurrentHashMap<String, Integer> innerMap = new ConcurrentHashMap<String, Integer>();
+										innerMap.put(DateUtil.getCurrTime(), rank);
+										ParamConfig.strogerRankRewardMap.put(instPlayerId, innerMap);
+									}
 								}
 							}
+							
+							//看此活动是否为节日版 , 如果为节日版需清空积分
+							if (ActivityUtil.isInHolidayActivity(StaticActivityHoliday.strogerHeroHoliday)) {
+								ParamConfig.strogerHeroJifenMap.clear();
+							}
+							ParamConfig.strogherHeroNumOnes = ParamConfig.strogherHeroNumOnes + fristName + ";";
 						}
+					} catch (Exception e) {
+						LogUtil.error("最强英雄21点发奖调度器 Error", e);
 					}
 				}
 			}, delayMill, 24 * 60 * 60 * 1000, TimeUnit.MILLISECONDS);
@@ -250,54 +284,72 @@ public class ScheduleUtil {
 				@Override
 				public void run() {
 					
-					if (ActivityUtil.isInActivity(StaticActivity.StrongHero)) {
-						
-						//按积分降序排序最强英雄积分map
-						Map<Integer, Integer> map = new HashMap<Integer, Integer>();
-						for (Entry<Integer, Integer> entry : ParamConfig.strogerHeroJifenMap.entrySet()) {
-							map.put(entry.getKey(), entry.getValue());
-						}
-						Map<Integer, Integer> sortedMap = CollectionUtil.sortByValueDown(map);
-						int rank = 0;
-						LogUtil.info(DateUtil.getCurrTime() + " 巅峰英雄23点积分排行情况[playerId, jifen] = " + sortedMap);
-						for (Entry<Integer, Integer> entry : sortedMap.entrySet()) {
-							rank ++;
-							if (rank > DictMapUtil.getSysConfigIntValue(StaticSysConfig.strogerHeroRewardNum)) {
-								break;
+					try {
+						if (ActivityUtil.isInActivity(StaticActivity.StrongHero)) {
+							
+							String fristName = "";
+							
+							//按积分降序排序最强英雄积分map
+							Map<Integer, Integer> map = new HashMap<Integer, Integer>();
+							for (Entry<Integer, Integer> entry : ParamConfig.strogerHeroJifenMap.entrySet()) {
+								map.put(entry.getKey(), entry.getValue());
 							}
-							int instPlayerId = entry.getKey();
-							Player player = PlayerMapUtil.getPlayerByPlayerId(instPlayerId);
-							//在线玩家
-							if(player != null){
-								String things = "";
-								List<DictActivityStrogerHero> activityStrogerHeroList = DictList.dictActivityStrogerHeroList;
-								for (DictActivityStrogerHero obj : activityStrogerHeroList) {
-									if (DictMapUtil.getSysConfigIntValue(StaticSysConfig.strogerHeroRewardTime3) == obj.getRewardTimePoint() && rank == obj.getRank()) {
-										things = obj.getRewards();
-										break;
-									}
+							Map<Integer, Integer> sortedMap = CollectionUtil.sortByValueDown(map);
+							int rank = 0;
+							LogUtil.info(DateUtil.getCurrTime() + " 巅峰英雄23点积分排行情况[playerId, jifen] = " + sortedMap);
+							for (Entry<Integer, Integer> entry : sortedMap.entrySet()) {
+								rank ++;
+								if (rank > DictMapUtil.getSysConfigIntValue(StaticSysConfig.strogerHeroRewardNum)) {
+									break;
 								}
-								if (things.length() > 0) {
-									try {
-										MessageData otherSyncMsgData = new MessageData();
-										ActivityUtil.addInstPlayerAward(instPlayerId, 3, things, DateUtil.getCurrTime(), "您在巅峰强者活动中排名为" + rank + ",获得奖励：", otherSyncMsgData);
-										MessageUtil.sendSyncMsgToOne(player.getOpenId(), otherSyncMsgData);
-									} catch (Exception e) {
-										e.printStackTrace();
-									}
+								int instPlayerId = entry.getKey();
+								Player player = PlayerMapUtil.getPlayerByPlayerId(instPlayerId);
+								
+								if (rank == 1) {
+									fristName = DALFactory.getInstPlayerDAL().getModel(instPlayerId, 0).getName();
 								}
-							} else {
-								//不在线玩家,放入缓存,停服后序列化此map
-								if (ParamConfig.strogerRankRewardMap.containsKey(instPlayerId)) {
-									ConcurrentHashMap<String, Integer> innerMap = ParamConfig.strogerRankRewardMap.get(instPlayerId);
-									innerMap.put(DateUtil.getCurrTime(), rank);
+								
+								//在线玩家
+								if(player != null){
+									String things = "";
+									List<DictActivityStrogerHero> activityStrogerHeroList = DictList.dictActivityStrogerHeroList;
+									for (DictActivityStrogerHero obj : activityStrogerHeroList) {
+										if (DictMapUtil.getSysConfigIntValue(StaticSysConfig.strogerHeroRewardTime3) == obj.getRewardTimePoint() && rank == obj.getRank()) {
+											things = obj.getRewards();
+											break;
+										}
+									}
+									if (things.length() > 0) {
+										try {
+											MessageData otherSyncMsgData = new MessageData();
+											ActivityUtil.addInstPlayerAward(instPlayerId, 3, things, DateUtil.getCurrTime(), "您在巅峰强者活动中排名为" + rank + ",获得奖励：", otherSyncMsgData);
+											MessageUtil.sendSyncMsgToOne(player.getOpenId(), otherSyncMsgData);
+										} catch (Exception e) {
+											e.printStackTrace();
+										}
+									}
 								} else {
-									ConcurrentHashMap<String, Integer> innerMap = new ConcurrentHashMap<String, Integer>();
-									innerMap.put(DateUtil.getCurrTime(), rank);
-									ParamConfig.strogerRankRewardMap.put(instPlayerId, innerMap);
+									//不在线玩家,放入缓存,停服后序列化此map
+									if (ParamConfig.strogerRankRewardMap.containsKey(instPlayerId)) {
+										ConcurrentHashMap<String, Integer> innerMap = ParamConfig.strogerRankRewardMap.get(instPlayerId);
+										innerMap.put(DateUtil.getCurrTime(), rank);
+									} else {
+										ConcurrentHashMap<String, Integer> innerMap = new ConcurrentHashMap<String, Integer>();
+										innerMap.put(DateUtil.getCurrTime(), rank);
+										ParamConfig.strogerRankRewardMap.put(instPlayerId, innerMap);
+									}
 								}
 							}
+							
+							//看此活动是否为节日版 , 如果为节日版需清空积分
+							if (ActivityUtil.isInHolidayActivity(StaticActivityHoliday.strogerHeroHoliday)) {
+								ParamConfig.strogerHeroJifenMap.clear();
+							}
+							ParamConfig.strogherHeroNumOnes = ParamConfig.strogherHeroNumOnes + fristName + ";";
+							
 						}
+					} catch (Exception e) {
+						LogUtil.error("最强英雄23点发奖调度器 Error", e);
 					}
 				}
 			}, delayMill, 24 * 60 * 60 * 1000, TimeUnit.MILLISECONDS);

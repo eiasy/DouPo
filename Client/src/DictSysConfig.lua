@@ -213,7 +213,7 @@ DictSysConfig["211"]={id=211,name="装备进阶2星升到3星",sname="equipAdwan
 DictSysConfig["212"]={id=212,name="装备进阶3星升到4星",sname="equipAdwance3To4",value=15,description=""}
 DictSysConfig["213"]={id=213,name="装备进阶4星升到5星",sname="equipAdwance4To5",value=5,description=""}
 DictSysConfig["214"]={id=214,name="免费特殊物品抽中概率",sname="FreeselectedChance",value=0.001,description="特殊物品被抽走的几率"}
-DictSysConfig["215"]={id=215,name="世界Boss单次最大伤害",sname="worldBossMaxHurt",value=2000000,description="默认200万"}
+DictSysConfig["215"]={id=215,name="世界Boss单次最大伤害",sname="worldBossMaxHurt",value=10000000,description="默认1000万"}
 DictSysConfig["216"]={id=216,name="丹塔-每日挑战次数",sname="DanTaNum",value=2,description=""}
 DictSysConfig["217"]={id=217,name="丹塔-3星最小回合",sname="MinStar3",value=1,description=""}
 DictSysConfig["218"]={id=218,name="丹塔-3星最大回合",sname="MaxStar3",value=3,description=""}
@@ -254,8 +254,12 @@ DictSysConfig["252"]={id=252,name="联盟成员进盟多少小时可弹劾盟主
 DictSysConfig["253"]={id=253,name="联盟成员花多少元宝可弹劾盟主",sname="accLeaderConsGolds",value=200,description=""}
 DictSysConfig["254"]={id=254,name="卡牌佩戴翅膀所需的称号id",sname="wingTitleId",value=3,description="大斗师"}
 DictSysConfig["255"]={id=255,name="神皇巢穴",sname="shcx",value=205,description="翅膀强化副本"}
-DictSysConfig["256"]={id=256,name="世界BOSS最低血量",sname="minBossBlood",value=200000,description="世界BOSS血量不能小于2千万"}
+DictSysConfig["256"]={id=256,name="世界BOSS最低血量",sname="minBossBlood",value=20000000,description="世界BOSS血量不能小于2千万"}
 DictSysConfig["257"]={id=257,name="世界BOSS复活次数上限",sname="maxLiveNum",value=3,description=""}
 DictSysConfig["258"]={id=258,name="第一次复活需要金币数",sname="oneLiveGoldNum",value=50,description=""}
 DictSysConfig["259"]={id=259,name="第二次复活需要金币数",sname="twoLiveGoldNum",value=100,description=""}
 DictSysConfig["260"]={id=260,name="第三次复活需要金币数",sname="threeLiveGoldNum",value=150,description=""}
+DictSysConfig["261"]={id=261,name="占星刷新需要道具个数",sname="holdStarRefreshThingNum",value=1,description=""}
+DictSysConfig["262"]={id=262,name="占星刷新需要元宝数",sname="holdStarRefreshGoldNum",value=10,description=""}
+DictSysConfig["263"]={id=263,name="每天可免费刷新占星次数",sname="holdStarFreeRefreshTimes",value=1,description=""}
+DictSysConfig["264"]={id=264,name="每天可占星次数",sname="holdStarCanHoldTimes",value=16,description=""}

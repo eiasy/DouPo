@@ -53,6 +53,8 @@
 	<bean id="WingHandler" class="com.huayi.doupo.logic.handler.WingHandler" scope="prototype" />
 
 	<bean id="YFireHandler" class="com.huayi.doupo.logic.handler.YFireHandler" scope="prototype" />
+	
+	<bean id="HoldStarHandler" class="com.huayi.doupo.logic.handler.HoldStarHandler" scope="prototype" />
 
 </beans>
 

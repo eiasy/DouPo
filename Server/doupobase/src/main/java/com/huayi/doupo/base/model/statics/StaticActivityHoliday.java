@@ -9,5 +9,7 @@ public class StaticActivityHoliday{
 		public static final Integer vipExp = new Integer(3);//VIP打折优惠
 		
 		public static final Integer storeDiscont = new Integer(4);//商城物品折扣
+		
+		public static final Integer strogerHeroHoliday = new Integer(5);//巅峰强者分段重置积分
 
 }

@@ -119,9 +119,9 @@ public class Context_501_codeVersion extends AContextHandle {
 							json.put(PlatformManager.DL_URL, cc.getParameter(channelSub, PlatformManager.DL_URL));
 							json.put(PlatformManager.NOTICE_URL, noticUrl);
 						}else{
-							json.put(PlatformManager.LOGIN_URL, pr.getParameter("login_url_pre"));
+							json.put(PlatformManager.LOGIN_URL, pr.getParameter(channel+"_login_url_pre"));
 							json.put(PlatformManager.CODE, ClientOperate.OPT_OK);
-							json.put(PlatformManager.RES_URL, pr.getParameter("res_url_pre"));
+							json.put(PlatformManager.RES_URL, pr.getParameter(channel+"_res_url_pre"));
 							json.put(PlatformManager.MESSAGE, "OK");
 							json.put(PlatformManager.DL_URL, cc.getParameter(channelSub, PlatformManager.DL_URL));
 							json.put(PlatformManager.NOTICE_URL, cc.getParameter(channelSub, "notice_url_pre"));

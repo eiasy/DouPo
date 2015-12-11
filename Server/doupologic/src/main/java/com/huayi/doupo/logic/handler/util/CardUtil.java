@@ -2044,8 +2044,134 @@ public class CardUtil extends DALFactory{
 		OrgFrontMsgUtil.orgSyncMsgData(StaticSyncState.delete, instPlayerCard, instPlayerCard.getId(), "", syncMsgData);
 		
 	}
-	
-	public static Map<String, Integer> decompostCard(List<DictAdvance> advanceList, List<DictAdvance> sourceList, int midLevel) throws Exception {
+
+//	/**
+//	 *	错误的方法废弃
+//	 */
+//	public static Map<String, Integer> decompostCard(List<DictAdvance> advanceList, List<DictAdvance> sourceList, int midLevel) throws Exception {
+//		Map<String, Integer> data = new HashMap<String, Integer>();
+//		if (advanceList == null || advanceList.size() < 1 || sourceList.size() < 0) {
+//			data.put("card", 0);
+//			data.put("exp", 0);
+//			return data;
+//		}
+//		int cardNum = 0;
+//		int expSum = 0;
+//		int stoneSum = 0;
+//		List<DictAdvance> newSourceList = new ArrayList<DictAdvance>();
+//		DictAdvance da = null;
+//		for (int si = 0; si < sourceList.size(); si++) {
+//			da = sourceList.get(si);
+//			int index = advanceList.indexOf(da);
+//			if (index == 0) {
+//				cardNum++;
+//			} else {
+//				newSourceList.add(advanceList.get(index - 1));
+//				String[] conds = da.getConds().split(";");
+//				for (String cond : conds) {
+//					int[] array = StringUtil.string2IntArray(cond, '_');
+//					if (array.length > 0) {
+//						switch (array[0]) {// 1_等级;3_品阶_星级_数量;5_物品ID_数量
+//							case 1: {// 等级
+//								break;
+//							}
+//							case 3: {// 消耗卡片
+//								if (array.length > 3 && array[3] > 0) {
+//									DictAdvance newSource = null;
+//									DictAdvance dictAdvance = null;
+//									int exp = 0;
+//									int stone=0;
+//									for (int ai = 0; ai < advanceList.size(); ai++) {
+//										dictAdvance = advanceList.get(ai);
+//										if (dictAdvance.getQualityId() == array[1] && dictAdvance.getStarLevelId() == array[2]) {
+//											newSource = dictAdvance;
+//											if (array[1] > 3 && midLevel > 1) {
+//												exp = FormulaUtil.restoreCardExp(midLevel, 0);
+//											}
+//											stone= CardUtil.getAdvanceStone(advanceList, newSource.getQualityId(),newSource.getStarLevelId());
+//
+//
+//											break;
+//										}
+//									}
+//									if (newSource != null) {
+//										for (int c = 0; c < array[3]; c++) {
+//											newSourceList.add(newSource);
+//										}
+//										expSum+=exp * array[3];
+//										stoneSum+=stone * array[3];
+//									}
+//								}
+//								break;
+//							}
+//							case 5: {// 消耗物品
+//								break;
+//							}
+//						}
+//					}
+//				}
+//			}
+//		}
+//		if (newSourceList.size() > 0) {
+//			Map<String, Integer> newData = decompostCard(advanceList, newSourceList, midLevel);
+//			Integer cardCount = newData.get("card");
+//			if (cardCount != null) {
+//				cardNum += cardCount;
+//			}
+//			Integer expCount = newData.get("exp");
+//			if (expCount != null) {
+//				expSum+=expCount;
+//			}
+//			Integer stoneCount = newData.get("stone");
+//			if (stoneCount != null) {
+//				stoneSum+=stoneCount;
+//			}
+//			data.put("card", cardNum);
+//			data.put("exp", expSum);
+//			data.put("stone", stoneSum);
+//			return data;
+//		} else {
+//			data.put("card", cardNum);
+//			data.put("exp", expSum);
+//			data.put("stone", stoneSum);
+//			return data;
+//		}
+//	}
+//
+//	/**
+//	 * 错误的方法，废弃
+//	 */
+//	public static int getAdvanceStone(List<DictAdvance> advanceList,int qualityId,int starLevelId){
+//		int count = 0;
+//		if(advanceList != null && advanceList.size() > 0){
+//			for (DictAdvance advance : advanceList) {
+//				if (advance.getQualityId() < qualityId || (advance.getNextQualityId() == qualityId && advance.getNextStarLevelId() <= starLevelId)) {
+//					for (String cond : advance.getConds().split(";")) {
+//						int type = ConvertUtil.toInt(cond.split("_")[0]);
+//						if (type == 5) {
+//							//5_物品材料Id_材料个数
+//							count+= ConvertUtil.toInt(cond.split("_")[2]);
+//						}
+//					}
+//				}
+//			}
+//		}
+//		return count;
+//	}
+
+
+	/**
+	 * 轮回递归计算，之前版本有问题，重新计算
+	 * @author cui
+	 * @date	2015/12/04
+	 * @param thingMap
+	 * @param advanceList
+	 * @param sourceList
+	 * @param midLevel
+	 * @return
+	 * @throws Exception
+	 */
+	public static Map<String, Integer>  decompostCard(Map<String, Integer> thingMap, List<DictAdvance> advanceList, List<DictAdvance> sourceList, int midLevel) throws Exception {
 		Map<String, Integer> data = new HashMap<String, Integer>();
 		if (advanceList == null || advanceList.size() < 1 || sourceList.size() < 0) {
 			data.put("card", 0);
@@ -2054,7 +2180,6 @@ public class CardUtil extends DALFactory{
 		}
 		int cardNum = 0;
 		int expSum = 0;
-		int stoneSum = 0;
 		List<DictAdvance> newSourceList = new ArrayList<DictAdvance>();
 		DictAdvance da = null;
 		for (int si = 0; si < sourceList.size(); si++) {
@@ -2077,7 +2202,6 @@ public class CardUtil extends DALFactory{
 									DictAdvance newSource = null;
 									DictAdvance dictAdvance = null;
 									int exp = 0;
-									int stone=0;
 									for (int ai = 0; ai < advanceList.size(); ai++) {
 										dictAdvance = advanceList.get(ai);
 										if (dictAdvance.getQualityId() == array[1] && dictAdvance.getStarLevelId() == array[2]) {
@@ -2085,7 +2209,7 @@ public class CardUtil extends DALFactory{
 											if (array[1] > 3 && midLevel > 1) {
 												exp = FormulaUtil.restoreCardExp(midLevel, 0);
 											}
-											stone= CardUtil.getAdvanceStone(advanceList, newSource.getQualityId(),newSource.getStarLevelId());
+											CardUtil.calAdvanceThing(advanceList, newSource.getQualityId(), newSource.getStarLevelId(),thingMap, array[3]);
 											break;
 										}
 									}
@@ -2093,8 +2217,8 @@ public class CardUtil extends DALFactory{
 										for (int c = 0; c < array[3]; c++) {
 											newSourceList.add(newSource);
 										}
-										expSum+=exp * array[3];
-										stoneSum+=stone * array[3];
+										expSum += exp * array[3];
+//										System.out.println("CardUtil.decompostCard 消耗的卡牌数量："+array[3]);
 									}
 								}
 								break;
@@ -2108,47 +2232,56 @@ public class CardUtil extends DALFactory{
 			}
 		}
 		if (newSourceList.size() > 0) {
-			Map<String, Integer> newData = decompostCard(advanceList, newSourceList, midLevel);
-			Integer cardCount = newData.get("card");
-			if (cardCount != null) {
-				cardNum += cardCount;
+			Map<String, Integer> newdata = CardUtil.decompostCard(thingMap, advanceList, newSourceList, midLevel);
+			if (newdata.containsKey("card")) {
+				newdata.put("card", newdata.get("card") + cardNum);
+			} else {
+				newdata.put("card", cardNum);
 			}
-			Integer expCount = newData.get("exp");
-			if (expCount != null) {
-				expSum+=expCount;
+			if (newdata.containsKey("exp")) {
+				newdata.put("exp", newdata.get("exp") + expSum);
+			} else {
+				newdata.put("exp", expSum);
 			}
-			Integer stoneCount = newData.get("stone");
-			if (stoneCount != null) {
-				stoneSum+=stoneCount;
-			}
-			data.put("card", cardNum);
-			data.put("exp", expSum);
-			data.put("stone", stoneSum);
-			return data;
+			return newdata;
 		} else {
 			data.put("card", cardNum);
 			data.put("exp", expSum);
-			data.put("stone", stoneSum);
 			return data;
 		}
 	}
-	
-	public static int getAdvanceStone(List<DictAdvance> advanceList,int qualityId,int starLevelId){
-		int count = 0;
-		if(advanceList != null && advanceList.size() > 0){
+
+	/**
+	 * 计算 一条Advance上的物品消耗
+	 * @author	cui
+	 * @date	2015/12/04
+	 * @param advanceList
+	 * @param qualityId
+	 * @param starLevelId
+	 * @param thingMap		放到一个容器里记入
+	 * @param mutiple   	消耗的倍数
+	 */
+	public static void calAdvanceThing(List<DictAdvance> advanceList, int qualityId, int starLevelId, Map<String, Integer> thingMap, int mutiple) {
+		if (advanceList != null && advanceList.size() > 0) {
 			for (DictAdvance advance : advanceList) {
 				if (advance.getQualityId() < qualityId || (advance.getNextQualityId() == qualityId && advance.getNextStarLevelId() <= starLevelId)) {
 					for (String cond : advance.getConds().split(";")) {
 						int type = ConvertUtil.toInt(cond.split("_")[0]);
 						if (type == 5) {
 							//5_物品材料Id_材料个数
-							count+= ConvertUtil.toInt(cond.split("_")[2]);
+							int tableTypeId = StaticTableType.DictThing;
+							int tableFieldId = ConvertUtil.toInt(cond.split("_")[1]);
+							int num = ConvertUtil.toInt(cond.split("_")[2]);
+							if (thingMap.containsKey(tableTypeId + "_" + tableFieldId)) {
+								thingMap.put(tableTypeId + "_" + tableFieldId, thingMap.get(tableTypeId + "_" + tableFieldId) + num * mutiple);
+							} else {
+								thingMap.put(tableTypeId + "_" + tableFieldId, num * mutiple);
+							}
 						}
 					}
 				}
 			}
 		}
-		return count;
 	}
 	
 	/**
@@ -2166,18 +2299,44 @@ public class CardUtil extends DALFactory{
 		
 		//称号(由之前的返还潜力值改为返还境界丹)
 		int realmPill = 0;//需要返还的境界丹
+		int superRealmPill = 0;//需要返还的超级境界丹
 		List<DictTitleDetail> dictTitleDetailList = (List<DictTitleDetail>)DictList.dictTitleDetailList;
 		for(DictTitleDetail obj : dictTitleDetailList){
 			if(obj.getId() < instPlayerCard.getTitleDetailId()){
-				realmPill += obj.getUseTalentValue(); //每次称号消耗的境界丹
+				String objCost = obj.getCost();
+				if(objCost != null && !objCost.equals("")){
+					String[] goodsList = objCost.split(";");
+					for (String goods : goodsList){
+						String[] pill = goods.split("_");
+						switch (pill[0]){
+							case "1":
+								realmPill += Integer.valueOf(pill[1]);
+								break;
+							case "2":
+								superRealmPill += Integer.valueOf(pill[1]);
+								break;
+						}
+					}
+				}
 			}
 		}
+		//普通的 境界丹
 		if(realmPill > 0){
 			if(thingMap.containsKey(StaticTableType.DictThing+"_"+StaticThing.realmPill)){
 				thingMap.put(StaticTableType.DictThing+"_"+StaticThing.realmPill, thingMap.get(StaticTableType.DictThing+"_"+StaticThing.realmPill) + realmPill);
 			}
 			else{
 				thingMap.put(StaticTableType.DictThing+"_"+StaticThing.realmPill, realmPill);
+			}
+		}
+
+		//超级境界丹
+		if(superRealmPill > 0){
+			if(thingMap.containsKey(StaticTableType.DictThing+"_"+StaticThing.thing300)){
+				thingMap.put(StaticTableType.DictThing+"_"+StaticThing.thing300, thingMap.get(StaticTableType.DictThing+"_"+StaticThing.thing300) + superRealmPill);
+			}
+			else{
+				thingMap.put(StaticTableType.DictThing+"_"+StaticThing.thing300, superRealmPill);
 			}
 		}
 		/*int potential = FormulaUtil.restoreCardPotential(instPlayerCard.getTitleDetailId(), instPlayerCard.getLevel(), instPlayerCard.getPotential()); //返还的潜力值
@@ -2229,28 +2388,28 @@ public class CardUtil extends DALFactory{
 		}
 		
 		//卡边/品质
-//		List<DictAdvance> advanceList = (List<DictAdvance>)DictMapList.dictAdvanceMap.get(instPlayerCard.getCardId());
-//		if(advanceList != null && advanceList.size() > 0){
-//			for (DictAdvance advance : advanceList) {
-//				if (advance.getQualityId() < instPlayerCard.getQualityId() || (advance.getNextQualityId() == instPlayerCard.getQualityId() && advance.getNextStarLevelId() <= instPlayerCard.getStarLevelId())) {
-//					for (String cond : advance.getConds().split(";")) {
-//						int type = ConvertUtil.toInt(cond.split("_")[0]);
-//						if (type == 5) {
-//							//5_物品材料Id_材料个数
-//							int tableTypeId = StaticTableType.DictThing;
-//							int tableFieldId = ConvertUtil.toInt(cond.split("_")[1]);
-//							int num = ConvertUtil.toInt(cond.split("_")[2]);
-//							if(thingMap.containsKey(tableTypeId+"_"+tableFieldId)){
-//								thingMap.put(tableTypeId+"_"+tableFieldId, thingMap.get(tableTypeId+"_"+tableFieldId) + num);
-//							}
-//							else{
-//								thingMap.put(tableTypeId+"_"+tableFieldId, num);
-//							}
-//						}
-//					}
-//				}
-//			}
-//		}
+		List<DictAdvance> advanceList = (List<DictAdvance>)DictMapList.dictAdvanceMap.get(instPlayerCard.getCardId());
+		if(advanceList != null && advanceList.size() > 0){
+			for (DictAdvance advance : advanceList) {
+				if (advance.getQualityId() < instPlayerCard.getQualityId() || (advance.getNextQualityId() == instPlayerCard.getQualityId() && advance.getNextStarLevelId() <= instPlayerCard.getStarLevelId())) {
+					for (String cond : advance.getConds().split(";")) {
+						int type = ConvertUtil.toInt(cond.split("_")[0]);
+						if (type == 5) {
+							//5_物品材料Id_材料个数
+							int tableTypeId = StaticTableType.DictThing;
+							int tableFieldId = ConvertUtil.toInt(cond.split("_")[1]);
+							int num = ConvertUtil.toInt(cond.split("_")[2]);
+							if(thingMap.containsKey(tableTypeId+"_"+tableFieldId)){
+								thingMap.put(tableTypeId+"_"+tableFieldId, thingMap.get(tableTypeId+"_"+tableFieldId) + num);
+							}
+							else{
+								thingMap.put(tableTypeId+"_"+tableFieldId, num);
+							}
+						}
+					}
+				}
+			}
+		}
 		//命宫
 		if(instPlayerCard.getInstPlayerConstells() != null && !instPlayerCard.getInstPlayerConstells().equals("")){
 			if(instPlayerCard.getInstPlayerConstells().contains("_")){

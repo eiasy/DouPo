@@ -521,5 +521,13 @@ public class StaticSysConfig{
 		public static final Integer twoLiveGoldNum = new Integer(259);//第二次复活需要金币数
 		
 		public static final Integer threeLiveGoldNum = new Integer(260);//第三次复活需要金币数
+		
+		public static final Integer holdStarRefreshThingNum = new Integer(261);//占星刷新需要道具个数
+		
+		public static final Integer holdStarRefreshGoldNum = new Integer(262);//占星刷新需要元宝数
+		
+		public static final Integer holdStarFreeRefreshTimes = new Integer(263);//每天可免费刷新占星次数
+		
+		public static final Integer holdStarCanHoldTimes = new Integer(264);//每天可占星次数
 
 }

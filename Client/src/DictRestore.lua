@@ -14,3 +14,9 @@ DictRestore["12"]={id=12,qualityId=4,starLevelId=3,gold=80,description=""}
 DictRestore["13"]={id=13,qualityId=4,starLevelId=4,gold=90,description=""}
 DictRestore["14"]={id=14,qualityId=4,starLevelId=5,gold=100,description=""}
 DictRestore["15"]={id=15,qualityId=4,starLevelId=6,gold=110,description=""}
+DictRestore["16"]={id=16,qualityId=5,starLevelId=1,gold=120,description=""}
+DictRestore["17"]={id=17,qualityId=5,starLevelId=2,gold=140,description=""}
+DictRestore["18"]={id=18,qualityId=5,starLevelId=3,gold=160,description=""}
+DictRestore["19"]={id=19,qualityId=5,starLevelId=4,gold=180,description=""}
+DictRestore["20"]={id=20,qualityId=5,starLevelId=5,gold=200,description=""}
+DictRestore["21"]={id=21,qualityId=5,starLevelId=6,gold=250,description=""}

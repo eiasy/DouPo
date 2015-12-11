@@ -3,6 +3,7 @@ package com.huayi.doupo.logic.util;
 import java.lang.reflect.Field;
 
 import com.huayi.doupo.base.model.InstPlayerEquip;
+import com.huayi.doupo.base.model.InstPlayerHoldStar;
 import com.huayi.doupo.base.util.base.StringUtil;
 
 /**
@@ -13,9 +14,9 @@ import com.huayi.doupo.base.util.base.StringUtil;
 public class ConvMsgDataUtil {
 	
 	public static void main(String[] args) {
-		printMsgData(new InstPlayerEquip(), "msgData");
+		printMsgData(new InstPlayerHoldStar(), "msgData");
 				
-//		printMethod(new InstPlayerWing(), "set");
+//		printMethod(new InstPlayerHoldStar(), "set");
 	}
 	
 	public static void printMsgData(Object obj, String msgHeader){

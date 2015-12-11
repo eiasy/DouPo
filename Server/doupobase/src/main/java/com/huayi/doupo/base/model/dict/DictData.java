@@ -9,7 +9,7 @@ public class DictData extends DALFactory{
 	/**
 	 * 获取静态的字典数据
 	 * @author mp
-	 * @version 1.0, Thu Nov 26 11:31:47 CST 2015
+	 * @version 1.0, Thu Dec 10 14:58:13 CST 2015
 	 * @return
 	 * @throws Exception
 	*/
@@ -87,6 +87,10 @@ public class DictData extends DALFactory{
 
 			if(tableName.equals("DictBeautyCardExp") || isAll == 1){
 				DictDataUtil.dictBeautyCardExpUtil(pd);
+			}
+
+			if(tableName.equals("DictHoldStarGradeReward") || isAll == 1){
+				DictDataUtil.dictHoldStarGradeRewardUtil(pd);
 			}
 
 			if(tableName.equals("DictActivityLimitTimeHeroRankReward") || isAll == 1){
@@ -187,6 +191,10 @@ public class DictData extends DALFactory{
 
 			if(tableName.equals("DictBarrierDrop") || isAll == 1){
 				DictDataUtil.dictBarrierDropUtil(pd);
+			}
+
+			if(tableName.equals("DictHoldStarStep") || isAll == 1){
+				DictDataUtil.dictHoldStarStepUtil(pd);
 			}
 
 			if(tableName.equals("DictActivityStrogerHero") || isAll == 1){
@@ -349,6 +357,10 @@ public class DictData extends DALFactory{
 				DictDataUtil.dictWorldBossTimesRewardUtil(pd);
 			}
 
+			if(tableName.equals("DictHoldStarGrade") || isAll == 1){
+				DictDataUtil.dictHoldStarGradeUtil(pd);
+			}
+
 			if(tableName.equals("DictTrainProp") || isAll == 1){
 				DictDataUtil.dictTrainPropUtil(pd);
 			}
@@ -393,12 +405,12 @@ public class DictData extends DALFactory{
 				DictDataUtil.dictActivityDailyDealsUtil(pd);
 			}
 
-			if(tableName.equals("DictFunctionOpen") || isAll == 1){
-				DictDataUtil.dictFunctionOpenUtil(pd);
-			}
-
 			if(tableName.equals("DictTryToPracticeBarrierCard") || isAll == 1){
 				DictDataUtil.dictTryToPracticeBarrierCardUtil(pd);
+			}
+
+			if(tableName.equals("DictFunctionOpen") || isAll == 1){
+				DictDataUtil.dictFunctionOpenUtil(pd);
 			}
 
 			if(tableName.equals("DictQuality") || isAll == 1){
@@ -505,6 +517,10 @@ public class DictData extends DALFactory{
 				DictDataUtil.dictActivityStarStoreUtil(pd);
 			}
 
+			if(tableName.equals("DictUnionWar") || isAll == 1){
+				DictDataUtil.dictUnionWarUtil(pd);
+			}
+
 			if(tableName.equals("DictEquipSuit") || isAll == 1){
 				DictDataUtil.dictEquipSuitUtil(pd);
 			}
@@ -561,6 +577,10 @@ public class DictData extends DALFactory{
 				DictDataUtil.dictActivityMonthCardStoreTempUtil(pd);
 			}
 
+			if(tableName.equals("DictHoldStarZodiac") || isAll == 1){
+				DictDataUtil.dictHoldStarZodiacUtil(pd);
+			}
+
 			if(tableName.equals("DictUnionStore") || isAll == 1){
 				DictDataUtil.dictUnionStoreUtil(pd);
 			}
@@ -615,6 +635,10 @@ public class DictData extends DALFactory{
 
 			if(tableName.equals("DictTryToPractice") || isAll == 1){
 				DictDataUtil.dictTryToPracticeUtil(pd);
+			}
+
+			if(tableName.equals("DictHoldStarRewardPos") || isAll == 1){
+				DictDataUtil.dictHoldStarRewardPosUtil(pd);
 			}
 
 			if(tableName.equals("DictSysConfig") || isAll == 1){
@@ -683,6 +707,10 @@ public class DictData extends DALFactory{
 
 			if(tableName.equals("DictArenaReward") || isAll == 1){
 				DictDataUtil.dictArenaRewardUtil(pd);
+			}
+
+			if(tableName.equals("DictHoldStarRewardRefreshTimes") || isAll == 1){
+				DictDataUtil.dictHoldStarRewardRefreshTimesUtil(pd);
 			}
 
 			if(tableName.equals("DictStarLevel") || isAll == 1){
@@ -855,6 +883,10 @@ public class DictData extends DALFactory{
 
 			if(tableName.equals("DictWingStrengthen") || isAll == 1){
 				DictDataUtil.dictWingStrengthenGroupUtil(pd);
+			}
+
+			if(tableName.equals("DictHoldStarGradeReward") || isAll == 1){
+				DictDataUtil.dictHoldStarGradeRewardGroupUtil(pd);
 			}
 
 		}

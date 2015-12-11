@@ -506,6 +506,36 @@ StaticMsgRule = {
 
 		openBossBigBox = 1255,--世界boss开大宝箱
 
+		intoHoldStar = 1256,--进入占星
+
+		selectHoldStarGrade = 1257,--选择占星等级档
+
+		refreshStarZodiac = 1258,--刷新星座
+
+		refreshStarReward = 1259,--刷新占星奖励
+
+		join = 1260,--盟战报名
+
+		disjoin = 1261,--盟战取消报名
+
+		sort = 1262,--盟战排序
+
+		ambush = 1263,--盟战设置伏兵
+
+		unambush = 1264,--盟战取消设伏
+
+		fight = 1265,--盟战入阵
+
+		holdStar = 1266,--占星
+
+		oneKeyGet = 1267,--一键领取
+
+		useAdvanceThing = 1268,--消耗淬炼道具
+
+		magicAdvance = 1269,--功法法宝精炼
+
+		intoLimitActivity = 1270,--进入限时活动
+
 		testGuid = 3002,--测试引导
 
 		testGiveName = 3003,--测试起名字
@@ -525,6 +555,8 @@ StaticMsgRule = {
 		pushMarquee = 10004,--推送跑马灯
 
 		pushRechargeSucc = 10005,--推送充值成功通知
+
+		pushUnionWar = 10006,--推送盟战
 
 		quickUpgrade = 11000,--快速升级（战队）
 

@@ -54,7 +54,6 @@ import com.huayi.doupo.logic.util.InitUtil;
 import com.huayi.doupo.logic.util.MessageData;
 import com.huayi.doupo.logic.util.MessageUtil;
 import com.huayi.doupo.logic.util.PlayerMapUtil;
-import com.mysql.jdbc.log.Log;
 
 /**
  * 重置当天开放的活动副本
@@ -71,6 +70,8 @@ public class ChapterActivityHandler extends BaseHandler implements Job {
 
 		try {
 
+			ParamConfig.strogherHeroNumOnes = "";//重置巅峰强者每个阶段的第一名名称
+			
 			// 过幼儿期初始化活动
 			initActivity();
 			

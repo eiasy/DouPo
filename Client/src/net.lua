@@ -342,6 +342,7 @@ function netOnPackage(pack)
                 local isFresh = false
                 local isFreshFightSoul = false 
                 local isFreshFightSoulHunt = false 
+                local isFreshHoldStar = false
                 local isFreshHomePage = false  --zy 修改申请加入联盟停留在主页面，被盟主批准后，“招人了”图标及时消失
                 for key, obj in pairs(pack.msgdata.message) do
                     local tableName, flag, instId = obj.string.a, obj.string.b, obj.int.c
@@ -454,6 +455,16 @@ function netOnPackage(pack)
                             isFreshHomePage = true
                         end
                     end
+                    if tableName == "InstPlayerHoldStar" then
+                        if not isFreshHoldStar then
+                            isFreshHoldStar = true
+                        end
+                    end
+                end
+                if isFreshHoldStar then
+                    UIManager.flushWidget(UIStar)
+                  --  UIManager.flushWidget(UIStarLighten)
+                    UIManager.flushWidget(UIStarReward)
                 end
                 if isFreshHomePage then
                     UIManager.flushWidget(UIHomePage)
@@ -639,6 +650,7 @@ function net.loadGameData(pack)
     addInstTable(pack, "InstPlayerFightSoulHuntRule")
     addInstTable(pack, "InstPlayerYFire")
     addInstTable(pack, "InstPlayerWing")
+    addInstTable(pack, "InstPlayerHoldStar")
 
     if pack.msgdata.int.yj then
         -- 有邮件

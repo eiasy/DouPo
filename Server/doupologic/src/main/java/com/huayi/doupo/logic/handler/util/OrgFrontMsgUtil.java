@@ -173,6 +173,21 @@ public class OrgFrontMsgUtil extends DALFactory{
 	}
 	
 	/**
+	 * 组织玩家占星数据
+	 * @author mp
+	 * @date 2015-12-4 上午11:17:39
+	 * @param formationMsgData
+	 * @param formationList
+	 * @Description
+	 */
+	public static void orgInstPlayerHoldStar (MessageData holdStarMsgData, List<InstPlayerHoldStar> holdStarList){
+		for(InstPlayerHoldStar instPlayerHoldStar : holdStarList){
+			MessageData msgData = orgInstPlayerHoldStar(instPlayerHoldStar);
+			holdStarMsgData.putMessageItem(instPlayerHoldStar.getId() + "", msgData.getMsgData());
+		}
+	}
+	
+	/**
 	  *  组织玩家卡牌阵型实例数据
 	  * @author hzw
 	  * @date 2014-6-19下午4:58:53
@@ -189,6 +204,35 @@ public class OrgFrontMsgUtil extends DALFactory{
 		msgData.putIntItem("4", instPlayerFormation.getType());
 		msgData.putIntItem("5", instPlayerFormation.getPosition());
 		msgData.putIntItem("6", instPlayerFormation.getCardId());
+		return msgData;
+	}
+	
+	/**
+	 * 组织玩家占星数据
+	 * @author mp
+	 * @date 2015-12-4 上午11:22:26
+	 * @param instPlayerFormation
+	 * @return
+	 * @Description
+	 */
+	public static MessageData orgInstPlayerHoldStar (InstPlayerHoldStar instPlayerHoldStar){
+		MessageData msgData = new MessageData();
+		msgData.putIntItem("1", instPlayerHoldStar.getId());
+		msgData.putIntItem("2", instPlayerHoldStar.getInstPlayerId());
+		msgData.putIntItem("3", instPlayerHoldStar.getHoldStarGradeId());
+		msgData.putIntItem("4", instPlayerHoldStar.getStep());
+		msgData.putIntItem("5", instPlayerHoldStar.getStarNum());
+		msgData.putIntItem("6", instPlayerHoldStar.getHoldStarTimes());
+		msgData.putStringItem("7", instPlayerHoldStar.getHoldStarTime());
+		msgData.putIntItem("8", instPlayerHoldStar.getHoldStarFreeRefreshedTimes());
+		msgData.putIntItem("9", instPlayerHoldStar.getHoldStarNoFreeRefreshedTimes());
+		msgData.putStringItem("10", instPlayerHoldStar.getHoldStarRefreshedTime());
+		msgData.putIntItem("11", instPlayerHoldStar.getRewardRefreshedTimes());
+		msgData.putStringItem("12", instPlayerHoldStar.getRewardRefreshedTime());
+		msgData.putStringItem("13", instPlayerHoldStar.getUpStars());
+		msgData.putStringItem("14", instPlayerHoldStar.getDownStars());
+		msgData.putStringItem("15", instPlayerHoldStar.getRewards());
+		msgData.putStringItem("16", instPlayerHoldStar.getSysRefreshTime());
 		return msgData;
 	}
 	

@@ -369,6 +369,13 @@ local function netCallbackFunc(data)
             UIManager.pushScene("ui_boss_ranking")
         end
     elseif code == StaticMsgRule.joinWorldBoss then
+        if data.msgdata.int and data.msgdata.int.worldBossState then
+            local worldBossState = data.msgdata.int.worldBossState
+            if worldBossState == 0 then
+                UIBoss.setup()
+                return
+            end
+        end
         isJoinWorldBoss = true
         _bossEndCountdown = _bossEndTimer - utils.getCurrentTime()
         _bossEndCountdownId = cc.Director:getInstance():getScheduler():scheduleScriptFunc(bossEndCountdown, 1, false)
@@ -436,22 +443,18 @@ local function netCallbackFunc(data)
             UIManager.showScreen("ui_notice", "ui_boss", "ui_menu")
             if worldBossState == 0 then
 --                initWorldBoss()
-                UIBoss.setup()
-                -- UIManager.showToast("世界BOSS已经死了！")
+--                UIBoss.setup()
+--                -- UIManager.showToast("世界BOSS已经死了！")
                 return
             end
             local _curTime = utils.getCurrentTime()
             if _curTime < _bossEndTimer then
                 netSendPackage( { header = StaticMsgRule.joinWorldBoss, msgdata = { } }, netCallbackFunc)
             else
-                UIManager.showToast("世界BOSS已经结束！")
+                UIManager.showToast("世界BOSS活动已经结束！")
             end
         end
-        if worldBossState == 0 then
-            UIManager.showToast("本次世界BOSS活动已经结束", nil, closeCallback)
-        else
-            UIBossHint.show({hurt = _bossOnceHurtValue, attackCount = _attackCount, isAuto = isAutoFight, callbackFunc = closeCallback})
-        end
+        UIBossHint.show({hurt = _bossOnceHurtValue, attackCount = _attackCount, isAuto = isAutoFight, callbackFunc = closeCallback})
     elseif code == StaticMsgRule.rebirthWorldBoss then
         local worldBossState = nil
         if data.msgdata.int and data.msgdata.int.worldBossState then
@@ -483,17 +486,39 @@ local function netCallbackFunc(data)
 end
 
 onEnterFight = function()
-    -- UIManager.showLoading()
-    -- _bossOnceHurtValue = utils.random(10000, 30000)
-    -- netSendPackage({header = StaticMsgRule.fightWorldBoss, msgdata = {int={bossOnceHurt=_bossOnceHurtValue}}}, netCallbackFunc)
+    local _messageData = nil
     local function callBackFunc(bossOnceHurtValue)
-        _bossOnceHurtValue = math.floor(bossOnceHurtValue *(1 + encryptedTable._curHurtAdd / 100))
-        UIManager.showLoading()
-        netSendPackage( { header = StaticMsgRule.fightWorldBoss, msgdata = { int = { bossOnceHurt = _bossOnceHurtValue }, string = { coredata = GlobalLastFightCheckData } } }, netCallbackFunc)
+        if _messageData then
+            netCallbackFunc(_messageData)
+        end
     end
-    isEnterFight = true
-    utils.sendFightData(CustomDictWorldBoss[_currentBossId], dp.FightType.FIGHT_BOSS, callBackFunc)
-    UIFightMain.loading()
+    local function fightDataCallback(isWin, fightIndex, bigRound, myDeaths, hpPercent, hurtValue, isSkipFight, fightersHP)
+        --        _bossOnceHurtValue = math.floor(bossOnceHurtValue *(1 + encryptedTable._curHurtAdd / 100))
+        _bossOnceHurtValue = hurtValue
+        UIManager.showLoading()
+        netSendPackage( { header = StaticMsgRule.fightWorldBoss, msgdata = { int = { bossOnceHurt = _bossOnceHurtValue }, string = { coredata = utils.fightVerifyData() } } }, function(_msgData)
+            local worldBossState = nil
+            if _msgData.msgdata.int and _msgData.msgdata.int.worldBossState then
+                worldBossState = _msgData.msgdata.int.worldBossState
+            end
+            local attackCount = nil
+            if _msgData.msgdata.message and _msgData.msgdata.message.playerMsg then
+                attackCount = _msgData.msgdata.message.playerMsg.int["1"]
+            end
+            if worldBossState == 0 and attackCount == nil then
+                UIManager.showToast("本次世界BOSS活动已经结束")
+                UIBoss.setup()
+            else
+                _messageData = _msgData
+                isEnterFight = true
+                UIFightMain.loading()
+            end
+        end)
+    end
+    
+    utils.sendFightData(CustomDictWorldBoss[_currentBossId], dp.FightType.FIGHT_BOSS, callBackFunc, fightDataCallback)
+--    isEnterFight = true
+--    UIFightMain.loading()
 end
 
 function UIBoss.refreshIntegral(_integral)

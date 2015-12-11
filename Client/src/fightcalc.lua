@@ -286,6 +286,7 @@ function Fight.doInit(data,cb)
 		Fight.fightersHP = require("EncryptLuaTable").new()
 	end
 	--setup data
+	data.record = nil
 	Fight.initData = data
 	Fight.randomseed = 0
 	--纠正数据

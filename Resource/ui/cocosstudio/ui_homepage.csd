@@ -129,7 +129,7 @@
                 <OutlineColor A="255" R="255" G="0" B="0" />
                 <ShadowColor A="255" R="110" G="110" B="110" />
               </AbstractNodeData>
-              <AbstractNodeData Name="image_more" ActionTag="2094153026" Tag="198" IconVisible="False" LeftMargin="535.9500" RightMargin="22.0500" TopMargin="885.9676" BottomMargin="150.0324" TouchEnable="True" Scale9Width="82" Scale9Height="100" ctype="ImageViewObjectData">
+              <AbstractNodeData Name="image_more" ActionTag="2094153026" Tag="198" IconVisible="False" LeftMargin="535.9501" RightMargin="22.0499" TopMargin="885.9676" BottomMargin="150.0324" TouchEnable="True" Scale9Width="82" Scale9Height="100" ctype="ImageViewObjectData">
                 <Size X="82.0000" Y="100.0000" />
                 <Children>
                   <AbstractNodeData Name="image_more_arrow" ActionTag="989447163" Tag="63" IconVisible="False" LeftMargin="11.4999" RightMargin="11.5001" TopMargin="8.5002" BottomMargin="32.4998" Scale9Width="59" Scale9Height="59" ctype="ImageViewObjectData">
@@ -154,14 +154,14 @@
                   </AbstractNodeData>
                 </Children>
                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                <Position X="576.9500" Y="200.0324" />
+                <Position X="576.9501" Y="200.0324" />
                 <Scale ScaleX="1.0000" ScaleY="1.0000" />
                 <CColor A="255" R="255" G="255" B="255" />
                 <PrePosition X="0.9015" Y="0.1761" />
                 <PreSize X="0.1281" Y="0.0880" />
                 <FileData Type="Normal" Path="ui/home_more_zi.png" Plist="" />
               </AbstractNodeData>
-              <AbstractNodeData Name="btn_prize" ActionTag="11" UserData="ignoreSize" Tag="126073" IconVisible="False" LeftMargin="324.8899" RightMargin="222.1101" TopMargin="772.6284" BottomMargin="267.3716" TouchEnable="True" FontSize="30" Scale9Width="93" Scale9Height="96" ctype="ButtonObjectData">
+              <AbstractNodeData Name="btn_prize" ActionTag="11" UserData="ignoreSize" Tag="126073" IconVisible="False" LeftMargin="535.9275" RightMargin="11.0725" TopMargin="137.0916" BottomMargin="902.9084" TouchEnable="True" FontSize="30" Scale9Width="93" Scale9Height="96" ctype="ButtonObjectData">
                 <Size X="93.0000" Y="96.0000" />
                 <Children>
                   <AbstractNodeData Name="image_hint" ActionTag="45" UserData="ignoreSize" Tag="223102" IconVisible="False" LeftMargin="68.4982" RightMargin="-4.4982" TopMargin="-1.4988" BottomMargin="68.4988" Scale9Width="29" Scale9Height="29" ctype="ImageViewObjectData">
@@ -176,10 +176,10 @@
                   </AbstractNodeData>
                 </Children>
                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                <Position X="371.3899" Y="315.3716" />
+                <Position X="582.4275" Y="950.9084" />
                 <Scale ScaleX="1.0000" ScaleY="1.0000" />
                 <CColor A="255" R="255" G="255" B="255" />
-                <PrePosition X="0.5803" Y="0.2776" />
+                <PrePosition X="0.9100" Y="0.8371" />
                 <PreSize X="0.1453" Y="0.0845" />
                 <TextColor A="255" R="255" G="255" B="255" />
                 <PressedFileData Type="Normal" Path="ui/home_lingjiangzhongxin.png" Plist="" />
@@ -190,13 +190,13 @@
               <AbstractNodeData Name="btn_wing" ActionTag="-1636946835" UserData="ignoreSize" Tag="98" IconVisible="False" LeftMargin="535.9501" RightMargin="22.0499" TopMargin="770.6284" BottomMargin="265.3716" TouchEnable="True" FontSize="30" Scale9Width="82" Scale9Height="100" ctype="ButtonObjectData">
                 <Size X="82.0000" Y="100.0000" />
                 <Children>
-                  <AbstractNodeData Name="image_hint" ActionTag="-283024118" UserData="ignoreSize" Tag="99" IconVisible="False" LeftMargin="68.4982" RightMargin="-4.4982" TopMargin="-1.4988" BottomMargin="68.4988" Scale9Width="29" Scale9Height="29" ctype="ImageViewObjectData">
+                  <AbstractNodeData Name="image_hint" ActionTag="-283024118" UserData="ignoreSize" Tag="99" IconVisible="False" LeftMargin="68.4982" RightMargin="-15.4982" TopMargin="2.5012" BottomMargin="68.4988" Scale9Width="29" Scale9Height="29" ctype="ImageViewObjectData">
                     <Size X="29.0000" Y="29.0000" />
                     <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                     <Position X="82.9982" Y="82.9988" />
                     <Scale ScaleX="1.0000" ScaleY="1.0000" />
                     <CColor A="255" R="255" G="255" B="255" />
-                    <PrePosition X="0.8925" Y="0.8646" />
+                    <PrePosition X="1.0122" Y="0.8300" />
                     <PreSize X="0.3118" Y="0.3021" />
                     <FileData Type="Normal" Path="ui/jiao.png" Plist="" />
                   </AbstractNodeData>
@@ -213,7 +213,33 @@
                 <OutlineColor A="255" R="255" G="0" B="0" />
                 <ShadowColor A="255" R="110" G="110" B="110" />
               </AbstractNodeData>
-              <AbstractNodeData Name="btn_task" ActionTag="8" UserData="ignoreSize" Tag="126070" IconVisible="False" LeftMargin="432.9193" RightMargin="114.0807" TopMargin="774.2284" BottomMargin="265.7716" TouchEnable="True" FontSize="30" Scale9Width="93" Scale9Height="96" ctype="ButtonObjectData">
+              <AbstractNodeData Name="btn_star" ActionTag="-945703736" UserData="ignoreSize" Tag="946" IconVisible="False" LeftMargin="435.9200" RightMargin="122.0800" TopMargin="770.6284" BottomMargin="265.3716" TouchEnable="True" FontSize="30" Scale9Width="82" Scale9Height="100" ctype="ButtonObjectData">
+                <Size X="82.0000" Y="100.0000" />
+                <Children>
+                  <AbstractNodeData Name="image_hint" ActionTag="-486387882" UserData="ignoreSize" Tag="947" IconVisible="False" LeftMargin="68.4982" RightMargin="-15.4982" TopMargin="2.5012" BottomMargin="68.4988" Scale9Width="29" Scale9Height="29" ctype="ImageViewObjectData">
+                    <Size X="29.0000" Y="29.0000" />
+                    <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                    <Position X="82.9982" Y="82.9988" />
+                    <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                    <CColor A="255" R="255" G="255" B="255" />
+                    <PrePosition X="1.0122" Y="0.8300" />
+                    <PreSize X="0.3118" Y="0.3021" />
+                    <FileData Type="Normal" Path="ui/jiao.png" Plist="" />
+                  </AbstractNodeData>
+                </Children>
+                <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                <Position X="476.9200" Y="315.3716" />
+                <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                <CColor A="255" R="255" G="255" B="255" />
+                <PrePosition X="0.7452" Y="0.2776" />
+                <PreSize X="0.1281" Y="0.0880" />
+                <TextColor A="255" R="0" G="0" B="0" />
+                <PressedFileData Type="Normal" Path="ui/home_star.png" Plist="" />
+                <NormalFileData Type="Normal" Path="ui/home_star.png" Plist="" />
+                <OutlineColor A="255" R="255" G="0" B="0" />
+                <ShadowColor A="255" R="110" G="110" B="110" />
+              </AbstractNodeData>
+              <AbstractNodeData Name="btn_task" ActionTag="8" UserData="ignoreSize" Tag="126070" IconVisible="False" LeftMargin="325.9725" RightMargin="221.0275" TopMargin="774.6284" BottomMargin="265.3716" TouchEnable="True" FontSize="30" Scale9Width="93" Scale9Height="96" ctype="ButtonObjectData">
                 <Size X="93.0000" Y="96.0000" />
                 <Children>
                   <AbstractNodeData Name="image_hint" ActionTag="12" UserData="ignoreSize" Tag="223092" IconVisible="False" LeftMargin="59.8284" RightMargin="4.1716" TopMargin="-3.0988" BottomMargin="70.0988" Scale9Width="29" Scale9Height="29" ctype="ImageViewObjectData">
@@ -228,10 +254,10 @@
                   </AbstractNodeData>
                 </Children>
                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                <Position X="479.4193" Y="313.7716" />
+                <Position X="372.4725" Y="313.3716" />
                 <Scale ScaleX="1.0000" ScaleY="1.0000" />
                 <CColor A="255" R="255" G="255" B="255" />
-                <PrePosition X="0.7491" Y="0.2762" />
+                <PrePosition X="0.5820" Y="0.2759" />
                 <PreSize X="0.1453" Y="0.0845" />
                 <TextColor A="255" R="255" G="255" B="255" />
                 <PressedFileData Type="Normal" Path="ui/home_meirirenwu.png" Plist="" />
@@ -239,7 +265,7 @@
                 <OutlineColor A="255" R="255" G="0" B="0" />
                 <ShadowColor A="255" R="110" G="110" B="110" />
               </AbstractNodeData>
-              <AbstractNodeData Name="btn_activity" ActionTag="9" UserData="ignoreSize" Tag="126071" IconVisible="False" LeftMargin="9.4997" RightMargin="517.5003" TopMargin="128.6917" BottomMargin="891.3083" TouchEnable="True" FontSize="30" ctype="ButtonObjectData">
+              <AbstractNodeData Name="btn_activity" ActionTag="9" UserData="ignoreSize" Tag="126071" IconVisible="False" LeftMargin="-0.4998" RightMargin="527.4998" TopMargin="128.6918" BottomMargin="891.3082" TouchEnable="True" FontSize="30" ctype="ButtonObjectData">
                 <Size X="113.0000" Y="116.0000" />
                 <Children>
                   <AbstractNodeData Name="image_hint" ActionTag="18" UserData="ignoreSize" Tag="223093" IconVisible="False" LeftMargin="81.5000" RightMargin="2.5000" TopMargin="-6.5005" BottomMargin="93.5005" Scale9Width="29" Scale9Height="29" ctype="ImageViewObjectData">
@@ -254,10 +280,10 @@
                   </AbstractNodeData>
                 </Children>
                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                <Position X="65.9997" Y="949.3083" />
+                <Position X="56.0002" Y="949.3082" />
                 <Scale ScaleX="0.8000" ScaleY="0.8000" />
                 <CColor A="255" R="255" G="255" B="255" />
-                <PrePosition X="0.1031" Y="0.8357" />
+                <PrePosition X="0.0875" Y="0.8357" />
                 <PreSize X="0.1766" Y="0.1021" />
                 <TextColor A="255" R="255" G="255" B="255" />
                 <PressedFileData Type="Normal" Path="ui/home_jingcaihuodong.png" Plist="" />
@@ -265,7 +291,7 @@
                 <OutlineColor A="255" R="255" G="0" B="0" />
                 <ShadowColor A="255" R="110" G="110" B="110" />
               </AbstractNodeData>
-              <AbstractNodeData Name="btn_fuli" ActionTag="-1490502738" UserData="ignoreSize" Tag="182" IconVisible="False" LeftMargin="112.5300" RightMargin="414.4700" TopMargin="128.6916" BottomMargin="891.3084" TouchEnable="True" FontSize="30" Scale9Width="113" Scale9Height="116" ctype="ButtonObjectData">
+              <AbstractNodeData Name="btn_fuli" ActionTag="-1490502738" UserData="ignoreSize" Tag="182" IconVisible="False" LeftMargin="104.5256" RightMargin="422.4744" TopMargin="128.6918" BottomMargin="891.3082" TouchEnable="True" FontSize="30" Scale9Width="113" Scale9Height="116" ctype="ButtonObjectData">
                 <Size X="113.0000" Y="116.0000" />
                 <Children>
                   <AbstractNodeData Name="image_hint" ActionTag="-81610467" UserData="ignoreSize" Tag="183" IconVisible="False" LeftMargin="81.5002" RightMargin="2.4998" TopMargin="-6.5005" BottomMargin="93.5005" Scale9Width="29" Scale9Height="29" ctype="ImageViewObjectData">
@@ -280,10 +306,10 @@
                   </AbstractNodeData>
                 </Children>
                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                <Position X="169.0300" Y="949.3084" />
+                <Position X="161.0256" Y="949.3082" />
                 <Scale ScaleX="0.8000" ScaleY="0.8000" />
                 <CColor A="255" R="255" G="255" B="255" />
-                <PrePosition X="0.2641" Y="0.8357" />
+                <PrePosition X="0.2516" Y="0.8357" />
                 <PreSize X="0.1766" Y="0.1021" />
                 <TextColor A="255" R="255" G="255" B="255" />
                 <DisabledFileData Type="Normal" Path="ui/home_fuli.png" Plist="" />
@@ -292,7 +318,7 @@
                 <OutlineColor A="255" R="255" G="0" B="0" />
                 <ShadowColor A="255" R="110" G="110" B="110" />
               </AbstractNodeData>
-              <AbstractNodeData Name="btn_time" ActionTag="3" UserData="ignoreSize" Tag="647382" IconVisible="False" LeftMargin="215.5600" RightMargin="311.4400" TopMargin="128.6916" BottomMargin="891.3084" TouchEnable="True" FontSize="30" ctype="ButtonObjectData">
+              <AbstractNodeData Name="btn_time" ActionTag="3" UserData="ignoreSize" Tag="647382" IconVisible="False" LeftMargin="209.5511" RightMargin="317.4489" TopMargin="128.6918" BottomMargin="891.3082" TouchEnable="True" FontSize="30" ctype="ButtonObjectData">
                 <Size X="113.0000" Y="116.0000" />
                 <Children>
                   <AbstractNodeData Name="image_hint" ActionTag="21" UserData="ignoreSize" Tag="647383" IconVisible="False" LeftMargin="80.3886" RightMargin="3.6114" TopMargin="-6.5005" BottomMargin="93.5005" Scale9Width="29" Scale9Height="29" ctype="ImageViewObjectData">
@@ -307,10 +333,10 @@
                   </AbstractNodeData>
                 </Children>
                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                <Position X="272.0600" Y="949.3084" />
+                <Position X="266.0511" Y="949.3082" />
                 <Scale ScaleX="0.8000" ScaleY="0.8000" />
                 <CColor A="255" R="255" G="255" B="255" />
-                <PrePosition X="0.4251" Y="0.8357" />
+                <PrePosition X="0.4157" Y="0.8357" />
                 <PreSize X="0.1766" Y="0.1021" />
                 <TextColor A="255" R="255" G="255" B="255" />
                 <PressedFileData Type="Normal" Path="ui/home_time.png" Plist="" />
@@ -318,7 +344,7 @@
                 <OutlineColor A="255" R="255" G="0" B="0" />
                 <ShadowColor A="255" R="110" G="110" B="110" />
               </AbstractNodeData>
-              <AbstractNodeData Name="btn_welfare_recharge" ActionTag="784206891" UserData="ignoreSize" Tag="345" IconVisible="False" LeftMargin="323.6241" RightMargin="203.3759" TopMargin="128.6914" BottomMargin="891.3086" TouchEnable="True" FontSize="30" Scale9Width="113" Scale9Height="116" ctype="ButtonObjectData">
+              <AbstractNodeData Name="btn_welfare_recharge" ActionTag="784206891" UserData="ignoreSize" Tag="345" IconVisible="False" LeftMargin="314.5766" RightMargin="212.4234" TopMargin="128.6915" BottomMargin="891.3085" TouchEnable="True" FontSize="30" Scale9Width="113" Scale9Height="116" ctype="ButtonObjectData">
                 <Size X="113.0000" Y="116.0000" />
                 <Children>
                   <AbstractNodeData Name="image_hint" ActionTag="1344698776" UserData="ignoreSize" Tag="346" IconVisible="False" LeftMargin="80.3892" RightMargin="3.6108" TopMargin="-6.5005" BottomMargin="93.5005" Scale9Width="29" Scale9Height="29" ctype="ImageViewObjectData">
@@ -333,10 +359,10 @@
                   </AbstractNodeData>
                 </Children>
                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                <Position X="380.1241" Y="949.3086" />
+                <Position X="371.0766" Y="949.3085" />
                 <Scale ScaleX="0.8000" ScaleY="0.8000" />
                 <CColor A="255" R="255" G="255" B="255" />
-                <PrePosition X="0.5939" Y="0.8357" />
+                <PrePosition X="0.5798" Y="0.8357" />
                 <PreSize X="0.1766" Y="0.1021" />
                 <TextColor A="255" R="255" G="255" B="255" />
                 <PressedFileData Type="Normal" Path="ui/home_welfare_recharge.png" Plist="" />
@@ -344,7 +370,7 @@
                 <OutlineColor A="255" R="255" G="0" B="0" />
                 <ShadowColor A="255" R="110" G="110" B="110" />
               </AbstractNodeData>
-              <AbstractNodeData Name="btn_trial" ActionTag="31" UserData="ignoreSize" Tag="702308" IconVisible="False" LeftMargin="424.6193" RightMargin="102.3807" TopMargin="128.6916" BottomMargin="891.3084" TouchEnable="True" FontSize="30" ctype="ButtonObjectData">
+              <AbstractNodeData Name="btn_trial" ActionTag="31" UserData="ignoreSize" Tag="702308" IconVisible="False" LeftMargin="419.6020" RightMargin="107.3980" TopMargin="128.6918" BottomMargin="891.3082" TouchEnable="True" FontSize="30" ctype="ButtonObjectData">
                 <Size X="113.0000" Y="116.0000" />
                 <Children>
                   <AbstractNodeData Name="image_hint" ActionTag="32" UserData="ignoreSize" Tag="702309" IconVisible="False" LeftMargin="80.3892" RightMargin="3.6108" TopMargin="-6.5005" BottomMargin="93.5005" Scale9Width="29" Scale9Height="29" ctype="ImageViewObjectData">
@@ -359,10 +385,10 @@
                   </AbstractNodeData>
                 </Children>
                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                <Position X="481.1193" Y="949.3084" />
+                <Position X="476.1020" Y="949.3082" />
                 <Scale ScaleX="0.8000" ScaleY="0.8000" />
                 <CColor A="255" R="255" G="255" B="255" />
-                <PrePosition X="0.7517" Y="0.8357" />
+                <PrePosition X="0.7439" Y="0.8357" />
                 <PreSize X="0.1766" Y="0.1021" />
                 <TextColor A="255" R="255" G="255" B="255" />
                 <PressedFileData Type="Normal" Path="ui/home_trial.png" Plist="" />

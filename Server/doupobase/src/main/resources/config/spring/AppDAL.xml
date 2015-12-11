@@ -8,6 +8,34 @@
 	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
 	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
 
+	<bean id="DictHoldStarGradeRewardDAL"  class="com.huayi.doupo.base.dal.DictHoldStarGradeRewardDAL">
+		<property name="jdbcTemplate" ref="JdbcTemplate" />
+	</bean>
+
+	<bean id="DictHoldStarRewardRefreshTimesDAL"  class="com.huayi.doupo.base.dal.DictHoldStarRewardRefreshTimesDAL">
+		<property name="jdbcTemplate" ref="JdbcTemplate" />
+	</bean>
+
+	<bean id="DictHoldStarStepDAL"  class="com.huayi.doupo.base.dal.DictHoldStarStepDAL">
+		<property name="jdbcTemplate" ref="JdbcTemplate" />
+	</bean>
+
+	<bean id="InstPlayerHoldStarDAL"  class="com.huayi.doupo.base.dal.InstPlayerHoldStarDAL">
+		<property name="jdbcTemplate" ref="JdbcTemplate" />
+	</bean>
+
+	<bean id="DictHoldStarGradeDAL"  class="com.huayi.doupo.base.dal.DictHoldStarGradeDAL">
+		<property name="jdbcTemplate" ref="JdbcTemplate" />
+	</bean>
+
+	<bean id="DictHoldStarZodiacDAL"  class="com.huayi.doupo.base.dal.DictHoldStarZodiacDAL">
+		<property name="jdbcTemplate" ref="JdbcTemplate" />
+	</bean>
+
+	<bean id="DictHoldStarRewardPosDAL"  class="com.huayi.doupo.base.dal.DictHoldStarRewardPosDAL">
+		<property name="jdbcTemplate" ref="JdbcTemplate" />
+	</bean>
+
 	<bean id="DictWorldBossDAL"  class="com.huayi.doupo.base.dal.DictWorldBossDAL">
 		<property name="jdbcTemplate" ref="JdbcTemplate" />
 	</bean>

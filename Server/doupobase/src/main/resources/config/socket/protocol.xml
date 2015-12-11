@@ -253,6 +253,19 @@
 	<action id="1253" class="com.huayi.doupo.logic.entry.WorldBossEnt" method="sendBossShop" description="下发世界Boss屠魔商店信息" />
 	<action id="1254" class="com.huayi.doupo.logic.entry.WorldBossEnt" method="exchangeBossShop" description="屠魔商店兑换" />
 	<action id="1255" class="com.huayi.doupo.logic.entry.WorldBossEnt" method="openBossBigBox" description="世界boss开大宝箱" />
+	<action id="1256" class="com.huayi.doupo.logic.entry.HoldStarEnt" method="intoHoldStar" description="进入占星" />
+	<action id="1257" class="com.huayi.doupo.logic.entry.HoldStarEnt" method="selectHoldStarGrade" description="选择占星等级档" />
+	<action id="1258" class="com.huayi.doupo.logic.entry.HoldStarEnt" method="refreshStarZodiac" description="刷新星座" />
+	<action id="1259" class="com.huayi.doupo.logic.entry.HoldStarEnt" method="refreshStarReward" description="刷新占星奖励" />
+	<action id="1260" class="com.huayi.doupo.logic.entry.UnionWarEnt" method="join" description="盟战报名" />
+	<action id="1261" class="com.huayi.doupo.logic.entry.UnionWarEnt" method="disjoin" description="盟战取消报名" />
+	<action id="1262" class="com.huayi.doupo.logic.entry.UnionWarEnt" method="sort" description="盟战排序" />
+	<action id="1263" class="com.huayi.doupo.logic.entry.UnionWarEnt" method="ambush" description="盟战设置伏兵" />
+	<action id="1264" class="com.huayi.doupo.logic.entry.UnionWarEnt" method="unambush" description="盟战取消设伏" />
+	<action id="1265" class="com.huayi.doupo.logic.entry.UnionWarEnt" method="fight" description="盟战入阵" />
+	<action id="1266" class="com.huayi.doupo.logic.entry.HoldStarEnt" method="holdStar" description="占星" />
+	<action id="1267" class="com.huayi.doupo.logic.entry.HoldStarEnt" method="oneKeyGet" description="一键领取" />
+	<action id="1270" class="com.huayi.doupo.logic.entry.ActivityEnt" method="intoLimitActivity" description="进入限时活动" />
 	
 	<action id="3000" class="com.huayi.doupo.logic.entry.PlayerEnt" method="login1" description="玩家登陆,无数据库操作" />
 	<action id="3001" class="com.huayi.doupo.logic.entry.PlayerEnt" method="login2" description="玩家登陆,只有数据库操作" />

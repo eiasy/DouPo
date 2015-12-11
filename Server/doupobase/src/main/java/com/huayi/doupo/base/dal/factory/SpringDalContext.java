@@ -2,6 +2,13 @@ package com.huayi.doupo.base.dal.factory;
 
 public class SpringDalContext {
 
+	public static final String DictHoldStarGradeRewardDAL = "DictHoldStarGradeRewardDAL";
+	public static final String DictHoldStarRewardRefreshTimesDAL = "DictHoldStarRewardRefreshTimesDAL";
+	public static final String DictHoldStarStepDAL = "DictHoldStarStepDAL";
+	public static final String InstPlayerHoldStarDAL = "InstPlayerHoldStarDAL";
+	public static final String DictHoldStarGradeDAL = "DictHoldStarGradeDAL";
+	public static final String DictHoldStarZodiacDAL = "DictHoldStarZodiacDAL";
+	public static final String DictHoldStarRewardPosDAL = "DictHoldStarRewardPosDAL";
 	public static final String DictWorldBossDAL = "DictWorldBossDAL";
 	public static final String InstWorldBossDAL = "InstWorldBossDAL";
 	public static final String DictWorldBossStoreDAL = "DictWorldBossStoreDAL";
@@ -280,4 +287,5 @@ public class SpringDalContext {
 	public static final String FightSoulHandler = "FightSoulHandler";
 	public static final String WingHandler = "WingHandler";
 	public static final String YFireHandler = "YFireHandler";
+	public static final String HoldStarHandler = "HoldStarHandler";
 }

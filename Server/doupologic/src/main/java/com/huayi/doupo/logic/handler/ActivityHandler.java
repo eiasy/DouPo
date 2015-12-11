@@ -28,6 +28,7 @@ import com.huayi.doupo.base.model.DictActivityDailyDeals;
 import com.huayi.doupo.base.model.DictActivityFlashSale;
 import com.huayi.doupo.base.model.DictActivityFund;
 import com.huayi.doupo.base.model.DictActivityGrabTheHour;
+import com.huayi.doupo.base.model.DictActivityHoliday;
 import com.huayi.doupo.base.model.DictActivityLevelBag;
 import com.huayi.doupo.base.model.DictActivityLimitShopping;
 import com.huayi.doupo.base.model.DictActivityLimitTimeHeroJiFenReward;
@@ -79,6 +80,7 @@ import com.huayi.doupo.base.model.dict.DictMapList;
 import com.huayi.doupo.base.model.socket.Player;
 import com.huayi.doupo.base.model.statics.StaticAchievementType;
 import com.huayi.doupo.base.model.statics.StaticActivity;
+import com.huayi.doupo.base.model.statics.StaticActivityHoliday;
 import com.huayi.doupo.base.model.statics.StaticBigTable;
 import com.huayi.doupo.base.model.statics.StaticCnServer;
 import com.huayi.doupo.base.model.statics.StaticFunctionOpen;
@@ -3511,6 +3513,8 @@ public class ActivityHandler extends BaseHandler {
 			}
 			retMsgData.putIntItem("4", ownRank);
 		}
+		
+		retMsgData.putStringItem("firstNames", ParamConfig.strogherHeroNumOnes);
 
 		MessageUtil.sendSuccMsg(channelId, msgMap, retMsgData);
 	}
@@ -4294,4 +4298,32 @@ public class ActivityHandler extends BaseHandler {
 		}
 		ThreadManager.execute(new DantaHandlerRun(msgMap, channelId));
 	}
+
+	/**
+	 * 进入限时活动
+	 * @author mp
+	 * @date 2015-12-9 上午11:01:26
+	 * @param msgMap
+	 * @param channelId
+	 * @throws Exception
+	 * @Description
+	 */
+	@Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
+	public void intoLimitActivity (Map<String, Object> msgMap, String channelId) throws Exception {
+		int checkInstPlayerId = getInstPlayerId(channelId);// 玩家实例Id
+		if (checkInstPlayerId == 0) {
+			MessageUtil.sendFailMsg(channelId, msgMap, StaticCnServer.fail_PlayerIdVerfy);
+			return;
+		}
+		
+		MessageData retMsgData = new MessageData();
+		
+		int strogerHeroHoliday = 0;
+		if (ActivityUtil.isInHolidayActivity(StaticActivityHoliday.strogerHeroHoliday)) {
+			strogerHeroHoliday = 1;
+		}
+		retMsgData.putIntItem("1", strogerHeroHoliday);////当天是否为巅峰强者节日版  0-不是   1-是
+		MessageUtil.sendSuccMsg(channelId, msgMap, retMsgData);
+	}
+
 }

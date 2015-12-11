@@ -184,6 +184,9 @@ require "ui_buy_slive"
 require "ui_boss_award"
 require "ui_boss_hint"
 require "ui_boss_shop"
+require "ui_star"
+require "ui_star_lighten"
+require "ui_star_reward"
 
 function ccui.Layout:loadTexture(str)
     local name = self:getName() .. "_old"
@@ -394,7 +397,10 @@ local uiMapClass = {
     ui_buy_slive =UIBuySlive,
     ui_boss_award = UIBossAward,
     ui_boss_hint = UIBossHint,
-    ui_boss_shop = UIBossShop
+    ui_boss_shop = UIBossShop,
+    ui_star = UIStar ,
+    ui_star_lighten = UIStarLighten ,
+    ui_star_reward = UIStarReward
 }
 
 function WidgetManager.create(jsonFileName)

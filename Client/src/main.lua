@@ -22,7 +22,6 @@ require "SectorView"
 require "net"
 require "uimanager"
 require "SDK"
-
 -- cclog
 cclog = function(...)
     print(string.format(...))
@@ -182,6 +181,7 @@ function resetSceneTimes()
 	cclog("次日重置时间和次数")
 	UIAwardSign.DictActivitySignIn1 = {}
 	UIAwardSign.DictActivitySignIn2 = {}
+    UIStar.curChooseG = 0
 	if utils.countDownScheduleId ~= nil then
 		if utils.countDownScheduleId then 
 			cc.Director:getInstance():getScheduler():unscheduleScriptEntry(utils.countDownScheduleId)

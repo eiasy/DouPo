@@ -133,6 +133,7 @@ local  function setScrollViewItem(_Item, obj, _isNewBarrier)
                     param.chapterId = chapterId
                     param.barrierId = barrierId
                     if UIGuidePeople.guideStep and FightTaskData.FightData[chapterId] and FightTaskData.FightData[chapterId][barrierId] then 
+	                  FightTaskData.FightData[chapterId][barrierId].record = nil
                       UIFightMain.setData(FightTaskData.FightData[chapterId][barrierId],param,dp.FightType.FIGHT_TASK.COMMON)
                       UIFightMain.loading()
                     else 
@@ -843,6 +844,10 @@ function UIFightTask.onEnter()
     end
     UIFightTask.isFlush = nil
     utils.addImageHint(UIActivityTrial.checkImageHint(0,true),btn_trial,100,20,20)
+
+    if (not UIGuidePeople.guideStep) and UIGuidePeople.levelStep then
+        UIGuidePeople.checkLevelGuide()
+    end
 end
 
 function UIFightTask.showPosterDialog()

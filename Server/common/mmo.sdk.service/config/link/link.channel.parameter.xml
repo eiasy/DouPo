@@ -99,6 +99,13 @@
 			value="Jxkhu2XxnuXjgTWkuHZNSSHqNTar5IYz5Pe1Dbxw4fXhf061wV4YIXsQbAlQLLkI" />
 		<parameter name="yiyou_appsecret_ios"
 			value="dMkNXcplLVvGnh4UZ83ClPXSEcIjDAPZuPfwYis0gOp16JzEISVwNCVIAMyONIhV" />
+			
+		<parameter name="iosy2game_appId_ios" value="56" />
+		<parameter name="iosy2game_url_ios"
+			value="http://ios.y2game.net/openapi/checksession.php" />
+		<parameter name="iosy2game_appkey_ios" value="QVKcXCCsn95VACorwDelHhQv29Ve3lIo" />
+		<parameter name="iosy2game_appsecret_ios"
+			value="GrVkpyMTbfYouELHilQa4pqCMrfoUywmokYQIROGRJKfh30lWpkmkTT6p7sVD9dG" />
 
 		<!-- 易接参数 -->
 		<parameter name="yijie_self" value="self" />

@@ -15,6 +15,7 @@ public class PlayerMemObj {
 	public ConcurrentHashMap<Integer, InstPlayerDailyTask> instPlayerDailyTaskMap = new ConcurrentHashMap<Integer, InstPlayerDailyTask>();
 	public ConcurrentHashMap<Integer, DictDantaDayAward> dictDantaDayAwardMap = null;
 	public ConcurrentHashMap<Integer, DictUnionGrade> dictUnionGradeMap = null;
+	public ConcurrentHashMap<Integer, InstPlayerHoldStar> instPlayerHoldStarMap = new ConcurrentHashMap<Integer, InstPlayerHoldStar>();
 	public ConcurrentHashMap<Integer, DictWorldBossReward> dictWorldBossRewardMap = null;
 	public ConcurrentHashMap<Integer, DictAchievementType> dictAchievementTypeMap = null;
 	public ConcurrentHashMap<Integer, DictActivityLvStore> dictActivityLvStoreMap = null;
@@ -30,6 +31,7 @@ public class PlayerMemObj {
 	public ConcurrentHashMap<Integer, DictFireSkill> dictFireSkillMap = null;
 	public ConcurrentHashMap<Integer, DictActivityLuck> dictActivityLuckMap = null;
 	public ConcurrentHashMap<Integer, DictBeautyCardExp> dictBeautyCardExpMap = null;
+	public ConcurrentHashMap<Integer, DictHoldStarGradeReward> dictHoldStarGradeRewardMap = null;
 	public ConcurrentHashMap<Integer, DictActivityLimitTimeHeroRankReward> dictActivityLimitTimeHeroRankRewardMap = null;
 	public ConcurrentHashMap<Integer, InstUnionMember> instUnionMemberMap = new ConcurrentHashMap<Integer, InstUnionMember>();
 	public ConcurrentHashMap<Integer, InstPlayerBagExpand> instPlayerBagExpandMap = new ConcurrentHashMap<Integer, InstPlayerBagExpand>();
@@ -66,6 +68,7 @@ public class PlayerMemObj {
 	public ConcurrentHashMap<Integer, DictRestore> dictRestoreMap = null;
 	public ConcurrentHashMap<Integer, DictArenaInterval> dictArenaIntervalMap = null;
 	public ConcurrentHashMap<Integer, DictBarrierDrop> dictBarrierDropMap = null;
+	public ConcurrentHashMap<Integer, DictHoldStarStep> dictHoldStarStepMap = null;
 	public ConcurrentHashMap<Integer, DictActivityStrogerHero> dictActivityStrogerHeroMap = null;
 	public ConcurrentHashMap<Integer, DictWingAdvance> dictWingAdvanceMap = null;
 	public ConcurrentHashMap<Integer, InstPlayerGoldStatics> instPlayerGoldStaticsMap = new ConcurrentHashMap<Integer, InstPlayerGoldStatics>();
@@ -124,6 +127,7 @@ public class PlayerMemObj {
 	public ConcurrentHashMap<Integer, DictWorldBossTimesReward> dictWorldBossTimesRewardMap = null;
 	public ConcurrentHashMap<Integer, InstPlayerPartner> instPlayerPartnerMap = new ConcurrentHashMap<Integer, InstPlayerPartner>();
 	public ConcurrentHashMap<Integer, InstPlayerAchievementValue> instPlayerAchievementValueMap = new ConcurrentHashMap<Integer, InstPlayerAchievementValue>();
+	public ConcurrentHashMap<Integer, DictHoldStarGrade> dictHoldStarGradeMap = null;
 	public ConcurrentHashMap<Integer, InstPlayerMail> instPlayerMailMap = new ConcurrentHashMap<Integer, InstPlayerMail>();
 	public ConcurrentHashMap<Integer, InstActivityLevelBag> instActivityLevelBagMap = new ConcurrentHashMap<Integer, InstActivityLevelBag>();
 	public ConcurrentHashMap<Integer, DictTrainProp> dictTrainPropMap = null;
@@ -137,14 +141,15 @@ public class PlayerMemObj {
 	public ConcurrentHashMap<Integer, DictPillQuality> dictPillQualityMap = null;
 	public ConcurrentHashMap<Integer, InstPlayerPrivateSale> instPlayerPrivateSaleMap = new ConcurrentHashMap<Integer, InstPlayerPrivateSale>();
 	public ConcurrentHashMap<Integer, InstAuctionShop> instAuctionShopMap = new ConcurrentHashMap<Integer, InstAuctionShop>();
+//	public ConcurrentHashMap<Integer, InstUnionWar> instUnionWarMap = new ConcurrentHashMap<Integer, InstUnionWar>();
 	public ConcurrentHashMap<Integer, InstPlayerArenaNPC> instPlayerArenaNPCMap = new ConcurrentHashMap<Integer, InstPlayerArenaNPC>();
 	public ConcurrentHashMap<Integer, SysMsgRule> sysMsgRuleMap = null;
 	public ConcurrentHashMap<Integer, DictGenerBoxThing> dictGenerBoxThingMap = null;
 	public ConcurrentHashMap<Integer, DictRecruitSpecialCard> dictRecruitSpecialCardMap = null;
 	public ConcurrentHashMap<Integer, SysStatics> sysStaticsMap = null;
 	public ConcurrentHashMap<Integer, DictActivityDailyDeals> dictActivityDailyDealsMap = null;
-	public ConcurrentHashMap<Integer, DictFunctionOpen> dictFunctionOpenMap = null;
 	public ConcurrentHashMap<Integer, DictTryToPracticeBarrierCard> dictTryToPracticeBarrierCardMap = null;
+	public ConcurrentHashMap<Integer, DictFunctionOpen> dictFunctionOpenMap = null;
 	public ConcurrentHashMap<Integer, DictQuality> dictQualityMap = null;
 	public ConcurrentHashMap<Integer, DictPagodaFormation> dictPagodaFormationMap = null;
 	public ConcurrentHashMap<Integer, DictColor> dictColorMap = null;
@@ -163,6 +168,7 @@ public class PlayerMemObj {
 	public ConcurrentHashMap<Integer, InstPlayerLoot> instPlayerLootMap = new ConcurrentHashMap<Integer, InstPlayerLoot>();
 	public ConcurrentHashMap<Integer, InstUnionBox> instUnionBoxMap = new ConcurrentHashMap<Integer, InstUnionBox>();
 	public ConcurrentHashMap<Integer, DictVIP> dictVIPMap = null;
+//	public ConcurrentHashMap<Integer, InstUnionWarVideo> instUnionWarVideoMap = new ConcurrentHashMap<Integer, InstUnionWarVideo>();
 	public ConcurrentHashMap<Integer, InstRankDantaDay> instRankDantaDayMap = new ConcurrentHashMap<Integer, InstRankDantaDay>();
 	public ConcurrentHashMap<Integer, DictSysConfigStr> dictSysConfigStrMap = null;
 	public ConcurrentHashMap<Integer, DictActivityAllPeapleWeal> dictActivityAllPeapleWealMap = null;
@@ -185,6 +191,7 @@ public class PlayerMemObj {
 	public ConcurrentHashMap<Integer, DictWingLuck> dictWingLuckMap = null;
 	public ConcurrentHashMap<Integer, DictActivityStarStore> dictActivityStarStoreMap = null;
 	public ConcurrentHashMap<Integer, InstPlayerConstell> instPlayerConstellMap = new ConcurrentHashMap<Integer, InstPlayerConstell>();
+//	public ConcurrentHashMap<Integer, DictUnionWar> dictUnionWarMap = null;
 	public ConcurrentHashMap<Integer, DictEquipSuit> dictEquipSuitMap = null;
 	public ConcurrentHashMap<Integer, DictCoefficient> dictCoefficientMap = null;
 	public ConcurrentHashMap<Integer, DictAuctionHJY> dictAuctionHJYMap = null;
@@ -205,6 +212,7 @@ public class PlayerMemObj {
 	public ConcurrentHashMap<Integer, DictFireSkillChange> dictFireSkillChangeMap = null;
 	public ConcurrentHashMap<Integer, DictHJYStore> dictHJYStoreMap = null;
 	public ConcurrentHashMap<Integer, DictActivityMonthCardStoreTemp> dictActivityMonthCardStoreTempMap = null;
+	public ConcurrentHashMap<Integer, DictHoldStarZodiac> dictHoldStarZodiacMap = null;
 	public ConcurrentHashMap<Integer, DictUnionStore> dictUnionStoreMap = null;
 	public ConcurrentHashMap<Integer, InstPlayerStore> instPlayerStoreMap = new ConcurrentHashMap<Integer, InstPlayerStore>();
 	public ConcurrentHashMap<Integer, InstChapterActivity> instChapterActivityMap = new ConcurrentHashMap<Integer, InstChapterActivity>();
@@ -228,6 +236,7 @@ public class PlayerMemObj {
 	public ConcurrentHashMap<Integer, DictWorldBoss> dictWorldBossMap = null;
 	public ConcurrentHashMap<Integer, DictWingStrengthen> dictWingStrengthenMap = null;
 	public ConcurrentHashMap<Integer, DictTryToPractice> dictTryToPracticeMap = null;
+	public ConcurrentHashMap<Integer, DictHoldStarRewardPos> dictHoldStarRewardPosMap = null;
 	public ConcurrentHashMap<Integer, DictSysConfig> dictSysConfigMap = null;
 	public ConcurrentHashMap<Integer, DictThing> dictThingMap = null;
 	public ConcurrentHashMap<Integer, DictTableType> dictTableTypeMap = null;
@@ -247,6 +256,7 @@ public class PlayerMemObj {
 	public ConcurrentHashMap<Integer, InstPlayer> instPlayerMap = new ConcurrentHashMap<Integer, InstPlayer>();
 	public ConcurrentHashMap<Integer, DictArenaAdvance> dictArenaAdvanceMap = null;
 	public ConcurrentHashMap<Integer, DictCardType> dictCardTypeMap = null;
+//	public ConcurrentHashMap<Integer, InstUnionWarContributionRank> instUnionWarContributionRankMap = new ConcurrentHashMap<Integer, InstUnionWarContributionRank>();
 	public ConcurrentHashMap<Integer, DictStrogerEquip> dictStrogerEquipMap = null;
 	public ConcurrentHashMap<Integer, DictEquipStrengthen> dictEquipStrengthenMap = null;
 	public ConcurrentHashMap<Integer, DictActivityFlashSale> dictActivityFlashSaleMap = null;
@@ -256,6 +266,7 @@ public class PlayerMemObj {
 	public ConcurrentHashMap<Integer, DictCardLuck> dictCardLuckMap = null;
 	public ConcurrentHashMap<Integer, DictArenaReward> dictArenaRewardMap = null;
 	public ConcurrentHashMap<Integer, InstPlayerGmReward> instPlayerGmRewardMap = new ConcurrentHashMap<Integer, InstPlayerGmReward>();
+	public ConcurrentHashMap<Integer, DictHoldStarRewardRefreshTimes> dictHoldStarRewardRefreshTimesMap = null;
 	public ConcurrentHashMap<Integer, DictStarLevel> dictStarLevelMap = null;
 	public ConcurrentHashMap<Integer, InstLuckRank> instLuckRankMap = new ConcurrentHashMap<Integer, InstLuckRank>();
 	public ConcurrentHashMap<Integer, DictAchievement> dictAchievementMap = null;

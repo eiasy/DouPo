@@ -1419,6 +1419,17 @@ function Fight.doUnload()
 	--ccs.ArmatureDataManager:getInstance():removeArmatureFileInfo("ani/Manual1/Manual1.ExportJson")
 end
 
+--计算战斗，战斗录像及结果保存在data.record、data.record.result中。
+function Fight.calcFight(data,cb)
+	local fightCalc = require"fightcalc"
+	fightCalc.doInit(data)
+	fightCalc.doFree()
+	if cb then
+		local result = data.result
+		cb(result.isWin,result.fightIndex,result.bigRound,result.myDeaths,result.hpPercent,result.bossDamage,false,result.fightersHP)
+	end
+end
+
 --设置出手扫描顺序
 function Fight.resetPriorityMap()
 	if Fight.initData.isSelfFirst then

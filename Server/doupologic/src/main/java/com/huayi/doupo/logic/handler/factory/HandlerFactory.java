@@ -103,6 +103,10 @@ public class HandlerFactory {
 		return	(YFireHandler) SpringUtil.GetObjectWithSpringContext(SpringDalContext.YFireHandler);
 	}
 	
+	public static HoldStarHandler getHoldStarHandler() {
+		return	(HoldStarHandler) SpringUtil.GetObjectWithSpringContext(SpringDalContext.HoldStarHandler);
+	}
+	
 }
 
 

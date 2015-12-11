@@ -83,6 +83,18 @@
                         <OutlineColor A="255" R="255" G="0" B="0" />
                         <ShadowColor A="255" R="110" G="110" B="110" />
                       </AbstractNodeData>
+                      <AbstractNodeData Name="text_hero_1" ActionTag="-2072641759" Tag="76" VisibleForFrame="False" IconVisible="False" LeftMargin="8.1591" RightMargin="-1.1591" TopMargin="16.2194" BottomMargin="-68.2194" IsCustomSize="True" FontSize="22" LabelText="活动规则：&#xA;      1.每消耗1元宝即可获得1积分。&#xA;      2.积分在本服排名前20都能获得对应排名奖励。&#xA;      3.积分相同时，先达到该积分的玩家排名居前。&#xA;      4.在设定的三个时间节点，每个时间点积分排名第一的玩家可以领取对应奖励。&#xA;      5.未入榜玩家只能看到排行榜第16-20名，如果玩家积分进入排行榜，那么只可以看到本人排名及本人前后共5名玩家的排行。&#xA;      6.设定的3个时间点为3个活动周期，3个周期各自独立不进行累计，每个活动周期结束后清空当前周期内活动积分并重新开始下个周期积分，例如：0点到12点为一个活动周期，周期结束发放本周期活动排名奖励并清空本周期积分，下个周期积分重新计算，望玩家注意！" OutlineSize="1" ShadowOffsetX="2" ShadowOffsetY="-2" ctype="TextObjectData">
+                        <Size X="473.0000" Y="484.0000" />
+                        <AnchorPoint ScaleY="1.0000" />
+                        <Position X="8.1591" Y="415.7806" />
+                        <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                        <CColor A="255" R="255" G="255" B="172" />
+                        <PrePosition X="0.0170" Y="0.9625" />
+                        <PreSize X="0.9854" Y="1.1204" />
+                        <FontResource Type="Normal" Path="data/ui_font.ttf" Plist="" />
+                        <OutlineColor A="255" R="255" G="0" B="0" />
+                        <ShadowColor A="255" R="110" G="110" B="110" />
+                      </AbstractNodeData>
                       <AbstractNodeData Name="text_dial" ActionTag="-682906573" Tag="155" VisibleForFrame="False" IconVisible="False" LeftMargin="8.1591" RightMargin="-1.1591" TopMargin="16.2194" BottomMargin="-291.2194" IsCustomSize="True" FontSize="22" LabelText="活动开始后玩家可以启动轮盘凭借运气获得轮盘内的奖励！&#xA;&#xA;活动规则：&#xA;1.轮盘由八项奖励构成，启动轮盘需要消耗元宝，有机会获得轮盘内的奖励&#xA;&#xA;2.启动之前如果对轮盘内的奖励不满意可以使用轮盘刷新功能，刷新后轮盘内的奖励会被刷新一次&#xA;&#xA;3.轮盘内奖励分“限定奖励”和“普通奖励”两类&#xA;（限定奖励：有个数限制，任何玩家转出限定奖励之后对应的限定奖励数量减1，数量为0之后轮盘内将不再出现。）&#xA;&#xA;4.最终排名：活动结束后，会根据积分排行榜发放奖励，具体奖励请点击活动界面，“查看排行大奖”&#xA;&#xA;5.积分计算规则：&#xA;玩家每成功启动一次转盘增加10点积分，启动十次功能增加120积分，&#xA;玩家每用元宝刷新一次奖励增加1点积分。&#xA;&#xA;6.活动结束之后，根据积分排行发放活动大奖。" OutlineSize="1" ShadowOffsetX="2" ShadowOffsetY="-2" ctype="TextObjectData">
                         <Size X="473.0000" Y="707.0000" />
                         <AnchorPoint ScaleY="1.0000" />
@@ -175,6 +187,18 @@
                         <CColor A="255" R="255" G="255" B="172" />
                         <PrePosition X="0.0170" Y="0.9625" />
                         <PreSize X="0.9854" Y="0.9444" />
+                        <FontResource Type="Normal" Path="data/ui_font.ttf" Plist="" />
+                        <OutlineColor A="255" R="255" G="0" B="0" />
+                        <ShadowColor A="255" R="110" G="110" B="110" />
+                      </AbstractNodeData>
+                      <AbstractNodeData Name="text_star" ActionTag="-468527549" Tag="93" VisibleForFrame="False" IconVisible="False" LeftMargin="8.1588" RightMargin="-1.1588" TopMargin="16.2195" BottomMargin="-61.2195" IsCustomSize="True" FontSize="22" LabelText="活动规则：&#xA;      1、通过选择占卜星盘点亮上方目标星盘，积累星数获得奖励，达到指定的星数可领取对应奖励。&#xA;      2、占卜任意星盘都可获得星数，点亮目标星盘中的全部星盘，额外增加星数奖励。额外奖励星数每轮都会增加。&#xA;      3、每日凌晨刷新占卜次数、奖励、当前星数。&#xA;      4、三个观星台的奖励不同，开启等级越高，可获得的奖励越丰厚。&#xA;      5、通过在奖励界面刷新，可更换奖励物品。&#xA;      6、三个观星台每天只能进入其中一个占卜，进入一个观星台，占卜或刷新操作之后，不允许再进行其他观星台的占卜。" OutlineSize="1" ShadowOffsetX="2" ShadowOffsetY="-2" ctype="TextObjectData">
+                        <Size X="473.0000" Y="477.0000" />
+                        <AnchorPoint ScaleY="1.0000" />
+                        <Position X="8.1588" Y="415.7805" />
+                        <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                        <CColor A="255" R="255" G="255" B="172" />
+                        <PrePosition X="0.0170" Y="0.9625" />
+                        <PreSize X="0.9854" Y="1.1042" />
                         <FontResource Type="Normal" Path="data/ui_font.ttf" Plist="" />
                         <OutlineColor A="255" R="255" G="0" B="0" />
                         <ShadowColor A="255" R="110" G="110" B="110" />

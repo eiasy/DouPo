@@ -201,7 +201,7 @@
                         <OutlineColor A="255" R="83" G="64" B="17" />
                         <ShadowColor A="255" R="110" G="110" B="110" />
                       </AbstractNodeData>
-                      <AbstractNodeData Name="text_time" ActionTag="5573617" Tag="297" IconVisible="False" LeftMargin="-5.0859" RightMargin="-7.9141" TopMargin="39.0066" BottomMargin="-35.0066" FontSize="22" LabelText="24:55:55后免费" OutlineSize="1" OutlineEnabled="True" ShadowOffsetX="2" ShadowOffsetY="-2" ctype="TextObjectData">
+                      <AbstractNodeData Name="text_time" ActionTag="5573617" Tag="297" IconVisible="False" LeftMargin="5.9141" RightMargin="3.0859" TopMargin="40.0066" BottomMargin="-34.0066" FontSize="22" LabelText="24:55:55后免费" OutlineSize="1" OutlineEnabled="True" ShadowOffsetX="2" ShadowOffsetY="-2" ctype="TextObjectData">
                         <Size X="178.0000" Y="30.0000" />
                         <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                         <Position X="94.9141" Y="-19.0066" />
@@ -569,7 +569,7 @@
                                     <OutlineColor A="255" R="255" G="0" B="0" />
                                     <ShadowColor A="255" R="110" G="110" B="110" />
                                   </AbstractNodeData>
-                                  <AbstractNodeData Name="image_frame_good1" ActionTag="1737837932" Tag="633" IconVisible="False" LeftMargin="6.1009" RightMargin="194.8991" TopMargin="11.7451" BottomMargin="-6.7451" Scale9Width="105" Scale9Height="103" ctype="ImageViewObjectData">
+                                  <AbstractNodeData Name="image_frame_good1" ActionTag="1737837932" Tag="633" IconVisible="False" LeftMargin="-7.8984" RightMargin="208.8984" TopMargin="11.7457" BottomMargin="-6.7457" Scale9Width="105" Scale9Height="103" ctype="ImageViewObjectData">
                                     <Size X="105.0000" Y="103.0000" />
                                     <Children>
                                       <AbstractNodeData Name="image_good" ActionTag="1767280542" Tag="634" IconVisible="False" LeftMargin="12.5000" RightMargin="12.5000" TopMargin="11.5000" BottomMargin="11.5000" Scale9Width="80" Scale9Height="80" ctype="ImageViewObjectData">
@@ -596,14 +596,14 @@
                                       </AbstractNodeData>
                                     </Children>
                                     <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                                    <Position X="58.6009" Y="44.7549" />
-                                    <Scale ScaleX="0.8000" ScaleY="0.8000" />
+                                    <Position X="44.6016" Y="44.7543" />
+                                    <Scale ScaleX="0.7000" ScaleY="0.7000" />
                                     <CColor A="255" R="255" G="255" B="255" />
-                                    <PrePosition X="0.1915" Y="0.4144" />
+                                    <PrePosition X="0.1458" Y="0.4144" />
                                     <PreSize X="0.3431" Y="0.8957" />
                                     <FileData Type="Normal" Path="ui/quality_small_purple.png" Plist="" />
                                   </AbstractNodeData>
-                                  <AbstractNodeData Name="image_frame_good2" ActionTag="1277276437" Tag="636" IconVisible="False" LeftMargin="98.6000" RightMargin="102.4000" TopMargin="11.7451" BottomMargin="-6.7451" Scale9Width="105" Scale9Height="103" ctype="ImageViewObjectData">
+                                  <AbstractNodeData Name="image_frame_good2" ActionTag="1277276437" Tag="636" IconVisible="False" LeftMargin="65.1018" RightMargin="135.8982" TopMargin="11.7459" BottomMargin="-6.7459" Scale9Width="105" Scale9Height="103" ctype="ImageViewObjectData">
                                     <Size X="105.0000" Y="103.0000" />
                                     <Children>
                                       <AbstractNodeData Name="image_good" ActionTag="1824767547" Tag="637" IconVisible="False" LeftMargin="12.5000" RightMargin="12.5000" TopMargin="11.5000" BottomMargin="11.5000" Scale9Width="80" Scale9Height="80" ctype="ImageViewObjectData">
@@ -630,14 +630,14 @@
                                       </AbstractNodeData>
                                     </Children>
                                     <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                                    <Position X="151.1000" Y="44.7549" />
-                                    <Scale ScaleX="0.8000" ScaleY="0.8000" />
+                                    <Position X="117.6018" Y="44.7541" />
+                                    <Scale ScaleX="0.7000" ScaleY="0.7000" />
                                     <CColor A="255" R="255" G="255" B="255" />
-                                    <PrePosition X="0.4938" Y="0.4144" />
+                                    <PrePosition X="0.3843" Y="0.4144" />
                                     <PreSize X="0.3431" Y="0.8957" />
                                     <FileData Type="Normal" Path="ui/quality_small_purple.png" Plist="" />
                                   </AbstractNodeData>
-                                  <AbstractNodeData Name="image_frame_good3" ActionTag="40345547" Tag="639" IconVisible="False" LeftMargin="191.0991" RightMargin="9.9009" TopMargin="11.7451" BottomMargin="-6.7451" Scale9Width="105" Scale9Height="103" ctype="ImageViewObjectData">
+                                  <AbstractNodeData Name="image_frame_good3" ActionTag="40345547" Tag="639" IconVisible="False" LeftMargin="138.1011" RightMargin="62.8989" TopMargin="11.7462" BottomMargin="-6.7462" Scale9Width="105" Scale9Height="103" ctype="ImageViewObjectData">
                                     <Size X="105.0000" Y="103.0000" />
                                     <Children>
                                       <AbstractNodeData Name="image_good" ActionTag="-766549837" Tag="640" IconVisible="False" LeftMargin="12.5000" RightMargin="12.5000" TopMargin="11.5000" BottomMargin="11.5000" Scale9Width="80" Scale9Height="80" ctype="ImageViewObjectData">
@@ -664,10 +664,44 @@
                                       </AbstractNodeData>
                                     </Children>
                                     <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                                    <Position X="243.5991" Y="44.7549" />
-                                    <Scale ScaleX="0.8000" ScaleY="0.8000" />
+                                    <Position X="190.6011" Y="44.7538" />
+                                    <Scale ScaleX="0.7000" ScaleY="0.7000" />
                                     <CColor A="255" R="255" G="255" B="255" />
-                                    <PrePosition X="0.7961" Y="0.4144" />
+                                    <PrePosition X="0.6229" Y="0.4144" />
+                                    <PreSize X="0.3431" Y="0.8957" />
+                                    <FileData Type="Normal" Path="ui/quality_small_purple.png" Plist="" />
+                                  </AbstractNodeData>
+                                  <AbstractNodeData Name="image_frame_good4" ActionTag="1661117209" Tag="135" IconVisible="False" LeftMargin="209.1018" RightMargin="-8.1018" TopMargin="11.7457" BottomMargin="-6.7457" Scale9Width="105" Scale9Height="103" ctype="ImageViewObjectData">
+                                    <Size X="105.0000" Y="103.0000" />
+                                    <Children>
+                                      <AbstractNodeData Name="image_good" ActionTag="-2085792170" Tag="136" IconVisible="False" LeftMargin="12.5000" RightMargin="12.5000" TopMargin="11.5000" BottomMargin="11.5000" Scale9Width="80" Scale9Height="80" ctype="ImageViewObjectData">
+                                        <Size X="80.0000" Y="80.0000" />
+                                        <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                                        <Position X="52.5000" Y="51.5000" />
+                                        <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                                        <CColor A="255" R="255" G="255" B="255" />
+                                        <PrePosition X="0.5000" Y="0.5000" />
+                                        <PreSize X="0.7619" Y="0.7767" />
+                                        <FileData Type="Normal" Path="ui/frame_tianjia.png" Plist="" />
+                                      </AbstractNodeData>
+                                      <AbstractNodeData Name="text_number" ActionTag="-241365411" Tag="137" IconVisible="False" LeftMargin="15.5009" RightMargin="10.4991" TopMargin="75.2470" BottomMargin="4.7530" FontSize="18" LabelText="×100000" OutlineSize="1" ShadowOffsetX="2" ShadowOffsetY="-2" ctype="TextObjectData">
+                                        <Size X="79.0000" Y="23.0000" />
+                                        <AnchorPoint ScaleX="1.0000" ScaleY="0.5000" />
+                                        <Position X="94.5009" Y="16.2530" />
+                                        <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                                        <CColor A="255" R="255" G="255" B="255" />
+                                        <PrePosition X="0.9000" Y="0.1578" />
+                                        <PreSize />
+                                        <FontResource Type="Normal" Path="data/ui_font.ttf" Plist="" />
+                                        <OutlineColor A="255" R="255" G="0" B="0" />
+                                        <ShadowColor A="255" R="110" G="110" B="110" />
+                                      </AbstractNodeData>
+                                    </Children>
+                                    <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                                    <Position X="261.6018" Y="44.7543" />
+                                    <Scale ScaleX="0.7000" ScaleY="0.7000" />
+                                    <CColor A="255" R="255" G="255" B="255" />
+                                    <PrePosition X="0.8549" Y="0.4144" />
                                     <PreSize X="0.3431" Y="0.8957" />
                                     <FileData Type="Normal" Path="ui/quality_small_purple.png" Plist="" />
                                   </AbstractNodeData>

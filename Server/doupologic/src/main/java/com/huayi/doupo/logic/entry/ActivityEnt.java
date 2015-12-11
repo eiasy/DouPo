@@ -982,4 +982,23 @@ public class ActivityEnt extends BaseHandler{
 			MessageUtil.sendFailMsg(channelId, msgMap, errorHint(msgMap));
 		}
 	}
+
+	/**
+	 * 进入限时活动
+	 * @author mp
+	 * @date 2015-12-9 上午10:59:52
+	 * @param msgMap
+	 * @param channelId
+	 * @Description
+	 */
+	public void intoLimitActivity (HashMap<String, Object> msgMap, String channelId){
+		try {
+			HandlerFactory.getActivityHandler().intoLimitActivity (msgMap, channelId);
+		} catch (Exception e) {
+			LogUtil.error("instPlayerId = " + PlayerMapUtil.getPlayerIdByChannelId(channelId) + ", " + DictMap.sysMsgRuleMap.get((int)msgMap.get("header") + "").getName() + ",  " + msgMap, e);
+			e.printStackTrace();
+			MessageUtil.sendFailMsg(channelId, msgMap, errorHint(msgMap));
+		}
+	}
+	
 }

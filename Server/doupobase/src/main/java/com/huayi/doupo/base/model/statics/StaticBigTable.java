@@ -62,4 +62,9 @@ public class StaticBigTable {
 	 */
 	public static String bossIntegral = "bossIntegral";
 	
+	/**
+	 * 巅峰强者第一名列表
+	 */
+	public static String strogerHeroFirstNames = "strogerHeroFirstNames";
+	
 }

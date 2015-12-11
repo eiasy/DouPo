@@ -38,13 +38,13 @@
                     <OutlineColor A="255" R="255" G="0" B="0" />
                     <ShadowColor A="255" R="110" G="110" B="110" />
                   </AbstractNodeData>
-                  <AbstractNodeData Name="text_hint" ActionTag="100" Tag="44989" IconVisible="False" LeftMargin="70.5000" RightMargin="-247.5000" TopMargin="748.0000" BottomMargin="-17.0000" FontSize="22" LabelText="再购买8次后，下次购买必赠送一张紫卡或高成长英雄" ctype="TextObjectData">
-                    <Size X="519.0000" Y="28.0000" />
+                  <AbstractNodeData Name="text_hint" ActionTag="100" Tag="44989" IconVisible="False" LeftMargin="127.2575" RightMargin="-194.2574" TopMargin="752.0001" BottomMargin="-21.0001" FontSize="22" LabelText="再购买8次后，下次购买必赠送一张橙卡~" ctype="TextObjectData">
+                    <Size X="401.0000" Y="28.0000" />
                     <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                    <Position X="319.0000" Y="-3.0000" />
+                    <Position X="320.7575" Y="-7.0001" />
                     <Scale ScaleX="1.0000" ScaleY="1.0000" />
-                    <CColor A="255" R="0" G="255" B="255" />
-                    <PrePosition X="0.9969" Y="-0.0040" />
+                    <CColor A="255" R="255" G="165" B="0" />
+                    <PrePosition X="1.0024" Y="-0.0092" />
                     <PreSize X="1.5469" Y="0.0290" />
                     <FontResource Type="Normal" Path="data/ui_font.ttf" Plist="" />
                     <OutlineColor A="255" R="255" G="0" B="0" />

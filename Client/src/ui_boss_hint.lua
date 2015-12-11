@@ -12,10 +12,10 @@ function UIBossHint.init()
     local function onButtonEvent(sender, eventType)
         if eventType == ccui.TouchEventType.ended then
             UIManager.popScene()
-            if userData and userData.callbackFunc then
-                userData.callbackFunc()
-                userData.callbackFunc = nil
-            end
+--            if userData and userData.callbackFunc then
+--                userData.callbackFunc()
+--                userData.callbackFunc = nil
+--            end
         end
     end
     btn_closed:addTouchEventListener(onButtonEvent)

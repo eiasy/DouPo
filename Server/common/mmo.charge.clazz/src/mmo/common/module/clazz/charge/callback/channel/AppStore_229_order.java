@@ -95,6 +95,11 @@ public class AppStore_229_order {
 
 			LoggerCharge.chargeOrder("success_appstore", sb.toString(), orderform.getOrderform());
 			try {
+				if(orderform.getItemId()!=itemId||orderform.getItemPrice()!=itemPrice*100){
+    				orderform.setItemId(itemId);
+    				orderform.setItemPrice(itemPrice);
+    				orderform.setItemName(orderform.getItemName()+"@"+itemId);
+    			}
 				ChargeAppStore chargeAppStore = (ChargeAppStore) manager.getClass("mmo.common.module.clazz.charge.callback.channel.ChargeAppStore").newInstance();
 				chargeAppStore.setOrderform(orderform, channelOrder);
 				chargeAppStore.setChargeType(request.getParameter("chargeType"));

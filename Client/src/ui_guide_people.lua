@@ -1301,6 +1301,7 @@ function UIGuidePeople.setGuide()
                 param.chapterId = 1
                 param.barrierId = 1
                 if FightTaskData.FightData[1][1] then
+	                FightTaskData.FightData[1][1].record = nil
                     UIFightMain.setData(FightTaskData.FightData[1][1], param, dp.FightType.FIGHT_TASK.COMMON)
                 else
                     utils.sendFightData(param, dp.FightType.FIGHT_TASK.COMMON)

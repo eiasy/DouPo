@@ -2,19 +2,29 @@ package com.huayi.doupo.logic.handler.quartz;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map.Entry;
 
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 
 import com.huayi.doupo.base.model.DictWorldBoss;
+import com.huayi.doupo.base.model.InstPlayerHoldStar;
 import com.huayi.doupo.base.model.InstWorldBoss;
 import com.huayi.doupo.base.model.dict.DictList;
+import com.huayi.doupo.base.model.socket.Player;
+import com.huayi.doupo.base.model.statics.StaticSyncState;
 import com.huayi.doupo.base.model.statics.StaticSysConfig;
+import com.huayi.doupo.base.util.base.DateUtil;
 import com.huayi.doupo.base.util.base.RandomUtil;
 import com.huayi.doupo.base.util.logic.system.DictMapUtil;
 import com.huayi.doupo.base.util.logic.system.LogUtil;
 import com.huayi.doupo.logic.handler.base.BaseHandler;
+import com.huayi.doupo.logic.handler.util.HoldStarUtil;
+import com.huayi.doupo.logic.handler.util.OrgFrontMsgUtil;
+import com.huayi.doupo.logic.util.MessageData;
+import com.huayi.doupo.logic.util.MessageUtil;
+import com.huayi.doupo.logic.util.PlayerMapUtil;
 
 /**
  * 归档世界boss相关信息[世界bossId, 血量等]
@@ -25,8 +35,59 @@ public class WoldBossResetHandler extends BaseHandler implements Job {
 
 	@Override
 	public void execute(JobExecutionContext arg0) throws JobExecutionException {
+		System.out.println("aaaaaaaaaaa---WoldBossResetHandler---aaaaaaaaaaaaaaa");
+		worldBossReset();
+		resetHoldStar();
+	}
+	
+	/**
+	 * 重置占星相关
+	 * @author mp
+	 * @date 2015-12-8 上午10:19:49
+	 * @Description
+	 */
+	private static void resetHoldStar() {
 		try {
-			System.out.println("aaaaaaaaaaaaaaaaaaaaaaaaaa");
+			for (Entry<String, Player> entry : PlayerMapUtil.getMap().entrySet()) {
+				String channelId = entry.getKey();
+				Player player = entry.getValue();
+				int instPlayerId = player.getPlayerId();
+				
+				//给在线玩家初始化占星信息
+				List<InstPlayerHoldStar> instPlayerHoldStarList = getInstPlayerHoldStarDAL().getList("instPlayerId = " + instPlayerId, instPlayerId);
+				for (InstPlayerHoldStar instPlayerHoldStar : instPlayerHoldStarList) {
+					MessageData syncMsgData = new MessageData();
+					instPlayerHoldStar.setStep(1);
+					instPlayerHoldStar.setStarNum(0);
+					instPlayerHoldStar.setHoldStarTimes(0);
+					instPlayerHoldStar.setHoldStarTime("");
+					instPlayerHoldStar.setHoldStarFreeRefreshedTimes(0);
+					instPlayerHoldStar.setHoldStarNoFreeRefreshedTimes(0);
+					instPlayerHoldStar.setHoldStarRefreshedTime("");
+					instPlayerHoldStar.setRewardRefreshedTimes(0);
+					instPlayerHoldStar.setRewardRefreshedTime("");
+					instPlayerHoldStar.setUpStars(HoldStarUtil.refreshUpStars());
+					instPlayerHoldStar.setDownStars(HoldStarUtil.refreshDownStars(instPlayerHoldStar.getHoldStarGradeId(), 1, instPlayerHoldStar.getUpStars()));
+					instPlayerHoldStar.setRewards(HoldStarUtil.refreshReward(instPlayerHoldStar.getHoldStarGradeId(), 1));//0-自然刷新 1-系统刷新, 初始化时按系统刷新算
+					instPlayerHoldStar.setSysRefreshTime(DateUtil.getCurrTime());
+					getInstPlayerHoldStarDAL().update(instPlayerHoldStar, instPlayerId);
+					OrgFrontMsgUtil.orgSyncMsgData(StaticSyncState.update, instPlayerHoldStar, instPlayerHoldStar.getId(), instPlayerHoldStar.getResult(), syncMsgData);
+					MessageUtil.sendSyncMsg(channelId, syncMsgData);
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
+	/**
+	 * 世界Boss重置
+	 * @author mp
+	 * @date 2015-12-7 下午7:01:38
+	 * @Description
+	 */
+	private static void worldBossReset () {
+		try {
 			
 			List<DictWorldBoss> worldBosseList = DictList.dictWorldBossList;
 			int initWorldBossId = 0;
@@ -108,7 +169,7 @@ public class WoldBossResetHandler extends BaseHandler implements Job {
 				}
 			}
 		} catch (Exception e) {
-			LogUtil.error("归档世界boss相关信息", e);
+			LogUtil.error("归档世界boss相关信息Error", e);
 		}
 	}
 

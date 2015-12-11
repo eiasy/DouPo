@@ -521,6 +521,23 @@ public class DictVIP implements Serializable
 		this.chapterResetCount = chapterResetCount;
 	}
 
+	/**
+		占星奖励刷新次数
+	*/
+	private int holdStarRewardRefreshTimes;
+	public int getHoldStarRewardRefreshTimes(){
+		return holdStarRewardRefreshTimes;
+	}
+	public void setHoldStarRewardRefreshTimes(int holdStarRewardRefreshTimes) {
+		this.holdStarRewardRefreshTimes = holdStarRewardRefreshTimes;
+		index = 31;
+		result += index + "*int*" + holdStarRewardRefreshTimes + "#";
+	}
+
+	public void setHoldStarRewardRefreshTimes(int holdStarRewardRefreshTimes, int bs) {
+		this.holdStarRewardRefreshTimes = holdStarRewardRefreshTimes;
+	}
+
 	public String getResult(){
 		return result;
 	}
@@ -557,6 +574,7 @@ public class DictVIP implements Serializable
 		extend.setVersion(this.version);
 		extend.setHjyFreshCount(this.hjyFreshCount);
 		extend.setChapterResetCount(this.chapterResetCount);
+		extend.setHoldStarRewardRefreshTimes(this.holdStarRewardRefreshTimes);
 		return extend;
 	}
 }

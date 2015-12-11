@@ -104,6 +104,12 @@ public class LoadResourceUtil extends DALFactory{
 		
 		//反序列化世界boss排行
 		unWorldBossRank();
+		
+		//初始化 巅峰强强者第一名列表
+		List<InstPlayerBigTable> instPlayerBigTableList = getInstPlayerBigTableDAL().getList("instPlayerId = 0 and properties = '" + StaticBigTable.strogerHeroFirstNames + "'", 0);
+		if (instPlayerBigTableList.size() > 0) {
+			ParamConfig.strogherHeroNumOnes = instPlayerBigTableList.get(0).getValue1();
+		}
 	}
 	
 	/**

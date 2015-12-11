@@ -47,6 +47,7 @@ public class ActivitiesAction extends ActionSupport{
 	
 	private String rewards;//巅峰强者/限时英雄奖励 /资源矿
 	private String thingCode;//物品代码
+	private String thingCode2;//物品代码2-适用于有两个物品列表的情况,类似限时兑换
 	
 	private int startRankNum;//开始排名-限时英雄排名奖励
 	private int endRankNum;//结束排名-限时英雄排名奖励
@@ -77,8 +78,43 @@ public class ActivitiesAction extends ActionSupport{
 	private int type;//屠魔商店   类型
 	private int needbossIntegral;//屠魔商店  兑换积分
 	
+	private String costItem;//限时兑换 -消耗物品
+	private String getItem;//限时兑换 -获得物品
+	private int countLimit;//限时兑换 -限制次数
 	
+
 	
+	public String getThingCode2() {
+		return thingCode2;
+	}
+
+	public void setThingCode2(String thingCode2) {
+		this.thingCode2 = thingCode2;
+	}
+
+	public String getCostItem() {
+		return costItem;
+	}
+
+	public void setCostItem(String costItem) {
+		this.costItem = costItem;
+	}
+
+	public String getGetItem() {
+		return getItem;
+	}
+
+	public void setGetItem(String getItem) {
+		this.getItem = getItem;
+	}
+
+	public int getCountLimit() {
+		return countLimit;
+	}
+
+	public void setCountLimit(int countLimit) {
+		this.countLimit = countLimit;
+	}
 
 	public int getType() {
 		return type;
@@ -652,6 +688,138 @@ public class ActivitiesAction extends ActionSupport{
 				limitHeroJifenNewList.add(obj);
 			}
 			retMsg = JsonUtil.toJson(limitHeroJifenNewList);
+			result = retMsg;
+		} catch (Exception e) {
+			e.printStackTrace();
+			result = null;
+		}
+		return SUCCESS;
+	}
+	
+	/**
+	 * 更新限时兑换
+	 * @author mp
+	 * @date 2015-12-10 下午2:40:10
+	 * @return
+	 * @throws Exception
+	 * @Description
+	 */
+	public String updateExchangeList() throws Exception {
+		try {
+			String thingAllList = "";
+			getItem = new String(getItem.getBytes("iso-8859-1"), "utf-8");
+			if (thingCode.equals("")) {
+				//验证这些物品是否都存在
+				for (String rewardObj : getItem.split(";")) {
+					String thingList = "";
+					String name = rewardObj.split("_")[0];
+					int value = Integer.valueOf(rewardObj.split("_")[1]);
+					thingList = getThingsList(name, value);
+					if (thingList.equals("")) {
+						result = "您所修改的奖励物品不存在";
+						return SUCCESS;
+					}
+					thingAllList += thingList + ";";
+				}
+				thingAllList = StringUtil.noContainLastString(thingAllList);
+			} else {
+				thingAllList = thingCode;
+				//验证是否存在
+				if (!isExistThingList(thingAllList)) {
+					result = "您所修改的奖励物品不存在";
+					return SUCCESS;
+				}
+			}
+			
+			String thingAllList2 = "";
+			costItem = new String(costItem.getBytes("iso-8859-1"), "utf-8");
+			if (thingCode2.equals("")) {
+				//验证这些物品是否都存在
+				for (String rewardObj : costItem.split(";")) {
+					String thingList = "";
+					String name = rewardObj.split("_")[0];
+					int value = Integer.valueOf(rewardObj.split("_")[1]);
+					thingList = getThingsList(name, value);
+					if (thingList.equals("")) {
+						result = "您所修改的奖励物品不存在";
+						return SUCCESS;
+					}
+					thingAllList2 += thingList + ";";
+				}
+				thingAllList2 = StringUtil.noContainLastString(thingAllList2);
+			} else {
+				thingAllList2 = thingCode2;
+				//验证是否存在
+				if (!isExistThingList(thingAllList2)) {
+					result = "您所修改的奖励物品不存在";
+					return SUCCESS;
+				}
+			}
+			
+			//发送修改协议
+			String activityHdUrl = PropertyUtil.getValue("activity.server.url");
+			Map<String, String> paramMap = new HashMap<String, String>();
+			paramMap.put("command", "updateExchangeList");
+			paramMap.put("id", id+"");
+			paramMap.put("countLimit", countLimit+"");
+			paramMap.put("getItem", thingAllList);
+			paramMap.put("costItem", thingAllList2);
+			String params = HttpClientUtil.httpBuildQuery(paramMap);
+			String retMsg = HttpClientUtil.postMapSubmit(activityHdUrl, params);
+			result = retMsg;
+		} catch (Exception e) {
+			e.printStackTrace();
+			result = null;
+		}
+		return SUCCESS;
+	}
+	
+	/**
+	 * 获取限时兑换列表
+	 * @author mp
+	 * @date 2015-12-10 下午2:39:11
+	 * @return
+	 * @throws Exception
+	 * @Description
+	 */
+	@SuppressWarnings({ "unchecked", "deprecation" })
+	public String getExchangeList() throws Exception {
+		try {
+			String activityHdUrl = PropertyUtil.getValue("activity.server.url");
+			Map<String, String> paramMap = new HashMap<String, String>();
+			paramMap.put("command", "getExchangeList");
+			String params = HttpClientUtil.httpBuildQuery(paramMap);
+			String retMsg = HttpClientUtil.postMapSubmit(activityHdUrl, params);
+			
+	        JSONArray jsonobj = JSONArray.fromObject(retMsg);  
+	        List<DictactivityExchange> activityExchangeList = (List<DictactivityExchange>) JSONArray.toList(jsonobj,DictactivityExchange.class);
+			List<DictactivityExchange> activityExchangeNewList = new ArrayList<>(); 
+			for (DictactivityExchange obj : activityExchangeList) {
+				String newCostItem = "";
+				String costItem = obj.getCostItem();
+				for (String oldReward : costItem.split(";")) {
+					int tableTypeId = Integer.valueOf(oldReward.split("_")[0]);
+					int tableFieldId = Integer.valueOf(oldReward.split("_")[1]);
+					int value = Integer.valueOf(oldReward.split("_")[2]);
+					String name = getGoodsName(tableTypeId, tableFieldId);
+					newCostItem += (name + "_" + value + ";");
+				}
+				obj.setCostItem(StringUtil.noContainLastString(newCostItem));
+				
+				String newGetItem = "";
+				String getItem = obj.getGetItem();
+				for (String oldReward : getItem.split(";")) {
+					int tableTypeId = Integer.valueOf(oldReward.split("_")[0]);
+					int tableFieldId = Integer.valueOf(oldReward.split("_")[1]);
+					int value = Integer.valueOf(oldReward.split("_")[2]);
+					String name = getGoodsName(tableTypeId, tableFieldId);
+					newGetItem += (name + "_" + value + ";");
+				}
+				obj.setGetItem(StringUtil.noContainLastString(newGetItem));
+				
+				activityExchangeNewList.add(obj);
+			}
+			retMsg = JsonUtil.toJson(activityExchangeNewList);
 			result = retMsg;
 		} catch (Exception e) {
 			e.printStackTrace();

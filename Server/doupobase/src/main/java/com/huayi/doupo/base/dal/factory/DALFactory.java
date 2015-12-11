@@ -5,6 +5,34 @@ import com.huayi.doupo.base.util.logic.system.SpringUtil;
 
 public class DALFactory {
 
+	public static DictHoldStarGradeRewardDAL getDictHoldStarGradeRewardDAL() {
+		return (DictHoldStarGradeRewardDAL)SpringUtil.GetObjectWithSpringContext(SpringDalContext.DictHoldStarGradeRewardDAL);
+	}
+
+	public static DictHoldStarRewardRefreshTimesDAL getDictHoldStarRewardRefreshTimesDAL() {
+		return (DictHoldStarRewardRefreshTimesDAL)SpringUtil.GetObjectWithSpringContext(SpringDalContext.DictHoldStarRewardRefreshTimesDAL);
+	}
+
+	public static DictHoldStarStepDAL getDictHoldStarStepDAL() {
+		return (DictHoldStarStepDAL)SpringUtil.GetObjectWithSpringContext(SpringDalContext.DictHoldStarStepDAL);
+	}
+
+	public static InstPlayerHoldStarDAL getInstPlayerHoldStarDAL() {
+		return (InstPlayerHoldStarDAL)SpringUtil.GetObjectWithSpringContext(SpringDalContext.InstPlayerHoldStarDAL);
+	}
+
+	public static DictHoldStarGradeDAL getDictHoldStarGradeDAL() {
+		return (DictHoldStarGradeDAL)SpringUtil.GetObjectWithSpringContext(SpringDalContext.DictHoldStarGradeDAL);
+	}
+
+	public static DictHoldStarZodiacDAL getDictHoldStarZodiacDAL() {
+		return (DictHoldStarZodiacDAL)SpringUtil.GetObjectWithSpringContext(SpringDalContext.DictHoldStarZodiacDAL);
+	}
+
+	public static DictHoldStarRewardPosDAL getDictHoldStarRewardPosDAL() {
+		return (DictHoldStarRewardPosDAL)SpringUtil.GetObjectWithSpringContext(SpringDalContext.DictHoldStarRewardPosDAL);
+	}
+	
 	public static DictWorldBossDAL getDictWorldBossDAL() {
 		return (DictWorldBossDAL)SpringUtil.GetObjectWithSpringContext(SpringDalContext.DictWorldBossDAL);
 	}

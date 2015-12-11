@@ -574,13 +574,13 @@ local function getThingShow(_name, _image, _number, _borderImage)
     bg_image:retain()
     bg_image:setAnchorPoint(cc.p(0.5, 0.5))
 
-    if #_name == 4 then
-        bg_image:setPreferredSize(cc.size(600, 400))
-    elseif #_name == 5 then
-        bg_image:setPreferredSize(cc.size(650, 400))
-    else
+--    if #_name == 4 then
+--        bg_image:setPreferredSize(cc.size(600, 400))
+--    elseif #_name == 5 then
+--        bg_image:setPreferredSize(cc.size(650, 400))
+--    else
         bg_image:setPreferredSize(cc.size(500, 400))
-    end
+--    end
     bg_image:setPosition(cc.p(visibleSize.width / 2, visibleSize.height / 2 - 30))
     local label = ccui.Text:create()
     label:setTextAreaSize(cc.size(180, 30))
@@ -592,9 +592,13 @@ local function getThingShow(_name, _image, _number, _borderImage)
     label:setPosition(cc.p(bg_image:getPreferredSize().width / 2, bg_image:getPreferredSize().height - 50))
     bg_image:addChild(label, 3)
 
-    local node_di = cc.Node:create()
+--    local node_di = cc.Node:create()
+    local node_di = ccui.ScrollView:create()
     local line = #_name + 1
     local width = bg_image:getPreferredSize().width
+    local _scrollViewHeight = 0
+    local _svInnerWidth = 0
+    local space = 10
     for key, obj in pairs(_name) do
         local node = cc.Node:create()
         local name = ccui.Text:create()
@@ -627,9 +631,32 @@ local function getThingShow(_name, _image, _number, _borderImage)
         name:setPosition(cc.p(number_di:getContentSize().width / 2, number_di:getContentSize().height / 2))
         number_di:setPosition(cc.p(0, - image_di:getContentSize().height / 2 - number_di:getContentSize().height / 2))
         node_di:addChild(node)
-        node:setPosition(cc.p(width * key / line - bg_image:getPreferredSize().width / 2, 0))
+--        node:setPosition(cc.p(width * key / line - bg_image:getPreferredSize().width / 2, 0))
+        node:setContentSize(cc.size(image_di:getContentSize().width, image_di:getContentSize().height + number_di:getContentSize().height + 35))
+        if node:getContentSize().height > _scrollViewHeight then
+            _scrollViewHeight = node:getContentSize().height
+        end
+        _svInnerWidth = _svInnerWidth + node:getContentSize().width + space
     end
-    node_di:setPosition(cc.p(bg_image:getPreferredSize().width / 2, bg_image:getPreferredSize().height / 2 + 20))
+    node_di:setContentSize(cc.size(bg_image:getPreferredSize().width - 50, _scrollViewHeight))
+    if _svInnerWidth < node_di:getContentSize().width then
+        _svInnerWidth = node_di:getContentSize().width
+    end
+    node_di:setInnerContainerSize(cc.size(_svInnerWidth, _scrollViewHeight))
+    node_di:setPosition(cc.p((bg_image:getPreferredSize().width - node_di:getContentSize().width) / 2, (bg_image:getPreferredSize().height - node_di:getContentSize().height) / 2 + 20))
+    node_di:setDirection(ccui.ScrollViewDir.horizontal)
+    node_di:setTouchEnabled(true)
+    local childs = node_di:getChildren()
+	local prevChild = nil
+	for i = 1, #childs do
+		if prevChild then
+			childs[i]:setPosition(cc.p(prevChild:getPositionX() + prevChild:getContentSize().width / 2 + childs[i]:getContentSize().width / 2 + space, node_di:getContentSize().height / 2))
+		else
+			childs[i]:setPosition(cc.p(childs[i]:getContentSize().width / 2 + space, node_di:getContentSize().height / 2))
+		end
+		prevChild = childs[i]
+	end
+
     bg_image:addChild(node_di, 3)
     local but_ok = ccui.Button:create("ui/tk_btn01.png")
     but_ok:setTitleText("确定")

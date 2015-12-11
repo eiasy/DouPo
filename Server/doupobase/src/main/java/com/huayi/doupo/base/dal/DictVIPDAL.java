@@ -55,6 +55,7 @@ public class DictVIPDAL extends DALFather {
 			dictVIP.setVersion(rs.getInt("version"), 0);
 			dictVIP.setHjyFreshCount(rs.getInt("hjyFreshCount"), 0);
 			dictVIP.setChapterResetCount(rs.getInt("chapterResetCount"), 0);
+			dictVIP.setHoldStarRewardRefreshTimes(rs.getInt("holdStarRewardRefreshTimes"), 0);
 			return dictVIP;
 		}
 	}
@@ -63,9 +64,9 @@ public class DictVIPDAL extends DALFather {
 		try {
 			StringBuilder strSql = new StringBuilder();
 			strSql.append(" insert into Dict_VIP (");
-			strSql.append("name,level,openLevel,buyItemsNum,silverRecruitAdd,goldRecruitAdd,diamondRecruitAdd,hJYReset,buyArenaNum,silverActivityChapterBuyTimes,expActivityChapterBuyTimes,pillActivityChapterBuyTimes,soulActivityChapterBuyTimes,talentActivityChapterBuyTimes,eliteChapterBuyTimes,pagodaSearchNum,pagodaResetNum,wingChapterNum,fiendChapterNum,isContinuFight,isResetGenerBarrier,isUpSilverVip,giftBugUiId,giftBagThings,limit,description,version,hjyFreshCount,chapterResetCount");
+			strSql.append("name,level,openLevel,buyItemsNum,silverRecruitAdd,goldRecruitAdd,diamondRecruitAdd,hJYReset,buyArenaNum,silverActivityChapterBuyTimes,expActivityChapterBuyTimes,pillActivityChapterBuyTimes,soulActivityChapterBuyTimes,talentActivityChapterBuyTimes,eliteChapterBuyTimes,pagodaSearchNum,pagodaResetNum,wingChapterNum,fiendChapterNum,isContinuFight,isResetGenerBarrier,isUpSilverVip,giftBugUiId,giftBagThings,limit,description,version,hjyFreshCount,chapterResetCount,holdStarRewardRefreshTimes");
 			strSql.append(" )");
-			strSql.append(" values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) ");
+			strSql.append(" values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) ");
 
 			final String sql = strSql.toString();
 			KeyHolder keyHolder = new GeneratedKeyHolder();
@@ -102,6 +103,7 @@ public class DictVIPDAL extends DALFather {
 					ps.setInt(27, 0);
 					ps.setInt(28, model.getHjyFreshCount());
 					ps.setInt(29, model.getChapterResetCount());
+					ps.setInt(30, model.getHoldStarRewardRefreshTimes());
 					return ps;
 				}
 			},keyHolder);
@@ -121,9 +123,9 @@ public class DictVIPDAL extends DALFather {
 	public void batchAdd (final List<DictVIP> list) {
 		StringBuilder sql = new StringBuilder();
 		sql.append(" insert into Dict_VIP (");
-		sql.append("name,level,openLevel,buyItemsNum,silverRecruitAdd,goldRecruitAdd,diamondRecruitAdd,hJYReset,buyArenaNum,silverActivityChapterBuyTimes,expActivityChapterBuyTimes,pillActivityChapterBuyTimes,soulActivityChapterBuyTimes,talentActivityChapterBuyTimes,eliteChapterBuyTimes,pagodaSearchNum,pagodaResetNum,wingChapterNum,fiendChapterNum,isContinuFight,isResetGenerBarrier,isUpSilverVip,giftBugUiId,giftBagThings,limit,description,version,hjyFreshCount,chapterResetCount");
+		sql.append("name,level,openLevel,buyItemsNum,silverRecruitAdd,goldRecruitAdd,diamondRecruitAdd,hJYReset,buyArenaNum,silverActivityChapterBuyTimes,expActivityChapterBuyTimes,pillActivityChapterBuyTimes,soulActivityChapterBuyTimes,talentActivityChapterBuyTimes,eliteChapterBuyTimes,pagodaSearchNum,pagodaResetNum,wingChapterNum,fiendChapterNum,isContinuFight,isResetGenerBarrier,isUpSilverVip,giftBugUiId,giftBagThings,limit,description,version,hjyFreshCount,chapterResetCount,holdStarRewardRefreshTimes");
 		sql.append(" )");
-		sql.append(" values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) ");
+		sql.append(" values (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) ");
 		BatchPreparedStatementSetter setter = new BatchPreparedStatementSetter (){
 			public void setValues(PreparedStatement ps, int i) throws SQLException{
 				DictVIP model = (DictVIP)list.get(i);
@@ -156,6 +158,7 @@ public class DictVIPDAL extends DALFather {
 					ps.setInt(27, 0);
 					ps.setInt(28, model.getHjyFreshCount());
 					ps.setInt(29, model.getChapterResetCount());
+					ps.setInt(30, model.getHoldStarRewardRefreshTimes());
 			}
 			public int getBatchSize(){
 				return list.size();
@@ -204,9 +207,9 @@ public class DictVIPDAL extends DALFather {
 			Object[] params = null;
 			int version = model.getVersion() + 1;
 			StringBuffer sql = new StringBuffer("update Dict_VIP set ");
-			sql.append("name=?,level=?,openLevel=?,buyItemsNum=?,silverRecruitAdd=?,goldRecruitAdd=?,diamondRecruitAdd=?,hJYReset=?,buyArenaNum=?,silverActivityChapterBuyTimes=?,expActivityChapterBuyTimes=?,pillActivityChapterBuyTimes=?,soulActivityChapterBuyTimes=?,talentActivityChapterBuyTimes=?,eliteChapterBuyTimes=?,pagodaSearchNum=?,pagodaResetNum=?,wingChapterNum=?,fiendChapterNum=?,isContinuFight=?,isResetGenerBarrier=?,isUpSilverVip=?,giftBugUiId=?,giftBagThings=?,limit=?,description=?,version=?,hjyFreshCount=?,chapterResetCount=? ");
+			sql.append("name=?,level=?,openLevel=?,buyItemsNum=?,silverRecruitAdd=?,goldRecruitAdd=?,diamondRecruitAdd=?,hJYReset=?,buyArenaNum=?,silverActivityChapterBuyTimes=?,expActivityChapterBuyTimes=?,pillActivityChapterBuyTimes=?,soulActivityChapterBuyTimes=?,talentActivityChapterBuyTimes=?,eliteChapterBuyTimes=?,pagodaSearchNum=?,pagodaResetNum=?,wingChapterNum=?,fiendChapterNum=?,isContinuFight=?,isResetGenerBarrier=?,isUpSilverVip=?,giftBugUiId=?,giftBagThings=?,limit=?,description=?,version=?,hjyFreshCount=?,chapterResetCount=?,holdStarRewardRefreshTimes=? ");
 			sql.append("where id=? and version=?");
-			params = new Object[] { model.getName(),model.getLevel(),model.getOpenLevel(),model.getBuyItemsNum(),model.getSilverRecruitAdd(),model.getGoldRecruitAdd(),model.getDiamondRecruitAdd(),model.getHJYReset(),model.getBuyArenaNum(),model.getSilverActivityChapterBuyTimes(),model.getExpActivityChapterBuyTimes(),model.getPillActivityChapterBuyTimes(),model.getSoulActivityChapterBuyTimes(),model.getTalentActivityChapterBuyTimes(),model.getEliteChapterBuyTimes(),model.getPagodaSearchNum(),model.getPagodaResetNum(),model.getWingChapterNum(),model.getFiendChapterNum(),model.getIsContinuFight(),model.getIsResetGenerBarrier(),model.getIsUpSilverVip(),model.getGiftBugUiId(),model.getGiftBagThings(),model.getLimit(),model.getDescription(),version,model.getHjyFreshCount(),model.getChapterResetCount() , model.getId(), model.getVersion() };
+			params = new Object[] { model.getName(),model.getLevel(),model.getOpenLevel(),model.getBuyItemsNum(),model.getSilverRecruitAdd(),model.getGoldRecruitAdd(),model.getDiamondRecruitAdd(),model.getHJYReset(),model.getBuyArenaNum(),model.getSilverActivityChapterBuyTimes(),model.getExpActivityChapterBuyTimes(),model.getPillActivityChapterBuyTimes(),model.getSoulActivityChapterBuyTimes(),model.getTalentActivityChapterBuyTimes(),model.getEliteChapterBuyTimes(),model.getPagodaSearchNum(),model.getPagodaResetNum(),model.getWingChapterNum(),model.getFiendChapterNum(),model.getIsContinuFight(),model.getIsResetGenerBarrier(),model.getIsUpSilverVip(),model.getGiftBugUiId(),model.getGiftBagThings(),model.getLimit(),model.getDescription(),version,model.getHjyFreshCount(),model.getChapterResetCount(),model.getHoldStarRewardRefreshTimes() , model.getId(), model.getVersion() };
 			int count = this.getJdbcTemplate().update(sql.toString(), params);
 			if (count == 0) {
 				throw new Exception("Concurrent Exception");

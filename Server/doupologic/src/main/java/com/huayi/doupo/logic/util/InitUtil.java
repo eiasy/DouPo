@@ -26,6 +26,7 @@ import com.huayi.doupo.base.model.DictMineBoxThing;
 import com.huayi.doupo.base.model.DictWorldBoss;
 import com.huayi.doupo.base.model.DictWorldBossReward;
 import com.huayi.doupo.base.model.DictWorldBossStore;
+import com.huayi.doupo.base.model.DictactivityExchange;
 import com.huayi.doupo.base.model.DictactivityTotalCost;
 import com.huayi.doupo.base.model.InstPlayerBigTable;
 import com.huayi.doupo.base.model.InstWorldBoss;
@@ -298,6 +299,16 @@ public class InitUtil extends DALFactory {
 							bossShopMap.put(obj.getId() + "", obj);
 						}
 						DictMap.dictWorldBossStoreMap = bossShopMap;
+					}
+					//限时兑换
+					else if (activityName.equals("Dict_activity_Exchange")) {
+						List<DictactivityExchange> activityExchangeList = (List<DictactivityExchange>) JSONArray.toList(jsonobj,DictactivityExchange.class);
+						DictList.dictactivityExchangeList = activityExchangeList;
+						Map<String, DictactivityExchange> activityExchangeMap = new HashMap<>();
+						for (DictactivityExchange obj : activityExchangeList) {
+							activityExchangeMap.put(obj.getId() + "", obj);
+						}
+						DictMap.dictactivityExchangeMap = activityExchangeMap;
 					} 
 				}
 			} catch (Exception e) {

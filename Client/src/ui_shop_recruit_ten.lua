@@ -375,7 +375,7 @@ function UIShopRecruitTen.setup()
             local _num = userData.recruitNum
             if _num == 0 then _num = 9 elseif _num == 1 then _num = 0 else _num = _num - 1 end
             if _num ~= 0 then
-                text_hint:setString("再购买" .. _num .. "次后，下次购买必赠送一张紫卡或高成长卡牌")
+                text_hint:setString("再购买" .. _num .. "次后，下次购买必赠送一张橙卡")
             else
                 text_hint:setString("下次购买必赠送一张橙卡哦")
             end
@@ -384,7 +384,7 @@ function UIShopRecruitTen.setup()
     else
         if flag ~=5 then
             if UIShop.recruitPurpleTimer ~= 0 then
-                text_hint:setString("再购买" .. UIShop.recruitPurpleTimer .. "次后，下次购买必赠送一张紫卡或高成长卡牌")
+                text_hint:setString("再购买" .. UIShop.recruitPurpleTimer .. "次后，下次购买必赠送一张橙卡")
             else
                 text_hint:setString("下次购买必赠送一张橙卡哦")
             end

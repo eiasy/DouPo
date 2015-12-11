@@ -2,8 +2,11 @@ UIActivityTime = {}
 
 local ui_scrollView = nil
 local ui_svItem = nil
+
 UIActivityTime._jumpActivityName = nil
 local _prevActivity = nil
+local _StrongHeroFlag = 0--当天是否为巅峰强者节日版  0-不是   1-是
+
 local function cleanScrollView()
     if ui_svItem and ui_svItem:getReferenceCount() == 1 then
         ui_svItem:retain()
@@ -147,12 +150,21 @@ function UIActivityTime.setup()
     local DictActivity = UIActivityTime.getActivityThing()
     
     layoutScrollView(DictActivity, function(_item, _data, _index)
-        _item:getChildByName("image_warrior"):loadTexture("ui/" .. DictUI[tostring(_data.int["3"])].fileName)
+        if _data.string["9"] == "StrongHero" and _StrongHeroFlag == 1 then
+            _item:getChildByName("image_warrior"):loadTexture("ui/activity_title10_1.png")
+        else
+            _item:getChildByName("image_warrior"):loadTexture("ui/" .. DictUI[tostring(_data.int["3"])].fileName)
+        end
         _item:addTouchEventListener(function(sender, eventType)
             if eventType == ccui.TouchEventType.ended and _prevActivity ~= sender then
                 _prevActivity = sender
                 setScrollViewFocus(_index)
                 _item:removeChildByTag(100)
+                if _data.string["9"] == "StrongHero" and _StrongHeroFlag == 1 then
+                    _data.StrongHeroFlag = _StrongHeroFlag
+                else
+                    _data.StrongHeroFlag = nil
+                end
                 replaceWidget("ui_activity_" .. _data.string["9"], _data)
             end
         end)
@@ -187,6 +199,16 @@ function UIActivityTime.jumpName( sname )
         end
     end
 end
+
+function UIActivityTime.show()
+    UIManager.showLoading()
+    netSendPackage({ header = StaticMsgRule.intoLimitActivity, msgdata = { }}, function(_msgData)
+        _StrongHeroFlag = _msgData.msgdata.int["1"] --当天是否为巅峰强者节日版  0-不是   1-是
+        UIManager.hideWidget("ui_team_info")
+        UIManager.showWidget("ui_activity_time")
+    end)
+end
+
 function UIActivityTime.free()
     cleanScrollView()
     UIActivityTime._jumpActivityName = nil

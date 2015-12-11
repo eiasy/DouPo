@@ -518,6 +518,14 @@ StaticSysConfig = {
 
 		twoLiveGoldNum = 259, --第二次复活需要金币数
 
-		threeLiveGoldNum = 260 --第三次复活需要金币数
+		threeLiveGoldNum = 260, --第三次复活需要金币数
+
+		holdStarRefreshThingNum = 261, --占星刷新需要道具个数
+
+		holdStarRefreshGoldNum = 262, --占星刷新需要元宝数
+
+		holdStarFreeRefreshTimes = 263, --每天可免费刷新占星次数
+
+		holdStarCanHoldTimes = 264 --每天可占星次数
 
 }

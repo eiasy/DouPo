@@ -31,7 +31,11 @@ local function countDowun()
 	        local _minute = math.floor(_rewardCountdown / 60 % 60) --分
 	        local _second = math.floor(_rewardCountdown % 60) --秒
             local ui_rewardTime = image_basemap:getChildByName("text_time_get")
-            ui_rewardTime:setString(string.format("距离下次领奖还有 %02d:%02d:%02d", _hour, _minute, _second))
+            if DictActivity and DictActivity.StrongHeroFlag == 1 then
+                ui_rewardTime:setString(string.format("距离下次领奖及清空积分还有 %02d:%02d:%02d", _hour, _minute, _second))
+            else
+                ui_rewardTime:setString(string.format("距离下次领奖还有 %02d:%02d:%02d", _hour, _minute, _second))
+            end
             local loadBarPanel = image_basemap:getChildByName("image_loading")
             local ui_timeBar = loadBarPanel:getChildByName("bar_loading")
             local _curTime = utils.getCurrentTime()
@@ -62,6 +66,12 @@ local function countDowun()
 end
 
 local function initThingInfo(_msgData)
+    local firstNames = nil
+    if DictActivity and DictActivity.StrongHeroFlag == 1 then
+        if _msgData.msgdata.string and _msgData.msgdata.string.firstNames then
+            firstNames = utils.stringSplit(_msgData.msgdata.string.firstNames, ";")
+        end
+    end
     local _thingData = utils.stringSplit(_msgData.msgdata.string["1"], "|")
     local image_basemap = UIActivityStrongHero.Widget:getChildByName("image_basemap")
     local thingPanel = {}
@@ -73,6 +83,8 @@ local function initThingInfo(_msgData)
         local ui_icon = ui_frame:getChildByName("image_good")
         local ui_value = ui_frame:getChildByName("text_number")
         local ui_name = ui_frame:getChildByName("text_name")
+        local ui_hint = ui_frame:getChildByName("text_hint")
+        ui_hint:setString("第一名可领取")
         utils.addFrameParticle( ui_icon , true )
         if _thingData[key] then
             local itemProps = utils.getItemProp(_thingData[key])
@@ -87,6 +99,9 @@ local function initThingInfo(_msgData)
                 ui_name:setString(itemProps.name)
             end
             ui_value:setString("×" .. itemProps.count)
+        end
+        if firstNames and firstNames[key] and string.len(firstNames[key]) > 0 then
+            ui_hint:setString(firstNames[key])
         end
     end
 end
@@ -167,7 +182,11 @@ function UIActivityStrongHero.init()
     local function onButtonEvent(sender, eventType)
         if eventType == ccui.TouchEventType.ended then
             if sender == btn_help then
-                UIAllianceHelp.show({titleName="活动详情",type=2})
+                if DictActivity and DictActivity.StrongHeroFlag == 1 then
+                    UIAllianceHelp.show({titleName="活动详情",type=11})
+                else
+                    UIAllianceHelp.show({titleName="活动详情",type=2})
+                end
             elseif sender == btn_reward then
                 UIActivityStrongHeroPreview.show({integral=_curIntegral,rank=_curIntegralRank})
             end

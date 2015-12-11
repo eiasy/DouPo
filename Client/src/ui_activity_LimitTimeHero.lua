@@ -86,7 +86,7 @@ local function initRankReward(_rankListData)
             _item:getChildByName("text_rank"):setString(string.format("第%d-%d名", _data.startRankNum, _data.endRankNum))
         end
         local _thingsData = utils.stringSplit(_data.rewards, ";")
-        for i = 1, 3 do
+        for i = 1, 4 do
             local _thingItem = _item:getChildByName("image_frame_good" .. i)
             if _thingsData[i] then
                 local itemProps = utils.getItemProp(_thingsData[i])

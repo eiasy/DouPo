@@ -435,7 +435,10 @@ end
 -- param.chapterId = _param.chapterId
 -- param.barrierId = _param.barrierId
 -- param.barrierLevelId = _param.barrierLevelId
-function UIFightMain.setData(data, _param, _fightType, _callBackFunc)
+function UIFightMain.setData(data, _param, _fightType, _callBackFunc, cbOfCalcResult)
+    if cbOfCalcResult then
+	    Fight.calcFight(data,cbOfCalcResult)
+    end
     UIFightMain.data = data
     fightType = _fightType
     callBackFunc = _callBackFunc

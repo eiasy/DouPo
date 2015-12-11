@@ -34,7 +34,7 @@ public class ValidateReceiptRun implements IValidateReceipt {
 
 	@Override
 	public void run() {
-		if (!receipt.getProid().startsWith("com.y2game.dpcq")) {
+		if (!(receipt.getProid().startsWith("com.y2game")||receipt.getProid().startsWith("com.y1game.doupocangqiong"))) {
 			updateReceiptStatus(409);
 			LoggerError.error(409 + receipt.getProid());
 			return;
