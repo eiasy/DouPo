@@ -549,10 +549,10 @@ function UITalk.init()
                     -- 聊天内容 --其他信息：头像卡牌Id_角色名_vip等级_战队等级_战力_所属联盟
                     if tag == UITalk.TAG_UNION and(not net.InstUnionMember or(net.InstUnionMember and net.InstUnionMember.int["2"] == 0)) then
                         UIManager.showToast("尚未加入任何联盟")
-                    elseif tag == UITalk.TAG_WORLD and dp.getUserData().roleLevel < 16 then
-                        UIManager.showToast("世界频道需要等级达到16级")
-                    elseif tag == UITalk.TAG_PRIVATE_CHAT and dp.getUserData().roleLevel < 12 then
-                        UIManager.showToast("私聊频道需要等级达到12级")
+                    elseif tag == UITalk.TAG_WORLD and dp.getUserData().roleLevel < 10 then
+                        UIManager.showToast("世界频道需要等级达到10级")
+                    elseif tag == UITalk.TAG_PRIVATE_CHAT and dp.getUserData().roleLevel < 10 then
+                        UIManager.showToast("私聊频道需要等级达到10级")
                     else
                         local role = dp.getUserData()
                         local unioId = "0"

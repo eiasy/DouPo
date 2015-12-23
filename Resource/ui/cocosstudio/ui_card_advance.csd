@@ -718,16 +718,16 @@
                     <PreSize X="0.4860" Y="0.7887" />
                     <FileData Type="Normal" Path="ui/gf_di.png" Plist="" />
                   </AbstractNodeData>
-                  <AbstractNodeData Name="image_lv" ActionTag="41" Tag="704051" IconVisible="False" LeftMargin="247.0000" RightMargin="247.0000" TopMargin="65.0000" BottomMargin="803.0000" ctype="ImageViewObjectData">
-                    <Size X="150.0000" Y="50.0000" />
+                  <AbstractNodeData Name="image_lv" ActionTag="41" Tag="704051" IconVisible="False" LeftMargin="226.9997" RightMargin="227.0003" TopMargin="72.3676" BottomMargin="795.6324" Scale9Width="336" Scale9Height="74" ctype="ImageViewObjectData">
+                    <Size X="190.0000" Y="50.0000" />
                     <Children>
-                      <AbstractNodeData Name="text_lv" ActionTag="42" Tag="704058" IconVisible="False" LeftMargin="25.0000" RightMargin="25.0000" TopMargin="13.0000" BottomMargin="7.0000" FontSize="24" LabelText="等级：40" ctype="TextObjectData">
+                      <AbstractNodeData Name="text_lv" ActionTag="42" Tag="704058" IconVisible="False" LeftMargin="43.9472" RightMargin="46.0528" TopMargin="10.0000" BottomMargin="10.0000" FontSize="24" LabelText="等级：40" ctype="TextObjectData">
                         <Size X="100.0000" Y="30.0000" />
                         <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                        <Position X="75.0000" Y="22.0000" />
+                        <Position X="93.9472" Y="25.0000" />
                         <Scale ScaleX="1.0000" ScaleY="1.0000" />
                         <CColor A="255" R="255" G="255" B="255" />
-                        <PrePosition X="0.5000" Y="0.4400" />
+                        <PrePosition X="0.4945" Y="0.5000" />
                         <PreSize X="0.6400" Y="0.4800" />
                         <FontResource Type="Normal" Path="data/ui_font.ttf" Plist="" />
                         <OutlineColor A="255" R="255" G="0" B="0" />
@@ -735,12 +735,12 @@
                       </AbstractNodeData>
                     </Children>
                     <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                    <Position X="322.0000" Y="828.0000" />
+                    <Position X="321.9997" Y="820.6324" />
                     <Scale ScaleX="1.0000" ScaleY="1.0000" />
                     <CColor A="255" R="255" G="255" B="255" />
-                    <PrePosition X="0.5000" Y="0.9020" />
-                    <PreSize X="0.2329" Y="0.0545" />
-                    <FileData Type="Normal" Path="ui/di_hero_name.png" Plist="" />
+                    <PrePosition X="0.5000" Y="0.8939" />
+                    <PreSize X="0.2950" Y="0.0545" />
+                    <FileData Type="Normal" Path="ui/wing_title.png" Plist="" />
                   </AbstractNodeData>
                   <AbstractNodeData Name="image_hint" ActionTag="43" ZOrder="1" UserData="ignoreSize" Tag="720888" VisibleForFrame="False" IconVisible="False" LeftMargin="372.5000" RightMargin="4.5000" TopMargin="80.0000" BottomMargin="564.0000" ctype="ImageViewObjectData">
                     <Size X="267.0000" Y="274.0000" />

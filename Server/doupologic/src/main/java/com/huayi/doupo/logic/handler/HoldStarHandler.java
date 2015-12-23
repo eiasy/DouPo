@@ -369,6 +369,12 @@ public class HoldStarHandler extends BaseHandler{
 			}
 		}
 		
+		//验证占星次数
+		if (instPlayerHoldStarObj.getHoldStarTimes() >= DictMapUtil.getSysConfigIntValue(StaticSysConfig.holdStarCanHoldTimes)) {
+			MessageUtil.sendFailMsg(channelId, msgMap, StaticCnServer.fail_holdStar_maxHold);
+			return;
+		}
+		
 		//验证道具或元宝数是否足够(优先使用免费次数，其次是道具，最后是元宝)
 		if (instPlayerHoldStarObj.getHoldStarFreeRefreshedTimes() < DictMapUtil.getSysConfigIntValue(StaticSysConfig.holdStarFreeRefreshTimes)) {
 			//使用免费刷新次数
@@ -499,7 +505,23 @@ public class HoldStarHandler extends BaseHandler{
 		//刷新奖励
 		instPlayerHoldStarObj.setRewardRefreshedTimes(currRefreshTimes);//更新刷新奖励次数
 		instPlayerHoldStarObj.setRewardRefreshedTime(DateUtil.getCurrTime());//更新奖励刷新时间
-		instPlayerHoldStarObj.setRewards(HoldStarUtil.refreshReward(gradeId, 0));//0-人工刷新 1-系统刷新, 初始化时按系统刷新算
+		
+		String currRewards = "";
+		String newRewards = HoldStarUtil.refreshReward(gradeId, 0);
+		String oldRewards = instPlayerHoldStarObj.getRewards();
+		
+		String [] newRewardsArray = newRewards.split(";");
+		String [] oldRewardsArray = oldRewards.split(";");
+		for (int i = 0; i < newRewardsArray.length; i++) {
+			String newReward = newRewardsArray[i];
+			String oldReward = oldRewardsArray[i];
+			if (oldReward.split("_")[2].equals("0")) {
+				currRewards += newReward + ";";
+			} else {
+				currRewards += oldReward + ";";
+			}
+		}
+		instPlayerHoldStarObj.setRewards(StringUtil.noContainLastString(currRewards));//0-人工刷新 1-系统刷新, 初始化时按系统刷新算
 		getInstPlayerHoldStarDAL().update(instPlayerHoldStarObj, instPlayerId);
 		OrgFrontMsgUtil.orgSyncMsgData(StaticSyncState.update, instPlayerHoldStarObj, instPlayerHoldStarObj.getId(), instPlayerHoldStarObj.getResult(), syncMsgData);
 		
@@ -597,6 +619,34 @@ public class HoldStarHandler extends BaseHandler{
 		}
 		
 		MessageUtil.sendSyncMsg(channelId, syncMsgData);
+		MessageUtil.sendSuccMsg(channelId, msgMap, retMsgData);
+	}
+	
+	/**
+	 * 占星进入奖励界面
+	 * @author mp
+	 * @date 2015-12-18 下午6:06:46
+	 * @param msgMap
+	 * @param channelId
+	 * @throws Exception
+	 * @Description
+	 */
+	@Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
+	public void intoHoldStarReward (Map<String, Object> msgMap, String channelId) throws Exception {
+		//验证玩家在线状态
+		int instPlayerId = getInstPlayerId(channelId);
+		if (instPlayerId == 0) {
+			MessageUtil.sendFailMsg(channelId, msgMap, StaticCnServer.fail_PlayerIdVerfy);
+			return;
+		}
+		
+		//奖励信息[格式：id|things/]
+		StringBuilder sb = new StringBuilder();
+		MessageData retMsgData = new MessageData();
+		for (DictHoldStarGradeReward obj : DictList.dictHoldStarGradeRewardList) {
+			sb.append(obj.getId()).append("|").append(obj.getThing()).append("/");
+		}
+		retMsgData.putStringItem("1", StringUtil.noContainLastString(sb.toString()));
 		MessageUtil.sendSuccMsg(channelId, msgMap, retMsgData);
 	}
 	

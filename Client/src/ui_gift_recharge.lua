@@ -85,12 +85,18 @@ local function doVerifyPay(productID, userDatas, base64Receipt)
     http:open("POST", SDK.getNotifyUri())
     http:setRequestHeader("Content-Type", "application/octet-stream")
     local di = SDK.getDeviceInfo()
+
+    local channel_id = "yiyou"
+    if di.packageName == "com.y2game.doupocangqiong" then
+        channel_id = "iosy2game"
+    end
+
     http:send(
     "receipt=" .. utils.encodeURI(base64Receipt) ..
     "&product_id=3" ..
     "&server_id=" .. ud.serverId ..
     "&user_id=" .. SDK.getUserId() ..
-    "&channel_id=yiyou" ..
+    "&channel_id=" .. channel_id ..
     "&role_id=" .. ud.roleId ..
     "&role_name=" .. ud.roleName ..
     "&role_level=" .. ud.roleLevel ..

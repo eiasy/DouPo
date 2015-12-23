@@ -1,5 +1,5 @@
 UIAllianceHelp = {
-    TYPES = {"info", "integral", "hero", "dial", "money", "pilltower", "ore", "realm" , "soul", "fire" , "wing", "hero_1" , "star" }
+    TYPES = {"info", "integral", "hero", "dial", "money", "pilltower", "ore", "realm" , "soul", "fire" , "wing", "hero_1" , "star", "war1", "war2", "war3", "purchase" }
 }
 
 local userData = nil

@@ -808,6 +808,60 @@
           <Image Name="tower_strong.png" />
           <Image Name="tower_tiaofu.png" />
           <Image Name="tower_title.png" />
+          <Image Name="btn_fire.png" />
+          <Image Name="btn_fire_base.png" />
+          <Image Name="card_small_red.png" />
+          <Image Name="fire_bao.png" />
+          <Image Name="fire_high.png" />
+          <Image Name="fire_kuang.png" />
+          <Image Name="fire_kuangbao.png" />
+          <Image Name="fire_low.png" />
+          <Image Name="fire_seed.png" />
+          <Image Name="fire_tiao.png" />
+          <Image Name="fire_wang.png" />
+          <Image Name="fire_wangsheng.png" />
+          <Image Name="lm_qiured.png" />
+          <Image Name="lm_zbsc_me.png" />
+          <Image Name="lm_zb_blue.png" />
+          <Image Name="lm_zb_me.png" />
+          <Image Name="lm_zb_red.png" />
+          <Image Name="lm_zb_shengli.png" />
+          <Image Name="lm_zb_shibai.png" />
+          <Image Name="lm_zdsc_other.png" />
+          <Image Name="quality_middle_bar_red.png" />
+          <Image Name="quality_middle_red.png" />
+          <Image Name="quality_small_bar_red.png" />
+          <Image Name="tunshi.png" />
+          <Image Name="ui_zhaoren.png" />
+          <Image Name="war_di.png" />
+          <Image Name="war_flag.png" />
+          <Image Name="war_get.png" />
+          <Image Name="war_rank.png" />
+          <Image Name="war_report.png" />
+          <Image Name="war_reward.png" />
+          <Image Name="war_schedule.png" />
+          <Image Name="war_soldier.png" />
+          <Image Name="zcjb_ttd.png" />
+          <Image Name="alliance_war.png" />
+          <Image Name="winner.png" />
+          <Image Name="buy_yin.png" />
+          <Image Name="fight_now.png" />
+          <Image Name="home_wing.png" />
+          <Image Name="lineup_wing.png" />
+          <Image Name="wing_an.png" />
+          <Image Name="wing_change.png" />
+          <Image Name="wing_devil.png" />
+          <Image Name="wing_di.png" />
+          <Image Name="wing_down.png" />
+          <Image Name="wing_dress.png" />
+          <Image Name="wing_feng.png" />
+          <Image Name="wing_fight.png" />
+          <Image Name="wing_guang.png" />
+          <Image Name="wing_hui.png" />
+          <Image Name="wing_lei.png" />
+          <Image Name="wing_shadow.png" />
+          <Image Name="wing_title.png" />
+          <Image Name="wing_up.png" />
         </Folder>
         <Project Name="test_login.csd" Type="Layer" />
         <Project Name="ui_activity_bath.csd" Type="Layer" />
@@ -1934,6 +1988,83 @@
           <Image Name="story_small_map_chongfanjiama.png" />
           <Image Name="story_small_map_tianfenyaota.png" />
           <Image Name="story_small_map_tianhun.png" />
+          <Folder Name="fireImage">
+            <Image Name="fire_big_diyan.png" />
+            <Image Name="fire_big_gulinglenhuo.png" />
+            <Image Name="fire_big_haixinyan.png" />
+            <Image Name="fire_big_jindifentianyan.png" />
+            <Image Name="fire_big_jinglianyaohuo.png" />
+            <Image Name="fire_big_jiuyoujinzuhuo.png" />
+            <Image Name="fire_big_qingliandixinhuo.png" />
+            <Image Name="fire_big_sanqianyanyanhuo.png" />
+            <Image Name="fire_big_shenglingzhiyan.png" />
+            <Image Name="fire_big_wanshoulingyan.png" />
+            <Image Name="fire_big_xuwutunyan.png" />
+            <Image Name="fire_big_yunluoxinyan.png" />
+            <Image Name="fire_small_diyan.png" />
+            <Image Name="fire_small_gulinglenhuo.png" />
+            <Image Name="fire_small_haixinyan.png" />
+            <Image Name="fire_small_jindifentianyan.png" />
+            <Image Name="fire_small_jinglianyaohuo.png" />
+            <Image Name="fire_small_jiuyoujinzuhuo.png" />
+            <Image Name="fire_small_qingliandixinhuo.png" />
+            <Image Name="fire_small_sanqianyanyanhuo.png" />
+            <Image Name="fire_small_shenglingzhiyan.png" />
+            <Image Name="fire_small_wanshoulingyan.png" />
+            <Image Name="fire_small_xuwutunyan.png" />
+            <Image Name="fire_small_yunluoxinyan.png" />
+          </Folder>
+          <Image Name="head_char_huntiandi.png" />
+          <Image Name="poster_box_big_fire.png" />
+          <Image Name="poster_box_small_fire.png" />
+          <Image Name="poster_char_huntiandi.png" />
+          <Image Name="poster_item_big_chaojijingjiedan.png" />
+          <Image Name="poster_item_big_chaojijingjieshi.png" />
+          <Image Name="poster_item_big_lingbaojingpo.png" />
+          <Image Name="poster_item_big_wanhunzhiyuan.png" />
+          <Image Name="poster_item_big_yihuolingshi.png" />
+          <Image Name="poster_item_big_yinpiao.png" />
+          <Image Name="poster_item_small_chaojijingjiedan.png" />
+          <Image Name="poster_item_small_chaojijingjieshi.png" />
+          <Image Name="poster_item_small_lingbaojingpo.png" />
+          <Image Name="poster_item_small_wanhunzhiyuan.png" />
+          <Image Name="poster_item_small_yihuolingshi.png" />
+          <Image Name="chibang_big_an1.png" />
+          <Image Name="chibang_big_an2.png" />
+          <Image Name="chibang_big_an3.png" />
+          <Image Name="chibang_big_feng1.png" />
+          <Image Name="chibang_big_feng2.png" />
+          <Image Name="chibang_big_feng3.png" />
+          <Image Name="chibang_big_guang1.png" />
+          <Image Name="chibang_big_guang2.png" />
+          <Image Name="chibang_big_guang3.png" />
+          <Image Name="chibang_big_lei1.png" />
+          <Image Name="chibang_big_lei2.png" />
+          <Image Name="chibang_big_lei3.png" />
+          <Image Name="chibang_small_an1.png" />
+          <Image Name="chibang_small_an2.png" />
+          <Image Name="chibang_small_an3.png" />
+          <Image Name="chibang_small_feng1.png" />
+          <Image Name="chibang_small_feng2.png" />
+          <Image Name="chibang_small_feng3.png" />
+          <Image Name="chibang_small_guang1.png" />
+          <Image Name="chibang_small_guang2.png" />
+          <Image Name="chibang_small_guang3.png" />
+          <Image Name="chibang_small_lei1.png" />
+          <Image Name="chibang_small_lei2.png" />
+          <Image Name="chibang_small_lei3.png" />
+          <Image Name="poster_item_big_erjieshenyusuipian.png" />
+          <Image Name="poster_item_big_sanjieshenyusuipian.png" />
+          <Image Name="poster_item_big_shenyuqianghuashi.png" />
+          <Image Name="poster_item_big_yijieshenyusuipian.png" />
+          <Image Name="poster_item_small_erjieshenyusuipian.png" />
+          <Image Name="poster_item_small_sanjieshenyusuipian.png" />
+          <Image Name="poster_item_small_shenyuqianghuashi.png" />
+          <Image Name="poster_item_small_yijieshenyusuipian.png" />
+          <Image Name="story_small_map_shenghuang.png" />
+          <Image Name="story_small_map_shenyu01.png" />
+          <Image Name="story_small_map_shenyu02.png" />
+          <Image Name="story_small_map_shenyu03.png" />
         </Folder>
         <Project Name="ui_ore.csd" Type="Layer" />
         <Project Name="ui_ore_email.csd" Type="Layer" />
@@ -1953,6 +2084,25 @@
         <Project Name="ui_soul_upgrade.csd" Type="Layer" />
         <Project Name="ui_soul_install.csd" Type="Layer" />
         <Project Name="ui_activity_vip.csd" Type="Layer" />
+        <Project Name="ui_fire.csd" Type="Layer" />
+        <Project Name="ui_fire_add.csd" Type="Layer" />
+        <Project Name="ui_loot_clearing.csd" Type="Layer" />
+        <Project Name="ui_poster.csd" Type="Layer" />
+        <Project Name="ui_tower_strong.csd" Type="Layer" />
+        <Project Name="ui_war.csd" Type="Layer" />
+        <Project Name="ui_war_ambush.csd" Type="Layer" />
+        <Project Name="ui_war_info.csd" Type="Layer" />
+        <Project Name="ui_war_list.csd" Type="Layer" />
+        <Project Name="ui_war_rank.csd" Type="Layer" />
+        <Project Name="ui_war_schedule.csd" Type="Layer" />
+        <Project Name="ui_bag_wing.csd" Type="Layer" />
+        <Project Name="ui_bag_wing_sell.csd" Type="Layer" />
+        <Project Name="ui_buy_slive.csd" Type="Layer" />
+        <Project Name="ui_wing_advance.csd" Type="Layer" />
+        <Project Name="ui_wing_change.csd" Type="Layer" />
+        <Project Name="ui_wing_common.csd" Type="Layer" />
+        <Project Name="ui_wing_info.csd" Type="Layer" />
+        <Project Name="ui_wing_intensify.csd" Type="Layer" />
       </RootFolder>
     </Group>
   </SolutionFolder>

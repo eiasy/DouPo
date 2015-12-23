@@ -52,13 +52,13 @@
                   <AbstractNodeData Name="image_di_hint" ActionTag="-989153315" Tag="2204" IconVisible="False" LeftMargin="6.0000" RightMargin="6.0000" TopMargin="734.7433" BottomMargin="97.2567" Scale9Width="265" Scale9Height="34" ctype="ImageViewObjectData">
                     <Size X="544.0000" Y="68.0000" />
                     <Children>
-                      <AbstractNodeData Name="text_hint" ActionTag="-686255952" Tag="2205" IconVisible="False" LeftMargin="50.5000" RightMargin="34.5000" TopMargin="7.9996" BottomMargin="32.0004" FontSize="22" LabelText="占领矿产消耗10点耐力    协助矿产消耗3点耐力" OutlineSize="1" ShadowOffsetX="2" ShadowOffsetY="-2" ctype="TextObjectData">
-                        <Size X="459.0000" Y="28.0000" />
+                      <AbstractNodeData Name="text_hint" ActionTag="-686255952" Tag="2205" IconVisible="False" LeftMargin="137.5000" RightMargin="35.5000" TopMargin="6.9995" BottomMargin="33.0005" FontSize="22" LabelText="消耗10点耐力    协助矿产消耗3点耐力" OutlineSize="1" ShadowOffsetX="2" ShadowOffsetY="-2" ctype="TextObjectData">
+                        <Size X="371.0000" Y="28.0000" />
                         <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                        <Position X="280.0000" Y="46.0004" />
+                        <Position X="323.0000" Y="47.0005" />
                         <Scale ScaleX="1.0000" ScaleY="1.0000" />
                         <CColor A="255" R="255" G="255" B="0" />
-                        <PrePosition X="0.5147" Y="0.6765" />
+                        <PrePosition X="0.5937" Y="0.6912" />
                         <PreSize />
                         <FontResource Type="Normal" Path="data/ui_font.ttf" Plist="" />
                         <OutlineColor A="255" R="255" G="0" B="0" />
@@ -72,6 +72,18 @@
                         <CColor A="255" R="255" G="165" B="0" />
                         <PrePosition X="0.5129" Y="0.3236" />
                         <PreSize X="0.7684" Y="0.4118" />
+                        <FontResource Type="Normal" Path="data/ui_font.ttf" Plist="" />
+                        <OutlineColor A="255" R="255" G="0" B="0" />
+                        <ShadowColor A="255" R="110" G="110" B="110" />
+                      </AbstractNodeData>
+                      <AbstractNodeData Name="text_hint_1" ActionTag="96695704" Tag="610" IconVisible="False" LeftMargin="46.4999" RightMargin="409.5001" TopMargin="6.9995" BottomMargin="33.0005" FontSize="22" LabelText="抢占矿产" OutlineSize="1" ShadowOffsetX="2" ShadowOffsetY="-2" ctype="TextObjectData">
+                        <Size X="88.0000" Y="28.0000" />
+                        <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                        <Position X="90.4999" Y="47.0005" />
+                        <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                        <CColor A="255" R="255" G="0" B="0" />
+                        <PrePosition X="0.1664" Y="0.6912" />
+                        <PreSize />
                         <FontResource Type="Normal" Path="data/ui_font.ttf" Plist="" />
                         <OutlineColor A="255" R="255" G="0" B="0" />
                         <ShadowColor A="255" R="110" G="110" B="110" />
@@ -565,7 +577,7 @@
                     <OutlineColor A="255" R="255" G="0" B="0" />
                     <ShadowColor A="255" R="110" G="110" B="110" />
                   </AbstractNodeData>
-                  <AbstractNodeData Name="btn_left" ActionTag="1886083834" UserData="ignoreSize" Tag="275" IconVisible="False" LeftMargin="65.9986" RightMargin="326.0014" TopMargin="810.5000" BottomMargin="16.5000" TouchEnable="True" FontSize="35" ButtonText="占 领" Scale9Width="164" Scale9Height="73" ctype="ButtonObjectData">
+                  <AbstractNodeData Name="btn_left" ActionTag="1886083834" UserData="ignoreSize" Tag="275" IconVisible="False" LeftMargin="65.9986" RightMargin="326.0014" TopMargin="810.5000" BottomMargin="16.5000" TouchEnable="True" FontSize="35" ButtonText="抢 占" Scale9Width="164" Scale9Height="73" ctype="ButtonObjectData">
                     <Size X="164.0000" Y="73.0000" />
                     <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                     <Position X="147.9986" Y="53.0000" />

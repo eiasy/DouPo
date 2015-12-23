@@ -233,6 +233,24 @@ public class MineWarEnt extends BaseHandler {
     }
 
     /**
+     * 占矿或抢矿失败
+     * @author cui
+     * @date    2015/12/22
+     * @param msgMap
+     * @param channelId
+     */
+    public void mineFail(HashMap<String, Object> msgMap, String channelId) {
+        try {
+            HandlerFactory.getMineWarHandler().mineFail(msgMap, channelId);
+        } catch (Exception e) {
+            LogUtil.error("instPlayerId = " + PlayerMapUtil.getPlayerIdByChannelId(channelId) + ", "
+                    + DictMap.sysMsgRuleMap.get((int) msgMap.get("header") + "").getName() + ",  " + msgMap, e);
+            e.printStackTrace();
+            MessageUtil.sendFailMsg(channelId, msgMap, errorHint(msgMap));
+        }
+    }
+
+    /**
      * Method description
      *
      * @throws Exception

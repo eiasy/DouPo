@@ -9,7 +9,7 @@
           <AbstractNodeData Name="ui_middle" ActionTag="3" ZOrder="1" Tag="1002" IconVisible="False" TouchEnable="True" BackColorAlpha="150" ComboBoxIndex="1" ColorAngle="270.0000" ctype="PanelObjectData">
             <Size X="640.0000" Y="1136.0000" />
             <Children>
-              <AbstractNodeData Name="image_basemap" ActionTag="52" Tag="40019" IconVisible="False" LeftMargin="-1.9999" RightMargin="-2.0001" TopMargin="53.9618" BottomMargin="-42.9618" ctype="ImageViewObjectData">
+              <AbstractNodeData Name="image_basemap" ActionTag="52" Tag="40019" IconVisible="False" LeftMargin="-1.9999" RightMargin="-2.0001" TopMargin="25.8368" BottomMargin="-14.8368" ctype="ImageViewObjectData">
                 <Size X="644.0000" Y="1125.0000" />
                 <Children>
                   <AbstractNodeData Name="text_equipment" ActionTag="53" Tag="40020" IconVisible="False" LeftMargin="250.0000" RightMargin="254.0000" TopMargin="28.1368" BottomMargin="1052.8632" FontSize="35" LabelText="装备信息" ctype="TextObjectData">
@@ -309,7 +309,7 @@
                           <AbstractNodeData Name="view" ActionTag="511997001" Tag="151" IconVisible="False" LeftMargin="-313.9998" RightMargin="-3.0002" TopMargin="445.1794" BottomMargin="-0.1794" TouchEnable="True" ClipAble="True" BackColorAlpha="102" ColorAngle="90.0000" ScrollDirectionType="Vertical" ctype="ScrollViewObjectData">
                             <Size X="630.0000" Y="440.0000" />
                             <Children>
-                              <AbstractNodeData Name="image_equipment_di" ActionTag="849435155" ZOrder="1" Tag="465" IconVisible="False" LeftMargin="21.7660" RightMargin="311.2340" TopMargin="20.7835" BottomMargin="719.2165" Scale9Width="297" Scale9Height="320" ctype="ImageViewObjectData">
+                              <AbstractNodeData Name="image_equipment_di" ActionTag="849435155" ZOrder="1" Tag="465" IconVisible="False" LeftMargin="21.0373" RightMargin="311.9627" TopMargin="18.3192" BottomMargin="1031.6808" Scale9Width="297" Scale9Height="320" ctype="ImageViewObjectData">
                                 <Size X="297.0000" Y="200.0000" />
                                 <Children>
                                   <AbstractNodeData Name="image_equipment_di_info_old" ActionTag="1394764963" Tag="466" IconVisible="False" LeftMargin="291.5000" RightMargin="-291.5000" FlipX="True" Scale9Width="297" Scale9Height="320" ctype="ImageViewObjectData">
@@ -620,30 +620,30 @@
                                   </AbstractNodeData>
                                 </Children>
                                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                                <Position X="170.2660" Y="819.2165" />
+                                <Position X="169.5373" Y="1131.6808" />
                                 <Scale ScaleX="1.0000" ScaleY="1.0000" />
                                 <CColor A="255" R="255" G="255" B="255" />
-                                <PrePosition X="0.2703" Y="0.8715" />
+                                <PrePosition X="0.2691" Y="0.9053" />
                                 <PreSize X="0.4714" Y="0.2128" />
                                 <FileData Type="Normal" Path="ui/zb_k01.png" Plist="" />
                               </AbstractNodeData>
-                              <AbstractNodeData Name="image_equipment_new" ActionTag="876140974" ZOrder="1" Tag="152" IconVisible="False" LeftMargin="16.0373" RightMargin="306.9627" TopMargin="249.0014" BottomMargin="10.9986" Scale9Enable="True" LeftEage="98" RightEage="98" TopEage="105" BottomEage="105" Scale9OriginX="98" Scale9OriginY="105" Scale9Width="101" Scale9Height="110" ctype="ImageViewObjectData">
-                                <Size X="307.0000" Y="680.0000" />
+                              <AbstractNodeData Name="image_equipment_new" ActionTag="876140974" ZOrder="1" Tag="152" IconVisible="False" LeftMargin="21.5373" RightMargin="312.4627" TopMargin="246.5438" BottomMargin="3.4562" Scale9Enable="True" LeftEage="98" RightEage="98" TopEage="105" BottomEage="105" Scale9OriginX="98" Scale9OriginY="105" Scale9Width="101" Scale9Height="110" ctype="ImageViewObjectData">
+                                <Size X="296.0000" Y="1000.0000" />
                                 <Children>
-                                  <AbstractNodeData Name="image_new_old" ActionTag="-256396856" Tag="153" IconVisible="False" LeftMargin="286.5000" RightMargin="-286.5000" FlipX="True" Scale9Enable="True" LeftEage="98" RightEage="98" TopEage="105" BottomEage="105" Scale9OriginX="98" Scale9OriginY="105" Scale9Width="101" Scale9Height="110" ctype="ImageViewObjectData">
-                                    <Size X="307.0000" Y="680.0000" />
+                                  <AbstractNodeData Name="image_new_old" ActionTag="-256396856" Tag="153" IconVisible="False" LeftMargin="293.8367" RightMargin="-293.8367" FlipX="True" Scale9Enable="True" LeftEage="98" RightEage="98" TopEage="105" BottomEage="105" Scale9OriginX="98" Scale9OriginY="105" Scale9Width="101" Scale9Height="110" ctype="ImageViewObjectData">
+                                    <Size X="296.0000" Y="1000.0000" />
                                     <AnchorPoint ScaleX="0.5000" ScaleY="1.0000" />
-                                    <Position X="440.0000" Y="680.0000" />
+                                    <Position X="441.8367" Y="1000.0000" />
                                     <Scale ScaleX="1.0000" ScaleY="1.0000" />
                                     <CColor A="255" R="255" G="255" B="255" />
-                                    <PrePosition X="1.4332" Y="1.0000" />
+                                    <PrePosition X="1.4927" Y="1.0000" />
                                     <PreSize X="1.0000" Y="1.0000" />
                                     <FileData Type="Normal" Path="ui/zb_k01.png" Plist="" />
                                   </AbstractNodeData>
-                                  <AbstractNodeData Name="image_new_info" ActionTag="1787911300" Tag="154" IconVisible="False" LeftMargin="291.5000" RightMargin="-281.5000" BackColorAlpha="102" ColorAngle="90.0000" Scale9Width="1" Scale9Height="1" ctype="PanelObjectData">
-                                    <Size X="297.0000" Y="680.0000" />
+                                  <AbstractNodeData Name="image_new_info" ActionTag="1787911300" Tag="154" IconVisible="False" LeftMargin="293.8368" RightMargin="-293.8368" BackColorAlpha="102" ColorAngle="90.0000" Scale9Width="1" Scale9Height="1" ctype="PanelObjectData">
+                                    <Size X="296.0000" Y="1000.0000" />
                                     <Children>
-                                      <AbstractNodeData Name="image_base_di" ActionTag="1042927493" UserData="ignoreSize" Tag="155" IconVisible="False" LeftMargin="-103.9983" RightMargin="246.9983" TopMargin="-15.5090" BottomMargin="656.5090" Scale9Width="154" Scale9Height="39" ctype="ImageViewObjectData">
+                                      <AbstractNodeData Name="image_base_di" ActionTag="1042927493" UserData="ignoreSize" Tag="155" IconVisible="False" LeftMargin="-103.9948" RightMargin="245.9948" TopMargin="-14.6117" BottomMargin="975.6117" Scale9Width="154" Scale9Height="39" ctype="ImageViewObjectData">
                                         <Size X="154.0000" Y="39.0000" />
                                         <Children>
                                           <AbstractNodeData Name="image_base_di_info_old" ActionTag="21714107" UserData="ignoreSize" Tag="156" IconVisible="False" LeftMargin="57.0000" RightMargin="-57.0000" FlipX="True" Scale9Width="154" Scale9Height="39" ctype="ImageViewObjectData">
@@ -685,14 +685,14 @@
                                           </AbstractNodeData>
                                         </Children>
                                         <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                                        <Position X="-26.9983" Y="676.0090" />
+                                        <Position X="-26.9948" Y="995.1117" />
                                         <Scale ScaleX="1.0000" ScaleY="1.0000" />
                                         <CColor A="255" R="255" G="255" B="255" />
-                                        <PrePosition X="-0.0909" Y="0.9941" />
+                                        <PrePosition X="-0.0912" Y="0.9951" />
                                         <PreSize X="0.5185" Y="0.1902" />
                                         <FileData Type="Normal" Path="ui/tk_di_03.png" Plist="" />
                                       </AbstractNodeData>
-                                      <AbstractNodeData Name="image_frame_gem1" ActionTag="-741387007" UserData="ignoreSize" Tag="159" IconVisible="False" LeftMargin="-261.9424" RightMargin="453.9424" TopMargin="26.8459" BottomMargin="550.1541" Scale9Width="105" Scale9Height="103" ctype="ImageViewObjectData">
+                                      <AbstractNodeData Name="image_frame_gem1" ActionTag="-741387007" UserData="ignoreSize" Tag="159" IconVisible="False" LeftMargin="-261.9131" RightMargin="452.9131" TopMargin="27.7422" BottomMargin="869.2578" Scale9Width="105" Scale9Height="103" ctype="ImageViewObjectData">
                                         <Size X="105.0000" Y="103.0000" />
                                         <Children>
                                           <AbstractNodeData Name="image_gem" ActionTag="1512923634" UserData="ignoreSize" Tag="160" IconVisible="False" LeftMargin="12.0000" RightMargin="13.0000" TopMargin="12.0000" BottomMargin="11.0000" Scale9Width="80" Scale9Height="80" ctype="ImageViewObjectData">
@@ -753,14 +753,14 @@
                                           </AbstractNodeData>
                                         </Children>
                                         <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                                        <Position X="-209.4424" Y="601.6541" />
+                                        <Position X="-209.4131" Y="920.7578" />
                                         <Scale ScaleX="1.0000" ScaleY="1.0000" />
                                         <CColor A="255" R="255" G="255" B="255" />
-                                        <PrePosition X="-0.7052" Y="0.8848" />
+                                        <PrePosition X="-0.7075" Y="0.9208" />
                                         <PreSize X="0.3535" Y="0.5024" />
                                         <FileData Type="Normal" Path="ui/quality_small_purple.png" Plist="" />
                                       </AbstractNodeData>
-                                      <AbstractNodeData Name="image_frame_gem2" ActionTag="-584409869" UserData="ignoreSize" Tag="164" IconVisible="False" LeftMargin="-119.9356" RightMargin="311.9356" TopMargin="26.8459" BottomMargin="550.1541" Scale9Width="105" Scale9Height="103" ctype="ImageViewObjectData">
+                                      <AbstractNodeData Name="image_frame_gem2" ActionTag="-584409869" UserData="ignoreSize" Tag="164" IconVisible="False" LeftMargin="-119.9125" RightMargin="310.9125" TopMargin="27.7422" BottomMargin="869.2578" Scale9Width="105" Scale9Height="103" ctype="ImageViewObjectData">
                                         <Size X="105.0000" Y="103.0000" />
                                         <Children>
                                           <AbstractNodeData Name="image_gem" ActionTag="1835974577" UserData="ignoreSize" Tag="165" IconVisible="False" LeftMargin="12.0000" RightMargin="13.0000" TopMargin="12.0000" BottomMargin="11.0000" Scale9Width="80" Scale9Height="80" ctype="ImageViewObjectData">
@@ -821,14 +821,14 @@
                                           </AbstractNodeData>
                                         </Children>
                                         <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                                        <Position X="-67.4356" Y="601.6541" />
+                                        <Position X="-67.4125" Y="920.7578" />
                                         <Scale ScaleX="1.0000" ScaleY="1.0000" />
                                         <CColor A="255" R="255" G="255" B="255" />
-                                        <PrePosition X="-0.2271" Y="0.8848" />
+                                        <PrePosition X="-0.2277" Y="0.9208" />
                                         <PreSize X="0.3535" Y="0.5024" />
                                         <FileData Type="Normal" Path="ui/quality_small_purple.png" Plist="" />
                                       </AbstractNodeData>
-                                      <AbstractNodeData Name="image_frame_gem3" ActionTag="120075891" UserData="ignoreSize" Tag="169" IconVisible="False" LeftMargin="21.0648" RightMargin="170.9352" TopMargin="26.8459" BottomMargin="550.1541" Scale9Width="105" Scale9Height="103" ctype="ImageViewObjectData">
+                                      <AbstractNodeData Name="image_frame_gem3" ActionTag="120075891" UserData="ignoreSize" Tag="169" IconVisible="False" LeftMargin="21.0693" RightMargin="169.9307" TopMargin="27.7422" BottomMargin="869.2578" Scale9Width="105" Scale9Height="103" ctype="ImageViewObjectData">
                                         <Size X="105.0000" Y="103.0000" />
                                         <Children>
                                           <AbstractNodeData Name="image_gem" ActionTag="-1186075746" UserData="ignoreSize" Tag="170" IconVisible="False" LeftMargin="12.0000" RightMargin="13.0000" TopMargin="12.0000" BottomMargin="11.0000" Scale9Width="80" Scale9Height="80" ctype="ImageViewObjectData">
@@ -889,14 +889,14 @@
                                           </AbstractNodeData>
                                         </Children>
                                         <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                                        <Position X="73.5648" Y="601.6541" />
+                                        <Position X="73.5693" Y="920.7578" />
                                         <Scale ScaleX="1.0000" ScaleY="1.0000" />
                                         <CColor A="255" R="255" G="255" B="255" />
-                                        <PrePosition X="0.2477" Y="0.8848" />
+                                        <PrePosition X="0.2485" Y="0.9208" />
                                         <PreSize X="0.3535" Y="0.5024" />
                                         <FileData Type="Normal" Path="ui/quality_small_purple.png" Plist="" />
                                       </AbstractNodeData>
-                                      <AbstractNodeData Name="image_frame_gem4" ActionTag="1710083446" UserData="ignoreSize" Tag="174" IconVisible="False" LeftMargin="168.5662" RightMargin="23.4338" TopMargin="26.8459" BottomMargin="550.1541" Scale9Width="105" Scale9Height="103" ctype="ImageViewObjectData">
+                                      <AbstractNodeData Name="image_frame_gem4" ActionTag="1710083446" UserData="ignoreSize" Tag="174" IconVisible="False" LeftMargin="168.5663" RightMargin="22.4337" TopMargin="27.7422" BottomMargin="869.2578" Scale9Width="105" Scale9Height="103" ctype="ImageViewObjectData">
                                         <Size X="105.0000" Y="103.0000" />
                                         <Children>
                                           <AbstractNodeData Name="image_gem" ActionTag="1535145771" UserData="ignoreSize" Tag="175" IconVisible="False" LeftMargin="12.0000" RightMargin="13.0000" TopMargin="12.0000" BottomMargin="11.0000" Scale9Width="80" Scale9Height="80" ctype="ImageViewObjectData">
@@ -957,14 +957,14 @@
                                           </AbstractNodeData>
                                         </Children>
                                         <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                                        <Position X="221.0662" Y="601.6541" />
+                                        <Position X="221.0663" Y="920.7578" />
                                         <Scale ScaleX="1.0000" ScaleY="1.0000" />
                                         <CColor A="255" R="255" G="255" B="255" />
-                                        <PrePosition X="0.7443" Y="0.8848" />
+                                        <PrePosition X="0.7468" Y="0.9208" />
                                         <PreSize X="0.3535" Y="0.5024" />
                                         <FileData Type="Normal" Path="ui/quality_small_purple.png" Plist="" />
                                       </AbstractNodeData>
-                                      <AbstractNodeData Name="image_number2" ActionTag="-667254607" ZOrder="1" Tag="179" IconVisible="False" LeftMargin="-259.9717" RightMargin="28.9717" TopMargin="173.7191" BottomMargin="454.2809" LeftEage="63" RightEage="63" TopEage="6" BottomEage="6" Scale9OriginX="63" Scale9OriginY="6" Scale9Width="402" Scale9Height="40" ctype="ImageViewObjectData">
+                                      <AbstractNodeData Name="image_number2" ActionTag="-667254607" ZOrder="1" Tag="179" IconVisible="False" LeftMargin="-259.9709" RightMargin="27.9709" TopMargin="174.6169" BottomMargin="773.3831" LeftEage="63" RightEage="63" TopEage="6" BottomEage="6" Scale9OriginX="63" Scale9OriginY="6" Scale9Width="402" Scale9Height="40" ctype="ImageViewObjectData">
                                         <Size X="528.0000" Y="52.0000" />
                                         <Children>
                                           <AbstractNodeData Name="text_number" ActionTag="1430486625" Tag="277" IconVisible="False" LeftMargin="24.4402" RightMargin="393.5598" TopMargin="11.2329" BottomMargin="10.7671" FontSize="24" LabelText="装备2件：" OutlineSize="1" ShadowOffsetX="2" ShadowOffsetY="-2" ctype="TextObjectData">
@@ -1005,14 +1005,14 @@
                                           </AbstractNodeData>
                                         </Children>
                                         <AnchorPoint ScaleX="0.5000" ScaleY="1.0000" />
-                                        <Position X="4.0283" Y="506.2809" />
+                                        <Position X="4.0291" Y="825.3831" />
                                         <Scale ScaleX="1.0000" ScaleY="1.0000" />
                                         <CColor A="255" R="255" G="255" B="255" />
-                                        <PrePosition X="0.0136" Y="0.7445" />
+                                        <PrePosition X="0.0136" Y="0.8254" />
                                         <PreSize X="0.8381" Y="0.1182" />
                                         <FileData Type="Normal" Path="ui/zb_k04.png" Plist="" />
                                       </AbstractNodeData>
-                                      <AbstractNodeData Name="image_number3" ActionTag="755770263" ZOrder="1" Tag="282" IconVisible="False" LeftMargin="-259.9717" RightMargin="28.9717" TopMargin="229.4564" BottomMargin="398.5436" LeftEage="63" RightEage="63" TopEage="6" BottomEage="6" Scale9OriginX="63" Scale9OriginY="6" Scale9Width="402" Scale9Height="40" ctype="ImageViewObjectData">
+                                      <AbstractNodeData Name="image_number3" ActionTag="755770263" ZOrder="1" Tag="282" IconVisible="False" LeftMargin="-259.9709" RightMargin="27.9709" TopMargin="230.3542" BottomMargin="717.6458" LeftEage="63" RightEage="63" TopEage="6" BottomEage="6" Scale9OriginX="63" Scale9OriginY="6" Scale9Width="402" Scale9Height="40" ctype="ImageViewObjectData">
                                         <Size X="528.0000" Y="52.0000" />
                                         <Children>
                                           <AbstractNodeData Name="text_number" ActionTag="-1298377747" Tag="283" IconVisible="False" LeftMargin="24.4402" RightMargin="393.5598" TopMargin="14.5567" BottomMargin="7.4433" FontSize="24" LabelText="装备3件：" OutlineSize="1" ShadowOffsetX="2" ShadowOffsetY="-2" ctype="TextObjectData">
@@ -1053,14 +1053,14 @@
                                           </AbstractNodeData>
                                         </Children>
                                         <AnchorPoint ScaleX="0.5000" ScaleY="1.0000" />
-                                        <Position X="4.0283" Y="450.5436" />
+                                        <Position X="4.0291" Y="769.6458" />
                                         <Scale ScaleX="1.0000" ScaleY="1.0000" />
                                         <CColor A="255" R="255" G="255" B="255" />
-                                        <PrePosition X="0.0136" Y="0.6626" />
+                                        <PrePosition X="0.0136" Y="0.7696" />
                                         <PreSize X="0.8381" Y="0.1182" />
                                         <FileData Type="Normal" Path="ui/zb_k04.png" Plist="" />
                                       </AbstractNodeData>
-                                      <AbstractNodeData Name="image_number4" ActionTag="861366039" ZOrder="1" Tag="288" IconVisible="False" LeftMargin="-259.9717" RightMargin="28.9717" TopMargin="285.1942" BottomMargin="309.8058" Scale9Enable="True" LeftEage="63" RightEage="63" TopEage="6" BottomEage="6" Scale9OriginX="63" Scale9OriginY="6" Scale9Width="402" Scale9Height="40" ctype="ImageViewObjectData">
+                                      <AbstractNodeData Name="image_number4" ActionTag="861366039" ZOrder="1" Tag="288" IconVisible="False" LeftMargin="-259.9709" RightMargin="27.9709" TopMargin="286.0861" BottomMargin="628.9139" Scale9Enable="True" LeftEage="63" RightEage="63" TopEage="6" BottomEage="6" Scale9OriginX="63" Scale9OriginY="6" Scale9Width="402" Scale9Height="40" ctype="ImageViewObjectData">
                                         <Size X="528.0000" Y="85.0000" />
                                         <Children>
                                           <AbstractNodeData Name="text_number" ActionTag="-630416590" Tag="289" IconVisible="False" LeftMargin="24.4402" RightMargin="393.5598" TopMargin="15.4236" BottomMargin="39.5764" FontSize="24" LabelText="装备4件：" OutlineSize="1" ShadowOffsetX="2" ShadowOffsetY="-2" ctype="TextObjectData">
@@ -1125,14 +1125,14 @@
                                           </AbstractNodeData>
                                         </Children>
                                         <AnchorPoint ScaleX="0.5000" ScaleY="1.0000" />
-                                        <Position X="4.0283" Y="394.8058" />
+                                        <Position X="4.0291" Y="713.9139" />
                                         <Scale ScaleX="1.0000" ScaleY="1.0000" />
                                         <CColor A="255" R="255" G="255" B="255" />
-                                        <PrePosition X="0.0136" Y="0.5806" />
+                                        <PrePosition X="0.0136" Y="0.7139" />
                                         <PreSize X="0.8381" Y="0.1932" />
                                         <FileData Type="Normal" Path="ui/zb_k04.png" Plist="" />
                                       </AbstractNodeData>
-                                      <AbstractNodeData Name="image_star1" ActionTag="-2115243895" ZOrder="1" Tag="492" IconVisible="False" LeftMargin="-259.9717" RightMargin="28.9717" TopMargin="373.9334" BottomMargin="254.0666" LeftEage="63" RightEage="63" TopEage="6" BottomEage="6" Scale9OriginX="63" Scale9OriginY="6" Scale9Width="402" Scale9Height="40" ctype="ImageViewObjectData">
+                                      <AbstractNodeData Name="image_star1" ActionTag="-2115243895" ZOrder="1" Tag="492" IconVisible="False" LeftMargin="-259.9709" RightMargin="27.9709" TopMargin="375.2778" BottomMargin="572.7222" LeftEage="63" RightEage="63" TopEage="6" BottomEage="6" Scale9OriginX="63" Scale9OriginY="6" Scale9Width="402" Scale9Height="40" ctype="ImageViewObjectData">
                                         <Size X="528.0000" Y="52.0000" />
                                         <Children>
                                           <AbstractNodeData Name="text_number" ActionTag="1430025360" Tag="493" IconVisible="False" LeftMargin="24.4402" RightMargin="393.5598" TopMargin="11.2329" BottomMargin="10.7671" FontSize="24" LabelText="1星套装：" OutlineSize="1" ShadowOffsetX="2" ShadowOffsetY="-2" ctype="TextObjectData">
@@ -1173,14 +1173,14 @@
                                           </AbstractNodeData>
                                         </Children>
                                         <AnchorPoint ScaleX="0.5000" ScaleY="1.0000" />
-                                        <Position X="4.0283" Y="306.0666" />
+                                        <Position X="4.0291" Y="624.7222" />
                                         <Scale ScaleX="1.0000" ScaleY="1.0000" />
                                         <CColor A="255" R="255" G="255" B="255" />
-                                        <PrePosition X="0.0136" Y="0.4501" />
+                                        <PrePosition X="0.0136" Y="0.6247" />
                                         <PreSize X="0.8381" Y="0.1182" />
                                         <FileData Type="Normal" Path="ui/zb_k04.png" Plist="" />
                                       </AbstractNodeData>
-                                      <AbstractNodeData Name="image_star2" ActionTag="1097967949" ZOrder="1" Tag="496" IconVisible="False" LeftMargin="-259.9717" RightMargin="28.9717" TopMargin="429.6731" BottomMargin="198.3269" LeftEage="63" RightEage="63" TopEage="6" BottomEage="6" Scale9OriginX="63" Scale9OriginY="6" Scale9Width="402" Scale9Height="40" ctype="ImageViewObjectData">
+                                      <AbstractNodeData Name="image_star2" ActionTag="1097967949" ZOrder="1" Tag="496" IconVisible="False" LeftMargin="-259.9709" RightMargin="27.9709" TopMargin="430.2782" BottomMargin="517.7218" LeftEage="63" RightEage="63" TopEage="6" BottomEage="6" Scale9OriginX="63" Scale9OriginY="6" Scale9Width="402" Scale9Height="40" ctype="ImageViewObjectData">
                                         <Size X="528.0000" Y="52.0000" />
                                         <Children>
                                           <AbstractNodeData Name="text_number" ActionTag="-980910299" Tag="497" IconVisible="False" LeftMargin="24.4402" RightMargin="393.5598" TopMargin="11.2329" BottomMargin="10.7671" FontSize="24" LabelText="1星套装：" OutlineSize="1" ShadowOffsetX="2" ShadowOffsetY="-2" ctype="TextObjectData">
@@ -1221,14 +1221,14 @@
                                           </AbstractNodeData>
                                         </Children>
                                         <AnchorPoint ScaleX="0.5000" ScaleY="1.0000" />
-                                        <Position X="4.0283" Y="250.3269" />
+                                        <Position X="4.0291" Y="569.7218" />
                                         <Scale ScaleX="1.0000" ScaleY="1.0000" />
                                         <CColor A="255" R="255" G="255" B="255" />
-                                        <PrePosition X="0.0136" Y="0.3681" />
+                                        <PrePosition X="0.0136" Y="0.5697" />
                                         <PreSize X="0.8381" Y="0.1182" />
                                         <FileData Type="Normal" Path="ui/zb_k04.png" Plist="" />
                                       </AbstractNodeData>
-                                      <AbstractNodeData Name="image_star3" ActionTag="-1236126523" ZOrder="1" Tag="500" IconVisible="False" LeftMargin="-259.9717" RightMargin="28.9717" TopMargin="485.4107" BottomMargin="142.5893" LeftEage="63" RightEage="63" TopEage="6" BottomEage="6" Scale9OriginX="63" Scale9OriginY="6" Scale9Width="402" Scale9Height="40" ctype="ImageViewObjectData">
+                                      <AbstractNodeData Name="image_star3" ActionTag="-1236126523" ZOrder="1" Tag="500" IconVisible="False" LeftMargin="-259.9709" RightMargin="27.9709" TopMargin="485.2784" BottomMargin="462.7216" LeftEage="63" RightEage="63" TopEage="6" BottomEage="6" Scale9OriginX="63" Scale9OriginY="6" Scale9Width="402" Scale9Height="40" ctype="ImageViewObjectData">
                                         <Size X="528.0000" Y="52.0000" />
                                         <Children>
                                           <AbstractNodeData Name="text_number" ActionTag="69573956" Tag="501" IconVisible="False" LeftMargin="24.4402" RightMargin="393.5598" TopMargin="11.2329" BottomMargin="10.7671" FontSize="24" LabelText="1星套装：" OutlineSize="1" ShadowOffsetX="2" ShadowOffsetY="-2" ctype="TextObjectData">
@@ -1269,14 +1269,14 @@
                                           </AbstractNodeData>
                                         </Children>
                                         <AnchorPoint ScaleX="0.5000" ScaleY="1.0000" />
-                                        <Position X="4.0283" Y="194.5893" />
+                                        <Position X="4.0291" Y="514.7216" />
                                         <Scale ScaleX="1.0000" ScaleY="1.0000" />
                                         <CColor A="255" R="255" G="255" B="255" />
-                                        <PrePosition X="0.0136" Y="0.2862" />
+                                        <PrePosition X="0.0136" Y="0.5147" />
                                         <PreSize X="0.8381" Y="0.1182" />
                                         <FileData Type="Normal" Path="ui/zb_k04.png" Plist="" />
                                       </AbstractNodeData>
-                                      <AbstractNodeData Name="image_star4" ActionTag="10096596" ZOrder="1" Tag="504" IconVisible="False" LeftMargin="-259.9717" RightMargin="28.9717" TopMargin="541.1499" BottomMargin="86.8501" LeftEage="63" RightEage="63" TopEage="6" BottomEage="6" Scale9OriginX="63" Scale9OriginY="6" Scale9Width="402" Scale9Height="40" ctype="ImageViewObjectData">
+                                      <AbstractNodeData Name="image_star4" ActionTag="10096596" ZOrder="1" Tag="504" IconVisible="False" LeftMargin="-259.9709" RightMargin="27.9709" TopMargin="540.2786" BottomMargin="407.7215" LeftEage="63" RightEage="63" TopEage="6" BottomEage="6" Scale9OriginX="63" Scale9OriginY="6" Scale9Width="402" Scale9Height="40" ctype="ImageViewObjectData">
                                         <Size X="528.0000" Y="52.0000" />
                                         <Children>
                                           <AbstractNodeData Name="text_number" ActionTag="1947363944" Tag="505" IconVisible="False" LeftMargin="24.4402" RightMargin="393.5598" TopMargin="11.2329" BottomMargin="10.7671" FontSize="24" LabelText="1星套装：" OutlineSize="1" ShadowOffsetX="2" ShadowOffsetY="-2" ctype="TextObjectData">
@@ -1317,14 +1317,14 @@
                                           </AbstractNodeData>
                                         </Children>
                                         <AnchorPoint ScaleX="0.5000" ScaleY="1.0000" />
-                                        <Position X="4.0283" Y="138.8501" />
+                                        <Position X="4.0291" Y="459.7215" />
                                         <Scale ScaleX="1.0000" ScaleY="1.0000" />
                                         <CColor A="255" R="255" G="255" B="255" />
-                                        <PrePosition X="0.0136" Y="0.2042" />
+                                        <PrePosition X="0.0136" Y="0.4597" />
                                         <PreSize X="0.8381" Y="0.1182" />
                                         <FileData Type="Normal" Path="ui/zb_k04.png" Plist="" />
                                       </AbstractNodeData>
-                                      <AbstractNodeData Name="image_star5" ActionTag="589522660" ZOrder="1" Tag="508" IconVisible="False" LeftMargin="-259.9717" RightMargin="28.9717" TopMargin="596.8896" BottomMargin="31.1104" LeftEage="63" RightEage="63" TopEage="6" BottomEage="6" Scale9OriginX="63" Scale9OriginY="6" Scale9Width="402" Scale9Height="40" ctype="ImageViewObjectData">
+                                      <AbstractNodeData Name="image_star5" ActionTag="589522660" ZOrder="1" Tag="508" IconVisible="False" LeftMargin="-259.9709" RightMargin="27.9709" TopMargin="595.2795" BottomMargin="352.7204" LeftEage="63" RightEage="63" TopEage="6" BottomEage="6" Scale9OriginX="63" Scale9OriginY="6" Scale9Width="402" Scale9Height="40" ctype="ImageViewObjectData">
                                         <Size X="528.0000" Y="52.0000" />
                                         <Children>
                                           <AbstractNodeData Name="text_number" ActionTag="-1318678316" Tag="509" IconVisible="False" LeftMargin="24.4402" RightMargin="393.5598" TopMargin="11.2329" BottomMargin="10.7671" FontSize="24" LabelText="1星套装：" OutlineSize="1" ShadowOffsetX="2" ShadowOffsetY="-2" ctype="TextObjectData">
@@ -1365,20 +1365,308 @@
                                           </AbstractNodeData>
                                         </Children>
                                         <AnchorPoint ScaleX="0.5000" ScaleY="1.0000" />
-                                        <Position X="4.0283" Y="83.1104" />
+                                        <Position X="4.0291" Y="404.7204" />
                                         <Scale ScaleX="1.0000" ScaleY="1.0000" />
                                         <CColor A="255" R="255" G="255" B="255" />
-                                        <PrePosition X="0.0136" Y="0.1222" />
+                                        <PrePosition X="0.0136" Y="0.4047" />
+                                        <PreSize X="0.8381" Y="0.1182" />
+                                        <FileData Type="Normal" Path="ui/zb_k04.png" Plist="" />
+                                      </AbstractNodeData>
+                                      <AbstractNodeData Name="image_star6" ActionTag="1367836551" ZOrder="1" Tag="356" IconVisible="False" LeftMargin="-259.9704" RightMargin="27.9704" TopMargin="650.2798" BottomMargin="297.7202" LeftEage="63" RightEage="63" TopEage="6" BottomEage="6" Scale9OriginX="63" Scale9OriginY="6" Scale9Width="402" Scale9Height="40" ctype="ImageViewObjectData">
+                                        <Size X="528.0000" Y="52.0000" />
+                                        <Children>
+                                          <AbstractNodeData Name="text_number" ActionTag="-1057324375" Tag="357" IconVisible="False" LeftMargin="24.4402" RightMargin="393.5598" TopMargin="11.2329" BottomMargin="10.7671" FontSize="24" LabelText="1星套装：" OutlineSize="1" ShadowOffsetX="2" ShadowOffsetY="-2" ctype="TextObjectData">
+                                            <Size X="110.0000" Y="30.0000" />
+                                            <AnchorPoint ScaleX="-0.4000" ScaleY="0.5000" />
+                                            <Position X="-19.5598" Y="25.7671" />
+                                            <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                                            <CColor A="255" R="77" G="77" B="77" />
+                                            <PrePosition X="-0.0370" Y="0.4955" />
+                                            <PreSize />
+                                            <FontResource Type="Normal" Path="data/ui_font.ttf" Plist="" />
+                                            <OutlineColor A="255" R="255" G="0" B="0" />
+                                            <ShadowColor A="255" R="110" G="110" B="110" />
+                                          </AbstractNodeData>
+                                          <AbstractNodeData Name="text_property1" ActionTag="1341665802" Tag="358" IconVisible="False" LeftMargin="152.9507" RightMargin="280.0493" TopMargin="12.2329" BottomMargin="11.7671" FontSize="22" LabelText="物防+100" OutlineSize="1" ShadowOffsetX="2" ShadowOffsetY="-2" ctype="TextObjectData">
+                                            <Size X="95.0000" Y="28.0000" />
+                                            <AnchorPoint ScaleY="0.5000" />
+                                            <Position X="152.9507" Y="25.7671" />
+                                            <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                                            <CColor A="255" R="77" G="77" B="77" />
+                                            <PrePosition X="0.2897" Y="0.4955" />
+                                            <PreSize />
+                                            <FontResource Type="Normal" Path="data/ui_font.ttf" Plist="" />
+                                            <OutlineColor A="255" R="255" G="0" B="0" />
+                                            <ShadowColor A="255" R="110" G="110" B="110" />
+                                          </AbstractNodeData>
+                                          <AbstractNodeData Name="text_property2" ActionTag="-1472556473" Tag="359" IconVisible="False" LeftMargin="330.8478" RightMargin="102.1522" TopMargin="12.2329" BottomMargin="11.7671" FontSize="22" LabelText="物防+100" OutlineSize="1" ShadowOffsetX="2" ShadowOffsetY="-2" ctype="TextObjectData">
+                                            <Size X="95.0000" Y="28.0000" />
+                                            <AnchorPoint ScaleY="0.5000" />
+                                            <Position X="330.8478" Y="25.7671" />
+                                            <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                                            <CColor A="255" R="77" G="77" B="77" />
+                                            <PrePosition X="0.6266" Y="0.4955" />
+                                            <PreSize />
+                                            <FontResource Type="Normal" Path="data/ui_font.ttf" Plist="" />
+                                            <OutlineColor A="255" R="255" G="0" B="0" />
+                                            <ShadowColor A="255" R="110" G="110" B="110" />
+                                          </AbstractNodeData>
+                                        </Children>
+                                        <AnchorPoint ScaleX="0.5000" ScaleY="1.0000" />
+                                        <Position X="4.0296" Y="349.7202" />
+                                        <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                                        <CColor A="255" R="255" G="255" B="255" />
+                                        <PrePosition X="0.0136" Y="0.3497" />
+                                        <PreSize X="0.8381" Y="0.1182" />
+                                        <FileData Type="Normal" Path="ui/zb_k04.png" Plist="" />
+                                      </AbstractNodeData>
+                                      <AbstractNodeData Name="image_star7" ActionTag="794803065" ZOrder="1" Tag="360" IconVisible="False" LeftMargin="-259.9704" RightMargin="27.9704" TopMargin="705.2784" BottomMargin="242.7216" LeftEage="63" RightEage="63" TopEage="6" BottomEage="6" Scale9OriginX="63" Scale9OriginY="6" Scale9Width="402" Scale9Height="40" ctype="ImageViewObjectData">
+                                        <Size X="528.0000" Y="52.0000" />
+                                        <Children>
+                                          <AbstractNodeData Name="text_number" ActionTag="-541520543" Tag="361" IconVisible="False" LeftMargin="24.4402" RightMargin="393.5598" TopMargin="11.2329" BottomMargin="10.7671" FontSize="24" LabelText="1星套装：" OutlineSize="1" ShadowOffsetX="2" ShadowOffsetY="-2" ctype="TextObjectData">
+                                            <Size X="110.0000" Y="30.0000" />
+                                            <AnchorPoint ScaleX="-0.4000" ScaleY="0.5000" />
+                                            <Position X="-19.5598" Y="25.7671" />
+                                            <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                                            <CColor A="255" R="77" G="77" B="77" />
+                                            <PrePosition X="-0.0370" Y="0.4955" />
+                                            <PreSize />
+                                            <FontResource Type="Normal" Path="data/ui_font.ttf" Plist="" />
+                                            <OutlineColor A="255" R="255" G="0" B="0" />
+                                            <ShadowColor A="255" R="110" G="110" B="110" />
+                                          </AbstractNodeData>
+                                          <AbstractNodeData Name="text_property1" ActionTag="-641775415" Tag="362" IconVisible="False" LeftMargin="152.9507" RightMargin="280.0493" TopMargin="12.2329" BottomMargin="11.7671" FontSize="22" LabelText="物防+100" OutlineSize="1" ShadowOffsetX="2" ShadowOffsetY="-2" ctype="TextObjectData">
+                                            <Size X="95.0000" Y="28.0000" />
+                                            <AnchorPoint ScaleY="0.5000" />
+                                            <Position X="152.9507" Y="25.7671" />
+                                            <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                                            <CColor A="255" R="77" G="77" B="77" />
+                                            <PrePosition X="0.2897" Y="0.4955" />
+                                            <PreSize />
+                                            <FontResource Type="Normal" Path="data/ui_font.ttf" Plist="" />
+                                            <OutlineColor A="255" R="255" G="0" B="0" />
+                                            <ShadowColor A="255" R="110" G="110" B="110" />
+                                          </AbstractNodeData>
+                                          <AbstractNodeData Name="text_property2" ActionTag="-701889514" Tag="363" IconVisible="False" LeftMargin="330.8478" RightMargin="102.1522" TopMargin="12.2329" BottomMargin="11.7671" FontSize="22" LabelText="物防+100" OutlineSize="1" ShadowOffsetX="2" ShadowOffsetY="-2" ctype="TextObjectData">
+                                            <Size X="95.0000" Y="28.0000" />
+                                            <AnchorPoint ScaleY="0.5000" />
+                                            <Position X="330.8478" Y="25.7671" />
+                                            <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                                            <CColor A="255" R="77" G="77" B="77" />
+                                            <PrePosition X="0.6266" Y="0.4955" />
+                                            <PreSize />
+                                            <FontResource Type="Normal" Path="data/ui_font.ttf" Plist="" />
+                                            <OutlineColor A="255" R="255" G="0" B="0" />
+                                            <ShadowColor A="255" R="110" G="110" B="110" />
+                                          </AbstractNodeData>
+                                        </Children>
+                                        <AnchorPoint ScaleX="0.5000" ScaleY="1.0000" />
+                                        <Position X="4.0296" Y="294.7216" />
+                                        <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                                        <CColor A="255" R="255" G="255" B="255" />
+                                        <PrePosition X="0.0136" Y="0.2947" />
+                                        <PreSize X="0.8381" Y="0.1182" />
+                                        <FileData Type="Normal" Path="ui/zb_k04.png" Plist="" />
+                                      </AbstractNodeData>
+                                      <AbstractNodeData Name="image_star8" ActionTag="-2130653274" ZOrder="1" Tag="364" IconVisible="False" LeftMargin="-259.9704" RightMargin="27.9704" TopMargin="760.2777" BottomMargin="187.7223" LeftEage="63" RightEage="63" TopEage="6" BottomEage="6" Scale9OriginX="63" Scale9OriginY="6" Scale9Width="402" Scale9Height="40" ctype="ImageViewObjectData">
+                                        <Size X="528.0000" Y="52.0000" />
+                                        <Children>
+                                          <AbstractNodeData Name="text_number" ActionTag="1218722223" Tag="365" IconVisible="False" LeftMargin="24.4402" RightMargin="393.5598" TopMargin="11.2329" BottomMargin="10.7671" FontSize="24" LabelText="1星套装：" OutlineSize="1" ShadowOffsetX="2" ShadowOffsetY="-2" ctype="TextObjectData">
+                                            <Size X="110.0000" Y="30.0000" />
+                                            <AnchorPoint ScaleX="-0.4000" ScaleY="0.5000" />
+                                            <Position X="-19.5598" Y="25.7671" />
+                                            <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                                            <CColor A="255" R="77" G="77" B="77" />
+                                            <PrePosition X="-0.0370" Y="0.4955" />
+                                            <PreSize />
+                                            <FontResource Type="Normal" Path="data/ui_font.ttf" Plist="" />
+                                            <OutlineColor A="255" R="255" G="0" B="0" />
+                                            <ShadowColor A="255" R="110" G="110" B="110" />
+                                          </AbstractNodeData>
+                                          <AbstractNodeData Name="text_property1" ActionTag="-2101545935" Tag="366" IconVisible="False" LeftMargin="152.9507" RightMargin="280.0493" TopMargin="12.2329" BottomMargin="11.7671" FontSize="22" LabelText="物防+100" OutlineSize="1" ShadowOffsetX="2" ShadowOffsetY="-2" ctype="TextObjectData">
+                                            <Size X="95.0000" Y="28.0000" />
+                                            <AnchorPoint ScaleY="0.5000" />
+                                            <Position X="152.9507" Y="25.7671" />
+                                            <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                                            <CColor A="255" R="77" G="77" B="77" />
+                                            <PrePosition X="0.2897" Y="0.4955" />
+                                            <PreSize />
+                                            <FontResource Type="Normal" Path="data/ui_font.ttf" Plist="" />
+                                            <OutlineColor A="255" R="255" G="0" B="0" />
+                                            <ShadowColor A="255" R="110" G="110" B="110" />
+                                          </AbstractNodeData>
+                                          <AbstractNodeData Name="text_property2" ActionTag="-746799385" Tag="367" IconVisible="False" LeftMargin="330.8478" RightMargin="102.1522" TopMargin="12.2329" BottomMargin="11.7671" FontSize="22" LabelText="物防+100" OutlineSize="1" ShadowOffsetX="2" ShadowOffsetY="-2" ctype="TextObjectData">
+                                            <Size X="95.0000" Y="28.0000" />
+                                            <AnchorPoint ScaleY="0.5000" />
+                                            <Position X="330.8478" Y="25.7671" />
+                                            <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                                            <CColor A="255" R="77" G="77" B="77" />
+                                            <PrePosition X="0.6266" Y="0.4955" />
+                                            <PreSize />
+                                            <FontResource Type="Normal" Path="data/ui_font.ttf" Plist="" />
+                                            <OutlineColor A="255" R="255" G="0" B="0" />
+                                            <ShadowColor A="255" R="110" G="110" B="110" />
+                                          </AbstractNodeData>
+                                        </Children>
+                                        <AnchorPoint ScaleX="0.5000" ScaleY="1.0000" />
+                                        <Position X="4.0296" Y="239.7223" />
+                                        <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                                        <CColor A="255" R="255" G="255" B="255" />
+                                        <PrePosition X="0.0136" Y="0.2397" />
+                                        <PreSize X="0.8381" Y="0.1182" />
+                                        <FileData Type="Normal" Path="ui/zb_k04.png" Plist="" />
+                                      </AbstractNodeData>
+                                      <AbstractNodeData Name="image_star9" ActionTag="615994658" ZOrder="1" Tag="368" IconVisible="False" LeftMargin="-259.9704" RightMargin="27.9704" TopMargin="815.2778" BottomMargin="132.7222" LeftEage="63" RightEage="63" TopEage="6" BottomEage="6" Scale9OriginX="63" Scale9OriginY="6" Scale9Width="402" Scale9Height="40" ctype="ImageViewObjectData">
+                                        <Size X="528.0000" Y="52.0000" />
+                                        <Children>
+                                          <AbstractNodeData Name="text_number" ActionTag="-488289360" Tag="369" IconVisible="False" LeftMargin="24.4402" RightMargin="393.5598" TopMargin="11.2329" BottomMargin="10.7671" FontSize="24" LabelText="1星套装：" OutlineSize="1" ShadowOffsetX="2" ShadowOffsetY="-2" ctype="TextObjectData">
+                                            <Size X="110.0000" Y="30.0000" />
+                                            <AnchorPoint ScaleX="-0.4000" ScaleY="0.5000" />
+                                            <Position X="-19.5598" Y="25.7671" />
+                                            <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                                            <CColor A="255" R="77" G="77" B="77" />
+                                            <PrePosition X="-0.0370" Y="0.4955" />
+                                            <PreSize />
+                                            <FontResource Type="Normal" Path="data/ui_font.ttf" Plist="" />
+                                            <OutlineColor A="255" R="255" G="0" B="0" />
+                                            <ShadowColor A="255" R="110" G="110" B="110" />
+                                          </AbstractNodeData>
+                                          <AbstractNodeData Name="text_property1" ActionTag="-664426925" Tag="370" IconVisible="False" LeftMargin="152.9507" RightMargin="280.0493" TopMargin="12.2329" BottomMargin="11.7671" FontSize="22" LabelText="物防+100" OutlineSize="1" ShadowOffsetX="2" ShadowOffsetY="-2" ctype="TextObjectData">
+                                            <Size X="95.0000" Y="28.0000" />
+                                            <AnchorPoint ScaleY="0.5000" />
+                                            <Position X="152.9507" Y="25.7671" />
+                                            <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                                            <CColor A="255" R="77" G="77" B="77" />
+                                            <PrePosition X="0.2897" Y="0.4955" />
+                                            <PreSize />
+                                            <FontResource Type="Normal" Path="data/ui_font.ttf" Plist="" />
+                                            <OutlineColor A="255" R="255" G="0" B="0" />
+                                            <ShadowColor A="255" R="110" G="110" B="110" />
+                                          </AbstractNodeData>
+                                          <AbstractNodeData Name="text_property2" ActionTag="-1982176271" Tag="371" IconVisible="False" LeftMargin="330.8478" RightMargin="102.1522" TopMargin="12.2329" BottomMargin="11.7671" FontSize="22" LabelText="物防+100" OutlineSize="1" ShadowOffsetX="2" ShadowOffsetY="-2" ctype="TextObjectData">
+                                            <Size X="95.0000" Y="28.0000" />
+                                            <AnchorPoint ScaleY="0.5000" />
+                                            <Position X="330.8478" Y="25.7671" />
+                                            <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                                            <CColor A="255" R="77" G="77" B="77" />
+                                            <PrePosition X="0.6266" Y="0.4955" />
+                                            <PreSize />
+                                            <FontResource Type="Normal" Path="data/ui_font.ttf" Plist="" />
+                                            <OutlineColor A="255" R="255" G="0" B="0" />
+                                            <ShadowColor A="255" R="110" G="110" B="110" />
+                                          </AbstractNodeData>
+                                        </Children>
+                                        <AnchorPoint ScaleX="0.5000" ScaleY="1.0000" />
+                                        <Position X="4.0296" Y="184.7222" />
+                                        <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                                        <CColor A="255" R="255" G="255" B="255" />
+                                        <PrePosition X="0.0136" Y="0.1847" />
+                                        <PreSize X="0.8381" Y="0.1182" />
+                                        <FileData Type="Normal" Path="ui/zb_k04.png" Plist="" />
+                                      </AbstractNodeData>
+                                      <AbstractNodeData Name="image_star10" ActionTag="-768759486" ZOrder="1" Tag="372" IconVisible="False" LeftMargin="-259.9704" RightMargin="27.9704" TopMargin="870.2777" BottomMargin="77.7223" LeftEage="63" RightEage="63" TopEage="6" BottomEage="6" Scale9OriginX="63" Scale9OriginY="6" Scale9Width="402" Scale9Height="40" ctype="ImageViewObjectData">
+                                        <Size X="528.0000" Y="52.0000" />
+                                        <Children>
+                                          <AbstractNodeData Name="text_number" ActionTag="1383510977" Tag="373" IconVisible="False" LeftMargin="24.4402" RightMargin="393.5598" TopMargin="11.2329" BottomMargin="10.7671" FontSize="24" LabelText="1星套装：" OutlineSize="1" ShadowOffsetX="2" ShadowOffsetY="-2" ctype="TextObjectData">
+                                            <Size X="110.0000" Y="30.0000" />
+                                            <AnchorPoint ScaleX="-0.4000" ScaleY="0.5000" />
+                                            <Position X="-19.5598" Y="25.7671" />
+                                            <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                                            <CColor A="255" R="77" G="77" B="77" />
+                                            <PrePosition X="-0.0370" Y="0.4955" />
+                                            <PreSize />
+                                            <FontResource Type="Normal" Path="data/ui_font.ttf" Plist="" />
+                                            <OutlineColor A="255" R="255" G="0" B="0" />
+                                            <ShadowColor A="255" R="110" G="110" B="110" />
+                                          </AbstractNodeData>
+                                          <AbstractNodeData Name="text_property1" ActionTag="2032248326" Tag="374" IconVisible="False" LeftMargin="152.9507" RightMargin="280.0493" TopMargin="12.2329" BottomMargin="11.7671" FontSize="22" LabelText="物防+100" OutlineSize="1" ShadowOffsetX="2" ShadowOffsetY="-2" ctype="TextObjectData">
+                                            <Size X="95.0000" Y="28.0000" />
+                                            <AnchorPoint ScaleY="0.5000" />
+                                            <Position X="152.9507" Y="25.7671" />
+                                            <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                                            <CColor A="255" R="77" G="77" B="77" />
+                                            <PrePosition X="0.2897" Y="0.4955" />
+                                            <PreSize />
+                                            <FontResource Type="Normal" Path="data/ui_font.ttf" Plist="" />
+                                            <OutlineColor A="255" R="255" G="0" B="0" />
+                                            <ShadowColor A="255" R="110" G="110" B="110" />
+                                          </AbstractNodeData>
+                                          <AbstractNodeData Name="text_property2" ActionTag="837285621" Tag="375" IconVisible="False" LeftMargin="330.8478" RightMargin="102.1522" TopMargin="12.2329" BottomMargin="11.7671" FontSize="22" LabelText="物防+100" OutlineSize="1" ShadowOffsetX="2" ShadowOffsetY="-2" ctype="TextObjectData">
+                                            <Size X="95.0000" Y="28.0000" />
+                                            <AnchorPoint ScaleY="0.5000" />
+                                            <Position X="330.8478" Y="25.7671" />
+                                            <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                                            <CColor A="255" R="77" G="77" B="77" />
+                                            <PrePosition X="0.6266" Y="0.4955" />
+                                            <PreSize />
+                                            <FontResource Type="Normal" Path="data/ui_font.ttf" Plist="" />
+                                            <OutlineColor A="255" R="255" G="0" B="0" />
+                                            <ShadowColor A="255" R="110" G="110" B="110" />
+                                          </AbstractNodeData>
+                                        </Children>
+                                        <AnchorPoint ScaleX="0.5000" ScaleY="1.0000" />
+                                        <Position X="4.0296" Y="129.7223" />
+                                        <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                                        <CColor A="255" R="255" G="255" B="255" />
+                                        <PrePosition X="0.0136" Y="0.1297" />
+                                        <PreSize X="0.8381" Y="0.1182" />
+                                        <FileData Type="Normal" Path="ui/zb_k04.png" Plist="" />
+                                      </AbstractNodeData>
+                                      <AbstractNodeData Name="image_star11" ActionTag="-2100710232" ZOrder="1" Tag="376" IconVisible="False" LeftMargin="-259.9701" RightMargin="27.9701" TopMargin="925.2778" BottomMargin="22.7221" LeftEage="63" RightEage="63" TopEage="6" BottomEage="6" Scale9OriginX="63" Scale9OriginY="6" Scale9Width="402" Scale9Height="40" ctype="ImageViewObjectData">
+                                        <Size X="528.0000" Y="52.0000" />
+                                        <Children>
+                                          <AbstractNodeData Name="text_number" ActionTag="-789136059" Tag="377" IconVisible="False" LeftMargin="24.4402" RightMargin="393.5598" TopMargin="11.2329" BottomMargin="10.7671" FontSize="24" LabelText="1星套装：" OutlineSize="1" ShadowOffsetX="2" ShadowOffsetY="-2" ctype="TextObjectData">
+                                            <Size X="110.0000" Y="30.0000" />
+                                            <AnchorPoint ScaleX="-0.4000" ScaleY="0.5000" />
+                                            <Position X="-19.5598" Y="25.7671" />
+                                            <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                                            <CColor A="255" R="77" G="77" B="77" />
+                                            <PrePosition X="-0.0370" Y="0.4955" />
+                                            <PreSize />
+                                            <FontResource Type="Normal" Path="data/ui_font.ttf" Plist="" />
+                                            <OutlineColor A="255" R="255" G="0" B="0" />
+                                            <ShadowColor A="255" R="110" G="110" B="110" />
+                                          </AbstractNodeData>
+                                          <AbstractNodeData Name="text_property1" ActionTag="-1740804052" Tag="378" IconVisible="False" LeftMargin="152.9507" RightMargin="280.0493" TopMargin="12.2329" BottomMargin="11.7671" FontSize="22" LabelText="物防+100" OutlineSize="1" ShadowOffsetX="2" ShadowOffsetY="-2" ctype="TextObjectData">
+                                            <Size X="95.0000" Y="28.0000" />
+                                            <AnchorPoint ScaleY="0.5000" />
+                                            <Position X="152.9507" Y="25.7671" />
+                                            <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                                            <CColor A="255" R="77" G="77" B="77" />
+                                            <PrePosition X="0.2897" Y="0.4955" />
+                                            <PreSize />
+                                            <FontResource Type="Normal" Path="data/ui_font.ttf" Plist="" />
+                                            <OutlineColor A="255" R="255" G="0" B="0" />
+                                            <ShadowColor A="255" R="110" G="110" B="110" />
+                                          </AbstractNodeData>
+                                          <AbstractNodeData Name="text_property2" ActionTag="-316593531" Tag="379" IconVisible="False" LeftMargin="330.8478" RightMargin="102.1522" TopMargin="12.2329" BottomMargin="11.7671" FontSize="22" LabelText="物防+100" OutlineSize="1" ShadowOffsetX="2" ShadowOffsetY="-2" ctype="TextObjectData">
+                                            <Size X="95.0000" Y="28.0000" />
+                                            <AnchorPoint ScaleY="0.5000" />
+                                            <Position X="330.8478" Y="25.7671" />
+                                            <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                                            <CColor A="255" R="77" G="77" B="77" />
+                                            <PrePosition X="0.6266" Y="0.4955" />
+                                            <PreSize />
+                                            <FontResource Type="Normal" Path="data/ui_font.ttf" Plist="" />
+                                            <OutlineColor A="255" R="255" G="0" B="0" />
+                                            <ShadowColor A="255" R="110" G="110" B="110" />
+                                          </AbstractNodeData>
+                                        </Children>
+                                        <AnchorPoint ScaleX="0.5000" ScaleY="1.0000" />
+                                        <Position X="4.0299" Y="74.7221" />
+                                        <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                                        <CColor A="255" R="255" G="255" B="255" />
+                                        <PrePosition X="0.0136" Y="0.0747" />
                                         <PreSize X="0.8381" Y="0.1182" />
                                         <FileData Type="Normal" Path="ui/zb_k04.png" Plist="" />
                                       </AbstractNodeData>
                                     </Children>
                                     <AnchorPoint ScaleX="0.5000" ScaleY="1.0000" />
-                                    <Position X="440.0000" Y="680.0000" />
+                                    <Position X="441.8368" Y="1000.0000" />
                                     <Scale ScaleX="1.0000" ScaleY="1.0000" />
                                     <CColor A="255" R="255" G="255" B="255" />
-                                    <PrePosition X="1.4332" Y="1.0000" />
-                                    <PreSize X="0.9674" Y="1.0000" />
+                                    <PrePosition X="1.4927" Y="1.0000" />
+                                    <PreSize X="1.0000" Y="1.0000" />
                                     <SingleColor A="255" R="150" G="200" B="255" />
                                     <FirstColor A="255" R="150" G="200" B="255" />
                                     <EndColor A="255" R="255" G="255" B="255" />
@@ -1386,11 +1674,11 @@
                                   </AbstractNodeData>
                                 </Children>
                                 <AnchorPoint ScaleX="0.5000" ScaleY="1.0000" />
-                                <Position X="169.5373" Y="690.9986" />
+                                <Position X="169.5373" Y="1003.4562" />
                                 <Scale ScaleX="1.0000" ScaleY="1.0000" />
                                 <CColor A="255" R="255" G="255" B="255" />
-                                <PrePosition X="0.2691" Y="0.7351" />
-                                <PreSize X="0.4873" Y="0.7234" />
+                                <PrePosition X="0.2691" Y="0.8028" />
+                                <PreSize X="0.4698" Y="0.9381" />
                                 <FileData Type="Normal" Path="ui/zb_k01.png" Plist="" />
                               </AbstractNodeData>
                             </Children>
@@ -1404,7 +1692,7 @@
                             <FirstColor A="255" R="255" G="150" B="100" />
                             <EndColor A="255" R="255" G="255" B="255" />
                             <ColorVector ScaleY="1.0000" />
-                            <InnerNodeSize Width="630" Height="940" />
+                            <InnerNodeSize Width="630" Height="1250" />
                           </AbstractNodeData>
                         </Children>
                         <AnchorPoint ScaleX="0.5000" ScaleY="1.0000" />
@@ -1498,11 +1786,11 @@
                     <ShadowColor A="255" R="110" G="110" B="110" />
                   </AbstractNodeData>
                 </Children>
-                <AnchorPoint ScaleX="0.5000" ScaleY="1.0000" />
-                <Position X="320.0001" Y="1082.0382" />
+                <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                <Position X="320.0001" Y="547.6632" />
                 <Scale ScaleX="0.9500" ScaleY="0.9500" />
                 <CColor A="255" R="255" G="255" B="255" />
-                <PrePosition X="0.5000" Y="0.9525" />
+                <PrePosition X="0.5000" Y="0.4821" />
                 <PreSize X="1.0063" Y="0.9903" />
                 <FileData Type="Normal" Path="ui/tk_di.png" Plist="" />
               </AbstractNodeData>

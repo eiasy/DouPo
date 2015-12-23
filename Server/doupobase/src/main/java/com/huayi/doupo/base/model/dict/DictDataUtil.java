@@ -19,7 +19,7 @@ public class DictDataUtil extends DALFactory{
 	/**
 	 * 获取静态的字典数据
 	 * @author hzw
-	 * @version 1.0, Thu Dec 10 14:58:13 CST 2015
+	 * @version 1.0, Tue Dec 22 15:35:36 CST 2015
 	 * @return
 	 * @throws Exception
 	*/
@@ -695,6 +695,48 @@ public class DictDataUtil extends DALFactory{
 		DictMap.dictBeautyCardExpMap=dictBeautyCardExpMap;
 	}
 
+	public static void dictEquipAdvanceredUtil (int pd) throws Exception{
+		List<DictEquipAdvancered> dictEquipAdvanceredList = getDictEquipAdvanceredDAL().getList("", 0);
+		DictList.dictEquipAdvanceredList = dictEquipAdvanceredList;
+		Map<String, DictEquipAdvancered> dictEquipAdvanceredMap = new LinkedHashMap<String, DictEquipAdvancered>();
+		StringBuffer sb = new StringBuffer();
+		String className = "DictEquipAdvancered";
+		sb.append(className + "=" + "{}\n");
+		for(DictEquipAdvancered obj : dictEquipAdvanceredList){
+			dictEquipAdvanceredMap.put(obj.getId()+"", obj);
+			Field[] field = obj.getClass().getDeclaredFields();
+			String rowString = "={";
+			String rowOut = "";
+			for (int i = 0; i < field.length; i++) {
+				String realFiledName = field[i].getName();
+				String realFiledType = field[i].getType().getName();
+				String filedName = field[i].getName();
+				if (filedName.equals("index") || filedName.equals("result") || filedName.equals("version")) {
+					continue;
+				}
+				filedName = filedName.replaceFirst(filedName.substring(0, 1), filedName.substring(0, 1) .toUpperCase());
+				Method m = obj.getClass().getMethod("get" + filedName);
+				Object value =  m.invoke(obj) == null ? "" : m.invoke(obj);
+				if (realFiledType.equals("java.lang.String")) {
+					value = "\"" + value + "\"";
+				}
+				if (realFiledName.equals("id")) {
+					rowOut = "DictEquipAdvancered[\"" + value + "\"]";
+				}
+				String innerString = realFiledName + "=" + value + ",";
+				rowString += innerString;
+			}
+			rowString = rowString.substring(0,rowString.length() - 1) + "}";
+			rowString = rowOut + rowString;
+			sb.append(rowString.toString());
+			sb.append("\n");
+		}
+		if(pd == 1){
+			FileUtil.writeContentToFile(path,DictEquipAdvancered.class.getSimpleName()+".lua", "utf-8", sb.toString(), StandardOpenOption.CREATE_NEW);
+		}
+		DictMap.dictEquipAdvanceredMap=dictEquipAdvanceredMap;
+	}
+
 	public static void dictHoldStarGradeRewardUtil (int pd) throws Exception{
 		List<DictHoldStarGradeReward> dictHoldStarGradeRewardList = getDictHoldStarGradeRewardDAL().getList("", 0);
 		DictList.dictHoldStarGradeRewardList = dictHoldStarGradeRewardList;
@@ -1029,6 +1071,90 @@ public class DictDataUtil extends DALFactory{
 			FileUtil.writeContentToFile(path,DictAdvance.class.getSimpleName()+".lua", "utf-8", sb.toString(), StandardOpenOption.CREATE_NEW);
 		}
 		DictMap.dictAdvanceMap=dictAdvanceMap;
+	}
+
+	public static void dictActivityGroupRateUtil (int pd) throws Exception{
+		List<DictActivityGroupRate> dictActivityGroupRateList = getDictActivityGroupRateDAL().getList("", 0);
+		DictList.dictActivityGroupRateList = dictActivityGroupRateList;
+		Map<String, DictActivityGroupRate> dictActivityGroupRateMap = new LinkedHashMap<String, DictActivityGroupRate>();
+		StringBuffer sb = new StringBuffer();
+		String className = "DictActivityGroupRate";
+		sb.append(className + "=" + "{}\n");
+		for(DictActivityGroupRate obj : dictActivityGroupRateList){
+			dictActivityGroupRateMap.put(obj.getId()+"", obj);
+			Field[] field = obj.getClass().getDeclaredFields();
+			String rowString = "={";
+			String rowOut = "";
+			for (int i = 0; i < field.length; i++) {
+				String realFiledName = field[i].getName();
+				String realFiledType = field[i].getType().getName();
+				String filedName = field[i].getName();
+				if (filedName.equals("index") || filedName.equals("result") || filedName.equals("version")) {
+					continue;
+				}
+				filedName = filedName.replaceFirst(filedName.substring(0, 1), filedName.substring(0, 1) .toUpperCase());
+				Method m = obj.getClass().getMethod("get" + filedName);
+				Object value =  m.invoke(obj) == null ? "" : m.invoke(obj);
+				if (realFiledType.equals("java.lang.String")) {
+					value = "\"" + value + "\"";
+				}
+				if (realFiledName.equals("id")) {
+					rowOut = "DictActivityGroupRate[\"" + value + "\"]";
+				}
+				String innerString = realFiledName + "=" + value + ",";
+				rowString += innerString;
+			}
+			rowString = rowString.substring(0,rowString.length() - 1) + "}";
+			rowString = rowOut + rowString;
+			sb.append(rowString.toString());
+			sb.append("\n");
+		}
+		if(pd == 1){
+			FileUtil.writeContentToFile(path,DictActivityGroupRate.class.getSimpleName()+".lua", "utf-8", sb.toString(), StandardOpenOption.CREATE_NEW);
+		}
+		DictMap.dictActivityGroupRateMap=dictActivityGroupRateMap;
+	}
+
+	public static void dictActivityGroupDiscountUtil (int pd) throws Exception{
+		List<DictActivityGroupDiscount> dictActivityGroupDiscountList = getDictActivityGroupDiscountDAL().getList("", 0);
+		DictList.dictActivityGroupDiscountList = dictActivityGroupDiscountList;
+		Map<String, DictActivityGroupDiscount> dictActivityGroupDiscountMap = new LinkedHashMap<String, DictActivityGroupDiscount>();
+		StringBuffer sb = new StringBuffer();
+		String className = "DictActivityGroupDiscount";
+		sb.append(className + "=" + "{}\n");
+		for(DictActivityGroupDiscount obj : dictActivityGroupDiscountList){
+			dictActivityGroupDiscountMap.put(obj.getId()+"", obj);
+			Field[] field = obj.getClass().getDeclaredFields();
+			String rowString = "={";
+			String rowOut = "";
+			for (int i = 0; i < field.length; i++) {
+				String realFiledName = field[i].getName();
+				String realFiledType = field[i].getType().getName();
+				String filedName = field[i].getName();
+				if (filedName.equals("index") || filedName.equals("result") || filedName.equals("version")) {
+					continue;
+				}
+				filedName = filedName.replaceFirst(filedName.substring(0, 1), filedName.substring(0, 1) .toUpperCase());
+				Method m = obj.getClass().getMethod("get" + filedName);
+				Object value =  m.invoke(obj) == null ? "" : m.invoke(obj);
+				if (realFiledType.equals("java.lang.String")) {
+					value = "\"" + value + "\"";
+				}
+				if (realFiledName.equals("id")) {
+					rowOut = "DictActivityGroupDiscount[\"" + value + "\"]";
+				}
+				String innerString = realFiledName + "=" + value + ",";
+				rowString += innerString;
+			}
+			rowString = rowString.substring(0,rowString.length() - 1) + "}";
+			rowString = rowOut + rowString;
+			sb.append(rowString.toString());
+			sb.append("\n");
+		}
+		if(pd == 1){
+			FileUtil.writeContentToFile(path,DictActivityGroupDiscount.class.getSimpleName()+".lua", "utf-8", sb.toString(), StandardOpenOption.CREATE_NEW);
+		}
+		DictMap.dictActivityGroupDiscountMap=dictActivityGroupDiscountMap;
 	}
 
 	public static void dictPagodaDropUtil (int pd) throws Exception{
@@ -1533,6 +1659,48 @@ public class DictDataUtil extends DALFactory{
 			FileUtil.writeContentToFile(path,DictKungFuType.class.getSimpleName()+".lua", "utf-8", sb.toString(), StandardOpenOption.CREATE_NEW);
 		}
 		DictMap.dictKungFuTypeMap=dictKungFuTypeMap;
+	}
+
+	public static void dictUnionWarBattlefieldUtil (int pd) throws Exception{
+		List<DictUnionWarBattlefield> dictUnionWarBattlefieldList = getDictUnionWarBattlefieldDAL().getList("", 0);
+		DictList.dictUnionWarBattlefieldList = dictUnionWarBattlefieldList;
+		Map<String, DictUnionWarBattlefield> dictUnionWarBattlefieldMap = new LinkedHashMap<String, DictUnionWarBattlefield>();
+		StringBuffer sb = new StringBuffer();
+		String className = "DictUnionWarBattlefield";
+		sb.append(className + "=" + "{}\n");
+		for(DictUnionWarBattlefield obj : dictUnionWarBattlefieldList){
+			dictUnionWarBattlefieldMap.put(obj.getId()+"", obj);
+			Field[] field = obj.getClass().getDeclaredFields();
+			String rowString = "={";
+			String rowOut = "";
+			for (int i = 0; i < field.length; i++) {
+				String realFiledName = field[i].getName();
+				String realFiledType = field[i].getType().getName();
+				String filedName = field[i].getName();
+				if (filedName.equals("index") || filedName.equals("result") || filedName.equals("version")) {
+					continue;
+				}
+				filedName = filedName.replaceFirst(filedName.substring(0, 1), filedName.substring(0, 1) .toUpperCase());
+				Method m = obj.getClass().getMethod("get" + filedName);
+				Object value =  m.invoke(obj) == null ? "" : m.invoke(obj);
+				if (realFiledType.equals("java.lang.String")) {
+					value = "\"" + value + "\"";
+				}
+				if (realFiledName.equals("id")) {
+					rowOut = "DictUnionWarBattlefield[\"" + value + "\"]";
+				}
+				String innerString = realFiledName + "=" + value + ",";
+				rowString += innerString;
+			}
+			rowString = rowString.substring(0,rowString.length() - 1) + "}";
+			rowString = rowOut + rowString;
+			sb.append(rowString.toString());
+			sb.append("\n");
+		}
+		if(pd == 1){
+			FileUtil.writeContentToFile(path,DictUnionWarBattlefield.class.getSimpleName()+".lua", "utf-8", sb.toString(), StandardOpenOption.CREATE_NEW);
+		}
+		DictMap.dictUnionWarBattlefieldMap=dictUnionWarBattlefieldMap;
 	}
 
 	public static void dictActivityLimitShoppingUtil (int pd) throws Exception{
@@ -2711,6 +2879,48 @@ public class DictDataUtil extends DALFactory{
 		DictMap.dictBeautyCardMap=dictBeautyCardMap;
 	}
 
+	public static void dictMagicrefiningUtil (int pd) throws Exception{
+		List<DictMagicrefining> dictMagicrefiningList = getDictMagicrefiningDAL().getList("", 0);
+		DictList.dictMagicrefiningList = dictMagicrefiningList;
+		Map<String, DictMagicrefining> dictMagicrefiningMap = new LinkedHashMap<String, DictMagicrefining>();
+		StringBuffer sb = new StringBuffer();
+		String className = "DictMagicrefining";
+		sb.append(className + "=" + "{}\n");
+		for(DictMagicrefining obj : dictMagicrefiningList){
+			dictMagicrefiningMap.put(obj.getId()+"", obj);
+			Field[] field = obj.getClass().getDeclaredFields();
+			String rowString = "={";
+			String rowOut = "";
+			for (int i = 0; i < field.length; i++) {
+				String realFiledName = field[i].getName();
+				String realFiledType = field[i].getType().getName();
+				String filedName = field[i].getName();
+				if (filedName.equals("index") || filedName.equals("result") || filedName.equals("version")) {
+					continue;
+				}
+				filedName = filedName.replaceFirst(filedName.substring(0, 1), filedName.substring(0, 1) .toUpperCase());
+				Method m = obj.getClass().getMethod("get" + filedName);
+				Object value =  m.invoke(obj) == null ? "" : m.invoke(obj);
+				if (realFiledType.equals("java.lang.String")) {
+					value = "\"" + value + "\"";
+				}
+				if (realFiledName.equals("id")) {
+					rowOut = "DictMagicrefining[\"" + value + "\"]";
+				}
+				String innerString = realFiledName + "=" + value + ",";
+				rowString += innerString;
+			}
+			rowString = rowString.substring(0,rowString.length() - 1) + "}";
+			rowString = rowOut + rowString;
+			sb.append(rowString.toString());
+			sb.append("\n");
+		}
+		if(pd == 1){
+			FileUtil.writeContentToFile(path,DictMagicrefining.class.getSimpleName()+".lua", "utf-8", sb.toString(), StandardOpenOption.CREATE_NEW);
+		}
+		DictMap.dictMagicrefiningMap=dictMagicrefiningMap;
+	}
+
 	public static void dictSpecialRuleUtil (int pd) throws Exception{
 		List<DictSpecialRule> dictSpecialRuleList = getDictSpecialRuleDAL().getList("", 0);
 		DictList.dictSpecialRuleList = dictSpecialRuleList;
@@ -3803,6 +4013,48 @@ public class DictDataUtil extends DALFactory{
 		DictMap.dictPillQualityMap=dictPillQualityMap;
 	}
 
+	public static void dictEquipSuitredUtil (int pd) throws Exception{
+		List<DictEquipSuitred> dictEquipSuitredList = getDictEquipSuitredDAL().getList("", 0);
+		DictList.dictEquipSuitredList = dictEquipSuitredList;
+		Map<String, DictEquipSuitred> dictEquipSuitredMap = new LinkedHashMap<String, DictEquipSuitred>();
+		StringBuffer sb = new StringBuffer();
+		String className = "DictEquipSuitred";
+		sb.append(className + "=" + "{}\n");
+		for(DictEquipSuitred obj : dictEquipSuitredList){
+			dictEquipSuitredMap.put(obj.getId()+"", obj);
+			Field[] field = obj.getClass().getDeclaredFields();
+			String rowString = "={";
+			String rowOut = "";
+			for (int i = 0; i < field.length; i++) {
+				String realFiledName = field[i].getName();
+				String realFiledType = field[i].getType().getName();
+				String filedName = field[i].getName();
+				if (filedName.equals("index") || filedName.equals("result") || filedName.equals("version")) {
+					continue;
+				}
+				filedName = filedName.replaceFirst(filedName.substring(0, 1), filedName.substring(0, 1) .toUpperCase());
+				Method m = obj.getClass().getMethod("get" + filedName);
+				Object value =  m.invoke(obj) == null ? "" : m.invoke(obj);
+				if (realFiledType.equals("java.lang.String")) {
+					value = "\"" + value + "\"";
+				}
+				if (realFiledName.equals("id")) {
+					rowOut = "DictEquipSuitred[\"" + value + "\"]";
+				}
+				String innerString = realFiledName + "=" + value + ",";
+				rowString += innerString;
+			}
+			rowString = rowString.substring(0,rowString.length() - 1) + "}";
+			rowString = rowOut + rowString;
+			sb.append(rowString.toString());
+			sb.append("\n");
+		}
+		if(pd == 1){
+			FileUtil.writeContentToFile(path,DictEquipSuitred.class.getSimpleName()+".lua", "utf-8", sb.toString(), StandardOpenOption.CREATE_NEW);
+		}
+		DictMap.dictEquipSuitredMap=dictEquipSuitredMap;
+	}
+
 	public static void sysMsgRuleUtil (int pd) throws Exception{
 		List<SysMsgRule> sysMsgRuleList = getSysMsgRuleDAL().getList("", 0);
 		DictList.sysMsgRuleList = sysMsgRuleList;
@@ -4181,6 +4433,48 @@ public class DictDataUtil extends DALFactory{
 		DictMap.dictPagodaFormationMap=dictPagodaFormationMap;
 	}
 
+	public static void dictUnionWarAmbushUtil (int pd) throws Exception{
+		List<DictUnionWarAmbush> dictUnionWarAmbushList = getDictUnionWarAmbushDAL().getList("", 0);
+		DictList.dictUnionWarAmbushList = dictUnionWarAmbushList;
+		Map<String, DictUnionWarAmbush> dictUnionWarAmbushMap = new LinkedHashMap<String, DictUnionWarAmbush>();
+		StringBuffer sb = new StringBuffer();
+		String className = "DictUnionWarAmbush";
+		sb.append(className + "=" + "{}\n");
+		for(DictUnionWarAmbush obj : dictUnionWarAmbushList){
+			dictUnionWarAmbushMap.put(obj.getId()+"", obj);
+			Field[] field = obj.getClass().getDeclaredFields();
+			String rowString = "={";
+			String rowOut = "";
+			for (int i = 0; i < field.length; i++) {
+				String realFiledName = field[i].getName();
+				String realFiledType = field[i].getType().getName();
+				String filedName = field[i].getName();
+				if (filedName.equals("index") || filedName.equals("result") || filedName.equals("version")) {
+					continue;
+				}
+				filedName = filedName.replaceFirst(filedName.substring(0, 1), filedName.substring(0, 1) .toUpperCase());
+				Method m = obj.getClass().getMethod("get" + filedName);
+				Object value =  m.invoke(obj) == null ? "" : m.invoke(obj);
+				if (realFiledType.equals("java.lang.String")) {
+					value = "\"" + value + "\"";
+				}
+				if (realFiledName.equals("id")) {
+					rowOut = "DictUnionWarAmbush[\"" + value + "\"]";
+				}
+				String innerString = realFiledName + "=" + value + ",";
+				rowString += innerString;
+			}
+			rowString = rowString.substring(0,rowString.length() - 1) + "}";
+			rowString = rowOut + rowString;
+			sb.append(rowString.toString());
+			sb.append("\n");
+		}
+		if(pd == 1){
+			FileUtil.writeContentToFile(path,DictUnionWarAmbush.class.getSimpleName()+".lua", "utf-8", sb.toString(), StandardOpenOption.CREATE_NEW);
+		}
+		DictMap.dictUnionWarAmbushMap=dictUnionWarAmbushMap;
+	}
+
 	public static void dictColorUtil (int pd) throws Exception{
 		List<DictColor> dictColorList = getDictColorDAL().getList("", 0);
 		DictList.dictColorList = dictColorList;
@@ -4557,6 +4851,48 @@ public class DictDataUtil extends DALFactory{
 			FileUtil.writeContentToFile(path,DictCardExpAdd.class.getSimpleName()+".lua", "utf-8", sb.toString(), StandardOpenOption.CREATE_NEW);
 		}
 		DictMap.dictCardExpAddMap=dictCardExpAddMap;
+	}
+
+	public static void dictUnionWarInfoUtil (int pd) throws Exception{
+		List<DictUnionWarInfo> dictUnionWarInfoList = getDictUnionWarInfoDAL().getList("", 0);
+		DictList.dictUnionWarInfoList = dictUnionWarInfoList;
+		Map<String, DictUnionWarInfo> dictUnionWarInfoMap = new LinkedHashMap<String, DictUnionWarInfo>();
+		StringBuffer sb = new StringBuffer();
+		String className = "DictUnionWarInfo";
+		sb.append(className + "=" + "{}\n");
+		for(DictUnionWarInfo obj : dictUnionWarInfoList){
+			dictUnionWarInfoMap.put(obj.getId()+"", obj);
+			Field[] field = obj.getClass().getDeclaredFields();
+			String rowString = "={";
+			String rowOut = "";
+			for (int i = 0; i < field.length; i++) {
+				String realFiledName = field[i].getName();
+				String realFiledType = field[i].getType().getName();
+				String filedName = field[i].getName();
+				if (filedName.equals("index") || filedName.equals("result") || filedName.equals("version")) {
+					continue;
+				}
+				filedName = filedName.replaceFirst(filedName.substring(0, 1), filedName.substring(0, 1) .toUpperCase());
+				Method m = obj.getClass().getMethod("get" + filedName);
+				Object value =  m.invoke(obj) == null ? "" : m.invoke(obj);
+				if (realFiledType.equals("java.lang.String")) {
+					value = "\"" + value + "\"";
+				}
+				if (realFiledName.equals("id")) {
+					rowOut = "DictUnionWarInfo[\"" + value + "\"]";
+				}
+				String innerString = realFiledName + "=" + value + ",";
+				rowString += innerString;
+			}
+			rowString = rowString.substring(0,rowString.length() - 1) + "}";
+			rowString = rowOut + rowString;
+			sb.append(rowString.toString());
+			sb.append("\n");
+		}
+		if(pd == 1){
+			FileUtil.writeContentToFile(path,DictUnionWarInfo.class.getSimpleName()+".lua", "utf-8", sb.toString(), StandardOpenOption.CREATE_NEW);
+		}
+		DictMap.dictUnionWarInfoMap=dictUnionWarInfoMap;
 	}
 
 	public static void dictVIPUtil (int pd) throws Exception{
@@ -5105,6 +5441,48 @@ public class DictDataUtil extends DALFactory{
 		DictMap.dictRecruitCardMap=dictRecruitCardMap;
 	}
 
+	public static void dictActivityGroupGiveZiRuleUtil (int pd) throws Exception{
+		List<DictActivityGroupGiveZiRule> dictActivityGroupGiveZiRuleList = getDictActivityGroupGiveZiRuleDAL().getList("", 0);
+		DictList.dictActivityGroupGiveZiRuleList = dictActivityGroupGiveZiRuleList;
+		Map<String, DictActivityGroupGiveZiRule> dictActivityGroupGiveZiRuleMap = new LinkedHashMap<String, DictActivityGroupGiveZiRule>();
+		StringBuffer sb = new StringBuffer();
+		String className = "DictActivityGroupGiveZiRule";
+		sb.append(className + "=" + "{}\n");
+		for(DictActivityGroupGiveZiRule obj : dictActivityGroupGiveZiRuleList){
+			dictActivityGroupGiveZiRuleMap.put(obj.getId()+"", obj);
+			Field[] field = obj.getClass().getDeclaredFields();
+			String rowString = "={";
+			String rowOut = "";
+			for (int i = 0; i < field.length; i++) {
+				String realFiledName = field[i].getName();
+				String realFiledType = field[i].getType().getName();
+				String filedName = field[i].getName();
+				if (filedName.equals("index") || filedName.equals("result") || filedName.equals("version")) {
+					continue;
+				}
+				filedName = filedName.replaceFirst(filedName.substring(0, 1), filedName.substring(0, 1) .toUpperCase());
+				Method m = obj.getClass().getMethod("get" + filedName);
+				Object value =  m.invoke(obj) == null ? "" : m.invoke(obj);
+				if (realFiledType.equals("java.lang.String")) {
+					value = "\"" + value + "\"";
+				}
+				if (realFiledName.equals("id")) {
+					rowOut = "DictActivityGroupGiveZiRule[\"" + value + "\"]";
+				}
+				String innerString = realFiledName + "=" + value + ",";
+				rowString += innerString;
+			}
+			rowString = rowString.substring(0,rowString.length() - 1) + "}";
+			rowString = rowOut + rowString;
+			sb.append(rowString.toString());
+			sb.append("\n");
+		}
+		if(pd == 1){
+			FileUtil.writeContentToFile(path,DictActivityGroupGiveZiRule.class.getSimpleName()+".lua", "utf-8", sb.toString(), StandardOpenOption.CREATE_NEW);
+		}
+		DictMap.dictActivityGroupGiveZiRuleMap=dictActivityGroupGiveZiRuleMap;
+	}
+
 	public static void dictWingLuckUtil (int pd) throws Exception{
 		List<DictWingLuck> dictWingLuckList = getDictWingLuckDAL().getList("", 0);
 		DictList.dictWingLuckList = dictWingLuckList;
@@ -5188,48 +5566,6 @@ public class DictDataUtil extends DALFactory{
 		}
 		DictMap.dictActivityStarStoreMap=dictActivityStarStoreMap;
 	}
-
-	public static void dictUnionWarUtil (int pd) throws Exception{/*
-		List<DictUnionWar> dictUnionWarList = getDictUnionWarDAL().getList("", 0);
-		DictList.dictUnionWarList = dictUnionWarList;
-		Map<String, DictUnionWar> dictUnionWarMap = new LinkedHashMap<String, DictUnionWar>();
-		StringBuffer sb = new StringBuffer();
-		String className = "DictUnionWar";
-		sb.append(className + "=" + "{}\n");
-		for(DictUnionWar obj : dictUnionWarList){
-			dictUnionWarMap.put(obj.getId()+"", obj);
-			Field[] field = obj.getClass().getDeclaredFields();
-			String rowString = "={";
-			String rowOut = "";
-			for (int i = 0; i < field.length; i++) {
-				String realFiledName = field[i].getName();
-				String realFiledType = field[i].getType().getName();
-				String filedName = field[i].getName();
-				if (filedName.equals("index") || filedName.equals("result") || filedName.equals("version")) {
-					continue;
-				}
-				filedName = filedName.replaceFirst(filedName.substring(0, 1), filedName.substring(0, 1) .toUpperCase());
-				Method m = obj.getClass().getMethod("get" + filedName);
-				Object value =  m.invoke(obj) == null ? "" : m.invoke(obj);
-				if (realFiledType.equals("java.lang.String")) {
-					value = "\"" + value + "\"";
-				}
-				if (realFiledName.equals("id")) {
-					rowOut = "DictUnionWar[\"" + value + "\"]";
-				}
-				String innerString = realFiledName + "=" + value + ",";
-				rowString += innerString;
-			}
-			rowString = rowString.substring(0,rowString.length() - 1) + "}";
-			rowString = rowOut + rowString;
-			sb.append(rowString.toString());
-			sb.append("\n");
-		}
-		if(pd == 1){
-			FileUtil.writeContentToFile(path,DictUnionWar.class.getSimpleName()+".lua", "utf-8", sb.toString(), StandardOpenOption.CREATE_NEW);
-		}
-		DictMap.dictUnionWarMap=dictUnionWarMap;
-	*/}
 
 	public static void dictEquipSuitUtil (int pd) throws Exception{
 		List<DictEquipSuit> dictEquipSuitList = getDictEquipSuitDAL().getList("", 0);
@@ -6071,48 +6407,6 @@ public class DictDataUtil extends DALFactory{
 		DictMap.dictArenaConvertMap=dictArenaConvertMap;
 	}
 
-	public static void dictFireUtil (int pd) throws Exception{
-		List<DictFire> dictFireList = getDictFireDAL().getList("", 0);
-		DictList.dictFireList = dictFireList;
-		Map<String, DictFire> dictFireMap = new LinkedHashMap<String, DictFire>();
-		StringBuffer sb = new StringBuffer();
-		String className = "DictFire";
-		sb.append(className + "=" + "{}\n");
-		for(DictFire obj : dictFireList){
-			dictFireMap.put(obj.getId()+"", obj);
-			Field[] field = obj.getClass().getDeclaredFields();
-			String rowString = "={";
-			String rowOut = "";
-			for (int i = 0; i < field.length; i++) {
-				String realFiledName = field[i].getName();
-				String realFiledType = field[i].getType().getName();
-				String filedName = field[i].getName();
-				if (filedName.equals("index") || filedName.equals("result") || filedName.equals("version")) {
-					continue;
-				}
-				filedName = filedName.replaceFirst(filedName.substring(0, 1), filedName.substring(0, 1) .toUpperCase());
-				Method m = obj.getClass().getMethod("get" + filedName);
-				Object value =  m.invoke(obj) == null ? "" : m.invoke(obj);
-				if (realFiledType.equals("java.lang.String")) {
-					value = "\"" + value + "\"";
-				}
-				if (realFiledName.equals("id")) {
-					rowOut = "DictFire[\"" + value + "\"]";
-				}
-				String innerString = realFiledName + "=" + value + ",";
-				rowString += innerString;
-			}
-			rowString = rowString.substring(0,rowString.length() - 1) + "}";
-			rowString = rowOut + rowString;
-			sb.append(rowString.toString());
-			sb.append("\n");
-		}
-		if(pd == 1){
-			FileUtil.writeContentToFile(path,DictFire.class.getSimpleName()+".lua", "utf-8", sb.toString(), StandardOpenOption.CREATE_NEW);
-		}
-		DictMap.dictFireMap=dictFireMap;
-	}
-
 	public static void dictThingExtendUtil (int pd) throws Exception{
 		List<DictThingExtend> dictThingExtendList = getDictThingExtendDAL().getList("", 0);
 		DictList.dictThingExtendList = dictThingExtendList;
@@ -6153,6 +6447,48 @@ public class DictDataUtil extends DALFactory{
 			FileUtil.writeContentToFile(path,DictThingExtend.class.getSimpleName()+".lua", "utf-8", sb.toString(), StandardOpenOption.CREATE_NEW);
 		}
 		DictMap.dictThingExtendMap=dictThingExtendMap;
+	}
+
+	public static void dictFireUtil (int pd) throws Exception{
+		List<DictFire> dictFireList = getDictFireDAL().getList("", 0);
+		DictList.dictFireList = dictFireList;
+		Map<String, DictFire> dictFireMap = new LinkedHashMap<String, DictFire>();
+		StringBuffer sb = new StringBuffer();
+		String className = "DictFire";
+		sb.append(className + "=" + "{}\n");
+		for(DictFire obj : dictFireList){
+			dictFireMap.put(obj.getId()+"", obj);
+			Field[] field = obj.getClass().getDeclaredFields();
+			String rowString = "={";
+			String rowOut = "";
+			for (int i = 0; i < field.length; i++) {
+				String realFiledName = field[i].getName();
+				String realFiledType = field[i].getType().getName();
+				String filedName = field[i].getName();
+				if (filedName.equals("index") || filedName.equals("result") || filedName.equals("version")) {
+					continue;
+				}
+				filedName = filedName.replaceFirst(filedName.substring(0, 1), filedName.substring(0, 1) .toUpperCase());
+				Method m = obj.getClass().getMethod("get" + filedName);
+				Object value =  m.invoke(obj) == null ? "" : m.invoke(obj);
+				if (realFiledType.equals("java.lang.String")) {
+					value = "\"" + value + "\"";
+				}
+				if (realFiledName.equals("id")) {
+					rowOut = "DictFire[\"" + value + "\"]";
+				}
+				String innerString = realFiledName + "=" + value + ",";
+				rowString += innerString;
+			}
+			rowString = rowString.substring(0,rowString.length() - 1) + "}";
+			rowString = rowOut + rowString;
+			sb.append(rowString.toString());
+			sb.append("\n");
+		}
+		if(pd == 1){
+			FileUtil.writeContentToFile(path,DictFire.class.getSimpleName()+".lua", "utf-8", sb.toString(), StandardOpenOption.CREATE_NEW);
+		}
+		DictMap.dictFireMap=dictFireMap;
 	}
 
 	public static void dictWingUtil (int pd) throws Exception{
@@ -7891,6 +8227,66 @@ public class DictDataUtil extends DALFactory{
 		int fieldIdName = (int)map.get("starNum");
 				List<DictHoldStarGradeReward> dictHoldStarGradeRewards = getDictHoldStarGradeRewardDAL().getList("starNum ="+fieldIdName + "", 0);
 				DictMapList.dictHoldStarGradeRewardMap.put(fieldIdName,dictHoldStarGradeRewards);
+			}
+		}
+	}
+
+	public static void dictEquipAdvanceredGroupUtil (int pd) throws Exception{
+		String sql = "select equipId from Dict_Equip_Advance_red  group by equipId";
+		List<Map<String, Object>> listMaps = getDictEquipAdvanceredDAL().sqlHelper(sql);
+		for(Map<String, Object> map : listMaps){
+			if(map.get("equipId") != null){
+		int fieldIdName = (int)map.get("equipId");
+				List<DictEquipAdvancered> dictEquipAdvancereds = getDictEquipAdvanceredDAL().getList("equipId ="+fieldIdName + "", 0);
+				DictMapList.dictEquipAdvanceredMap.put(fieldIdName,dictEquipAdvancereds);
+			}
+		}
+	}
+
+	public static void dictMagicrefiningGroupUtil (int pd) throws Exception{
+		String sql = "select MagicId from Dict_Magic_refining  group by MagicId";
+		List<Map<String, Object>> listMaps = getDictMagicrefiningDAL().sqlHelper(sql);
+		for(Map<String, Object> map : listMaps){
+			if(map.get("MagicId") != null){
+		int fieldIdName = (int)map.get("MagicId");
+				List<DictMagicrefining> dictMagicrefinings = getDictMagicrefiningDAL().getList("MagicId ="+fieldIdName + "", 0);
+				DictMapList.dictMagicrefiningMap.put(fieldIdName,dictMagicrefinings);
+			}
+		}
+	}
+
+	public static void dictCardLuckGroupUtil (int pd) throws Exception{
+		String sql = "select cardId from Dict_Card_Luck  group by cardId";
+		List<Map<String, Object>> listMaps = getDictCardLuckDAL().sqlHelper(sql);
+		for(Map<String, Object> map : listMaps){
+			if(map.get("cardId") != null){
+		int fieldIdName = (int)map.get("cardId");
+				List<DictCardLuck> dictCardLucks = getDictCardLuckDAL().getList("cardId ="+fieldIdName + "", 0);
+				DictMapList.dictCardLuckMap.put(fieldIdName,dictCardLucks);
+			}
+		}
+	}
+
+	public static void dictEquipSuitReferGroupUtil (int pd) throws Exception{
+		String sql = "select equipId from Dict_Equip_SuitRefer  group by equipId";
+		List<Map<String, Object>> listMaps = getDictEquipSuitReferDAL().sqlHelper(sql);
+		for(Map<String, Object> map : listMaps){
+			if(map.get("equipId") != null){
+		int fieldIdName = (int)map.get("equipId");
+				List<DictEquipSuitRefer> dictEquipSuitRefers = getDictEquipSuitReferDAL().getList("equipId ="+fieldIdName + "", 0);
+				DictMapList.dictEquipSuitReferMap.put(fieldIdName,dictEquipSuitRefers);
+			}
+		}
+	}
+
+	public static void dictWingLuckGroupUtil (int pd) throws Exception{
+		String sql = "select cardId from Dict_Wing_Luck  group by cardId";
+		List<Map<String, Object>> listMaps = getDictWingLuckDAL().sqlHelper(sql);
+		for(Map<String, Object> map : listMaps){
+			if(map.get("cardId") != null){
+		int fieldIdName = (int)map.get("cardId");
+				List<DictWingLuck> dictWingLucks = getDictWingLuckDAL().getList("cardId ="+fieldIdName + "", 0);
+				DictMapList.dictWingLuckMap.put(fieldIdName,dictWingLucks);
 			}
 		}
 	}

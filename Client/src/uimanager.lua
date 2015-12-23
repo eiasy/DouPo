@@ -183,13 +183,44 @@ local function cleanGarbage()
     end 
 end
 
+local function getCloneClass(_widgetName)
+    local _className = ""
+    local _fileNmes = utils.stringSplit(_widgetName, "_")
+    if _fileNmes then
+        for _k, _o in pairs(_fileNmes) do
+            if _o == "ui" then
+                _className = _className .. string.upper(_o)
+            else
+                _className = _className .. ( string.upper(string.sub(_o, 1, 1)) .. string.sub(_o, 2) )
+            end
+        end
+    end
+    cclog("----------->>>  clone table name = " .. _className)
+    return require(_className)
+end
+
+local function isCloneClass(_widgetName)
+    local _fileNmes = utils.stringSplit(_widgetName, "_")
+    if _fileNmes and _fileNmes[#_fileNmes] == "clone" then
+        _fileNmes = nil
+        return true
+    end
+end
+
 local function popScene(_flag)
-	UIManager.uiLayer:removeChild(sceneMap[#sceneMap])
+	
 	local _rootWidget = sceneMap[#sceneMap]:getChildren()[1]
 	if _rootWidget and sceneMap[#sceneMap] ~= UIShopRecruitTen.Widget then
 		_rootWidget:setScale(dp.DIALOG_SCALE)
 	end
-	local class = WidgetManager.getClass(sceneMap[#sceneMap]:getName())
+    
+	local class = nil
+    if isCloneClass(sceneMap[#sceneMap]:getName()) then
+        class = getCloneClass(sceneMap[#sceneMap]:getName())
+    else
+        class = WidgetManager.getClass(sceneMap[#sceneMap]:getName())
+    end
+    UIManager.uiLayer:removeChild(sceneMap[#sceneMap])
 	sceneMap[#sceneMap] = nil
 	if #sceneMap == 0 then
 		sceneMap = nil
@@ -213,8 +244,8 @@ end
 function UIManager.pushScene(jsonFileName, isAction, scaleTo)
 	UIGuidePeople.isPushScene = not isAction
 	local ui_widget = WidgetManager.create(jsonFileName)
-	if ui_widget and not ui_widget:getParent() then
-		if isPoping and sceneMap then
+    local function pushSceneAction(_cloneClass)
+        if isPoping and sceneMap then
 			if sceneMap and sceneMap[#sceneMap]:getChildren()[1] then
 				sceneMap[#sceneMap]:getChildren()[1]:stopAllActions()
 			end
@@ -225,13 +256,30 @@ function UIManager.pushScene(jsonFileName, isAction, scaleTo)
 		end
 		sceneMap[#sceneMap + 1] = ui_widget
 		UIManager.uiLayer:addChild(ui_widget, #sceneMap + 2, 10000 + #sceneMap)
-		local class = WidgetManager.getClass(jsonFileName)
+		local class = _cloneClass and _cloneClass or WidgetManager.getClass(jsonFileName)
 		if class and class.onEnter then
 			class.onEnter()
 		end
 		if not isAction then
 			ActionManager.PopUpWindow_SplashAction(ui_widget:getChildren()[1], scaleTo)
 		end
+    end
+	if ui_widget and not ui_widget:getParent() then
+		pushSceneAction()
+    elseif ui_widget:getParent() then
+        ui_widget = ui_widget:clone()
+        ui_widget:setName(jsonFileName.."_clone")
+        local cloneClass = getCloneClass(ui_widget:getName())
+        if cloneClass then
+            cloneClass.Widget = ui_widget
+            if cloneClass.init then
+                cloneClass.init()
+            end
+            if cloneClass.setup then
+                cloneClass.setup()
+            end
+        end
+        pushSceneAction(cloneClass)
 	end
 end
 
@@ -255,11 +303,11 @@ function UIManager.popScene(_flag , _callBack )
 		local _rootWidget = sceneMap[#sceneMap]:getChildren()[1]
 		if (not _flag) and _rootWidget and sceneMap[#sceneMap] ~= UIShopRecruitTen.Widget then
 			_rootWidget:runAction(cc.Sequence:create(cc.ScaleTo:create(0.2, 0.1), cc.CallFunc:create(function ()
-            popScene()
-            if _callBack then
-                _callBack()
-            end
-end)))
+                popScene()
+                if _callBack then
+                    _callBack()
+                end
+            end)))
 		else
 			popScene(true)
 		end
@@ -363,6 +411,7 @@ function UIManager.splashVideo()
 	if (not SHOW_VIDEO) or device.platform == "windows" then
 		enterGame()
 	else
+        AudioEngine.stopMusic(true)
 		require "cocos.ui.experimentalUIConstants"
 		videoPlayer = ccexp.VideoPlayer:create()
         videoPlayer:setTag(-10000)

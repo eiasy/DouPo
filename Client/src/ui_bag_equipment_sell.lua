@@ -207,15 +207,15 @@ local function setEquipScrollViewItem(item, data)
 	local dictEquipId = data.int["4"] --装备字典ID
 	local equipLv = data.int["5"] --装备等级
 	local dictEquipData = DictEquipment[tostring(dictEquipId)] --装备字典表
+    local equipAdvanceId = data.int["8"] --装备进阶字典ID
+	local dictEquipAdvanceData = DictEquipAdvance[tostring(equipAdvanceId)] --装备进阶字典表
 
     if dictEquipData.equipQualityId == StaticEquip_Quality.white or dictEquipData.equipQualityId == StaticEquip_Quality.green then
         for i = 1, 5 do
 		    item:getChildByName("image_star"..i):setVisible(false)
         end
     else
-        local equipAdvanceId = data.int["8"] --装备进阶字典ID
-	    local dictEquipAdvanceData = DictEquipAdvance[tostring(equipAdvanceId)] --装备进阶字典表
-
+       
         local equipAdvanceData = {}
 	    for key, obj in pairs(DictEquipAdvance) do
 		    if equipTypeId == obj.equipTypeId and dictEquipData.equipQualityId == obj.equipQualityId then
@@ -246,8 +246,14 @@ local function setEquipScrollViewItem(item, data)
 	local equipName = ccui.Helper:seekNodeByName(item, "text_name_equipment")
 	equipName:setString(dictEquipData.name)
 	local equipFrame = ccui.Helper:seekNodeByName(item, "image_frame_equipment")
-	equipFrame:loadTexture(utils.getQualityImage(dp.Quality.equip, dictEquipData.equipQualityId, dp.QualityImageType.small))
-	utils.changeNameColor(equipName,dictEquipData.equipQualityId)
+	
+    if dictEquipAdvanceData then
+        equipFrame:loadTexture(utils.getQualityImage(dp.Quality.equip, dictEquipAdvanceData.equipQualityId, dp.QualityImageType.small))
+        utils.changeNameColor(equipName,dictEquipAdvanceData.equipQualityId)
+    else
+        equipFrame:loadTexture(utils.getQualityImage(dp.Quality.equip, dictEquipData.equipQualityId, dp.QualityImageType.small))
+	    utils.changeNameColor(equipName,dictEquipData.equipQualityId)
+    end
 	local equipIcon = equipFrame:getChildByName("image_equipment")
 	local smallFileName = (DictUI[tostring(dictEquipData.smallUiId)]).fileName
 	equipIcon:loadTexture("image/" .. smallFileName)
@@ -264,17 +270,17 @@ local function setEquipScrollViewItem(item, data)
     local dictEquipStrengthen = DictEquipStrengthen[tostring(equipLv)]
     local _price = 0
 	if dictEquipStrengthen then
-		if dictEquipData.equipQualityId == StaticEquip_Quality.white then
-			_price = dictEquipStrengthen.whiteCopper
-		elseif dictEquipData.equipQualityId == StaticEquip_Quality.green then
-			_price = dictEquipStrengthen.greenCopper
-		elseif dictEquipData.equipQualityId == StaticEquip_Quality.blue then
-			_price = dictEquipStrengthen.blueCopper
-		elseif dictEquipData.equipQualityId == StaticEquip_Quality.purple then
-			_price = dictEquipStrengthen.purpleCopper
-		elseif dictEquipData.equipQualityId == StaticEquip_Quality.golden then
-			_price = dictEquipStrengthen.goldenCopper
-		end
+		    if dictEquipData.equipQualityId == StaticEquip_Quality.white then
+			    _price = dictEquipStrengthen.whiteCopper
+		    elseif dictEquipData.equipQualityId == StaticEquip_Quality.green then
+			    _price = dictEquipStrengthen.greenCopper
+		    elseif dictEquipData.equipQualityId == StaticEquip_Quality.blue then
+			    _price = dictEquipStrengthen.blueCopper
+		    elseif dictEquipData.equipQualityId == StaticEquip_Quality.purple then
+			    _price = dictEquipStrengthen.purpleCopper
+		    elseif dictEquipData.equipQualityId == StaticEquip_Quality.golden then
+			    _price = dictEquipStrengthen.goldenCopper
+		    end
 	end
 	text_price:setString(dictEquipData.sellPrice + _price)
 	local equipQuality  = ccui.Helper:seekNodeByName(equipFrame, "label_pz")
@@ -371,13 +377,15 @@ local function setChangeEquipScrollViewItem(item, data)
 	local equipLv = data.int["5"] --装备等级
 	local dictEquipData = DictEquipment[tostring(dictEquipId)] --装备字典表
 
+    local equipAdvanceId = data.int["8"] --装备进阶字典ID
+	local dictEquipAdvanceData = DictEquipAdvance[tostring(equipAdvanceId)] --装备进阶字典表
+
     if dictEquipData.equipQualityId == StaticEquip_Quality.white or dictEquipData.equipQualityId == StaticEquip_Quality.green then
         for i = 1, 5 do
 		    item:getChildByName("image_star"..i):setVisible(false)
         end
     else
-        local equipAdvanceId = data.int["8"] --装备进阶字典ID
-	    local dictEquipAdvanceData = DictEquipAdvance[tostring(equipAdvanceId)] --装备进阶字典表
+        
 
         local equipAdvanceData = {}
 	    for key, obj in pairs(DictEquipAdvance) do
@@ -408,9 +416,14 @@ local function setChangeEquipScrollViewItem(item, data)
 	local image_gem={}
 	local equipName = ccui.Helper:seekNodeByName(item, "text_name_equipment")
 	equipName:setString(dictEquipData.name)
-	local equipFrame = ccui.Helper:seekNodeByName(item, "image_frame_equipment")
-	equipFrame:loadTexture(utils.getQualityImage(dp.Quality.equip, dictEquipData.equipQualityId, dp.QualityImageType.small))
-	utils.changeNameColor(equipName,dictEquipData.equipQualityId)
+	local equipFrame = ccui.Helper:seekNodeByName(item, "image_frame_equipment")	
+    if dictEquipAdvanceData then
+        equipFrame:loadTexture(utils.getQualityImage(dp.Quality.equip, dictEquipAdvanceData.equipQualityId, dp.QualityImageType.small))
+        utils.changeNameColor(equipName,dictEquipAdvanceData.equipQualityId)
+    else
+        equipFrame:loadTexture(utils.getQualityImage(dp.Quality.equip, dictEquipData.equipQualityId, dp.QualityImageType.small))
+	    utils.changeNameColor(equipName,dictEquipData.equipQualityId)
+    end
 	local equipIcon = equipFrame:getChildByName("image_equipment")
 	local smallFileName = (DictUI[tostring(dictEquipData.smallUiId)]).fileName
 	equipIcon:loadTexture("image/" .. smallFileName)

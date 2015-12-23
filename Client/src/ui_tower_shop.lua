@@ -6,6 +6,7 @@ local ui_scrollView = nil
 local ui_svItem = nil
 
 local _titleTabButton = nil
+local _tag = nil
 
 local function cleanScrollView(_isRelease)
 	if _isRelease then
@@ -271,6 +272,16 @@ function UITowerShop.setup()
 	btn_purple:addTouchEventListener(onButtonEvent)
 	btn_orange:addTouchEventListener(onButtonEvent)
 	btn_reward:addTouchEventListener(onButtonEvent)
+
+    if _tag then
+        if _tag == 2 then
+            _titleTabButton = btn_orange
+        elseif tag == 3 then
+            _titleTabButton = btn_reward
+        end
+        _tag = nil
+    end
+
     if _titleTabButton == btn_orange then
         btn_orange:releaseUpEvent()
     elseif _titleTabButton == btn_reward then
@@ -278,9 +289,16 @@ function UITowerShop.setup()
     else
 	    btn_purple:releaseUpEvent()
     end
+
+
 end
 
 function UITowerShop.free()
 	cleanScrollView(true)
 	_titleTabButton = nil
+    _tag = nil
+end
+
+function UITowerShop.setTag( tag )
+    _tag = tag
 end

@@ -12,14 +12,14 @@
               <AbstractNodeData Name="image_basemap" ActionTag="24" UserData="ignoreSize" Tag="48517" IconVisible="False" TopMargin="107.0000" BottomMargin="73.0000" ctype="ImageViewObjectData">
                 <Size X="640.0000" Y="956.0000" />
                 <Children>
-                  <AbstractNodeData Name="panel" ActionTag="423138015" Tag="188" IconVisible="False" LeftMargin="0.7192" RightMargin="-0.7192" TopMargin="167.7700" BottomMargin="228.2300" TouchEnable="True" BackColorAlpha="102" ComboBoxIndex="1" ColorAngle="90.0000" ctype="PanelObjectData">
-                    <Size X="640.0000" Y="560.0000" />
+                  <AbstractNodeData Name="panel" ActionTag="423138015" Tag="188" IconVisible="False" LeftMargin="0.7084" RightMargin="-0.7084" TopMargin="120.7742" BottomMargin="-1.7742" TouchEnable="True" BackColorAlpha="102" ComboBoxIndex="1" ColorAngle="90.0000" ctype="PanelObjectData">
+                    <Size X="640.0000" Y="837.0000" />
                     <AnchorPoint />
-                    <Position X="0.7192" Y="228.2300" />
+                    <Position X="0.7084" Y="-1.7742" />
                     <Scale ScaleX="1.0000" ScaleY="1.0000" />
                     <CColor A="255" R="0" G="0" B="0" />
-                    <PrePosition X="0.0011" Y="0.2387" />
-                    <PreSize X="1.0000" Y="0.4930" />
+                    <PrePosition X="0.0011" Y="-0.0019" />
+                    <PreSize X="1.0000" Y="0.8755" />
                     <SingleColor A="255" R="150" G="200" B="255" />
                     <FirstColor A="255" R="150" G="200" B="255" />
                     <EndColor A="255" R="255" G="255" B="255" />
@@ -70,7 +70,7 @@
                     <OutlineColor A="255" R="255" G="0" B="0" />
                     <ShadowColor A="255" R="110" G="110" B="110" />
                   </AbstractNodeData>
-                  <AbstractNodeData Name="btn_congratulate" ActionTag="35" Tag="726488" IconVisible="False" LeftMargin="472.0000" RightMargin="28.0000" TopMargin="192.0000" BottomMargin="714.0000" TouchEnable="True" FontSize="26" ButtonText="在 线" ctype="ButtonObjectData">
+                  <AbstractNodeData Name="btn_congratulate" ActionTag="35" Tag="726488" IconVisible="False" LeftMargin="472.0000" RightMargin="28.0000" TopMargin="192.0000" BottomMargin="714.0000" TouchEnable="True" FontSize="26" ButtonText="贡 献" ctype="ButtonObjectData">
                     <Size X="140.0000" Y="50.0000" />
                     <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                     <Position X="542.0000" Y="739.0000" />
@@ -93,6 +93,18 @@
                         <Children>
                           <AbstractNodeData Name="btn_hall" ActionTag="7" UserData="ignoreSize" Tag="726762" IconVisible="False" LeftMargin="9.0000" RightMargin="473.0000" TopMargin="23.5000" BottomMargin="-44.5000" TouchEnable="True" FlipY="True" FontSize="14" ctype="ButtonObjectData">
                             <Size X="158.0000" Y="141.0000" />
+                            <Children>
+                              <AbstractNodeData Name="image_hint" ActionTag="1599085551" Tag="284" IconVisible="False" LeftMargin="141.5103" RightMargin="-12.5103" TopMargin="-7.4976" BottomMargin="119.4976" Scale9Width="29" Scale9Height="29" ctype="ImageViewObjectData">
+                                <Size X="29.0000" Y="29.0000" />
+                                <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                                <Position X="156.0103" Y="133.9976" />
+                                <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                                <CColor A="255" R="255" G="255" B="255" />
+                                <PrePosition X="0.9874" Y="0.9503" />
+                                <PreSize X="0.1835" Y="0.2057" />
+                                <FileData Type="Normal" Path="ui/jiao.png" Plist="" />
+                              </AbstractNodeData>
+                            </Children>
                             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                             <Position X="88.0000" Y="26.0000" />
                             <Scale ScaleX="1.0000" ScaleY="1.0000" />
@@ -133,17 +145,17 @@
                             <OutlineColor A="255" R="255" G="0" B="0" />
                             <ShadowColor A="255" R="110" G="110" B="110" />
                           </AbstractNodeData>
-                          <AbstractNodeData Name="btn_wait" ActionTag="11" UserData="ignoreSize" Tag="726766" IconVisible="False" LeftMargin="469.0000" RightMargin="13.0000" TopMargin="23.5000" BottomMargin="-44.5000" TouchEnable="True" FlipY="True" FontSize="14" ctype="ButtonObjectData">
+                          <AbstractNodeData Name="btn_wait" ActionTag="11" UserData="ignoreSize" Tag="726766" IconVisible="False" LeftMargin="469.0000" RightMargin="13.0000" TopMargin="23.5000" BottomMargin="-44.5000" TouchEnable="True" FlipY="True" FontSize="14" Scale9Width="158" Scale9Height="141" ctype="ButtonObjectData">
                             <Size X="158.0000" Y="141.0000" />
                             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                             <Position X="548.0000" Y="26.0000" />
                             <Scale ScaleX="1.0000" ScaleY="1.0000" />
                             <CColor A="255" R="255" G="255" B="255" />
                             <PrePosition X="0.8562" Y="0.2167" />
-                            <PreSize X="0.1891" Y="1.1250" />
+                            <PreSize X="0.2469" Y="1.1750" />
                             <TextColor A="255" R="255" G="255" B="255" />
-                            <PressedFileData Type="Normal" Path="ui/alliance_wait.png" Plist="" />
-                            <NormalFileData Type="Normal" Path="ui/alliance_wait.png" Plist="" />
+                            <PressedFileData Type="Normal" Path="ui/alliance_war.png" Plist="" />
+                            <NormalFileData Type="Normal" Path="ui/alliance_war.png" Plist="" />
                             <OutlineColor A="255" R="255" G="0" B="0" />
                             <ShadowColor A="255" R="110" G="110" B="110" />
                           </AbstractNodeData>
@@ -306,7 +318,7 @@
                         <PreSize X="0.5141" Y="0.3000" />
                         <FileData Type="Normal" Path="ui/lm_ditiao.png" Plist="" />
                       </AbstractNodeData>
-                      <AbstractNodeData Name="image_exp" ActionTag="13" ZOrder="1" UserData="ignoreSize" Tag="726573" IconVisible="False" LeftMargin="191.5000" RightMargin="95.5000" TopMargin="115.0000" BottomMargin="137.0000" ctype="ImageViewObjectData">
+                      <AbstractNodeData Name="image_exp" ActionTag="13" ZOrder="1" UserData="ignoreSize" Tag="726573" IconVisible="False" LeftMargin="182.5001" RightMargin="104.4999" TopMargin="115.0000" BottomMargin="137.0000" ctype="ImageViewObjectData">
                         <Size X="353.0000" Y="48.0000" />
                         <Children>
                           <AbstractNodeData Name="bar_exp" ActionTag="14" Tag="726574" IconVisible="False" LeftMargin="-0.5000" RightMargin="0.5000" ProgressInfo="100" ctype="LoadingBarObjectData">
@@ -348,13 +360,13 @@
                                 <OutlineColor A="255" R="255" G="0" B="0" />
                                 <ShadowColor A="255" R="110" G="110" B="110" />
                               </AbstractNodeData>
-                              <AbstractNodeData Name="btn_back" ActionTag="38" UserData="ignoreSize" Tag="726491" IconVisible="False" LeftMargin="-117.0000" RightMargin="164.0000" TopMargin="-0.5000" BottomMargin="23.5000" TouchEnable="True" FontSize="14" ctype="ButtonObjectData">
+                              <AbstractNodeData Name="btn_back" ActionTag="38" UserData="ignoreSize" Tag="726491" IconVisible="False" LeftMargin="-107.0002" RightMargin="154.0002" TopMargin="3.6501" BottomMargin="19.3499" TouchEnable="True" FontSize="14" ctype="ButtonObjectData">
                                 <Size X="64.0000" Y="73.0000" />
                                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                                <Position X="-85.0000" Y="60.0000" />
-                                <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                                <Position X="-75.0002" Y="55.8499" />
+                                <Scale ScaleX="1.1000" ScaleY="1.1000" />
                                 <CColor A="255" R="255" G="255" B="255" />
-                                <PrePosition X="-0.7658" Y="0.6250" />
+                                <PrePosition X="-0.6757" Y="0.5818" />
                                 <PreSize X="0.5766" Y="0.7604" />
                                 <TextColor A="255" R="255" G="255" B="255" />
                                 <PressedFileData Type="Normal" Path="ui/fh_btn.png" Plist="" />
@@ -362,13 +374,13 @@
                                 <OutlineColor A="255" R="255" G="0" B="0" />
                                 <ShadowColor A="255" R="110" G="110" B="110" />
                               </AbstractNodeData>
-                              <AbstractNodeData Name="btn_rank" ActionTag="40" UserData="ignoreSize" Tag="726493" IconVisible="False" LeftMargin="413.5000" RightMargin="-403.5000" TopMargin="-5.0000" BottomMargin="-1.0000" TouchEnable="True" FontSize="14" Scale9Width="101" Scale9Height="102" ctype="ButtonObjectData">
+                              <AbstractNodeData Name="btn_rank" ActionTag="40" UserData="ignoreSize" Tag="726493" IconVisible="False" LeftMargin="423.4992" RightMargin="-413.4992" TopMargin="-5.0000" BottomMargin="-1.0000" TouchEnable="True" FontSize="14" Scale9Width="101" Scale9Height="102" ctype="ButtonObjectData">
                                 <Size X="101.0000" Y="102.0000" />
                                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                                <Position X="464.0000" Y="50.0000" />
+                                <Position X="473.9992" Y="50.0000" />
                                 <Scale ScaleX="1.0000" ScaleY="1.0000" />
                                 <CColor A="255" R="255" G="255" B="255" />
-                                <PrePosition X="4.1802" Y="0.5208" />
+                                <PrePosition X="4.2703" Y="0.5208" />
                                 <PreSize X="0.9099" Y="1.0625" />
                                 <TextColor A="255" R="255" G="255" B="255" />
                                 <PressedFileData Type="Normal" Path="ui/lm_ph.png" Plist="" />
@@ -399,10 +411,10 @@
                           </AbstractNodeData>
                         </Children>
                         <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                        <Position X="368.0000" Y="161.0000" />
+                        <Position X="359.0001" Y="161.0000" />
                         <Scale ScaleX="1.0000" ScaleY="1.0000" />
                         <CColor A="255" R="255" G="255" B="255" />
-                        <PrePosition X="0.5750" Y="0.5367" />
+                        <PrePosition X="0.5609" Y="0.5367" />
                         <PreSize X="0.5516" Y="0.1600" />
                         <FileData Type="Normal" Path="ui/lm_loading01.png" Plist="" />
                       </AbstractNodeData>

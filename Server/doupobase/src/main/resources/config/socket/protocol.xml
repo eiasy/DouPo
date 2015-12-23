@@ -265,8 +265,30 @@
 	<action id="1265" class="com.huayi.doupo.logic.entry.UnionWarEnt" method="fight" description="盟战入阵" />
 	<action id="1266" class="com.huayi.doupo.logic.entry.HoldStarEnt" method="holdStar" description="占星" />
 	<action id="1267" class="com.huayi.doupo.logic.entry.HoldStarEnt" method="oneKeyGet" description="一键领取" />
+	<action id="1268" class="com.huayi.doupo.logic.entry.EquipEnt" method="useAdvanceThing" description="消耗淬炼道具" />
+	<action id="1269" class="com.huayi.doupo.logic.entry.MagicEnt" method="magicAdvance" description="功法法宝精炼" />
 	<action id="1270" class="com.huayi.doupo.logic.entry.ActivityEnt" method="intoLimitActivity" description="进入限时活动" />
-	
+	<action id="1300" class="com.huayi.doupo.logic.entry.UnionWarEnt" method="unionReplay" description="盟战观看录像" />
+	<action id="1301" class="com.huayi.doupo.logic.entry.UnionWarEnt" method="unionContribution" description="盟战查看上轮贡献" />
+	<action id="1302" class="com.huayi.doupo.logic.entry.UnionWarEnt" method="unionSchedule" description="盟战赛程" />
+	<action id="1303" class="com.huayi.doupo.logic.entry.UnionWarEnt" method="fightxxxx" description="盟战入阵" />
+	<action id="1304" class="com.huayi.doupo.logic.entry.UnionWarEnt" method="fightxx" description="盟战入阵" />
+	<action id="1305" class="com.huayi.doupo.logic.entry.UnionEntry" method="clearUnionApplay" description="联盟申请全部清空" />
+	<action id="1306" class="com.huayi.doupo.logic.entry.PlayerEnt" method="openPlayerRank" description="打开排行玩家界面" />
+	<action id="1307" class="com.huayi.doupo.logic.entry.ActivityEnt" method="intoOverflowExchange" description="进入超值兑换" />
+	<action id="1308" class="com.huayi.doupo.logic.entry.ActivityEnt" method="overflowExchange" description="超值兑换" />
+	<action id="1309" class="com.huayi.doupo.logic.entry.ChristmasEnt" method="christmasDay" description="圣诞活动" />
+	<action id="1310" class="com.huayi.doupo.logic.entry.ActivityEnt" method="intoGroup" description="进入交易会" />
+	<action id="1311" class="com.huayi.doupo.logic.entry.ActivityEnt" method="buyGroupBox" description="购买团购箱子" />
+	<action id="1312" class="com.huayi.doupo.logic.entry.ActivityEnt" method="intoGroupGift" description="进入团购豪礼" />
+	<action id="1313" class="com.huayi.doupo.logic.entry.ActivityEnt" method="getGroupBoxReward" description="领取团购箱子奖励" />
+	<action id="1314" class="com.huayi.doupo.logic.entry.ActivityEnt" method="lookGroupRank" description="查看团购排行" />
+	<action id="1315" class="com.huayi.doupo.logic.entry.HoldStarEnt" method="intoHoldStarReward" description="占星进入奖励界面" />
+
+	<action id="1316" class="com.huayi.doupo.logic.entry.MineWarEnt" method="mineFail" description="占矿或抢矿失败" />
+
+
+
 	<action id="3000" class="com.huayi.doupo.logic.entry.PlayerEnt" method="login1" description="玩家登陆,无数据库操作" />
 	<action id="3001" class="com.huayi.doupo.logic.entry.PlayerEnt" method="login2" description="玩家登陆,只有数据库操作" />
 	<action id="3002" class="com.huayi.doupo.logic.entry.PlayerEnt" method="testGuid" description="测试引导" />

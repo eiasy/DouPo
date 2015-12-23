@@ -367,6 +367,14 @@
 						value="http://sdkcallback.huayigame.com/yjcpsrv/cb/906363003FC9CACC/42649F495DF2AFE2/sync.html" />
 				</parameters>
 			</sub>
+			<sub id="com.doupo.kaopu" name="靠谱">
+				<parameters>
+					<parameter key="code_version" value="1.3.0" />
+					<parameter key="dl_url" value="http://downloadurl" />
+					<parameter key="notice_url" value="http://dpres.huayigame.com/notice/public" />
+					<!--http://sdkcallback.huayigame.com/yjcpsrv/cb/11AEE396DB063871/42649F495DF2AFE2/sync.html-->
+				</parameters>
+			</sub>
 
 		</channel>
 	</platform>

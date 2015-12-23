@@ -15,3 +15,6 @@ DictWingAdvance["13"]={id=13,wingId=4,starNum=0,smallUiId=16045,bigUiId=16046,op
 DictWingAdvance["14"]={id=14,wingId=4,starNum=1,smallUiId=16045,bigUiId=16046,openFightPropIdList="2;3",nextStarNumConds="2_307_120",sellSilver=1000,convertGold=50,description=""}
 DictWingAdvance["15"]={id=15,wingId=4,starNum=2,smallUiId=16047,bigUiId=16048,openFightPropIdList="2;3;8",nextStarNumConds="2_308_360",sellSilver=2000,convertGold=100,description=""}
 DictWingAdvance["16"]={id=16,wingId=4,starNum=3,smallUiId=16049,bigUiId=16050,openFightPropIdList="2;3;8;9",nextStarNumConds="",sellSilver=3000,convertGold=150,description=""}
+DictWingAdvance["17"]={id=17,wingId=5,starNum=1,smallUiId=16084,bigUiId=16050,openFightPropIdList="2;3",nextStarNumConds="2_307_120",sellSilver=1000,convertGold=50,description=""}
+DictWingAdvance["18"]={id=18,wingId=5,starNum=2,smallUiId=16084,bigUiId=16050,openFightPropIdList="2;3;8",nextStarNumConds="2_308_360",sellSilver=2000,convertGold=100,description=""}
+DictWingAdvance["19"]={id=19,wingId=5,starNum=3,smallUiId=16084,bigUiId=16050,openFightPropIdList="2;3;8;9",nextStarNumConds="",sellSilver=3000,convertGold=150,description=""}

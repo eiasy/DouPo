@@ -389,4 +389,22 @@ public class UnionEntry extends BaseHandler{
 			}
 	}
 	
+	/**
+	 * 联盟申请全部清空
+	 * @author mp
+	 * @date 2015-12-15 下午2:31:06
+	 * @param msgMap
+	 * @param channelId
+	 * @Description
+	 */
+	public void clearUnionApplay(HashMap<String, Object> msgMap, String channelId){
+		 try {
+				HandlerFactory.getUnionHandler().clearUnionApplay(msgMap, channelId);
+			} catch (Exception e) {
+				LogUtil.error("instPlayerId = " + PlayerMapUtil.getPlayerIdByChannelId(channelId) + ", " + DictMap.sysMsgRuleMap.get((int)msgMap.get("header") + "").getName() + ",  " + msgMap, e);
+				e.printStackTrace();
+				MessageUtil.sendFailMsg(channelId, msgMap, errorHint(msgMap));
+			}
+	}
+	
 }

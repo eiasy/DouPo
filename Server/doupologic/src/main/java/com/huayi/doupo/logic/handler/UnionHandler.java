@@ -1526,4 +1526,26 @@ public class UnionHandler  extends BaseHandler{
 		}
 	}
 	
+	/**
+	 * 联盟申请全部清空
+	 * @author mp
+	 * @date 2015-12-15 下午2:31:28
+	 * @param msgMap
+	 * @param channelId
+	 * @throws Exception
+	 * @Description
+	 */
+	@Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
+	public void clearUnionApplay(HashMap<String, Object> msgMap,String channelId) throws Exception {
+		int instPlayerId = getInstPlayerId(channelId);
+		
+		if (instPlayerId == 0) {
+			MessageUtil.sendFailMsg(channelId, msgMap, StaticCnServer.fail_PlayerIdVerfy);
+			return;
+		}
+		int instUnionId = (Integer)msgMap.get("instUnionId");//联盟实例Id
+		getInstUnionApplyDAL().deleteByWhere("instUnionrId = " + instUnionId);
+		MessageUtil.sendSuccMsg(channelId, msgMap);
+	}
+	
 }

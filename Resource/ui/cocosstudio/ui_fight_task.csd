@@ -22,16 +22,16 @@
               <AbstractNodeData Name="image_base_shade" ActionTag="-1986993689" ZOrder="5" Tag="1342" IconVisible="False" LeftMargin="-13.0000" RightMargin="-18.0000" TopMargin="-1.0000" BottomMargin="1037.0000" BackColorAlpha="102" ColorAngle="90.0000" ctype="PanelObjectData">
                 <Size X="671.0000" Y="100.0000" />
                 <Children>
-                  <AbstractNodeData Name="image_base_task" ActionTag="23" UserData="ignoreSize" Tag="57815" IconVisible="False" LeftMargin="195.0000" RightMargin="226.0000" TopMargin="35.0000" BottomMargin="5.0000" ctype="ImageViewObjectData">
-                    <Size X="250.0000" Y="60.0000" />
+                  <AbstractNodeData Name="image_base_task" ActionTag="23" Tag="57815" IconVisible="False" LeftMargin="169.9998" RightMargin="201.0002" TopMargin="51.0000" BottomMargin="-17.0000" Scale9Width="336" Scale9Height="74" ctype="ImageViewObjectData">
+                    <Size X="300.0000" Y="66.0000" />
                     <Children>
-                      <AbstractNodeData Name="text_task_name" ActionTag="24" Tag="57816" IconVisible="False" LeftMargin="89.0000" RightMargin="89.0000" TopMargin="18.0000" BottomMargin="12.0000" FontSize="24" LabelText="乌坦城" ctype="TextObjectData">
+                      <AbstractNodeData Name="text_task_name" ActionTag="24" Tag="57816" IconVisible="False" LeftMargin="114.0000" RightMargin="114.0000" TopMargin="18.0000" BottomMargin="18.0000" FontSize="24" LabelText="乌坦城" ctype="TextObjectData">
                         <Size X="72.0000" Y="30.0000" />
                         <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                        <Position X="125.0000" Y="27.0000" />
+                        <Position X="150.0000" Y="33.0000" />
                         <Scale ScaleX="1.0000" ScaleY="1.0000" />
                         <CColor A="255" R="255" G="255" B="255" />
-                        <PrePosition X="0.5000" Y="0.4500" />
+                        <PrePosition X="0.5000" Y="0.5000" />
                         <PreSize X="0.2880" Y="0.4000" />
                         <FontResource Type="Normal" Path="data/ui_font.ttf" Plist="" />
                         <OutlineColor A="255" R="255" G="0" B="0" />
@@ -39,12 +39,12 @@
                       </AbstractNodeData>
                     </Children>
                     <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                    <Position X="320.0000" Y="35.0000" />
+                    <Position X="319.9998" Y="16.0000" />
                     <Scale ScaleX="1.0000" ScaleY="1.0000" />
                     <CColor A="255" R="255" G="255" B="255" />
-                    <PrePosition X="0.4769" Y="0.3500" />
-                    <PreSize X="0.3726" Y="0.6000" />
-                    <FileData Type="Normal" Path="ui/di_hero_name.png" Plist="" />
+                    <PrePosition X="0.4769" Y="0.1600" />
+                    <PreSize X="0.4471" Y="0.6600" />
+                    <FileData Type="Normal" Path="ui/wing_title.png" Plist="" />
                   </AbstractNodeData>
                   <AbstractNodeData Name="image_lv" ActionTag="9" UserData="ignoreSize" Tag="56120" IconVisible="False" LeftMargin="28.0000" RightMargin="607.0000" TopMargin="8.5000" BottomMargin="54.5000" ctype="ImageViewObjectData">
                     <Size X="36.0000" Y="37.0000" />
@@ -353,7 +353,7 @@
               <AbstractNodeData Name="view_basemap" ActionTag="179" Tag="81423" IconVisible="False" TouchEnable="True" ClipAble="True" BackColorAlpha="100" ColorAngle="270.0000" ScrollDirectionType="Vertical" ctype="ScrollViewObjectData">
                 <Size X="640.0000" Y="1136.0000" />
                 <Children>
-                  <AbstractNodeData Name="image_basemap" ActionTag="1" UserData="ignoreSize" Tag="56112" IconVisible="False" LeftMargin="0.0000" TopMargin="176.0000" ctype="ImageViewObjectData">
+                  <AbstractNodeData Name="image_basemap" ActionTag="1" UserData="ignoreSize" Tag="56112" IconVisible="False" TopMargin="176.0000" ctype="ImageViewObjectData">
                     <Size X="640.0000" Y="960.0000" />
                     <Children>
                       <AbstractNodeData Name="image_shadow" ActionTag="2" UserData="ignoreSize" Tag="272060" IconVisible="False" LeftMargin="105.5000" RightMargin="351.5000" TopMargin="487.4000" BottomMargin="290.6000" ctype="ImageViewObjectData">
@@ -454,10 +454,10 @@
                       </AbstractNodeData>
                     </Children>
                     <AnchorPoint />
-                    <Position X="0.0000" />
+                    <Position />
                     <Scale ScaleX="1.0000" ScaleY="1.0000" />
                     <CColor A="255" R="255" G="255" B="255" />
-                    <PrePosition X="0.0000" />
+                    <PrePosition />
                     <PreSize X="1.0000" Y="0.8451" />
                     <FileData Type="Normal" Path="ui/fb_gq_di.png" Plist="" />
                   </AbstractNodeData>

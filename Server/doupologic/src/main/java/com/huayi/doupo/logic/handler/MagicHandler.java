@@ -1,9 +1,12 @@
 package com.huayi.doupo.logic.handler;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.huayi.doupo.base.model.DictMagicrefining;
+import com.huayi.doupo.base.model.dict.DictMapList;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -144,6 +147,7 @@ public class MagicHandler extends BaseHandler{
 	 * 强化法宝与功法
 	 * @author hzw
 	 * @date 2014-12-8上午10:48:01
+	 * @update	by cui 2015/12/09
 	 * @param msgMap
 	 * @param channelId
 	 * @throws Exception
@@ -171,8 +175,20 @@ public class MagicHandler extends BaseHandler{
 			MessageUtil.sendFailMsg(channelId, msgMap, StaticCnServer.fail_differentPlayers);
 			return;
 		}
-		if(DictMap.dictMagicLevelMap.get(instPlayerMagic.getMagicLevelId() + "").getLevel() >= instPlayer.getLevel()){
+
+		int magicLevel = DictMap.dictMagicLevelMap.get(instPlayerMagic.getMagicLevelId() + "").getLevel();
+		if(magicLevel >= instPlayer.getLevel()){
 			MessageUtil.sendFailMsg(channelId, msgMap, StaticCnServer.fail_magicstreng_level);
+			return;
+		}
+
+		int magicLevelMax = 40;	//默认上限
+		if(instPlayerMagic.getAdvanceId() > 0){
+			DictMagicrefining dictMagicrefining = DictMap.dictMagicrefiningMap.get(instPlayerMagic.getAdvanceId());
+			magicLevelMax = dictMagicrefining.getMaxStrengthen();
+		}
+		if(magicLevel >= magicLevelMax){
+			MessageUtil.sendFailMsg(channelId, msgMap, "等级已达到上限");
 			return;
 		}
 		
@@ -221,6 +237,125 @@ public class MagicHandler extends BaseHandler{
 		MessageUtil.sendSuccMsg(channelId, msgMap);
 	}
 
-	
+	/**
+	 * 功法法宝精炼
+	 * @author	cui
+	 * @date	2015/12/09
+	 * @param msgMap
+	 * @param channelId
+	 * @throws Exception
+	 */
+	@SuppressWarnings("unchecked")
+	@Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
+	public void magicAdvance(HashMap<String, Object> msgMap, String channelId) throws Exception {
+		int instPlayerId = getInstPlayerId(channelId);
+		if (instPlayerId == 0) {
+			MessageUtil.sendFailMsg(channelId, msgMap, StaticCnServer.fail_PlayerIdVerfy);
+			return;
+		}
+
+		int instPlayerMagicId = (Integer)msgMap.get("instPlayerMagicId");
+		InstPlayerMagic instPlayerMagic = getInstPlayerMagicDAL().getModel(instPlayerMagicId, instPlayerId);
+
+		if(instPlayerMagic == null){
+			MessageUtil.sendFailMsg(channelId, msgMap, "物品不存在");
+			return;
+		}
+
+		//验证参数
+		if (instPlayerMagic.getInstPlayerId() != instPlayerId) {
+			MessageUtil.sendFailMsg(channelId, msgMap, StaticCnServer.fail_differentPlayers);
+			return;
+		}
+
+		//是否可精炼
+		int quality = instPlayerMagic.getQuality();
+		if(quality != 1 && quality != 2){
+			MessageUtil.sendFailMsg(channelId, msgMap, StaticCnServer.fail_differentPlayers);
+			return;
+		}
+
+		int advanceId = instPlayerMagic.getAdvanceId();
+
+		int starLevel = 0;
+		if(advanceId > 0){
+			DictMagicrefining dictMagicrefining = DictMap.dictMagicrefiningMap.get(advanceId + "");
+			starLevel = dictMagicrefining.getStarLevel();
+		}
+
+		DictMagicrefining newMagicrefining = null;
+
+		List<DictMagicrefining> dictMagicrefiningList = (List<DictMagicrefining>) DictMapList.dictMagicrefiningMap.get(instPlayerMagic.getMagicId());
+		for (DictMagicrefining magicrefining : dictMagicrefiningList){
+			if(magicrefining.getStarLevel() == starLevel + 1){
+				newMagicrefining = magicrefining;
+				break;
+			}
+		}
+
+		if(newMagicrefining == null){
+			MessageUtil.sendFailMsg(channelId, msgMap, "已经达到最高");
+			return;
+		}
+		String options = newMagicrefining.getContions();
+		if(options == null || options.equals("")){
+			MessageUtil.sendFailMsg(channelId, msgMap, "已经达到最高");
+			return;
+		}
+		ArrayList<HashMap<String,Object>> opts = new ArrayList();
+		String[] goodsObj = options.split(";");
+		for (String line : goodsObj){
+			String[] array = line.split("_");
+			int type = Integer.valueOf(array[0]);
+			int id = Integer.valueOf(array[1]);
+			int count = Integer.valueOf(array[2]);
+			if(id == 0 || count <= 0){
+				MessageUtil.sendFailMsg(channelId, msgMap, "非法数据");
+				return;
+			}
+			if(type == 13){//只判断 消耗品是 功法法宝时
+				//判断是否满足条件
+				//没有被装备的功法法宝
+				List<InstPlayerMagic> instPlayerMagicList = getInstPlayerMagicDAL().getList(" instPlayerId = " + instPlayerId + " and magicId = " + id + " and instCardId = 0",instPlayerId);
+				if(instPlayerMagicList == null || instPlayerMagicList.size() < count){
+					MessageUtil.sendFailMsg(channelId, msgMap, "精炼需要的材料数量不足");
+					return;
+				}
+				HashMap<String,Object> lineHash = new HashMap();
+				lineHash.put("magic",instPlayerMagicList);
+				lineHash.put("count",count);
+				opts.add(lineHash);
+			}
+		}
+
+		if(opts.size() == 0){
+			MessageUtil.sendFailMsg(channelId, msgMap, "精炼需要的材料数量不足");
+			return;
+		}
+		MessageData syncMsgData = new MessageData();
+		//消耗道具
+		for (HashMap<String,Object> element : opts){
+			List<InstPlayerMagic> playerMagics = (List<InstPlayerMagic>) element.get("magic");
+			int count = (int) element.get("count");
+			playerMagics = playerMagics.subList(0,count);
+			for (InstPlayerMagic magic : playerMagics){
+				getInstPlayerMagicDAL().deleteById(magic.getId(),instPlayerId);
+				OrgFrontMsgUtil.orgSyncMsgData(StaticSyncState.delete, magic, magic.getId(), "", syncMsgData);
+			}
+		}
+
+		//精炼功法法宝
+		instPlayerMagic.setAdvanceId(newMagicrefining.getId());
+		getInstPlayerMagicDAL().update(instPlayerMagic,instPlayerId);
+		OrgFrontMsgUtil.orgSyncMsgData(StaticSyncState.update, instPlayerMagic, instPlayerMagic.getId(), instPlayerMagic.getResult(), syncMsgData);
+
+//		//单个同步
+//		MessageData msgData = OrgFrontMsgUtil.orgInstPlayerMagicDAL(instPlayerMagic);
+//		syncMsgData.putMessageItem(instPlayerMagic.getId()+"", msgData.getMsgData());
+
+
+		MessageUtil.sendSyncMsg(channelId, syncMsgData);
+		MessageUtil.sendSuccMsg(channelId, msgMap);
+	}
 	
 }

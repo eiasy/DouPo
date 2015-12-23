@@ -245,16 +245,20 @@ local function setCardEquipInfo(touchEnabled, _instFormationId, instCardId)
 				local _isShowHint = isHint(equipTypeId, instEquipId)
 				if equipTypeId == StaticEquip_Type.outerwear then --护甲
 					ui_btnCorselet:setTag(instEquipId)
-					ui_btnCorselet:loadTexture(qualityImage)
+					
 					ui_corseletIcon:loadTexture("image/" .. DictUI[tostring(dictEquipData.smallUiId)].fileName)
-					ui_btnCorselet:getChildByName("image_lv"):loadTexture(qualitySuperscriptImg)
+					
 					ui_btnCorselet:getChildByName("image_lv"):setVisible(true)
 					ui_btnCorselet:getChildByName("image_hint"):setVisible(_isShowHint)
 					ccui.Helper:seekNodeByName(ui_btnCorselet, "text_lv"):setString(tostring(equipLevel))
                     if dictEquipAdvanceData then
                         ui_btnCorselet:getChildByName("image_star"):setVisible(true)
                         ui_btnCorselet:getChildByName("image_star"):getChildByName("label_star"):setString(tostring(dictEquipAdvanceData.starLevel))
+                        qualityImage = utils.getQualityImage(dp.Quality.equip, dictEquipAdvanceData.equipQualityId, dp.QualityImageType.small)
+                        qualitySuperscriptImg = utils.getEquipQualitySuperscript(dictEquipAdvanceData.equipQualityId)
                     end
+                    ui_btnCorselet:loadTexture(qualityImage)
+                    ui_btnCorselet:getChildByName("image_lv"):loadTexture(qualitySuperscriptImg)
                     local suitEquipData = utils.getEquipSuit(tostring( instEquipData.int["4"] ) )
                     --if suitEquipData then
                         utils.addFrameParticle( ui_corseletIcon , suitEquipData )                    
@@ -262,16 +266,20 @@ local function setCardEquipInfo(touchEnabled, _instFormationId, instCardId)
 					ui_corseletName:setString(dictEquipData.name)
 				elseif equipTypeId == StaticEquip_Type.pants then --头盔
 					ui_btnHelm:setTag(instEquipId)
-					ui_btnHelm:loadTexture(qualityImage)
+					
 					ui_helmIcon:loadTexture("image/" .. DictUI[tostring(dictEquipData.smallUiId)].fileName)
-					ui_btnHelm:getChildByName("image_lv"):loadTexture(qualitySuperscriptImg)
+					
 					ui_btnHelm:getChildByName("image_lv"):setVisible(true)
 					ui_btnHelm:getChildByName("image_hint"):setVisible(_isShowHint)
 					ccui.Helper:seekNodeByName(ui_btnHelm, "text_lv"):setString(tostring(equipLevel))
                     if dictEquipAdvanceData then
                         ui_btnHelm:getChildByName("image_star"):setVisible(true)
                         ui_btnHelm:getChildByName("image_star"):getChildByName("label_star"):setString(tostring(dictEquipAdvanceData.starLevel))
+                        qualitySuperscriptImg = utils.getEquipQualitySuperscript(dictEquipAdvanceData.equipQualityId)
+                        qualityImage = utils.getQualityImage(dp.Quality.equip, dictEquipAdvanceData.equipQualityId, dp.QualityImageType.small)
                     end
+                    ui_btnHelm:loadTexture(qualityImage)
+                    ui_btnHelm:getChildByName("image_lv"):loadTexture(qualitySuperscriptImg)
                     local suitEquipData = utils.getEquipSuit(tostring( instEquipData.int["4"] ) )
                     --if suitEquipData then
                         utils.addFrameParticle( ui_helmIcon , suitEquipData )                   
@@ -279,16 +287,20 @@ local function setCardEquipInfo(touchEnabled, _instFormationId, instCardId)
 					ui_helmName:setString(dictEquipData.name)
 				elseif equipTypeId == StaticEquip_Type.necklace then --饰品
 					ui_btnNecklace:setTag(instEquipId)
-					ui_btnNecklace:loadTexture(qualityImage)
+					
 					ui_necklaceIcon:loadTexture("image/" .. DictUI[tostring(dictEquipData.smallUiId)].fileName)
-					ui_btnNecklace:getChildByName("image_lv"):loadTexture(qualitySuperscriptImg)
+					
 					ui_btnNecklace:getChildByName("image_lv"):setVisible(true)
 					ui_btnNecklace:getChildByName("image_hint"):setVisible(_isShowHint)
 					ccui.Helper:seekNodeByName(ui_btnNecklace, "text_lv"):setString(tostring(equipLevel))
                     if dictEquipAdvanceData then
                         ui_btnNecklace:getChildByName("image_star"):setVisible(true)
                         ui_btnNecklace:getChildByName("image_star"):getChildByName("label_star"):setString(tostring(dictEquipAdvanceData.starLevel))
+                        qualitySuperscriptImg = utils.getEquipQualitySuperscript(dictEquipAdvanceData.equipQualityId)
+                        qualityImage = utils.getQualityImage(dp.Quality.equip, dictEquipAdvanceData.equipQualityId, dp.QualityImageType.small)
                     end
+                    ui_btnNecklace:loadTexture(qualityImage)
+                    ui_btnNecklace:getChildByName("image_lv"):loadTexture(qualitySuperscriptImg)
                     local suitEquipData = utils.getEquipSuit(tostring( instEquipData.int["4"] ) )
                    -- if suitEquipData then
                         utils.addFrameParticle( ui_necklaceIcon , suitEquipData )                     
@@ -304,16 +316,20 @@ local function setCardEquipInfo(touchEnabled, _instFormationId, instCardId)
 					]]
 				elseif equipTypeId == StaticEquip_Type.equip then --武器
 					ui_btnWeapon:setTag(instEquipId)
-					ui_btnWeapon:loadTexture(qualityImage)
+					
 					ui_weaponIcon:loadTexture("image/" .. DictUI[tostring(dictEquipData.smallUiId)].fileName)
-					ui_btnWeapon:getChildByName("image_lv"):loadTexture(qualitySuperscriptImg)
+					
 					ui_btnWeapon:getChildByName("image_lv"):setVisible(true)
 					ui_btnWeapon:getChildByName("image_hint"):setVisible(_isShowHint)
 					ccui.Helper:seekNodeByName(ui_btnWeapon, "text_lv"):setString(tostring(equipLevel))
                     if dictEquipAdvanceData then
                         ui_btnWeapon:getChildByName("image_star"):setVisible(true)
                         ui_btnWeapon:getChildByName("image_star"):getChildByName("label_star"):setString(tostring(dictEquipAdvanceData.starLevel))
+                        qualitySuperscriptImg = utils.getEquipQualitySuperscript(dictEquipAdvanceData.equipQualityId)
+                        qualityImage = utils.getQualityImage(dp.Quality.equip, dictEquipAdvanceData.equipQualityId, dp.QualityImageType.small)
                     end
+                    ui_btnWeapon:loadTexture(qualityImage)
+                    ui_btnWeapon:getChildByName("image_lv"):loadTexture(qualitySuperscriptImg)
                     local suitEquipData = utils.getEquipSuit(tostring( instEquipData.int["4"] ) )
                    -- if suitEquipData then
                         utils.addFrameParticle( ui_weaponIcon , suitEquipData )                      
@@ -1106,7 +1122,12 @@ local function setItemData(obj, iconItem, cardInfoItem, index, isFriend)
 		if net.InstPlayerWing then
             for key , value in pairs( net.InstPlayerWing ) do
                 if value.int["6"] == instCardId then
-                    utils.addArmature( ui_cardBg , 54 + value.int["5"] , value.int["5"]..DictWing[tostring(value.int["3"])].sname , ui_cardBg:getContentSize().width / 2, ui_cardBg:getContentSize().height / 2 + 28 * 2 , 0 )
+                    local actionName = DictWing[tostring(value.int["3"])].actionName
+                    if actionName and actionName ~= "" then
+                        utils.addArmature( ui_cardBg , 54 + value.int["5"] , actionName , ui_cardBg:getContentSize().width / 2, ui_cardBg:getContentSize().height / 2 + 28 * 2 , 0 )
+                    else
+                        utils.addArmature( ui_cardBg , 54 + value.int["5"] , "0"..value.int["5"]..DictWing[tostring(value.int["3"])].sname , ui_cardBg:getContentSize().width / 2, ui_cardBg:getContentSize().height / 2 + 28 * 2 , 0 )
+                    end
                     break
                 end
             end

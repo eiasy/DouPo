@@ -525,7 +525,12 @@ local function setItemData(obj, iconItem, cardInfoItem, index, isFriend)
 		if pvp.InstPlayerWing then
             for key , value in pairs( pvp.InstPlayerWing ) do
                 if value.int["6"] == instCardId then
-                    utils.addArmature( ui_cardBg , 54 + value.int["5"] , value.int["5"]..DictWing[tostring(value.int["3"])].sname , ui_cardBg:getContentSize().width / 2, ui_cardBg:getContentSize().height / 2 + 28 * 2 , 0 )
+                    local actionName = DictWing[tostring(value.int["3"])].actionName
+                    if actionName and actionName ~= "" then
+                        utils.addArmature( ui_cardBg , 54 + value.int["5"] , actionName , ui_cardBg:getContentSize().width / 2, ui_cardBg:getContentSize().height / 2 + 28 * 2 , 0 )
+                    else
+                        utils.addArmature( ui_cardBg , 54 + value.int["5"] , "0"..value.int["5"]..DictWing[tostring(value.int["3"])].sname , ui_cardBg:getContentSize().width / 2, ui_cardBg:getContentSize().height / 2 + 28 * 2 , 0 )
+                    end
                     break
                 end
             end

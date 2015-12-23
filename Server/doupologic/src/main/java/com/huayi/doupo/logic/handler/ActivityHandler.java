@@ -28,7 +28,8 @@ import com.huayi.doupo.base.model.DictActivityDailyDeals;
 import com.huayi.doupo.base.model.DictActivityFlashSale;
 import com.huayi.doupo.base.model.DictActivityFund;
 import com.huayi.doupo.base.model.DictActivityGrabTheHour;
-import com.huayi.doupo.base.model.DictActivityHoliday;
+import com.huayi.doupo.base.model.DictActivityGroupDiscount;
+import com.huayi.doupo.base.model.DictActivityGroupRate;
 import com.huayi.doupo.base.model.DictActivityLevelBag;
 import com.huayi.doupo.base.model.DictActivityLimitShopping;
 import com.huayi.doupo.base.model.DictActivityLimitTimeHeroJiFenReward;
@@ -44,12 +45,14 @@ import com.huayi.doupo.base.model.DictActivityStrogerHero;
 import com.huayi.doupo.base.model.DictActivityTreasures;
 import com.huayi.doupo.base.model.DictActivityVipStore;
 import com.huayi.doupo.base.model.DictRecharge;
+import com.huayi.doupo.base.model.DictThing;
 import com.huayi.doupo.base.model.DictTryToPractice;
 import com.huayi.doupo.base.model.DictTryToPracticeType;
 import com.huayi.doupo.base.model.DictVIP;
 import com.huayi.doupo.base.model.DictactivityExchange;
 import com.huayi.doupo.base.model.DictactivityTotalCost;
 import com.huayi.doupo.base.model.InstActivity;
+import com.huayi.doupo.base.model.InstActivityExchange;
 import com.huayi.doupo.base.model.InstActivityLevelBag;
 import com.huayi.doupo.base.model.InstActivityOnlineRewards;
 import com.huayi.doupo.base.model.InstActivityOpenServiceBag;
@@ -64,6 +67,7 @@ import com.huayi.doupo.base.model.InstPlayerAward;
 import com.huayi.doupo.base.model.InstPlayerBigTable;
 import com.huayi.doupo.base.model.InstPlayerChapter;
 import com.huayi.doupo.base.model.InstPlayerGrabTheHour;
+import com.huayi.doupo.base.model.InstPlayerGroup;
 import com.huayi.doupo.base.model.InstPlayerPrivateSale;
 import com.huayi.doupo.base.model.InstPlayerRecharge;
 import com.huayi.doupo.base.model.InstPlayerRecruit;
@@ -88,6 +92,7 @@ import com.huayi.doupo.base.model.statics.StaticRecruitType;
 import com.huayi.doupo.base.model.statics.StaticSyncState;
 import com.huayi.doupo.base.model.statics.StaticSysConfig;
 import com.huayi.doupo.base.model.statics.StaticSysConfigStr;
+import com.huayi.doupo.base.model.statics.StaticTableType;
 import com.huayi.doupo.base.model.statics.StaticThing;
 import com.huayi.doupo.base.model.statics.StaticTryToPracticeType;
 import com.huayi.doupo.base.model.statics.custom.GoldStaticsType;
@@ -4308,7 +4313,6 @@ public class ActivityHandler extends BaseHandler {
 	 * @throws Exception
 	 * @Description
 	 */
-	@Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
 	public void intoLimitActivity (Map<String, Object> msgMap, String channelId) throws Exception {
 		int checkInstPlayerId = getInstPlayerId(channelId);// 玩家实例Id
 		if (checkInstPlayerId == 0) {
@@ -4326,4 +4330,447 @@ public class ActivityHandler extends BaseHandler {
 		MessageUtil.sendSuccMsg(channelId, msgMap, retMsgData);
 	}
 
+	/**
+	 * 进入超值兑换
+	 * @author mp
+	 * @date 2015-12-17 下午5:01:37
+	 * @param msgMap
+	 * @param channelId
+	 * @throws Exception
+	 * @Description
+	 */
+	public void intoOverflowExchange (Map<String, Object> msgMap, String channelId) throws Exception {
+		int instPlayerId = getInstPlayerId(channelId);// 玩家实例Id
+		if (instPlayerId == 0) {
+			MessageUtil.sendFailMsg(channelId, msgMap, StaticCnServer.fail_PlayerIdVerfy);
+			return;
+		}
+		
+		Map<Integer, Integer> exchangeMap = new HashMap<>();
+		List<InstActivityExchange> activityExchangeList = getInstActivityExchangeDAL().getList("instPlayerId = " + instPlayerId, 0);
+		for (InstActivityExchange obj : activityExchangeList) {
+			exchangeMap.put(obj.getExchageId(), obj.getExchangeTimes());
+		}
+		
+		StringBuilder sb = new StringBuilder();
+		for (DictactivityExchange obj : DictList.dictactivityExchangeList) {
+			int exchangeTimes = 0;
+			if (exchangeMap.containsKey(obj.getId())) {
+				exchangeTimes = exchangeMap.get(obj.getId());
+			}
+			sb.append(obj.getId()).append("|").append(obj.getCostItem()).append("|").append(obj.getGetItem()).append("|").append(obj.getCountLimit()).append("|").append(exchangeTimes).append("/");
+		}
+		
+		MessageData retMsgData = new MessageData();
+		retMsgData.putStringItem("1", StringUtil.noContainLastString(sb.toString()));
+		MessageUtil.sendSuccMsg(channelId, msgMap, retMsgData);
+	}
+	
+	/**
+	 * 超值兑换
+	 * @author mp
+	 * @date 2015-12-17 下午5:08:33
+	 * @param msgMap
+	 * @param channelId
+	 * @throws Exception
+	 * @Description
+	 */
+	@Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
+	public void overflowExchange (Map<String, Object> msgMap, String channelId) throws Exception {
+		int instPlayerId = getInstPlayerId(channelId);// 玩家实例Id
+		if (instPlayerId == 0) {
+			MessageUtil.sendFailMsg(channelId, msgMap, StaticCnServer.fail_PlayerIdVerfy);
+			return;
+		}
+		InstPlayer instPlayer = getInstPlayerDAL().getModel(instPlayerId, instPlayerId);
+		
+		int exchangeId = (int) msgMap.get("id");//超值兑换字典Id
+		DictactivityExchange activityExchange = DictMap.dictactivityExchangeMap.get(exchangeId + "");
+		
+		//验证是否在活动期内
+		if (!ActivityUtil.isInActivity(StaticActivity.normalExchange)) {
+			MessageUtil.sendFailMsg(channelId, msgMap, StaticCnServer.fail_activityOver);
+			return;
+		}
+		
+		//验证是否兑换次数足够
+		List<InstActivityExchange> activityExchangeList = getInstActivityExchangeDAL().getList("instPlayerId = " + instPlayerId + " and exchageId = " + exchangeId, 0);
+		if (activityExchangeList.size() > 0) {
+			InstActivityExchange instActivityExchange = activityExchangeList.get(0);
+			if (instActivityExchange.getExchangeTimes() >= activityExchange.getCountLimit()) {
+				MessageUtil.sendFailMsg(channelId, msgMap, StaticCnServer.fail_activity_exchange);
+				return;
+			}
+		}
+		
+		//验证消耗物品是否足够
+		Map<String, Object> thingsMap = new HashMap<String, Object>();
+		String retMsg = VerifyUtil.vfConsumThings(instPlayer, activityExchange.getCostItem(), thingsMap);
+		if (retMsg.length() > 0) {
+			MessageUtil.sendFailMsg(channelId, msgMap, retMsg);
+			return;
+		}
+
+		//消耗物品
+		MessageData syncMsgData = new MessageData();
+		ThingUtil.consumThings(instPlayer, activityExchange.getCostItem(), thingsMap, syncMsgData, msgMap);
+		
+		//得到物品
+		Map<String, String> thingMap = new HashMap<String, String>();
+		for (String thing : activityExchange.getGetItem().split(";")) {
+			int tableTypeId = ConvertUtil.toInt(thing.split("_")[0]);
+			int tableFieldId = ConvertUtil.toInt(thing.split("_")[1]);
+			int value = ConvertUtil.toInt(thing.split("_")[2]);
+			ThingUtil.groupThingMap(thingMap, tableTypeId, tableFieldId, value);
+		}
+		ThingUtil.groupThingMap(instPlayer, thingMap, syncMsgData, msgMap);
+		
+		//记录兑换次数
+		if (activityExchangeList.size() <= 0) {
+			InstActivityExchange instActivityExchange = new InstActivityExchange();
+			instActivityExchange.setInstPlayerId(instPlayerId);
+			instActivityExchange.setExchageId(exchangeId);
+			instActivityExchange.setExchangeTimes(1);
+			instActivityExchange.setExchangeTime(DateUtil.getCurrTime());
+			getInstActivityExchangeDAL().add(instActivityExchange, 0);
+		} else {
+			InstActivityExchange instActivityExchange = activityExchangeList.get(0);
+			instActivityExchange.setExchangeTimes(instActivityExchange.getExchangeTimes() + 1);
+			instActivityExchange.setExchangeTime(DateUtil.getCurrTime());
+			getInstActivityExchangeDAL().update(instActivityExchange, 0);
+		}
+		
+		MessageUtil.sendSyncMsg(channelId, syncMsgData);
+		MessageUtil.sendSuccMsg(channelId, msgMap);
+	}
+	
+	/**
+	 * 进入交易会
+	 * @author mp
+	 * @date 2015-12-18 下午2:37:50
+	 * @param msgMap
+	 * @param channelId
+	 * @throws Exception
+	 * @Description
+	 */
+	@Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
+	public void intoGroup (Map<String, Object> msgMap, String channelId) throws Exception {
+		int instPlayerId = getInstPlayerId(channelId);// 玩家实例Id
+		if (instPlayerId == 0) {
+			MessageUtil.sendFailMsg(channelId, msgMap, StaticCnServer.fail_PlayerIdVerfy);
+			return;
+		}
+		InstPlayer instPlayer = getInstPlayerDAL().getModel(instPlayerId, instPlayerId);
+		
+		MessageData retMsgData = new MessageData();
+		
+		//全服已购信息
+		int groupBoxNum = 0;
+		List<InstPlayerBigTable> instPlayerBigTableList = getInstPlayerBigTableDAL().getList("instPlayerId = 0 and properties = '" + StaticBigTable.groupBoxNum + "'", 0);
+		if (instPlayerBigTableList.size() > 0) {
+			groupBoxNum = ConvertUtil.toInt(instPlayerBigTableList.get(0).getValue1());
+		}
+		retMsgData.putIntItem("1", groupBoxNum);
+		
+		//折扣信息
+		StringBuilder sb = new StringBuilder();
+		for (DictActivityGroupDiscount obj : DictList.dictActivityGroupDiscountList) {
+			sb.append(obj.getId()).append("|").append(obj.getStartNum()).append("|").append(obj.getEndNum()).append("|").append(obj.getDiscount()).append("/");
+		}
+		retMsgData.putStringItem("2", sb.toString().equals("") ? "" : StringUtil.noContainLastString(sb.toString()));
+		
+		//物品价格信息[物品Id|原价|折扣价]
+		StringBuilder sb2 = new StringBuilder();
+		DictThing thing = DictMap.dictThingMap.get(StaticThing.groupBox + "");
+		float discount = 1.0f;
+		for (DictActivityGroupDiscount obj : DictList.dictActivityGroupDiscountList) {
+			if (groupBoxNum >= obj.getStartNum() && groupBoxNum <= obj.getEndNum()) {
+				discount = obj.getDiscount();
+				break;
+			}
+		}
+		if (discount == 1.0f) {
+			if (groupBoxNum > DictList.dictActivityGroupDiscountList.get(DictList.dictActivityGroupDiscountList.size() - 1).getEndNum()) {
+				discount = DictList.dictActivityGroupDiscountList.get(DictList.dictActivityGroupDiscountList.size() - 1).getDiscount();
+			}
+		}
+		int oldPrice = thing.getOldBuyGold();
+		int dicPrice = (int)(discount * thing.getOldBuyGold());
+		sb2.append(thing.getId()).append("|").append(oldPrice).append("|").append(dicPrice);
+		retMsgData.putStringItem("3", sb2.toString());
+		
+		//已购和返利信息[已购个数|可返元宝数|拥有元宝数]
+		int buyedNum = 0;
+		List<InstPlayerGroup> instPlayerGroupList = getInstPlayerGroupDAL().getList("instPlayerId = " + instPlayerId, 0);
+		if (instPlayerGroupList.size() > 0) {
+			InstPlayerGroup instPlayerGroup = instPlayerGroupList.get(0);
+			buyedNum = instPlayerGroup.getBuyBoxNum();
+		}
+		StringBuilder sb3 = new StringBuilder();
+		sb3.append(buyedNum).append("|").append((oldPrice - dicPrice) * buyedNum).append("|").append(instPlayer.getGold());
+		retMsgData.putStringItem("4", sb3.toString());
+		
+		MessageUtil.sendSuccMsg(channelId, msgMap, retMsgData);
+	}
+	
+	/**
+	 * 购买团购箱子
+	 * @author mp
+	 * @date 2015-12-18 下午2:38:10
+	 * @param msgMap
+	 * @param channelId
+	 * @throws Exception
+	 * @Description
+	 */
+	@Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
+	public void buyGroupBox (Map<String, Object> msgMap, String channelId) throws Exception {
+		
+		int instPlayerId = getInstPlayerId(channelId);// 玩家实例Id
+		if (instPlayerId == 0) {
+			MessageUtil.sendFailMsg(channelId, msgMap, StaticCnServer.fail_PlayerIdVerfy);
+			return;
+		}
+		InstPlayer instPlayer = getInstPlayerDAL().getModel(instPlayerId, instPlayerId);
+		
+		
+		MessageData syncMsgData = new MessageData();
+		int num = (int) msgMap.get("num");//购买团购宝箱的个数 
+		
+		//验证参数合理性
+		if (num <= 0) {
+			MessageUtil.sendFailMsg(channelId, msgMap, StaticCnServer.fail_paramError);
+			return;
+		}
+		int buyUpLimit = DictMapUtil.getSysConfigIntValue(StaticSysConfig.buyUpLimit);
+		if (num > buyUpLimit) {
+			MessageUtil.sendFailMsg(channelId, msgMap, StaticCnServer.fail_buyUpLimit + " " + buyUpLimit);
+			return;
+		}
+		
+		//验证元宝数
+		DictThing thing = DictMap.dictThingMap.get(StaticThing.groupBox + "");
+		int needGold = thing.getOldBuyGold() * num;
+		if (instPlayer.getGold() < needGold) {
+			MessageUtil.sendFailMsg(channelId, msgMap, StaticCnServer.fail_goldNotEnough);
+			return;
+		}
+		
+		//扣钱
+		PlayerUtil.goldStatics(instPlayer, GoldStaticsType.del, needGold, msgMap);
+		getInstPlayerDAL().update(instPlayer, instPlayerId);
+		OrgFrontMsgUtil.orgSyncMsgData(StaticSyncState.update, instPlayer, instPlayer.getId(), instPlayer.getResult(), syncMsgData);
+		
+		//获得物品
+		ThingUtil.groupThing(instPlayer, StaticTableType.DictThing, StaticThing.groupBox, num, syncMsgData, msgMap);
+		
+		//处理团购信息
+		List<InstPlayerGroup> instPlayerGroupList = getInstPlayerGroupDAL().getList("instPlayerId = " + instPlayerId, 0);//个人逻辑-服务器用,不需要同步
+		if (instPlayerGroupList.size() <= 0) {
+			InstPlayerGroup instPlayerGroup = new InstPlayerGroup();
+			instPlayerGroup.setInstPlayerId(instPlayerId);
+			instPlayerGroup.setBuyBoxNum(num);
+			instPlayerGroup.setRewardState(0);
+			instPlayerGroup.setOpenGroupBoxNum(0);
+			instPlayerGroup.setGiveZiList("");
+			instPlayerGroup.setBuyBoxTime(DateUtil.getCurrTime());
+			getInstPlayerGroupDAL().add(instPlayerGroup, 0);
+		} else {
+			InstPlayerGroup instPlayerGroup = instPlayerGroupList.get(0);
+			instPlayerGroup.setBuyBoxNum(instPlayerGroup.getBuyBoxNum() + num);
+			instPlayerGroup.setBuyBoxTime(DateUtil.getCurrTime());
+			getInstPlayerGroupDAL().update(instPlayerGroup, 0);
+		}
+		
+		//全服逻辑
+		ActivityUtil.addGroupBox(num);
+		
+		MessageUtil.sendSyncMsg(channelId, syncMsgData);
+		MessageUtil.sendSuccMsg(channelId, msgMap);
+	}
+	
+	/**
+	 * 进入团购豪礼
+	 * @author mp
+	 * @date 2015-12-18 下午2:38:21
+	 * @param msgMap
+	 * @param channelId
+	 * @throws Exception
+	 * @Description
+	 */
+	@Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
+	public void intoGroupGift (Map<String, Object> msgMap, String channelId) throws Exception {
+		int instPlayerId = getInstPlayerId(channelId);// 玩家实例Id
+		if (instPlayerId == 0) {
+			MessageUtil.sendFailMsg(channelId, msgMap, StaticCnServer.fail_PlayerIdVerfy);
+			return;
+		}
+		
+		//全服已购箱子数量
+		int groupBoxNum = 0;
+		List<InstPlayerBigTable> instPlayerBigTableList = getInstPlayerBigTableDAL().getList("instPlayerId = 0 and properties = '" + StaticBigTable.groupBoxNum + "'", 0);
+		if (instPlayerBigTableList.size() > 0) {
+			groupBoxNum = ConvertUtil.toInt(instPlayerBigTableList.get(0).getValue1());
+		}
+		
+		//全服拥有开启度|打开箱子的开启度|我的开启度|领奖状态 0-未领奖 1-已领奖
+		DictThing thing = DictMap.dictThingMap.get(StaticThing.groupBox + "");
+		
+		//自己的购买箱子数
+		int buyedNum = 0;
+		int rewardState = 0;
+		List<InstPlayerGroup> instPlayerGroupList = getInstPlayerGroupDAL().getList("instPlayerId = " + instPlayerId, 0);
+		if (instPlayerGroupList.size() > 0) {
+			InstPlayerGroup instPlayerGroup = instPlayerGroupList.get(0);
+			buyedNum = instPlayerGroup.getBuyBoxNum();
+			rewardState = instPlayerGroup.getRewardState();
+		}
+		
+		StringBuilder sb = new StringBuilder();
+		sb.append(groupBoxNum * thing.getOldBuyGold()).append("|").append(DictMapUtil.getSysConfigIntValue(StaticSysConfig.openGroupBoxScore)).append("|").append(buyedNum * thing.getOldBuyGold()).append("|").append(rewardState);
+		
+		MessageData retMsgData = new MessageData();
+		retMsgData.putStringItem("1", sb.toString());
+		DictThing bigGroupBox = DictMap.dictThingMap.get(StaticThing.bigGroupBox + "");
+		retMsgData.putStringItem("2", bigGroupBox.getChildThings());//箱子里的物品
+		
+		MessageUtil.sendSuccMsg(channelId, msgMap, retMsgData);
+	}
+	
+	/**
+	 * 领取团购箱子奖励
+	 * @author mp
+	 * @date 2015-12-18 下午2:38:46
+	 * @param msgMap
+	 * @param channelId
+	 * @throws Exception
+	 * @Description
+	 */
+	@Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
+	public void getGroupBoxReward (Map<String, Object> msgMap, String channelId) throws Exception {
+		
+		int instPlayerId = getInstPlayerId(channelId);// 玩家实例Id
+		if (instPlayerId == 0) {
+			MessageUtil.sendFailMsg(channelId, msgMap, StaticCnServer.fail_PlayerIdVerfy);
+			return;
+		}
+		InstPlayer instPlayer = getInstPlayerDAL().getModel(instPlayerId, instPlayerId);
+		DictThing thing = DictMap.dictThingMap.get(StaticThing.groupBox + "");
+		
+		//验证宝箱开启度是否达到
+		int groupBoxNum = 0;
+		List<InstPlayerBigTable> instPlayerBigTableList = getInstPlayerBigTableDAL().getList("instPlayerId = 0 and properties = '" + StaticBigTable.groupBoxNum + "'", 0);
+		if (instPlayerBigTableList.size() > 0) {
+			groupBoxNum = ConvertUtil.toInt(instPlayerBigTableList.get(0).getValue1());
+		}
+		int allServerGold = groupBoxNum * thing.getOldBuyGold();
+		if (allServerGold < DictMapUtil.getSysConfigIntValue(StaticSysConfig.openGroupBoxScore)) {
+			MessageUtil.sendFailMsg(channelId, msgMap, StaticCnServer.fail_groupBox_allservergold);
+			return;
+		}
+		
+		//验证个人开启度是否达到
+		int buyedNum = 0;
+		List<InstPlayerGroup> instPlayerGroupList = getInstPlayerGroupDAL().getList("instPlayerId = " + instPlayerId, 0);
+		if (instPlayerGroupList.size() > 0) {
+			InstPlayerGroup instPlayerGroup = instPlayerGroupList.get(0);
+			buyedNum = instPlayerGroup.getBuyBoxNum();
+		}
+		int selfGold = buyedNum * thing.getOldBuyGold();
+		if (selfGold < DictMapUtil.getSysConfigIntValue(StaticSysConfig.getGroupBoxThingScore)) {
+			MessageUtil.sendFailMsg(channelId, msgMap, StaticCnServer.fail_groupBox_allservergold);
+			return;
+		}
+		
+		//领取奖励
+		MessageData syncMsgData = new MessageData();
+		Map<String, String> thingMap = new HashMap<String, String>();
+		DictThing bigGroupBox = DictMap.dictThingMap.get(StaticThing.bigGroupBox + "");
+		for (String reward : bigGroupBox.getChildThings().split(";")) {
+			int tableTypeId = ConvertUtil.toInt(reward.split("_")[0]);
+			int tableFieldId = ConvertUtil.toInt(reward.split("_")[1]);
+			int value = ConvertUtil.toInt(reward.split("_")[2]);
+			ThingUtil.groupThingMap(thingMap, tableTypeId, tableFieldId, value);
+		}
+		ThingUtil.groupThingMap(instPlayer, thingMap, syncMsgData, msgMap);
+		
+		//更新领取状态
+		InstPlayerGroup instPlayerGroup = instPlayerGroupList.get(0);
+		instPlayerGroup.setRewardState(1);
+		getInstPlayerGroupDAL().update(instPlayerGroup, 0);
+		
+		MessageUtil.sendSyncMsg(channelId, syncMsgData);
+		MessageUtil.sendSuccMsg(channelId, msgMap);
+	}
+	
+	/**
+	 * 查看团购排行
+	 * @author mp
+	 * @date 2015-12-18 下午4:44:38
+	 * @param msgMap
+	 * @param channelId
+	 * @throws Exception
+	 * @Description
+	 */
+	@Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
+	public void lookGroupRank (Map<String, Object> msgMap, String channelId) throws Exception {
+		int instPlayerId = getInstPlayerId(channelId);// 玩家实例Id
+		if (instPlayerId == 0) {
+			MessageUtil.sendFailMsg(channelId, msgMap, StaticCnServer.fail_PlayerIdVerfy);
+			return;
+		}
+		
+		MessageData retMsgData = new MessageData();
+		
+		//自己的信息[购买个数|当前排名]
+		int buyedNum = 0;
+		List<InstPlayerGroup> instPlayerGroupList = getInstPlayerGroupDAL().getList("instPlayerId = " + instPlayerId, 0);
+		if (instPlayerGroupList.size() > 0) {
+			InstPlayerGroup instPlayerGroup = instPlayerGroupList.get(0);
+			buyedNum = instPlayerGroup.getBuyBoxNum();
+		}
+		
+		int currRank = 0;
+		List<InstPlayerGroup> instPlayerRankGroupList = getInstPlayerGroupDAL().getList(" 1=1 order by buyBoxNum desc, buyBoxTime asc", 0);
+		for (InstPlayerGroup obj : instPlayerRankGroupList) {
+			currRank ++;
+			if (obj.getInstPlayerId() == instPlayerId) {
+				break;
+			}
+		}
+		retMsgData.putStringItem("1", buyedNum + "|" + currRank);
+		
+		//玩家排行信息[序号 头像ID 玩家名称  购买个数  前十名折扣[没达到开启时,默认为0.0]/]
+		DictThing thing = DictMap.dictThingMap.get(StaticThing.groupBox + "");
+		int groupBoxNum = 0;
+		List<InstPlayerBigTable> instPlayerBigTableList = getInstPlayerBigTableDAL().getList("instPlayerId = 0 and properties = '" + StaticBigTable.groupBoxNum + "'", 0);
+		if (instPlayerBigTableList.size() > 0) {
+			groupBoxNum = ConvertUtil.toInt(instPlayerBigTableList.get(0).getValue1());
+		}
+		int allServerGold = groupBoxNum * thing.getOldBuyGold();
+		boolean openState = false;
+		if (allServerGold > DictMapUtil.getSysConfigIntValue(StaticSysConfig.openGroupBoxScore)) {
+			openState = true;
+		}
+		
+		StringBuilder sb = new StringBuilder();
+		int bs = 0;
+		List<Map<String, Object>> retList = getInstPlayerArenaDAL().sqlHelper("select a.id as id, a.headerCardId as headerCardId, a.name as name, b.buyBoxNum as buyBoxNum from Inst_Player a , Inst_Player_Group b where a.id = b.instPlayerId order by b.buyBoxNum desc, b.buyBoxTime asc limit " + DictMapUtil.getSysConfigIntValue(StaticSysConfig.canLookRank));
+		for (Map<String, Object> retMap : retList) {
+			bs ++;
+			float discount = 0.0f;
+			if (openState) {
+				for (DictActivityGroupRate obj : DictList.dictActivityGroupRateList) {
+					if (bs == obj.getRank()) {
+						discount = obj.getRebate();
+						break;
+					}
+				}
+			}
+			sb.append(bs).append(" ").append(retMap.get("headerCardId")).append(" ").append(retMap.get("name")).append(" ").append(retMap.get("buyBoxNum")).append(" ").append(discount).append("/");
+		}
+		retMsgData.putStringItem("2", sb.toString().equals("") ? "" : StringUtil.noContainLastString(sb.toString()));
+		
+		MessageUtil.sendSuccMsg(channelId, msgMap, retMsgData);
+	}
+	
 }

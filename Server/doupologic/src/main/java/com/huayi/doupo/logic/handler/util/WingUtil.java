@@ -32,4 +32,25 @@ public class WingUtil extends DALFactory{
 		getInstPlayerWingDAL().add(instPlayerWing, instPlayerId);
 		OrgFrontMsgUtil.orgSyncMsgData(StaticSyncState.add, instPlayerWing, instPlayerWing.getId(), instPlayerWing.getResult(), syncMsgData);
 	}
+	
+	/**
+	 * 添加特殊翅膀
+	 * @author mp
+	 * @date 2015-12-18 下午3:01:55
+	 * @param tableFiledId
+	 * @param instPlayerId
+	 * @param syncMsgData
+	 * @throws Exception
+	 * @Description
+	 */
+	public static void addSpecialWing (int tableFiledId, int instPlayerId, MessageData syncMsgData) throws Exception{ 
+		InstPlayerWing instPlayerWing = new InstPlayerWing();
+		instPlayerWing.setInstPlayerId(instPlayerId);
+		instPlayerWing.setWingId(tableFiledId);
+		instPlayerWing.setLevel(0);
+		instPlayerWing.setStarNum(3);
+		instPlayerWing.setInstCardId(0);
+		getInstPlayerWingDAL().add(instPlayerWing, instPlayerId);
+		OrgFrontMsgUtil.orgSyncMsgData(StaticSyncState.add, instPlayerWing, instPlayerWing.getId(), instPlayerWing.getResult(), syncMsgData);
+	}
 }

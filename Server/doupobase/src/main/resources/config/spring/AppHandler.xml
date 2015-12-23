@@ -56,5 +56,9 @@
 	
 	<bean id="HoldStarHandler" class="com.huayi.doupo.logic.handler.HoldStarHandler" scope="prototype" />
 
+	<bean id="UnionWarHandler" class="com.huayi.doupo.logic.handler.UnionWarHandler" scope="prototype" />
+
+	<bean id="ChristmasHandler" class="com.huayi.doupo.logic.handler.ChristmasHandler" scope="prototype" />
+
 </beans>
 

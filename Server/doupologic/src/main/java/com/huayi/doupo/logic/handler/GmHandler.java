@@ -246,6 +246,12 @@ public class GmHandler  extends BaseHandler{
 			//序列化世界boss排行
 			GmUtil.seriWorldBossRank();
 			
+			//序列化团购返元宝
+			GmUtil.seriGroupRetGold();
+			
+			//序列化团购前十名额外返利
+			GmUtil.seriGroupRankRetGold();
+			
 			//持久化巅峰强者每个阶段的第一名玩家昵称
 			List<InstPlayerBigTable> instPlayerBigTableList = getInstPlayerBigTableDAL().getList("instPlayerId = 0 and properties = '" + StaticBigTable.strogerHeroFirstNames + "'", 0);
 			if (instPlayerBigTableList.size() > 0) {
@@ -1107,6 +1113,10 @@ public class GmHandler  extends BaseHandler{
 		int vipLevel = PlayerUtil.getVipLevel(instPlayer, vipSaveRmb);
 		if (vipLevel > instPlayer.getVipLevel()) {
 			instPlayer.setVipLevel(vipLevel);
+			Player player = PlayerMapUtil.getPlayerByPlayerId(instPlayerId);
+			if (player != null) {
+				player.setVipLevel(vipLevel);
+			}
 		}
 		
 		getInstPlayerDAL().update(instPlayer, instPlayerId);

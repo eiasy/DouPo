@@ -106,6 +106,15 @@ public class HandlerFactory {
 	public static HoldStarHandler getHoldStarHandler() {
 		return	(HoldStarHandler) SpringUtil.GetObjectWithSpringContext(SpringDalContext.HoldStarHandler);
 	}
+
+
+	public static UnionWarHandler getUnionWarHandler() {
+		return	(UnionWarHandler) SpringUtil.GetObjectWithSpringContext(SpringDalContext.UnionWarHandler);
+	}
+	public static ChristmasHandler getChristmasHandler() {
+		return	(ChristmasHandler) SpringUtil.GetObjectWithSpringContext(SpringDalContext.ChristmasHandler);
+	}
+
 	
 }
 

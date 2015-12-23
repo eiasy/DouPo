@@ -363,7 +363,7 @@ public class FightSoulUtil extends DALFactory{
 		List<InstPlayerFightSoul> instPlayerFightSoulList = getInstPlayerFightSoulDAL().getList("instPlayerId = " + instPlayerId + " and instCardId = " + instCardId, instPlayerId);
 		if (instPlayerFightSoulList.size() > 0) {
 			for (InstPlayerFightSoul instPlayerFightSoul : instPlayerFightSoulList) {
-				fightSoulList = instPlayerFightSoul.getId() + ";";
+				fightSoulList += instPlayerFightSoul.getId() + ";";
 			}
 		}
 		return fightSoulList;

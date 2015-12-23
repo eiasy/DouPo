@@ -109,6 +109,23 @@ local function sendPackage(_page)
     end
 end
 
+local function checkPlayerInfo(_data)
+    UIManager.showLoading()
+    netSendPackage( { header = StaticMsgRule.openPlayerRank, msgdata = { int = { pId = _data.playerId } } }, 
+        function(_msgData)
+            local _userData = {
+                playerId = _data.playerId,
+                userName = _data.playerName,
+                userLvl = _data.level,
+                userFight = _msgData.msgdata.int["2"],
+                userUnio = _data.allianceName,
+                headId = _data.iconId,
+                vip = _msgData.msgdata.int["1"]
+            }
+            UIAllianceTalk.show(_userData)
+        end)
+end
+
 initScrollViewItem = function(flag, item, data)
     if data then
         if flag == TYPE_PILLTOWER then
@@ -143,8 +160,9 @@ initScrollViewItem = function(flag, item, data)
             item_iconFrame:setTouchEnabled(true)
             item_iconFrame:addTouchEventListener( function(sender, eventType)
                 if eventType == ccui.TouchEventType.ended then
-                    UIManager.showLoading()
-                    netSendPackage( { header = StaticMsgRule.enemyPlayerInfo, msgdata = { int = { playerId = data.playerId } } }, netCallbackFunc)
+                    checkPlayerInfo(data)
+--                    UIManager.showLoading()
+--                    netSendPackage( { header = StaticMsgRule.enemyPlayerInfo, msgdata = { int = { playerId = data.playerId } } }, netCallbackFunc)
                 end
             end )
         else
@@ -176,8 +194,9 @@ initScrollViewItem = function(flag, item, data)
             item_iconFrame:setTouchEnabled(true)
             item_iconFrame:addTouchEventListener( function(sender, eventType)
                 if eventType == ccui.TouchEventType.ended then
-                    UIManager.showLoading()
-                    netSendPackage( { header = StaticMsgRule.enemyPlayerInfo, msgdata = { int = { playerId = data.playerId } } }, netCallbackFunc)
+                    checkPlayerInfo(data)
+--                    UIManager.showLoading()
+--                    netSendPackage( { header = StaticMsgRule.enemyPlayerInfo, msgdata = { int = { playerId = data.playerId } } }, netCallbackFunc)
                 end
             end )
 

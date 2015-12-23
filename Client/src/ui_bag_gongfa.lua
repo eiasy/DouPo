@@ -56,8 +56,9 @@ local function setScrollViewItem(flag,_Item, _obj)
     local ui_text_equipment_card = ccui.Helper:seekNodeByName(_Item, "text_equipment_card")
     local ui_qualityLevel = ccui.Helper:seekNodeByName(_Item, "label_pz")
     local btn_intensify = _Item:getChildByName("btn_intensify")
+    local btn_refining = _Item:getChildByName("btn_refining")
     ui_property[2] =  ccui.Helper:seekNodeByName(_Item,"text_limit")
-    ui_property[3] =  ccui.Helper:seekNodeByName(_Item,"text_gongfa_number")
+   -- ui_property[3] =  ccui.Helper:seekNodeByName(_Item,"text_gongfa_number")
     ui_property[1] =  ccui.Helper:seekNodeByName(_Item,"text_laterality")
     local instPlayerCardId = _obj.int["8"] --是否被使用  0-未使用 1-使用
     if instPlayerCardId == 0 then
@@ -86,7 +87,7 @@ local function setScrollViewItem(flag,_Item, _obj)
     ui_MagicType:setString(DictMagicQuality[tostring(qualityValue)].name)
     ui_MagicLevel:setString(string.format("%d级",Level))
     ui_qualityLevel:setString(qualityLevel)
-    for i=1,3 do 
+    for i=1,2 do 
       if value[i] ~= "" then
         local dictValue = utils.stringSplit(value[i], "_")
         if tonumber(dictValue[1]) == 3 then
@@ -102,6 +103,7 @@ local function setScrollViewItem(flag,_Item, _obj)
       end
     end
     btn_intensify:setPressedActionEnabled(true)
+    btn_refining:setPressedActionEnabled(true)
     local function btnTouchEvent(sender, eventType)
       if eventType == ccui.TouchEventType.ended then
           if sender == btn_intensify then 
@@ -112,6 +114,10 @@ local function setScrollViewItem(flag,_Item, _obj)
               UIGongfaInfo.setInstMagicId(_obj.int["1"], true)
               UIManager.pushScene("ui_gongfa_info")
             end
+          elseif sender == btn_refining then
+                UIManager.showToast("即将开放，敬请期待")
+--                UIGongfaRefining.setInstMagicId(_obj.int["1"])
+--                UIManager.pushScene("ui_gongfa_refining")
           end
           
       end
@@ -120,10 +126,49 @@ local function setScrollViewItem(flag,_Item, _obj)
     ui_MagicIcon:setTouchEnabled(true)
     ui_MagicIcon:addTouchEventListener(btnTouchEvent)
     btn_intensify:addTouchEventListener(btnTouchEvent)
+    btn_refining:addTouchEventListener(btnTouchEvent)
+
+    local magic_refining = nil
+    local magicRefiningLevel = 0
+    local magicAdvanceId = _obj.int["10"]
+    if magicAdvanceId and magicAdvanceId > 0 then
+        magicRefiningLevel = DictMagicrefining[tostring(magicAdvanceId)].starLevel
+    end
+
+    if qualityValue <= StaticMagicQuality.DJ then      
+        magic_refining = {}
+        for key  ,value in pairs( DictMagicrefining ) do
+            if dictId == value.MagicId then
+                magic_refining[value.starLevel] = value.id
+            end
+        end
+    end
+    for i = 1 , 5 do
+        local image_star = ccui.Helper:seekNodeByName( _Item , "image_star"..i )
+        if magic_refining and i <= #magic_refining then
+            if i <= magicRefiningLevel then
+                image_star:loadTexture("ui/star01.png")
+            else
+                image_star:loadTexture("ui/star02.png")
+            end
+        else
+            image_star:setVisible( false )
+        end
+    end
+    local text_refining = ccui.Helper:seekNodeByName( _Item , "text_refining" )
     if value[1] == "3" then 
-      btn_intensify:setVisible(false)
+        btn_intensify:setVisible(false)
+        btn_refining:setVisible(false)
+        text_refining:setVisible(false)
     else 
-      btn_intensify:setVisible(true)
+        btn_intensify:setVisible(true)
+        if qualityValue <= StaticMagicQuality.DJ then
+            btn_refining:setVisible(true)
+            text_refining:setVisible(true)
+        else
+            btn_refining:setVisible(false)
+            text_refining:setVisible(false)
+        end
     end
 end
 

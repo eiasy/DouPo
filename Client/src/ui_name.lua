@@ -9,9 +9,14 @@ local ui_editBox = nil
 local function ADPromotion()
 	if device.platform == "ios" then
 		local di = SDK.getDeviceInfo()
+
+        local channel_tag = "yiyou"
+        if di.packageName == "com.y2game.doupocangqiong" then
+            channel_tag = "iosy2game"
+        end
 		local http = cc.XMLHttpRequest:new()
 		http.responseType = cc.XMLHTTPREQUEST_RESPONSE_STRING
-		local url = "http://ad.huayigame.com/10004?event_tag=CREATE_ROLE&channel_tag=yiyou&app_id=" .. di.appId .. "&idfa=" .. di.idfa .. "&device_mac=" .. di.macAddr .. "&key_1=user_id&value_1=" .. SDK.getUserId() .. "&device_ua=" .. di.ua .. "&device_os=" .. di.systemName .. "&device_os_version=" .. di.systemVersion
+		local url = "http://ad.huayigame.com/10004?event_tag=CREATE_ROLE&channel_tag=" .. channel_tag .. "&app_id=" .. di.appId .. "&idfa=" .. di.idfa .. "&device_mac=" .. di.macAddr .. "&key_1=user_id&value_1=" .. SDK.getUserId() .. "&device_ua=" .. di.ua .. "&device_os=" .. di.systemName .. "&device_os_version=" .. di.systemVersion
 		url = url:gsub(" ","%%20") -- only convert " " to "%20"
 		http:open("GET",url)
 		http:registerScriptHandler(function() http = nil end)

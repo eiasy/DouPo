@@ -4,27 +4,43 @@ import java.util.List;
 import java.util.Map;
 
 import com.huayi.doupo.base.dal.factory.DALFactory;
+import com.huayi.doupo.base.model.DictFightSoul;
+import com.huayi.doupo.base.model.DictMagic;
+import com.huayi.doupo.base.model.DictMagicLevel;
 import com.huayi.doupo.base.model.DictTryToPractice;
 import com.huayi.doupo.base.model.InstPlayer;
 import com.huayi.doupo.base.model.InstPlayerAchievementValue;
 import com.huayi.doupo.base.model.InstPlayerArena;
+import com.huayi.doupo.base.model.InstPlayerBigTable;
 import com.huayi.doupo.base.model.InstPlayerCard;
+import com.huayi.doupo.base.model.InstPlayerCardSoul;
 import com.huayi.doupo.base.model.InstPlayerChapter;
+import com.huayi.doupo.base.model.InstPlayerChip;
 import com.huayi.doupo.base.model.InstPlayerEquip;
 import com.huayi.doupo.base.model.InstPlayerFightSoul;
 import com.huayi.doupo.base.model.InstPlayerKungFu;
 import com.huayi.doupo.base.model.InstPlayerMagic;
 import com.huayi.doupo.base.model.InstPlayerManualSkill;
 import com.huayi.doupo.base.model.InstPlayerPagoda;
+import com.huayi.doupo.base.model.InstPlayerPill;
 import com.huayi.doupo.base.model.InstPlayerRecharge;
 import com.huayi.doupo.base.model.InstPlayerThing;
 import com.huayi.doupo.base.model.InstPlayerTrain;
 import com.huayi.doupo.base.model.InstPlayerTryToPractice;
+import com.huayi.doupo.base.model.InstPlayerWing;
+import com.huayi.doupo.base.model.InstPlayerYFire;
+import com.huayi.doupo.base.model.InstUnionMember;
 import com.huayi.doupo.base.model.dict.DictMap;
+import com.huayi.doupo.base.model.dict.DictMapList;
 import com.huayi.doupo.base.model.statics.StaticAchievementType;
 import com.huayi.doupo.base.model.statics.StaticBagType;
+import com.huayi.doupo.base.model.statics.StaticBigTable;
 import com.huayi.doupo.base.model.statics.StaticCnServer;
+import com.huayi.doupo.base.model.statics.StaticCustomDict;
+import com.huayi.doupo.base.model.statics.StaticPlayerBaseProp;
 import com.huayi.doupo.base.model.statics.StaticSysConfig;
+import com.huayi.doupo.base.model.statics.StaticTableType;
+import com.huayi.doupo.base.model.statics.StaticThing;
 import com.huayi.doupo.base.model.statics.StaticTryToPracticeType;
 import com.huayi.doupo.base.util.base.ConvertUtil;
 import com.huayi.doupo.base.util.base.RandomUtil;
@@ -38,6 +54,251 @@ import com.huayi.doupo.logic.util.MessageUtil;
  * @date 2013-10-16 下午3:46:07
  */
 public class VerifyUtil extends DALFactory{
+	
+	/**
+	 * 验证消耗物品是否足够
+	 * @author mp
+	 * @date 2015-12-18 上午11:10:20
+	 * @param instPlayer
+	 * @param things
+	 * @param thingsMap
+	 * @return
+	 * @Description
+	 */
+	@SuppressWarnings("unchecked")
+	public static String  vfConsumThings (InstPlayer instPlayer, String things, Map<String, Object> thingsMap) {
+		String retMsg = "";
+		int instPlayerId = instPlayer.getId();
+		for (String thing : things.split(";")) {
+			int tableTypeId = ConvertUtil.toInt(thing.split("_")[0]);
+			int tableFieldId = ConvertUtil.toInt(thing.split("_")[1]);
+			int value = ConvertUtil.toInt(thing.split("_")[2]);
+			
+			//丹药
+			if (tableTypeId == StaticTableType.DictPill) {
+				List<InstPlayerPill> instPlayerPillList = getInstPlayerPillDAL().getList("instPlayerId = " + instPlayerId + " and pillId = " + tableFieldId, instPlayerId);
+				if (instPlayerPillList.size() <= 0) {
+					retMsg = StaticCnServer.fail_costThing_1;
+					break;
+				} else {
+					InstPlayerPill instPlayerPill = instPlayerPillList.get(0);
+					if (instPlayerPill.getNum() < value) {
+						retMsg = StaticCnServer.fail_costThing_1;
+						break;
+					}
+				}
+				if (retMsg.length() <= 0) {
+					thingsMap.put(thing, instPlayerPillList.get(0));
+				}
+			}
+			//物品
+			else if (tableTypeId == StaticTableType.DictThing) {
+				List<InstPlayerThing> instPlayerThingList = getInstPlayerThingDAL().getList("instPlayerId = " + instPlayerId + " and thingId = " + tableFieldId, instPlayerId);
+				if (instPlayerThingList.size() <= 0) {
+					retMsg = StaticCnServer.fail_costThing_2;
+					break;
+				} else {
+					InstPlayerThing instPlayerThing = instPlayerThingList.get(0);
+					int ownNum = instPlayerThing.getNum();
+					if (tableFieldId == StaticThing.goldBox) {//金宝箱时个数特殊处理 num+level
+						ownNum = ownNum + instPlayerThing.getLevel();
+					}
+					if (ownNum < value) {
+						retMsg = StaticCnServer.fail_costThing_2;
+						break;
+					}
+				}
+				if (retMsg.length() <= 0) {
+					thingsMap.put(thing, instPlayerThingList.get(0));
+				}
+			}
+			//玩家属性
+			else if (tableTypeId == StaticTableType.DictPlayerBaseProp) {
+				if (tableFieldId == StaticPlayerBaseProp.copper) {//银币
+					long ownCopper = ConvertUtil.toLong(instPlayer.getCopper());
+					if (ownCopper < value) {
+						retMsg = StaticCnServer.fail_costThing_3_2;
+						break;
+					}
+				} else if (tableFieldId == StaticPlayerBaseProp.gold) {//金币
+					if (instPlayer.getGold() < value) {
+						retMsg = StaticCnServer.fail_costThing_3_1;
+						break;
+					}
+				} else if (tableFieldId == StaticPlayerBaseProp.culture) {//火能石
+					if (instPlayer.getCulture() < value) {
+						retMsg = StaticCnServer.fail_costThing_3_4;
+						break;
+					}
+				} else if (tableFieldId == StaticPlayerBaseProp.offer) {//联盟贡献
+					List<InstUnionMember> instUnionMemberList = getInstUnionMemberDAL().getList("instPlayerId = " + instPlayerId, instPlayerId);
+					if (instUnionMemberList.size() <= 0) {
+						retMsg = StaticCnServer.fail_costThing_3_7;
+						break;
+					} else {
+						InstUnionMember instUnionMember = instUnionMemberList.get(0);
+						if (instUnionMember.getSumOffer() < value) {
+							retMsg = StaticCnServer.fail_costThing_3_7;
+							break;
+						}
+					}
+					if (retMsg.length() <= 0) {
+						thingsMap.put(thing, instUnionMemberList.get(0));
+					}
+				} else if (tableFieldId == StaticPlayerBaseProp.prestige) {//威望
+					List<InstPlayerArena> instPlayerArenaList = getInstPlayerArenaDAL().getList(" instPlayerId = " + instPlayerId, 0);
+					if (instPlayerArenaList.size() <= 0) {
+						retMsg = StaticCnServer.fail_costThing_3_5;
+						break;
+					} else {
+						InstPlayerArena instPlayerArena = instPlayerArenaList.get(0);
+						if (instPlayerArena.getPrestige() < value) {
+							retMsg = StaticCnServer.fail_costThing_3_5;
+							break;
+						}
+					}
+					if (retMsg.length() <= 0) {
+						thingsMap.put(thing, instPlayerArenaList.get(0));
+					}
+				} else if (tableFieldId == StaticPlayerBaseProp.bossIntegral) {//屠魔积分
+					List<InstPlayerBigTable> instPlayerBigTableList = getInstPlayerBigTableDAL().getList("instPlayerId = " + instPlayerId + " and properties = '"+StaticBigTable.bossIntegral+"'", 0);
+					if (instPlayerBigTableList.size() <= 0) {
+						retMsg = StaticCnServer.fail_costThing_3_8;
+						break;
+					} else {
+						InstPlayerBigTable instPlayerBigTable = instPlayerBigTableList.get(0);
+						if (ConvertUtil.toInt(instPlayerBigTable.getValue1()) < value) {
+							retMsg = StaticCnServer.fail_costThing_3_8;
+							break;
+						}
+					}
+					if (retMsg.length() <= 0) {
+						thingsMap.put(thing, instPlayerBigTableList.get(0));
+					}
+				}
+				if (tableFieldId == StaticPlayerBaseProp.copper || tableFieldId == StaticPlayerBaseProp.gold || tableFieldId == StaticPlayerBaseProp.culture) {
+					if (retMsg.length() <= 0) {
+						thingsMap.put(thing, instPlayer);
+					}
+				}
+			}
+			//装备(初始装备：未装备在卡牌上，0级的，进阶是0的，未镶嵌的，这样的装备)
+			else if (tableTypeId == StaticTableType.DictEquipment) {
+				List<InstPlayerEquip> instPlayerEquipList = getInstPlayerEquipDAL().getList("instPlayerId = " + instPlayerId + " and equipId = " + tableFieldId + " and level = 0 and isInlay = 0 and equipAdvanceId = 0 and instCardId = 0" , instPlayerId);
+				if (instPlayerEquipList.size() < value) {
+					retMsg = StaticCnServer.fail_costThing_6;
+					break;
+				}
+				if (retMsg.length() <= 0) {
+					thingsMap.put(thing, instPlayerEquipList);
+				}
+			}
+			//卡牌(初始卡牌：未上阵的，等级是1的，经验是0的，这样的卡牌)
+			else if (tableTypeId == StaticTableType.DictCard) {
+				List<InstPlayerCard> instPlayerCardList = getInstPlayerCardDAL().getList("instPlayerId = " + instPlayerId + " and cardId = " + tableFieldId + " and inTeam = " + StaticCustomDict.unTeam + " and level = 1 and exp = 0", instPlayerId);
+				if (instPlayerCardList.size() < value) {
+					retMsg = StaticCnServer.fail_costThing_7;
+					break;
+				}
+				if (retMsg.length() <= 0) {
+					thingsMap.put(thing, instPlayerCardList);
+				}
+			}
+			//卡牌魂魄
+			else if (tableTypeId == StaticTableType.DictCardSoul) {
+				List<InstPlayerCardSoul> instPlayerCardSoulList = getInstPlayerCardSoulDAL().getList("instPlayerId = " + instPlayerId + " and cardSoulId = " + tableFieldId, instPlayerId);
+				if (instPlayerCardSoulList.size() <= 0) {
+					retMsg = StaticCnServer.fail_costThing_9;
+					break;
+				} else {
+					InstPlayerCardSoul instPlayerCardSoul = instPlayerCardSoulList.get(0);
+					if (instPlayerCardSoul.getNum() < value) {
+						retMsg = StaticCnServer.fail_costThing_9;
+						break;
+					}
+				}
+				if (retMsg.length() <= 0) {
+					thingsMap.put(thing, instPlayerCardSoulList.get(0));
+				}
+			}
+			//功法法宝碎片
+			else if (tableTypeId == StaticTableType.DictChip) {
+				List<InstPlayerChip> instPlayerChipList = getInstPlayerChipDAL().getList("instPlayerId = " + instPlayerId + " and chipId = " + tableFieldId, instPlayerId);
+				if (instPlayerChipList.size() <= 0) {
+					retMsg = StaticCnServer.fail_costThing_10;
+					break;
+				} else {
+					InstPlayerChip instPlayerChip = instPlayerChipList.get(0);
+					if (instPlayerChip.getNum() < value) {
+						retMsg = StaticCnServer.fail_costThing_10;
+						break;
+					}
+				}
+				if (retMsg.length() <= 0) {
+					thingsMap.put(thing, instPlayerChipList.get(0));
+				}
+			}
+			//功法法宝(初始功法法宝：未在卡牌身上, 初始等级,经验是0的功法法宝)
+			else if (tableTypeId == StaticTableType.DictMagic) {
+				int magicLevelId = 0;
+				DictMagic obj = DictMap.dictMagicMap.get(tableFieldId + "");
+				if (obj.getType() == 1) {
+					magicLevelId = ((List<DictMagicLevel>) DictMapList.dictMagicLevelMap.get(1)).get(0).getId();
+				} else if (obj.getType() == 2) {
+					magicLevelId = ((List<DictMagicLevel>) DictMapList.dictMagicLevelMap.get(2)).get(0).getId();
+				}
+				List<InstPlayerMagic> instPlayerMagicList = getInstPlayerMagicDAL().getList("instPlayerId = " + instPlayerId + " and magicId = " + tableFieldId + " and instCardId = 0 and exp = 0 and magicLevelId = " + magicLevelId, instPlayerId);
+				if (instPlayerMagicList.size() < value) {
+					retMsg = StaticCnServer.fail_costThing_13;
+					break;
+				}
+				if (retMsg.length() <= 0) {
+					thingsMap.put(thing, instPlayerMagicList);
+				}
+			}
+			//异火碎片
+			else if (tableTypeId == StaticTableType.DictYFireChip) {
+				List<InstPlayerYFire> instPlayerYFireList = getInstPlayerYFireDAL().getList("instPlayerId = " + instPlayerId + " and fireId = " + tableFieldId, instPlayerId);
+				if (instPlayerYFireList.size() <= 0) {
+					retMsg = StaticCnServer.fail_costThing_16;
+					break;
+				} else {
+					InstPlayerYFire instPlayerYFire = instPlayerYFireList.get(0);
+					if (instPlayerYFire.getChipCount() < value) {
+						retMsg = StaticCnServer.fail_costThing_16;
+						break;
+					}
+				}
+				if (retMsg.length() <= 0) {
+					thingsMap.put(thing, instPlayerYFireList.get(0));
+				}
+			}
+			//翅膀(初始翅膀：等级是0,星数是1,未配在卡牌身上的)
+			else if (tableTypeId == StaticTableType.DictWing) {
+				List<InstPlayerWing> instPlayerWingList = getInstPlayerWingDAL().getList("instPlayerId = " + instPlayerId + " and wingId = " + tableFieldId + " and level = 0 and starNum = 1 and instCardId = 0", instPlayerId);
+				if (instPlayerWingList.size() < value) {
+						retMsg = StaticCnServer.fail_costThing_17;
+						break;
+				}
+				if (retMsg.length() <= 0) {
+					thingsMap.put(thing, instPlayerWingList);
+				}
+			}
+			//斗魂(初始斗魂：未附着在卡牌身上，等级为1，经验为0的斗魂)
+			else if (tableTypeId == StaticTableType.DictFightSoul) {
+				DictFightSoul fightSoul = DictMap.dictFightSoulMap.get(tableFieldId + "");
+				List<InstPlayerFightSoul> instPlayerFightSoulList = getInstPlayerFightSoulDAL().getList("instPlayerId = " + instPlayerId + " and fightSoulId = " + tableFieldId + " and fightSoulQualityId = " + fightSoul.getFightSoulQualityId() + " and level = 1 and lockState = 0 and instCardId = 0 and position = 0 and exp = 0", instPlayerId);
+				if (instPlayerFightSoulList.size() < value) {
+					retMsg = StaticCnServer.fail_costThing_18;
+					break;
+				}
+				if (retMsg.length() <= 0) {
+					thingsMap.put(thing, instPlayerFightSoulList);
+				}
+			}
+		}
+		return retMsg;
+	}
 	
 	/**
 	 * 验证背包容量

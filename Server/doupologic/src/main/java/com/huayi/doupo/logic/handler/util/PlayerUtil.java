@@ -64,6 +64,7 @@ import com.huayi.doupo.base.model.InstPlayerMagic;
 import com.huayi.doupo.base.model.InstPlayerMail;
 import com.huayi.doupo.base.model.InstPlayerManualSkill;
 import com.huayi.doupo.base.model.InstPlayerPartner;
+import com.huayi.doupo.base.model.InstPlayerPillRecipe;
 import com.huayi.doupo.base.model.InstPlayerRecharge;
 import com.huayi.doupo.base.model.InstPlayerRechargeCallBack;
 import com.huayi.doupo.base.model.InstPlayerResolveTemp;
@@ -443,6 +444,7 @@ public class PlayerUtil extends DALFactory {
 		player.setPlayerId(playerId);
 		player.setPlayerName(instPlayer.getName());
 		player.setLevel(instPlayer.getLevel());
+		player.setVipLevel(instPlayer.getVipLevel());
 		player.setAccountId(accountId);
 		PlayerMapUtil.add(channelId, player);
 
@@ -1176,6 +1178,18 @@ public class PlayerUtil extends DALFactory {
 			}
 		}
 
+		//丹方补丁
+		int recipeCount = getInstPlayerPillRecipeDAL().getCount("instPlayerId = " + instPlayerId);
+		if (recipeCount < DictList.dictPillRecipeList.size()) {
+			recipeCount = recipeCount + 1;
+			for (int i = recipeCount ; i <= DictList.dictPillRecipeList.size(); i++) {
+				InstPlayerPillRecipe instPlayerPillRecipe = new InstPlayerPillRecipe();
+				instPlayerPillRecipe.setInstPlayerId(instPlayerId);
+				instPlayerPillRecipe.setPillRecipeId(i);
+				instPlayerPillRecipe.setNum(1);
+				getInstPlayerPillRecipeDAL().add(instPlayerPillRecipe, 0);
+			}
+		}
 		
 		// 开服礼包登录处理
 		ActivityUtil.loginInstActivityOpenServiceBag(instPlayerId, instUser);
@@ -1185,6 +1199,9 @@ public class PlayerUtil extends DALFactory {
 
 		// 最强英雄发奖
 		strogerHeroReward(instPlayerId);
+		
+		// 团购奖励
+		groupBoxReward(instPlayerId);
 
 		// 处理充值返利逻辑
 		String openId = instPlayer.getOpenId();
@@ -1285,6 +1302,47 @@ public class PlayerUtil extends DALFactory {
 		}
 	}
 
+	/**
+	 * 大宝箱奖励
+	 * @author mp
+	 * @date 2015-12-21 上午10:42:54
+	 * @param instPlayerId
+	 * @throws Exception
+	 * @Description
+	 */
+	public static void groupBoxReward(int instPlayerId) throws Exception {
+		// 团购折扣
+		if (ParamConfig.groupRetGoldMap.containsKey(instPlayerId)) {
+			ConcurrentHashMap<String, Integer> innerMap = ParamConfig.groupRetGoldMap.get(instPlayerId);
+			for (Entry<String, Integer> entry : innerMap.entrySet()) {
+				String rewardDate = entry.getKey();
+				int price = entry.getValue();
+				String things = StaticTableType.DictPlayerBaseProp + "_" + StaticPlayerBaseProp.gold + "_" + price;
+				ActivityUtil.addInstPlayerAward(instPlayerId, 3, things, rewardDate, "您在团购活动中获得元宝返利：", new MessageData());
+			}
+
+			// 清空此玩家数据
+			ParamConfig.groupRetGoldMap.remove(instPlayerId);
+		}
+
+		// 团购排名返利
+		if (ParamConfig.groupRankRetGoldMap.containsKey(instPlayerId)) {
+			ConcurrentHashMap<String, String> innerMap = ParamConfig.groupRankRetGoldMap.get(instPlayerId);
+			for (Entry<String, String> entry : innerMap.entrySet()) {
+				String rewardDate = entry.getKey();
+				String rankAndGold = entry.getValue();
+				int rank = ConvertUtil.toInt(rankAndGold.split("_")[0]);
+				int rankRetBold = ConvertUtil.toInt(rankAndGold.split("_")[1]);
+				
+				String rankThings = StaticTableType.DictPlayerBaseProp + "_" + StaticPlayerBaseProp.gold + "_" + rankRetBold;
+				ActivityUtil.addInstPlayerAward(instPlayerId, 3, rankThings, rewardDate, "您在团购活动中排名为" + rank + ",获得奖励：", new MessageData());
+			}
+
+			// 清空此玩家数据
+			ParamConfig.groupRankRetGoldMap.remove(instPlayerId);
+		}
+	}
+	
 	/**
 	 * 最强英雄发奖-登录
 	 * 

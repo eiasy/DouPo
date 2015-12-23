@@ -62,7 +62,11 @@ local function propThing( obj )
     image_name:getChildByName("text_name"):setString(DictWing[ tostring( obj.int["3"] ) ].name)
     local image_quality = ccui.Helper:seekNodeByName( UIWingChange.Widget , "image_quality" )
     --image_quality:setString("羽毛属性")
-    image_quality:loadTexture( "ui/wing_"..DictWing[ tostring( obj.int["3"] ) ].sname..".png" )
+    if obj.int["3"] >= 5 then
+        image_quality:loadTexture( "ui/wing_all.png" )
+    else
+        image_quality:loadTexture( "ui/wing_"..DictWing[ tostring( obj.int["3"] ) ].sname..".png" )
+    end
     local panel_card = ccui.Helper:seekNodeByName( UIWingChange.Widget , "panel_card" )
     local str = "一阶神羽"
     if obj.int["5"] == 1 then
@@ -147,7 +151,12 @@ function UIWingChange.setup()
     local image_wing = ccui.Helper:seekNodeByName( UIWingChange.Widget , "image_card")
     image_wing:setVisible( false )
     local lvl = _obj.int["5"]
-    _animation = utils.addArmature( image_wing:getParent() , 54 + lvl , lvl..DictWing[tostring(_obj.int["3"])].sname , image_wing:getPositionX() , image_wing:getPositionY() , image_wing:getLocalZOrder() - 1 , image_wing:getScale() )
+    local actionName = DictWing[tostring(_obj.int["3"])].actionName
+    if actionName and actionName ~= "" then
+        _animation = utils.addArmature( image_wing:getParent() , 54 + lvl , actionName , image_wing:getPositionX() , image_wing:getPositionY() , image_wing:getLocalZOrder() - 1 , image_wing:getScale() )
+    else
+        _animation = utils.addArmature( image_wing:getParent() , 54 + lvl , "0"..lvl..DictWing[tostring(_obj.int["3"])].sname , image_wing:getPositionX() , image_wing:getPositionY() , image_wing:getLocalZOrder() - 1 , image_wing:getScale() )
+    end
     if _dictId then
         local dictCardData = DictCard[tostring(_dictId)]
 		if dictCardData then			

@@ -6,20 +6,46 @@ local _thingData = nil
 local _haveNums = 0
 
 local function netCallbackFunc(data)
-	local _boxData = utils.stringSplit(data.msgdata.string["1"], ";")
+    local _boxData = utils.stringSplit(data.msgdata.string["1"], ";")
 	local _openBoxData = {}
 	for key, obj in pairs(_boxData) do
 		local _thing = utils.stringSplit(obj, "_")
 		_openBoxData[#_openBoxData + 1] = (tonumber(_thing[1]) == 1 and DictGenerBoxThing[_thing[2]] or DictSpecialBoxThing[_thing[2]])
 	end
-	UIBoxGet.setData(_openBoxData)
-	UIManager.popScene()
-	UIManager.pushScene("ui_box_get")
-	UIManager.flushWidget(UIBag)
+    UIManager.popScene()
+	if _thingData and _thingData.int["3"] == StaticThing.groupBox then
+        utils.showOpenBoxAnimationUI(_openBoxData)
+        --[[
+        local _boxAnim = ActionManager.getEffectAnimation(63, function(armature)
+--                    armature:getAnimation():playWithIndex(1)
+            armature:removeFromParent()
+        end, 1)
+        _boxAnim:setPosition(cc.p(UIManager.screenSize.width / 2, UIManager.screenSize.height / 2))
+        _boxAnim:setLocalZOrder(999999)
+
+        local _name = ccui.Text:create()
+        _name:setFontName(dp.FONT)
+	    _name:setString("AAABBBCCC")
+	    _name:setFontSize(25)
+	    _name:setTextColor(cc.c4b(255, 255, 255, 255))
+        _boxAnim:getBone("guge1"):addDisplay(_name, 0)
+		_boxAnim:getBone("guge2"):addDisplay(ccs.Skin:create("image/poster_clothes_big_xiangruisijia.png"), 0)
+
+        UIManager.uiLayer:addChild(_boxAnim)
+        --]]
+    else
+	    UIBoxGet.setData(_openBoxData)
+	    UIManager.pushScene("ui_box_get")
+    end
+    UIManager.flushWidget(UIBag)
 	UIManager.flushWidget(UITeamInfo)
 end
 
 function UIBoxUse.init()
+    _MAX_USE_NUMS = 100
+	if _thingData and _thingData.int["3"] == StaticThing.groupBox then
+        _MAX_USE_NUMS = 10
+    end
 	local btn_close = ccui.Helper:seekNodeByName(UIBoxUse.Widget, "btn_close")
 	local btn_sure = ccui.Helper:seekNodeByName(UIBoxUse.Widget, "btn_sure")
 	local btn_undo = ccui.Helper:seekNodeByName(UIBoxUse.Widget, "btn_undo")
@@ -160,8 +186,8 @@ function UIBoxUse.setup()
 	if _thingData then
 		_haveNums = _thingData.int["5"]
 		if _thingData.int["3"] == StaticThing.goldBox then
-      _haveNums = _haveNums + _thingData.int["4"]
-    end
+          _haveNums = _haveNums + _thingData.int["4"]
+        end
 		local dictThingData = DictThing[tostring(_thingData.int["3"])]
 		local image_base_hint = ccui.Helper:seekNodeByName(UIBoxUse.Widget, "image_base_hint")
 		ccui.Helper:seekNodeByName(image_base_hint, "text_hint"):setString(string.format("请选择使用%s的数量", dictThingData.name))

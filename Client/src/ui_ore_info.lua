@@ -11,6 +11,9 @@ local function netErrorCallbackFunc(pack)
     if code == StaticMsgRule.mineFightWin then
         UIOre.showFightResult(ui, -1, msgdata)
         return
+    elseif code == StaticMsgRule.mineFail then
+        UIOre.showFightResult(ui, 0)
+        return
     end
     if msgdata.int.activityStartTime and msgdata.int.activityEndTime and msgdata.int.activityStartTime and msgdata.int.activityEndTime then
         UIOre.activityTimes = { msgdata.int.activityStartTime, msgdata.int.activityEndTime, msgdata.int.activityStartTime2, msgdata.int.activityEndTime2 }
@@ -45,7 +48,7 @@ local function netCallbackFunc(pack)
                         }
                     } , netCallbackFunc, netErrorCallbackFunc)
                 else
-                    UIOre.showFightResult(ui, 0)
+                    netSendPackage( { header = StaticMsgRule.mineFail, msgdata = { int = { mineId = UIOreInfo.warParam[3] } } }, netCallbackFunc, netErrorCallbackFunc)
                 end
             end )
             if not UIFightMain.Widget or not UIFightMain.Widget:getParent() then
@@ -58,6 +61,8 @@ local function netCallbackFunc(pack)
         end
     elseif code == StaticMsgRule.mineFightWin then
         UIOre.showFightResult(ui, 1, msgdata)
+    elseif code == StaticMsgRule.mineFail then
+        UIOre.showFightResult(ui, 0)
     end
 end
 
@@ -119,9 +124,9 @@ function ui.init()
         local costTime = checkTime(UIOre.activityTimes[1], UIOre.activityTimes[2]) or checkTime(UIOre.activityTimes[3], UIOre.activityTimes[4]) or 0
 
         if ui.mine.mineType == 0 then
-            text_hint:setString(string.format("占领矿产消耗%d%s", produceSpeed[3], produceSpeed[4] == 0 and "点耐力" or "元宝"))
+            text_hint:setString(string.format("消耗%d%s", produceSpeed[3], produceSpeed[4] == 0 and "点耐力" or "元宝"))
         else
-            text_hint:setString(string.format("占领矿产消耗%d%s    协助矿产消耗%d%s", produceSpeed[3], produceSpeed[4] == 0 and "点耐力" or "元宝", produceSpeed[5], produceSpeed[6] == 0 and "点耐力" or "元宝"))
+            text_hint:setString(string.format("消耗%d%s    协助矿产消耗%d%s", produceSpeed[3], produceSpeed[4] == 0 and "点耐力" or "元宝", produceSpeed[5], produceSpeed[6] == 0 and "点耐力" or "元宝"))
         end
 
         local function touchevent(sender, eventType)

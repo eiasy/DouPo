@@ -64,6 +64,8 @@
 
 		<!-- OPPO参数 -->
 		<parameter name="oppo_appId" value="3835" />
+		<parameter name="oppo_url"
+				   value="http://i.open.game.oppomobile.com/gameopen/user/fileIdInfo" />
 		<parameter name="oppo_key" value="Bj2WwN6BiFscOoCc0Go888coo" />
 		<parameter name="oppo_appsecret" value="73681fE4d7ee6c9c5F0A5dEB16110B92" />
 

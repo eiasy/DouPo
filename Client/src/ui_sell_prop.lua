@@ -77,6 +77,10 @@ local function netCallbackFunc(data)
         if _callbackFunc then
             _callbackFunc(tonumber(ui_selectedNum:getString()))
         end
+    elseif code == StaticMsgRule.buyGroupBox then
+        if _callbackFunc then
+            _callbackFunc()
+        end
 	end
 	UIManager.popScene()
 end
@@ -231,6 +235,15 @@ local function sendData()
 			    }
             }
         }
+    elseif _uiItem == UIActivityPurchaseTrade then
+        sendData = {
+            header = StaticMsgRule.buyGroupBox ,
+            msgdata = {
+                int = {
+                    num = tonumber(ui_selectedNum:getString()) --购买次数
+			    }
+            }
+        }
 	end
 	UIManager.showLoading()
 	netSendPackage(sendData, netCallbackFunc)
@@ -263,7 +276,7 @@ function UISellProp.init()
 				UIManager.popScene()
 			elseif sender == btn_sure then
 				if tonumber(ui_selectedNum:getString()) > 0 then
-					if _uiItem == UIShop then
+					if _uiItem == UIShop or _uiItem == UIActivityPurchaseTrade then
 						if net.InstPlayer.int["5"] >=	tonumber(ui_predictMoney:getString()) then
 							sendData()
 						else
@@ -291,7 +304,7 @@ function UISellProp.init()
 						sendData()
 					end
 				else
-					if _uiItem == UIShop then
+					if _uiItem == UIShop or _uiItem == UIActivityPurchaseTrade then
 						UIManager.showToast("请选择购买的数量！")
 					elseif _uiItem == UIArena then
 						UIManager.showToast("请选择兑换的次数！")
@@ -322,7 +335,7 @@ function UISellProp.init()
 		if eventType == ccui.TouchEventType.ended then
 			local number = tonumber(ui_selectedNum:getString())
 			local canBuyNum = math.floor(net.InstPlayer.int["5"]/_unitPrice)
-            if _uiItem == UIShop then
+            if _uiItem == UIShop or _uiItem == UIActivityPurchaseTrade then
                 canBuyNum = math.floor(net.InstPlayer.int["5"]/math.round( _unitPrice * UIShop.disCount ))
             end
 			if sender == ui_sub10 then
@@ -336,8 +349,8 @@ function UISellProp.init()
 					number = number - 1
 				end
 			elseif sender == ui_add10 then
-				if _uiItem == UIShop then
-					if _thingInstData.int["canBuyNum"] ~= nil  and  _thingInstData.int["canBuyNum"] ~= -1 then
+				if _uiItem == UIShop or _uiItem == UIActivityPurchaseTrade then
+					if _thingInstData.int and _thingInstData.int["canBuyNum"] ~= nil  and  _thingInstData.int["canBuyNum"] ~= -1 then
 						if number +10  <= _thingInstData.int["canBuyNum"] then
 							number = number + 10
 						elseif number > _thingInstData.int["canBuyNum"] - 10 and number < _thingInstData.int["canBuyNum"] then
@@ -404,8 +417,8 @@ function UISellProp.init()
 					end
 				end
 			elseif sender == ui_add then
-				if _uiItem == UIShop then
-					if _thingInstData.int["canBuyNum"] ~= nil  and  _thingInstData.int["canBuyNum"] ~= -1 then
+				if _uiItem == UIShop or _uiItem == UIActivityPurchaseTrade then
+					if _thingInstData.int and _thingInstData.int["canBuyNum"] ~= nil  and  _thingInstData.int["canBuyNum"] ~= -1 then
 						if number < _thingInstData.int["canBuyNum"] then
 							number = number + 1
 						else
@@ -665,6 +678,13 @@ function UISellProp.setup()
 			ui_moneyTotalText:setString("需要屠魔积分：")
 			ui_textHint:setString(string.format("请选择兑换%s的个数", itemThing.name))
 			_unitPrice = _thingInstData.needbossIntegral
+        elseif _uiItem == UIActivityPurchaseTrade then
+            ui_title:setString("购买道具")
+            ui_haveNum:setVisible(false)
+			ui_moneyTotalText:setString("总价：")
+            _unitPrice = _thingInstData.price
+            ui_imageIcon:loadTexture("ui/jin.png")
+			ui_textHint:setString(string.format("请选择购买%s的数量", _thingInstData.thingData.name))
 		end
 	end
     if _uiItem == UIShop then

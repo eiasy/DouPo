@@ -289,7 +289,7 @@ local function onFightDone(isWin, fightIndex, bigRound, myDeaths, hpPercent, hur
             elseif fightType == dp.FightType.FIGHT_TASK.ACTIVITY then
                 sendActivityWarRequest(param.barrierId)
                 SDK.doLevelFightResult(param.barrierId .. "_1")
-            elseif fightType == dp.FightType.FIGHT_MINE then
+            elseif fightType == dp.FightType.FIGHT_MINE or fightType == dp.FightType.FIGHT_UNION_REPLAY then
                 callBackFunc(true)
             elseif fightType == dp.FightType.FIGHT_CHIP.NPC or fightType == dp.FightType.FIGHT_CHIP.PC then
                 --- 抢碎片
@@ -346,7 +346,7 @@ local function onFightDone(isWin, fightIndex, bigRound, myDeaths, hpPercent, hur
                         UIManager.pushScene("ui_loot_fight")
                     end
                 end
-            elseif fightType == dp.FightType.FIGHT_MINE then
+            elseif fightType == dp.FightType.FIGHT_MINE or fightType == dp.FightType.FIGHT_UNION_REPLAY then
                 callBackFunc(false)
             elseif fightType == dp.FightType.FIGHT_PAGODA then
                 --- 爬塔

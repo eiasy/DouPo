@@ -20,6 +20,7 @@ public class DictMap {
 	public static Map<String,DictFireSkill> dictFireSkillMap = null;
 	public static Map<String,DictActivityLuck> dictActivityLuckMap = null;
 	public static Map<String,DictBeautyCardExp> dictBeautyCardExpMap = null;
+	public static Map<String,DictEquipAdvancered> dictEquipAdvanceredMap = null;
 	public static Map<String,DictHoldStarGradeReward> dictHoldStarGradeRewardMap = null;
 	public static Map<String,DictActivityLimitTimeHeroRankReward> dictActivityLimitTimeHeroRankRewardMap = null;
 	public static Map<String,DictPillRecipe> dictPillRecipeMap = null;
@@ -28,6 +29,8 @@ public class DictMap {
 	public static Map<String,DictPlayerBaseProp> dictPlayerBasePropMap = null;
 	public static Map<String,DictActivityOpenServiceBag> dictActivityOpenServiceBagMap = null;
 	public static Map<String,DictAdvance> dictAdvanceMap = null;
+	public static Map<String,DictActivityGroupRate> dictActivityGroupRateMap = null;
+	public static Map<String,DictActivityGroupDiscount> dictActivityGroupDiscountMap = null;
 	public static Map<String,DictPagodaDrop> dictPagodaDropMap = null;
 	public static Map<String,DictFightSoulQuality> dictFightSoulQualityMap = null;
 	public static Map<String,DictInitCard> dictInitCardMap = null;
@@ -40,6 +43,7 @@ public class DictMap {
 	public static Map<String,DictBagType> dictBagTypeMap = null;
 	public static Map<String,DictCardExp> dictCardExpMap = null;
 	public static Map<String,DictKungFuType> dictKungFuTypeMap = null;
+	public static Map<String,DictUnionWarBattlefield> dictUnionWarBattlefieldMap = null;
 	public static Map<String,DictActivityLimitShopping> dictActivityLimitShoppingMap = null;
 	public static Map<String,DictActivityGrabTheHour> dictActivityGrabTheHourMap = null;
 	public static Map<String,DictactivityExchange> dictactivityExchangeMap = null;
@@ -68,6 +72,7 @@ public class DictMap {
 	public static Map<String,DictSpecialBoxThing> dictSpecialBoxThingMap = null;
 	public static Map<String,DictEquipAdvance> dictEquipAdvanceMap = null;
 	public static Map<String,DictBeautyCard> dictBeautyCardMap = null;
+	public static Map<String,DictMagicrefining> dictMagicrefiningMap = null;
 	public static Map<String,DictSpecialRule> dictSpecialRuleMap = null;
 	public static Map<String,DictPagodaCard> dictPagodaCardMap = null;
 	public static Map<String,DictFireExp> dictFireExpMap = null;
@@ -94,6 +99,7 @@ public class DictMap {
 	public static Map<String,DictKungFu> dictKungFuMap = null;
 	public static Map<String,DictactivityTotalCost> dictactivityTotalCostMap = null;
 	public static Map<String,DictPillQuality> dictPillQualityMap = null;
+	public static Map<String,DictEquipSuitred> dictEquipSuitredMap = null;
 	public static Map<String,SysMsgRule> sysMsgRuleMap = null;
 	public static Map<String,DictGenerBoxThing> dictGenerBoxThingMap = null;
 	public static Map<String,DictRecruitSpecialCard> dictRecruitSpecialCardMap = null;
@@ -103,6 +109,7 @@ public class DictMap {
 	public static Map<String,DictFunctionOpen> dictFunctionOpenMap = null;
 	public static Map<String,DictQuality> dictQualityMap = null;
 	public static Map<String,DictPagodaFormation> dictPagodaFormationMap = null;
+	public static Map<String,DictUnionWarAmbush> dictUnionWarAmbushMap = null;
 	public static Map<String,DictColor> dictColorMap = null;
 	public static Map<String,DictMineType> dictMineTypeMap = null;
 	public static Map<String,DictHoleConsume> dictHoleConsumeMap = null;
@@ -112,6 +119,7 @@ public class DictMap {
 	public static Map<String,DictUnionBox> dictUnionBoxMap = null;
 	public static Map<String,DictManualSkill> dictManualSkillMap = null;
 	public static Map<String,DictCardExpAdd> dictCardExpAddMap = null;
+	public static Map<String,DictUnionWarInfo> dictUnionWarInfoMap = null;
 	public static Map<String,DictVIP> dictVIPMap = null;
 	public static Map<String,DictSysConfigStr> dictSysConfigStrMap = null;
 	public static Map<String,DictActivityAllPeapleWeal> dictActivityAllPeapleWealMap = null;
@@ -125,9 +133,9 @@ public class DictMap {
 	public static Map<String,SysActivity> sysActivityMap = null;
 	public static Map<String,DictArenaDrop> dictArenaDropMap = null;
 	public static Map<String,DictRecruitCard> dictRecruitCardMap = null;
+	public static Map<String,DictActivityGroupGiveZiRule> dictActivityGroupGiveZiRuleMap = null;
 	public static Map<String,DictWingLuck> dictWingLuckMap = null;
 	public static Map<String,DictActivityStarStore> dictActivityStarStoreMap = null;
-//	public static Map<String,DictUnionWar> dictUnionWarMap = null;
 	public static Map<String,DictEquipSuit> dictEquipSuitMap = null;
 	public static Map<String,DictCoefficient> dictCoefficientMap = null;
 	public static Map<String,DictAuctionHJY> dictAuctionHJYMap = null;
@@ -148,8 +156,8 @@ public class DictMap {
 	public static Map<String,DictWorldBossStore> dictWorldBossStoreMap = null;
 	public static Map<String,DictFireSkillQuality> dictFireSkillQualityMap = null;
 	public static Map<String,DictArenaConvert> dictArenaConvertMap = null;
-	public static Map<String,DictFire> dictFireMap = null;
 	public static Map<String,DictThingExtend> dictThingExtendMap = null;
+	public static Map<String,DictFire> dictFireMap = null;
 	public static Map<String,DictWing> dictWingMap = null;
 	public static Map<String,DictBarrierDropType> dictBarrierDropTypeMap = null;
 	public static Map<String,DictActivityHoliday> dictActivityHolidayMap = null;

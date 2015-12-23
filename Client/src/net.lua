@@ -280,7 +280,7 @@ function netSendPackage(pack, netCallbackFunc, errorCallbackFunc, isShowErrorToa
     heartBeatTime_ = os.time()
     _netCallbackFuncs[pack.header] = netCallbackFunc
     _errorCallbackFuncs[pack.header] = errorCallbackFunc
-    _isShowErrorToastMsg = (isShowErrorToastMsg == nil) and false or isShowErrorToastMsg
+    _isShowErrorToastMsg =(isShowErrorToastMsg == nil) and false or isShowErrorToastMsg
 end
 
 -- 网络数据包序号错误
@@ -295,16 +295,9 @@ function netOnPackage(pack)
     UIManager.hideLoading()
     if not dp.RELEASE then
         cclog("=================[服务器返回的数据包]=================")
-        local function recursionTab(t, kkk)
-            for key, value in pairs(t) do
-                if type(value) == "table" then
-                    recursionTab(value, kkk .. "." .. key)
-                else
-                    cclog(kkk .. "." .. key .. "=" .. value)
-                end
-            end
+        if pack.header ~= StaticMsgRule.unionReplay then
+            utils.recursionTab(pack, "pack")
         end
-        recursionTab(pack, "pack")
         cclog("=================[服务器返回的数据包]=================")
     end
     if pack.msgdata.int and tonumber(pack.msgdata.int.isOk) == 0 then
@@ -325,7 +318,7 @@ function netOnPackage(pack)
                     _errorCallbackFuncs[protoCode] = nil
                 end
                 if pack.msgdata.string.retMsg ~= "hide" then
-                    UIManager.showToast(pack.msgdata.string.retMsg , _isShowErrorToastMsg )
+                    UIManager.showToast(pack.msgdata.string.retMsg, _isShowErrorToastMsg)
                 end
                 _isShowErrorToastMsg = false
             end
@@ -405,14 +398,15 @@ function netOnPackage(pack)
                         for k_, data in pairs(obj.message[tostring(instId)]) do
                             for i_, value in pairs(data) do
                                 if net[tableName] then
-                                    if tableName == "InstUnionMember" then --zy 修改申请入盟被批准后报错的问题
+                                    if tableName == "InstUnionMember" then
+                                        -- zy 修改申请入盟被批准后报错的问题
                                         if net[tableName][k_] == nil then
-                                            net[tableName][k_] = {}
+                                            net[tableName][k_] = { }
                                         end
                                         net[tableName][k_][i_] = value
                                     elseif net[tableName][tostring(instId)] then
-                                        --cclog("tableName:"..tableName.."instId :"..instId.. " _k ".. " type  ".. type(k_) ..k_.." _i ".." type  ".. type(i_)..i_.."  value "..value.." "..type(value) )
-                                        net[tableName][tostring(instId)][k_][i_] = value                                   
+                                        -- cclog("tableName:"..tableName.."instId :"..instId.. " _k ".. " type  ".. type(k_) ..k_.." _i ".." type  ".. type(i_)..i_.."  value "..value.." "..type(value) )
+                                        net[tableName][tostring(instId)][k_][i_] = value
                                     else
                                         if net[tableName][k_] == nil then
                                             net[tableName][tostring(instId)] = { k_ = data }
@@ -428,29 +422,25 @@ function netOnPackage(pack)
                     end
                     -----元宝实时更新
                     if tableName == "InstPlayer" then
-                        UIManager.flushWidget( UITowerTest )
-                        UIManager.flushWidget( UITowerStrong )
+                        UIManager.flushWidget(UITowerTest)
+                        UIManager.flushWidget(UITowerStrong)
                         UIManager.flushWidget(UITeamInfo)
                         if UIShop.Widget and UIShop.Widget:getParent() then
                             ccui.Helper:seekNodeByName(UIShop.Widget, "text_gold_number"):setString(tostring(net.InstPlayer.int["5"]))
                         end
-                    end
-                    if tableName == "InstActivity" then
+                    elseif tableName == "InstActivity" then
                         if not isFresh then
                             isFresh = true
                         end
-                    end
-                    if tableName == "InstPlayerFightSoul" then
+                    elseif tableName == "InstPlayerFightSoul" then
                         if not isFreshFightSoul then
                             isFreshFightSoul = true
                         end
-                    end
-                    if tableName == "InstPlayerFightSoulHuntRule" then
+                    elseif tableName == "InstPlayerFightSoulHuntRule" then
                         if not isFreshFightSoulHunt then
                             isFreshFightSoulHunt = true
                         end
-                    end
-                    if tableName == "InstUnionMember" then
+                    elseif tableName == "InstUnionMember" then
                         if not isFreshHomePage then
                             isFreshHomePage = true
                         end
@@ -528,7 +518,7 @@ function netOnPackage(pack)
                 end
                 UIGiftRecharge.checkPay()
                 UIShop.disCount = pack.msgdata.int["multipleExp"] / 100
-                cclog("UIShop.disCount :"..UIShop.disCount )
+                cclog("UIShop.disCount :" .. UIShop.disCount)
                 if UIMenu and UIMenu.Widget then
                     UIMenu.refreshIcon()
                 end
@@ -556,6 +546,8 @@ function netOnPackage(pack)
                     table.insert(param, pack.msgdata.string["2"])
                 end
                 table.insert(UINotice.preViewThing, param)
+            elseif protoCode == StaticMsgRule.pushUnionWar then
+                UIWar.onWarEvent(pack.msgdata)
             else
                 if _netCallbackFuncs[protoCode] then
                     _netCallbackFuncs[protoCode](pack)
@@ -650,6 +642,7 @@ function net.loadGameData(pack)
     addInstTable(pack, "InstPlayerFightSoulHuntRule")
     addInstTable(pack, "InstPlayerYFire")
     addInstTable(pack, "InstPlayerWing")
+    addInstTable(pack, "InstPlayerRedEquip")
     addInstTable(pack, "InstPlayerHoldStar")
 
     if pack.msgdata.int.yj then

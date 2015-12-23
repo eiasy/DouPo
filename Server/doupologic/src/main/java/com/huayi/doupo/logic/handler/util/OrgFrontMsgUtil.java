@@ -1627,6 +1627,8 @@ public class OrgFrontMsgUtil extends DALFactory{
 		msgData.putIntItem("6", instPlayerMagic.getMagicLevelId());
 		msgData.putIntItem("7", instPlayerMagic.getExp());
 		msgData.putIntItem("8", instPlayerMagic.getInstCardId());
+		//Update by cui 数据库增加了字段
+		msgData.putIntItem("10", instPlayerMagic.getAdvanceId());
 
 		return msgData;
 	}
@@ -2198,6 +2200,41 @@ public class OrgFrontMsgUtil extends DALFactory{
 
 		return msgData;
 	}
+
+	/**
+	 *  组织玩家红装淬炼值实例数据
+	 * @author cui
+	 * @date	2015/12/09
+	 * @param msgMap
+	 * @param channelId
+	 * @throws Exception
+	 * @Description
+	 */
+	public static void orgInstPlayerRedEquip(MessageData redEquipMsgData, List<InstPlayerRedEquip> redEquipList){
+		for(InstPlayerRedEquip instPlayerRedEquip : redEquipList){
+			MessageData msgData = orgInstPlayerRedEquip(instPlayerRedEquip);
+			redEquipMsgData.putMessageItem(instPlayerRedEquip.getId()+"", msgData.getMsgData());
+		}
+	}
+
+
+	/**
+	 *  组织玩家红装淬炼值实例数据
+	 * @author cui
+	 * @date	2015、12、09
+	 * @param msgMap
+	 * @param channelId
+	 * @throws Exception
+	 * @Description
+	 */
+	public static MessageData orgInstPlayerRedEquip(InstPlayerRedEquip instPlayerRedEquip){
+		MessageData msgData = new MessageData();
+		msgData.putIntItem("1", instPlayerRedEquip.getId());
+		msgData.putIntItem("2", instPlayerRedEquip.getInstPlayerId());
+		msgData.putIntItem("3", instPlayerRedEquip.getEquipInstId());
+		msgData.putIntItem("4", instPlayerRedEquip.getContions());
+		return msgData;
+	}
 	
 	/**
 	 * 首次登录向客户端发的缓存信息
@@ -2360,6 +2397,21 @@ public class OrgFrontMsgUtil extends DALFactory{
 				MessageData equipMsgData = new MessageData();
 				OrgFrontMsgUtil.orgInstPlayerEquip(equipMsgData, equipList);
 				retMsgData.putMessageItem(InstPlayerEquip.class.getSimpleName(), equipMsgData.getMsgData());
+			}
+		    //Update by cui 红装淬炼值表
+			List<InstPlayerRedEquip> redEquipList = Lists.newArrayList();
+			if(DALFather.isUseCach() == true && playerMemObj != null && playerMemObj.instPlayerRedEquipMap.size() == 0){
+				redEquipList = getInstPlayerRedEquipDAL().getList(" instPlayerId = " + instPlayerId, 0);
+				for (InstPlayerRedEquip obj : redEquipList) {
+					playerMemObj.instPlayerRedEquipMap.put(obj.getId(), obj);
+				}
+			} else {
+				redEquipList = getInstPlayerRedEquipDAL().getList(" instPlayerId = " + instPlayerId, instPlayerId);
+			}
+			if(redEquipList.size() > 0){
+				MessageData redEquipMsgData = new MessageData();
+				OrgFrontMsgUtil.orgInstPlayerRedEquip(redEquipMsgData, redEquipList);
+				retMsgData.putMessageItem(InstPlayerRedEquip.class.getSimpleName(), redEquipMsgData.getMsgData());
 			}
 //		}
 		

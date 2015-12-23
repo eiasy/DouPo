@@ -35,3 +35,13 @@ DictPill["33"]={id=33,name="高级经验丹",smallUiId=11065,bigUiId=11066,pillT
 DictPill["34"]={id=34,name="低级潜力丹",smallUiId=11067,bigUiId=11068,pillTypeId=3,pillQualityId=1,prescriptId=34,cardlevel=1,tableTypeId=4,tableFieldId=4,value=50,sellCopper=100,description=""}
 DictPill["35"]={id=35,name="中级潜力丹",smallUiId=11069,bigUiId=11070,pillTypeId=3,pillQualityId=3,prescriptId=35,cardlevel=1,tableTypeId=4,tableFieldId=4,value=100,sellCopper=200,description=""}
 DictPill["36"]={id=36,name="高级潜力丹",smallUiId=11071,bigUiId=11072,pillTypeId=3,pillQualityId=6,prescriptId=36,cardlevel=1,tableTypeId=4,tableFieldId=4,value=200,sellCopper=300,description=""}
+DictPill["37"]={id=37,name="七品生命丹",smallUiId=1181,bigUiId=1182,pillTypeId=1,pillQualityId=7,prescriptId=37,cardlevel=1,tableTypeId=5,tableFieldId=1,value=545,sellCopper=700,description=""}
+DictPill["38"]={id=38,name="七品物攻丹",smallUiId=1183,bigUiId=1184,pillTypeId=1,pillQualityId=7,prescriptId=38,cardlevel=1,tableTypeId=5,tableFieldId=2,value=273,sellCopper=700,description=""}
+DictPill["39"]={id=39,name="七品法攻丹",smallUiId=1185,bigUiId=1186,pillTypeId=1,pillQualityId=7,prescriptId=39,cardlevel=1,tableTypeId=5,tableFieldId=3,value=273,sellCopper=700,description=""}
+DictPill["40"]={id=40,name="七品物防丹",smallUiId=1187,bigUiId=1188,pillTypeId=1,pillQualityId=7,prescriptId=40,cardlevel=1,tableTypeId=5,tableFieldId=8,value=109,sellCopper=700,description=""}
+DictPill["41"]={id=41,name="七品法防丹",smallUiId=1189,bigUiId=1190,pillTypeId=1,pillQualityId=7,prescriptId=41,cardlevel=1,tableTypeId=5,tableFieldId=9,value=109,sellCopper=700,description=""}
+DictPill["42"]={id=42,name="八品生命丹",smallUiId=1191,bigUiId=1192,pillTypeId=1,pillQualityId=8,prescriptId=42,cardlevel=1,tableTypeId=5,tableFieldId=1,value=640,sellCopper=800,description=""}
+DictPill["43"]={id=43,name="八品物攻丹",smallUiId=1193,bigUiId=1194,pillTypeId=1,pillQualityId=8,prescriptId=43,cardlevel=1,tableTypeId=5,tableFieldId=2,value=286,sellCopper=800,description=""}
+DictPill["44"]={id=44,name="八品法攻丹",smallUiId=1195,bigUiId=1196,pillTypeId=1,pillQualityId=8,prescriptId=44,cardlevel=1,tableTypeId=5,tableFieldId=3,value=286,sellCopper=800,description=""}
+DictPill["45"]={id=45,name="八品物防丹",smallUiId=1197,bigUiId=1198,pillTypeId=1,pillQualityId=8,prescriptId=45,cardlevel=1,tableTypeId=5,tableFieldId=8,value=128,sellCopper=800,description=""}
+DictPill["46"]={id=46,name="八品法防丹",smallUiId=1199,bigUiId=1200,pillTypeId=1,pillQualityId=8,prescriptId=46,cardlevel=1,tableTypeId=5,tableFieldId=9,value=128,sellCopper=800,description=""}

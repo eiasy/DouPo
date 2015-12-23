@@ -12,7 +12,7 @@
 #define FLAG_FILE       "install"   // 标记文件用于判断是否为新安装的客户端
 #define VERSION_FILE    "version"   // 版本号记录文件
 #define LIST_FILE       "list"      // 列表文件
-#define CONFIG_FILE     "config"    // 配置文件
+#define CONFIG_FILE     "hyconfig"    // 配置文件
 #define RES_DIR         "res/"      // 外部资源目录
 #define RES_PATH_MAX    256         // 资源文件路径最大长度(不包含'\0')
 #define HASH_STRING_MAX 256         // HASH值字符串长度(不包含'\0')

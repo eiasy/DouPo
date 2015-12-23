@@ -133,9 +133,15 @@ local function setScrollViewItem(flag,_Item, _obj)
         local ItemQuality = ccui.Helper:seekNodeByName(_Item,"label_pz")
         ItemLevel:setString(string.format("%d级",_obj.int["5"]))
         local dictEquipData = DictEquipment[tostring(_obj.int["4"])] --装备字典表
+        local equipAdvanceId = _obj.int["8"]
+        local dictEquipAdvanceData = DictEquipAdvance[tostring(equipAdvanceId)]
         local name = dictEquipData.name
         ItemName:setString(name)
-        utils.changeNameColor(ItemName,dictEquipData.equipQualityId)
+        if dictEquipAdvanceData then
+            utils.changeNameColor(ItemName,dictEquipAdvanceData.equipQualityId)
+        else
+            utils.changeNameColor(ItemName,dictEquipData.equipQualityId)
+        end
         ItemImage:loadTexture("image/" .. DictUI[tostring(dictEquipData.smallUiId)].fileName)
                           
                     
@@ -160,14 +166,16 @@ local function setScrollViewItem(flag,_Item, _obj)
 
 
         ItemQuality:setString(dictEquipData.qualityLevel)
-        ItemFrame:loadTexture(utils.getQualityImage(dp.Quality.equip, dictEquipData.equipQualityId, dp.QualityImageType.small))
+        if dictEquipAdvanceData then
+            ItemFrame:loadTexture(utils.getQualityImage(dp.Quality.equip, dictEquipAdvanceData.equipQualityId, dp.QualityImageType.small))
+        else
+            ItemFrame:loadTexture(utils.getQualityImage(dp.Quality.equip, dictEquipData.equipQualityId, dp.QualityImageType.small))
+        end
         if dictEquipData.equipQualityId == StaticEquip_Quality.white or dictEquipData.equipQualityId == StaticEquip_Quality.green then
           for i = 1, 5 do
             _Item:getChildByName("image_star" .. i):setVisible(false)
           end
         else
-          local equipAdvanceId = _obj.int["8"] --装备进阶字典ID
-          local dictEquipAdvanceData = DictEquipAdvance[tostring(equipAdvanceId)] --装备进阶字典表
           local equipAdvanceData = {}
           for key, obj in pairs(DictEquipAdvance) do
             if _obj.int["3"] == obj.equipTypeId and dictEquipData.equipQualityId == obj.equipQualityId then
@@ -257,9 +265,15 @@ local function setScrollViewItem(flag,_Item, _obj)
                   UIEquipmentIntensify.setEquipInstId(equipInstId)
                   UIManager.pushScene("ui_equipment_intensify")
                 elseif sender == btn_clean  then --进阶
-                  if dictEquipData.equipQualityId == StaticEquip_Quality.white or dictEquipData.equipQualityId == StaticEquip_Quality.green then
+                  local instEquipData = net.InstPlayerEquip[tostring(equipInstId)]
+	              local equipAdvanceId = instEquipData.int["8"] --装备进阶字典ID
+	              local dictEquipAdvanceData = DictEquipAdvance[tostring(equipAdvanceId)] --装备进阶字典表    
+                if dictEquipData.equipQualityId == StaticEquip_Quality.white or dictEquipData.equipQualityId == StaticEquip_Quality.green then
                     UIManager.showToast((dictEquipData.equipQualityId == StaticEquip_Quality.white and "绿" or "蓝") .. "品不能进阶！")
-                  else
+--                elseif dictEquipAdvanceData and ( ( dictEquipAdvanceData.starLevel == 5 and dictEquipAdvanceData.equipQualityId == StaticEquip_Quality.purple ) or dictEquipAdvanceData.equipQualityId > StaticEquip_Quality.purple ) then
+--                   UIEquipmentAdvance.setEquipInstId(equipInstId)
+--                   UIManager.pushScene("ui_equipment_advance")
+                else
                     UIEquipmentClean.show({InstPlayerEquip_id = equipInstId})
                   end
                 elseif sender == btn_inlay then --镶嵌

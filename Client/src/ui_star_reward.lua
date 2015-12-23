@@ -1,91 +1,6 @@
 UIStarReward = {}
-local function netCallBack( pack )
-    if pack.header == StaticMsgRule.oneKeyGet then
-        if pack.msgdata.string then
-            local thing = utils.stringSplit( pack.msgdata.string["1"] , ";")
-            local thingData = {}
-            for key , value in pairs( thing ) do
-                local data = utils.getItemProp( value )
-                thingData[ #thingData + 1 ] = { tableTypeId = data.tableTypeId , tableFieldId = data.tableFieldId , value = data.count }
-            end
-            if #thingData > 0 then
-                UIBoxGet.setData(thingData)
-                UIManager.pushScene("ui_box_get")
-            end
-        end
-    elseif pack.header == StaticMsgRule.refreshStarReward then
-        UIStar.curChooseG = pack.msgdata.int.openGradeId  
-    end
-    UIStarReward.setup()
-    UIManager.flushWidget( UIStarLighten )
-end
-local function netSend( type )
-    local sendData = {}
-    if type == 1 then --一键领取
-        sendData = {
-            header = StaticMsgRule.oneKeyGet ,
-            msgdata = {
-                int = {
-                    gradeId = UIStarLighten.curChooseGrade
-                }
-            }
-        }
-    elseif type == 2 then -- 刷新
-        sendData = {
-            header = StaticMsgRule.refreshStarReward ,
-            msgdata = {
-                int = {
-                    gradeId = UIStarLighten.curChooseGrade
-                }
-            }
-        }
-    end
-    netSendPackage( sendData , netCallBack )
-end
-function UIStarReward.init()
-    local btn_close = ccui.Helper:seekNodeByName( UIStarReward.Widget , "btn_close" )
-    local btn_refresh = ccui.Helper:seekNodeByName( UIStarReward.Widget , "btn_refresh" )
-    local btn_one = ccui.Helper:seekNodeByName( UIStarReward.Widget , "btn_one" )
-    local function onEvent( sender , eventType )
-        if eventType == ccui.TouchEventType.ended then
-            if sender == btn_close then
-                UIManager.popScene()
-            elseif sender == btn_refresh then
-                netSend( 2 )
-            elseif sender == btn_one then
-                netSend( 1 )
-            end
-        end
-    end
-    btn_close:setPressedActionEnabled( true )
-    btn_close:addTouchEventListener( onEvent )
-    btn_refresh:setPressedActionEnabled( true )
-    btn_refresh:addTouchEventListener( onEvent )
-    btn_one:setPressedActionEnabled( true )
-    btn_one:addTouchEventListener( onEvent )
-end
-function UIStarReward.checkHint() 
-    local isHint = false
-    if UIStarLighten.objData then
-           local objThingValue = {}
-        local temp = utils.stringSplit( UIStarLighten.objData.string["15"] , ";")
-        for key ,value in pairs( temp ) do
-             local obj = utils.stringSplit( value , "_" )
-             objThingValue[tonumber(obj[1])] = tonumber(obj[3])
-        end
-        local curStars = UIStarLighten.objData.int["5"]
-        for i = 1 , 10 do       
-            if curStars >= DictHoldStarRewardPos[tostring(( i ))].starNum then            
-                    if objThingValue[i] == 0 then
-                        isHint = true
-                        break           
-                    end
-             end
-        end
-    end
-    return isHint
-end
-function UIStarReward.setup()
+local DictHoldStarGradeReward = nil
+local function freshData()
     local objThing = {}
     local objThingValue = {}
     local curStars , freshCount = 0 , 0
@@ -163,6 +78,117 @@ function UIStarReward.setup()
     end
     text_number:setString(goldNum)
 end
-function UIStarReward.free()
+local function netCallBack( pack )
+    if pack.header == StaticMsgRule.oneKeyGet then
+        if pack.msgdata.string then
+            local thing = utils.stringSplit( pack.msgdata.string["1"] , ";")
+            local thingData = {}
+            for key , value in pairs( thing ) do
+                local data = utils.getItemProp( value )
+                thingData[ #thingData + 1 ] = { tableTypeId = data.tableTypeId , tableFieldId = data.tableFieldId , value = data.count }
+            end
+            if #thingData > 0 then
+                UIBoxGet.setData(thingData)
+                UIManager.pushScene("ui_box_get")
+            end
+        end
+        UIStarReward.setup()
+        UIManager.flushWidget( UIStarLighten )
+    elseif pack.header == StaticMsgRule.refreshStarReward then
+        UIStar.curChooseG = pack.msgdata.int.openGradeId  
+        UIStarReward.setup()
+        UIManager.flushWidget( UIStarLighten )
+    elseif pack.header == StaticMsgRule.intoHoldStarReward then
+        DictHoldStarGradeReward = {}
+        local tempStr = pack.msgdata.string["1"]
+        local tempTable = utils.stringSplit( tempStr , "/" )
+        for key ,value in pairs( tempTable ) do
+            local thingData = utils.stringSplit( value , "|" )
+         --   cclog( "thingdata :" .. thingData[1].."  "..thingData[2])
+            DictHoldStarGradeReward[tostring( thingData[1] )] = { thing = thingData[ 2 ] }
+        end
+        freshData()
+    end
+    
+end
+local function netSend( type )
+    UIManager.showLoading()
+    local sendData = {}
+    if type == 1 then --一键领取
+        sendData = {
+            header = StaticMsgRule.oneKeyGet ,
+            msgdata = {
+                int = {
+                    gradeId = UIStarLighten.curChooseGrade
+                }
+            }
+        }
+    elseif type == 2 then -- 刷新
+        sendData = {
+            header = StaticMsgRule.refreshStarReward ,
+            msgdata = {
+                int = {
+                    gradeId = UIStarLighten.curChooseGrade
+                }
+            }
+        }
+    elseif type == 3 then--进入奖励界面
+        sendData = {
+            header = StaticMsgRule.intoHoldStarReward ,
+            msgdata = {
+                
+            }
+        }
+    end
+    netSendPackage( sendData , netCallBack )
+end
+function UIStarReward.init()
+    local btn_close = ccui.Helper:seekNodeByName( UIStarReward.Widget , "btn_close" )
+    local btn_refresh = ccui.Helper:seekNodeByName( UIStarReward.Widget , "btn_refresh" )
+    local btn_one = ccui.Helper:seekNodeByName( UIStarReward.Widget , "btn_one" )
+    local function onEvent( sender , eventType )
+        if eventType == ccui.TouchEventType.ended then
+            if sender == btn_close then
+                UIManager.popScene()
+            elseif sender == btn_refresh then
+                netSend( 2 )
+            elseif sender == btn_one then
+                netSend( 1 )
+            end
+        end
+    end
+    btn_close:setPressedActionEnabled( true )
+    btn_close:addTouchEventListener( onEvent )
+    btn_refresh:setPressedActionEnabled( true )
+    btn_refresh:addTouchEventListener( onEvent )
+    btn_one:setPressedActionEnabled( true )
+    btn_one:addTouchEventListener( onEvent )
+end
+function UIStarReward.checkHint() 
+    local isHint = false
+    if UIStarLighten.objData then
+           local objThingValue = {}
+        local temp = utils.stringSplit( UIStarLighten.objData.string["15"] , ";")
+        for key ,value in pairs( temp ) do
+             local obj = utils.stringSplit( value , "_" )
+             objThingValue[tonumber(obj[1])] = tonumber(obj[3])
+        end
+        local curStars = UIStarLighten.objData.int["5"]
+        for i = 1 , 10 do       
+            if curStars >= DictHoldStarRewardPos[tostring(( i ))].starNum then            
+                    if objThingValue[i] == 0 then
+                        isHint = true
+                        break           
+                    end
+             end
+        end
+    end
+    return isHint
+end
 
+function UIStarReward.setup()
+    netSend( 3 )  
+end
+function UIStarReward.free()
+    DictHoldStarGradeReward = nil
 end

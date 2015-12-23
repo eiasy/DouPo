@@ -69,6 +69,8 @@ local function netErrorCallbackFunc(pack)
     local msgdata = pack.msgdata
     if protocol == StaticMsgRule.mineFightWin then
         UIOre.showFightResult(ui, -1, msgdata)
+    elseif protocol == StaticMsgRule.mineFail then
+        UIOre.showFightResult(ui, 0)
     end
 end
 
@@ -90,7 +92,7 @@ local function netCallbackFunc(pack)
                         }
                     } , netCallbackFunc, netErrorCallbackFunc)
                 else
-                    UIOre.showFightResult(ui, 0)
+                    netSendPackage( { header = StaticMsgRule.mineFail, msgdata = { int = { mineId = UIOreInfo.warParam[3] } } }, netCallbackFunc, netErrorCallbackFunc)
                 end
             end )
             if not UIFightMain.Widget or not UIFightMain.Widget:getParent() then
@@ -100,8 +102,9 @@ local function netCallbackFunc(pack)
             end
         end
     elseif protocol == StaticMsgRule.mineFightWin then
-        UITeam.checkRecoverState()
         UIOre.showFightResult(ui, 1, msgdata)
+    elseif protocol == StaticMsgRule.mineFail then
+        UIOre.showFightResult(ui, 0)
     end
 end
 

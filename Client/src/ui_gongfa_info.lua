@@ -36,9 +36,11 @@ local function setBottomBtnVisible(isShow)
     -- 卸下
     local btn_intensify = ccui.Helper:seekNodeByName(UIGongfaInfo.Widget, "btn_lineup")
     -- 强化
+    local btn_refining = ccui.Helper:seekNodeByName(UIGongfaInfo.Widget, "btn_refining")
     btn_change:setVisible(isShow)
     btn_discharge:setVisible(isShow)
     btn_intensify:setVisible(isShow)
+    btn_refining:setVisible(isShow)
 end
 
 function UIGongfaInfo.init()
@@ -50,12 +52,14 @@ function UIGongfaInfo.init()
     -- 卸下
     local btn_intensify = ccui.Helper:seekNodeByName(UIGongfaInfo.Widget, "btn_lineup")
     -- 强化
+    local btn_refining = ccui.Helper:seekNodeByName(UIGongfaInfo.Widget, "btn_refining")
     _btnDischargeX = btn_discharge:getPositionX()
     _btnIntensifyX = btn_intensify:getPositionX()
     btn_close:setPressedActionEnabled(true)
     btn_change:setPressedActionEnabled(true)
     btn_discharge:setPressedActionEnabled(true)
     btn_intensify:setPressedActionEnabled(true)
+    btn_refining:setPressedActionEnabled(true)
     local function onButtonEvent(sender, eventType)
         if eventType == ccui.TouchEventType.ended then
             AudioEngine.playEffect("sound/button.mp3")
@@ -109,6 +113,10 @@ function UIGongfaInfo.init()
                     UIManager.pushScene("ui_gongfa_intensify")
                     -- UIManager.replaceScene("ui_gongfa_intensify")
                 end
+            elseif sender == btn_refining then
+                UIManager.showToast("即将开放，敬请期待")
+--                UIGongfaRefining.setInstMagicId(_instMagicId)
+--                UIManager.pushScene("ui_gongfa_refining")
             end
         end
     end
@@ -116,6 +124,7 @@ function UIGongfaInfo.init()
     btn_change:addTouchEventListener(onButtonEvent)
     btn_discharge:addTouchEventListener(onButtonEvent)
     btn_intensify:addTouchEventListener(onButtonEvent)
+    btn_refining:addTouchEventListener(onButtonEvent)
 
     ui_scrollView = ccui.Helper:seekNodeByName(UIGongfaInfo.Widget, "view_luck")
     ui_svItem = ui_scrollView:getChildByName("image_base_di"):clone()
@@ -153,6 +162,7 @@ function UIGongfaInfo.setup()
         local ui_magicQuality = ccui.Helper:seekNodeByName(ui_propPanel, "text_number_quality")
         local ui_propBg = ccui.Helper:seekNodeByName(ui_propPanel, "image_base_property")
 
+        local magicAdvanceId = nil
         local dictMagicId, magicType, magicQualityId, magicLevleId
         if _dictMagicId then
             dictMagicId = _dictMagicId
@@ -173,6 +183,7 @@ function UIGongfaInfo.setup()
             magicType = instMagicData.int["4"]
             magicQualityId = instMagicData.int["5"]
             magicLevleId = instMagicData.int["6"]
+            magicAdvanceId = instMagicData.int["10"]
         end
         local dictMagicData = DictMagic[tostring(dictMagicId)]
         local magicLv = DictMagicLevel[tostring(magicLevleId)].level
@@ -186,7 +197,7 @@ function UIGongfaInfo.setup()
         ui_magicQuality:setString(tostring(dictMagicData.grade))
 
         for i = 1, 6 do
-            local ui_propText = ui_propBg:getChildByName("text_prop" .. i)
+            local ui_propText = ui_propBg:getChildByName("view_info"):getChildByName("text_prop" .. i)
             local _tValues = utils.stringSplit(dictMagicData["value" .. i], "_")
             local textColor = cc.c4b(255, 255, 255, 255)
             if string.len(dictMagicData["value" .. i]) > 0 and _tValues and #_tValues > 0 then
@@ -225,6 +236,49 @@ function UIGongfaInfo.setup()
                 end
             else
                 ui_propText:setString("")
+            end
+        end
+
+        local btn_refining = ccui.Helper:seekNodeByName(UIGongfaInfo.Widget, "btn_refining")
+        local magic_refining = nil
+        if magicQualityId <= StaticMagicQuality.DJ then
+            btn_refining:setTouchEnabled( true )
+            utils.GrayWidget( btn_refining , false )
+            magic_refining = {}
+            for key  ,value in pairs( DictMagicrefining ) do
+                if dictMagicId == value.MagicId then
+                    magic_refining[value.starLevel] = value.fightPropId.."_"..value.value
+                    --cclog("  "..value.starLevel .. "  " .. value.fightPropId .. "  " .. value.value )
+                end
+            end
+        else
+            btn_refining:setTouchEnabled( false )
+            utils.GrayWidget( btn_refining , true )
+        end
+        local magicRefiningLevel = 0
+        if magicAdvanceId and magicAdvanceId > 0 then
+            magicRefiningLevel = DictMagicrefining[tostring(magicAdvanceId)].starLevel
+        end
+        for i = 1, 5 do
+            local ui_propText = ui_propBg:getChildByName("view_info"):getChildByName("text_prop" .. ( 6 + i ) )
+            if magic_refining then
+                local textColor = cc.c4b(255, 255, 255, 255)
+                if magic_refining[ i ] then
+                    local _tValues = utils.stringSplit(magic_refining[i], "_")                   
+                    ui_propText:setString(DictFightProp[_tValues[1]].name .. " +" .. _tValues[2] )
+                else
+                    ui_propText:setString("")
+                end
+                if i <= magicRefiningLevel then
+                    textColor = cc.c4b(255, 255, 0, 255)
+                end
+                ui_propText:setTextColor( textColor )
+            else
+                if i == 1 then
+                    ui_propText:setString("无")
+                else
+                    ui_propText:setString("")
+                end
             end
         end
 

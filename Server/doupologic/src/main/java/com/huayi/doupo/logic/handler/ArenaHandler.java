@@ -114,7 +114,6 @@ public class ArenaHandler extends BaseHandler{
 				
 				InstPlayerArena objArena = objArenaList.get(0);
 				
-				
 				ArenaUtil.orgPlayer(objArena.getInstPlayerId(), rank, objArena.getUpRank(), dictArenaRewardList, playersMsgData);
 				for(DictArenaInterval obj : dictArenaIntervalList){
 					if(obj.getDownRank() <= objArena.getRank() && objArena.getRank() <= obj.getUpRank()){
@@ -208,6 +207,42 @@ public class ArenaHandler extends BaseHandler{
 		MessageData retMsgData = new MessageData();
 //		String currTime = DateUtil.getCurrTime();
 		InstPlayerArena playerArena = getInstPlayerArenaDAL().getList("rank = " + rank, 0).get(0);
+		
+		List<DictArenaInterval> dictArenaIntervalList = DictList.dictArenaIntervalList;
+		InstPlayerArena instPlayerArena = getInstPlayerArenaDAL().getList(" instPlayerId = " + instPlayerId, 0).get(0);
+		int intervalNum = 0;
+		for(DictArenaInterval obj : dictArenaIntervalList){
+			if(obj.getDownRank() <= instPlayerArena.getRank() && instPlayerArena.getRank() <= obj.getUpRank()){
+				intervalNum = obj.getIntervalNum();
+			}
+		}
+		int ownRank = instPlayerArena.getRank();
+		int minRank = 0;
+		int i = 0; 
+		for(; i <= 5; i++){
+			if(ownRank <= 0){
+				break;
+			}
+			List<InstPlayerArena> objArenaList = getInstPlayerArenaDAL().getList(" rank = " + ownRank, 0);
+			if (objArenaList.size() <= 0) {
+				ownRank = ownRank - 1;
+				continue;
+			}
+			InstPlayerArena objArena = objArenaList.get(0);
+			minRank = ownRank;
+			for(DictArenaInterval obj : dictArenaIntervalList){
+				if(obj.getDownRank() <= objArena.getRank() && objArena.getRank() <= obj.getUpRank()){
+					intervalNum = obj.getIntervalNum();
+				}
+			}
+			ownRank = ownRank - intervalNum;
+		}
+		System.out.println(rank + "===" + minRank);
+		if (rank < minRank) {
+			MessageUtil.sendFailMsg(channelId, msgMap, StaticCnServer.fail_aren_rank);
+			return;
+		}
+		
 		int change = 0; //用于提示排名是否发生变化  1-变化
 		if(playerArena == null || playerArena.getInstPlayerId() != playerId){
 			change = 1;

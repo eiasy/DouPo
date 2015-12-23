@@ -164,6 +164,23 @@ public class InstPlayerMagic implements Serializable
 	}
 
 	/**
+		
+	*/
+	private int advanceId;
+	public int getAdvanceId(){
+		return advanceId;
+	}
+	public void setAdvanceId(int advanceId) {
+		this.advanceId = advanceId;
+		index = 10;
+		result += index + "*int*" + advanceId + "#";
+	}
+
+	public void setAdvanceId(int advanceId, int bs) {
+		this.advanceId = advanceId;
+	}
+
+	/**
 		添加时间
 	*/
 	private String insertTime;
@@ -172,7 +189,7 @@ public class InstPlayerMagic implements Serializable
 	}
 	public void setInsertTime(String insertTime) {
 		this.insertTime = insertTime;
-		index = 10;
+		index = 11;
 		result += index + "*String*" + insertTime + "#";
 	}
 
@@ -189,7 +206,7 @@ public class InstPlayerMagic implements Serializable
 	}
 	public void setUpdateTime(String updateTime) {
 		this.updateTime = updateTime;
-		index = 11;
+		index = 12;
 		result += index + "*String*" + updateTime + "#";
 	}
 
@@ -212,6 +229,7 @@ public class InstPlayerMagic implements Serializable
 		extend.setExp(this.exp);
 		extend.setInstCardId(this.instCardId);
 		extend.setVersion(this.version);
+		extend.setAdvanceId(this.advanceId);
 		extend.setInsertTime(this.insertTime);
 		extend.setUpdateTime(this.updateTime);
 		return extend;

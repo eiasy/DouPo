@@ -8,118 +8,6 @@
 	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
 	http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd">
 
-	<bean id="DictHoldStarGradeRewardDAL"  class="com.huayi.doupo.base.dal.DictHoldStarGradeRewardDAL">
-		<property name="jdbcTemplate" ref="JdbcTemplate" />
-	</bean>
-
-	<bean id="DictHoldStarRewardRefreshTimesDAL"  class="com.huayi.doupo.base.dal.DictHoldStarRewardRefreshTimesDAL">
-		<property name="jdbcTemplate" ref="JdbcTemplate" />
-	</bean>
-
-	<bean id="DictHoldStarStepDAL"  class="com.huayi.doupo.base.dal.DictHoldStarStepDAL">
-		<property name="jdbcTemplate" ref="JdbcTemplate" />
-	</bean>
-
-	<bean id="InstPlayerHoldStarDAL"  class="com.huayi.doupo.base.dal.InstPlayerHoldStarDAL">
-		<property name="jdbcTemplate" ref="JdbcTemplate" />
-	</bean>
-
-	<bean id="DictHoldStarGradeDAL"  class="com.huayi.doupo.base.dal.DictHoldStarGradeDAL">
-		<property name="jdbcTemplate" ref="JdbcTemplate" />
-	</bean>
-
-	<bean id="DictHoldStarZodiacDAL"  class="com.huayi.doupo.base.dal.DictHoldStarZodiacDAL">
-		<property name="jdbcTemplate" ref="JdbcTemplate" />
-	</bean>
-
-	<bean id="DictHoldStarRewardPosDAL"  class="com.huayi.doupo.base.dal.DictHoldStarRewardPosDAL">
-		<property name="jdbcTemplate" ref="JdbcTemplate" />
-	</bean>
-
-	<bean id="DictWorldBossDAL"  class="com.huayi.doupo.base.dal.DictWorldBossDAL">
-		<property name="jdbcTemplate" ref="JdbcTemplate" />
-	</bean>
-
-	<bean id="InstWorldBossDAL"  class="com.huayi.doupo.base.dal.InstWorldBossDAL">
-		<property name="jdbcTemplate" ref="JdbcTemplate" />
-	</bean>
-
-	<bean id="DictWorldBossStoreDAL"  class="com.huayi.doupo.base.dal.DictWorldBossStoreDAL">
-		<property name="jdbcTemplate" ref="JdbcTemplate" />
-	</bean>
-
-	<bean id="DictWorldBossTimesRewardDAL"  class="com.huayi.doupo.base.dal.DictWorldBossTimesRewardDAL">
-		<property name="jdbcTemplate" ref="JdbcTemplate" />
-	</bean>
-
-	<bean id="DictWingLuckDAL"  class="com.huayi.doupo.base.dal.DictWingLuckDAL">
-		<property name="jdbcTemplate" ref="JdbcTemplate" />
-	</bean>
-
-	<bean id="InstPlayerWingDAL"  class="com.huayi.doupo.base.dal.InstPlayerWingDAL">
-		<property name="jdbcTemplate" ref="JdbcTemplate" />
-	</bean>
-
-	<bean id="DictWingStrengthenDAL"  class="com.huayi.doupo.base.dal.DictWingStrengthenDAL">
-		<property name="jdbcTemplate" ref="JdbcTemplate" />
-	</bean>
-
-	<bean id="DictWingAdvanceDAL"  class="com.huayi.doupo.base.dal.DictWingAdvanceDAL">
-		<property name="jdbcTemplate" ref="JdbcTemplate" />
-	</bean>
-
-	<bean id="DictWingDAL"  class="com.huayi.doupo.base.dal.DictWingDAL">
-		<property name="jdbcTemplate" ref="JdbcTemplate" />
-	</bean>
-
-	<bean id="DictStrogerEquipDAL"  class="com.huayi.doupo.base.dal.DictStrogerEquipDAL">
-		<property name="jdbcTemplate" ref="JdbcTemplate" />
-	</bean>
-	
-	<bean id="DictFightSoulPositionCondDAL"  class="com.huayi.doupo.base.dal.DictFightSoulPositionCondDAL">
-		<property name="jdbcTemplate" ref="JdbcTemplate" />
-	</bean>
-
-	<bean id="DictFightSoulHuntRuleDAL"  class="com.huayi.doupo.base.dal.DictFightSoulHuntRuleDAL">
-		<property name="jdbcTemplate" ref="JdbcTemplate" />
-	</bean>
-
-	<bean id="InstPlayerFightSoulDAL"  class="com.huayi.doupo.base.dal.InstPlayerFightSoulDAL">
-		<property name="jdbcTemplate" ref="JdbcTemplate" />
-	</bean>
-
-	<bean id="DictFightSoulDAL"  class="com.huayi.doupo.base.dal.DictFightSoulDAL">
-		<property name="jdbcTemplate" ref="JdbcTemplate" />
-	</bean>
-
-	<bean id="DictFightSoulUpgradePropDAL"  class="com.huayi.doupo.base.dal.DictFightSoulUpgradePropDAL">
-		<property name="jdbcTemplate" ref="JdbcTemplate" />
-	</bean>
-
-	<bean id="InstPlayerFightSoulHuntRuleDAL"  class="com.huayi.doupo.base.dal.InstPlayerFightSoulHuntRuleDAL">
-		<property name="jdbcTemplate" ref="JdbcTemplate" />
-	</bean>
-
-	<bean id="DictFightSoulUpgradeExpDAL"  class="com.huayi.doupo.base.dal.DictFightSoulUpgradeExpDAL">
-		<property name="jdbcTemplate" ref="JdbcTemplate" />
-	</bean>
-
-	<bean id="DictFightSoulQualityDAL"  class="com.huayi.doupo.base.dal.DictFightSoulQualityDAL">
-		<property name="jdbcTemplate" ref="JdbcTemplate" />
-	</bean>
-
-	<bean id="DictActivitySoulChapterDropDAL"  class="com.huayi.doupo.base.dal.DictActivitySoulChapterDropDAL">
-		<property name="jdbcTemplate" ref="JdbcTemplate" />
-	</bean>
-
-	<bean id="DictActivityBannerDAL"  class="com.huayi.doupo.base.dal.DictActivityBannerDAL">
-		<property name="jdbcTemplate" ref="JdbcTemplate" />
-	</bean>
-
-	<bean id="DictActivityHolidayDAL"  class="com.huayi.doupo.base.dal.DictActivityHolidayDAL">
-		<property name="jdbcTemplate" ref="JdbcTemplate" />
-	</bean>
-
 	<bean id="InstTotalCostDAL"  class="com.huayi.doupo.base.dal.InstTotalCostDAL">
 		<property name="jdbcTemplate" ref="JdbcTemplate" />
 	</bean>
@@ -144,11 +32,15 @@
 		<property name="jdbcTemplate" ref="JdbcTemplate" />
 	</bean>
 
-	<bean id="DictAchievementTypeDAL"  class="com.huayi.doupo.base.dal.DictAchievementTypeDAL">
+	<bean id="InstPlayerHoldStarDAL"  class="com.huayi.doupo.base.dal.InstPlayerHoldStarDAL">
 		<property name="jdbcTemplate" ref="JdbcTemplate" />
 	</bean>
 
 	<bean id="DictWorldBossRewardDAL"  class="com.huayi.doupo.base.dal.DictWorldBossRewardDAL">
+		<property name="jdbcTemplate" ref="JdbcTemplate" />
+	</bean>
+
+	<bean id="DictAchievementTypeDAL"  class="com.huayi.doupo.base.dal.DictAchievementTypeDAL">
 		<property name="jdbcTemplate" ref="JdbcTemplate" />
 	</bean>
 
@@ -172,11 +64,11 @@
 		<property name="jdbcTemplate" ref="JdbcTemplate" />
 	</bean>
 
-	<bean id="DictCardSoulDAL"  class="com.huayi.doupo.base.dal.DictCardSoulDAL">
+	<bean id="DictUnionLevelPrivDAL"  class="com.huayi.doupo.base.dal.DictUnionLevelPrivDAL">
 		<property name="jdbcTemplate" ref="JdbcTemplate" />
 	</bean>
 
-	<bean id="DictUnionLevelPrivDAL"  class="com.huayi.doupo.base.dal.DictUnionLevelPrivDAL">
+	<bean id="DictCardSoulDAL"  class="com.huayi.doupo.base.dal.DictCardSoulDAL">
 		<property name="jdbcTemplate" ref="JdbcTemplate" />
 	</bean>
 
@@ -201,6 +93,14 @@
 	</bean>
 
 	<bean id="DictBeautyCardExpDAL"  class="com.huayi.doupo.base.dal.DictBeautyCardExpDAL">
+		<property name="jdbcTemplate" ref="JdbcTemplate" />
+	</bean>
+
+	<bean id="DictEquipAdvanceredDAL"  class="com.huayi.doupo.base.dal.DictEquipAdvanceredDAL">
+		<property name="jdbcTemplate" ref="JdbcTemplate" />
+	</bean>
+
+	<bean id="DictHoldStarGradeRewardDAL"  class="com.huayi.doupo.base.dal.DictHoldStarGradeRewardDAL">
 		<property name="jdbcTemplate" ref="JdbcTemplate" />
 	</bean>
 
@@ -244,7 +144,19 @@
 		<property name="jdbcTemplate" ref="JdbcTemplate" />
 	</bean>
 
+	<bean id="DictActivityGroupRateDAL"  class="com.huayi.doupo.base.dal.DictActivityGroupRateDAL">
+		<property name="jdbcTemplate" ref="JdbcTemplate" />
+	</bean>
+
+	<bean id="DictActivityGroupDiscountDAL"  class="com.huayi.doupo.base.dal.DictActivityGroupDiscountDAL">
+		<property name="jdbcTemplate" ref="JdbcTemplate" />
+	</bean>
+
 	<bean id="DictPagodaDropDAL"  class="com.huayi.doupo.base.dal.DictPagodaDropDAL">
+		<property name="jdbcTemplate" ref="JdbcTemplate" />
+	</bean>
+
+	<bean id="DictFightSoulQualityDAL"  class="com.huayi.doupo.base.dal.DictFightSoulQualityDAL">
 		<property name="jdbcTemplate" ref="JdbcTemplate" />
 	</bean>
 
@@ -260,7 +172,15 @@
 		<property name="jdbcTemplate" ref="JdbcTemplate" />
 	</bean>
 
+	<bean id="InstPlayerWingDAL"  class="com.huayi.doupo.base.dal.InstPlayerWingDAL">
+		<property name="jdbcTemplate" ref="JdbcTemplate" />
+	</bean>
+
 	<bean id="DictInitCardDAL"  class="com.huayi.doupo.base.dal.DictInitCardDAL">
+		<property name="jdbcTemplate" ref="JdbcTemplate" />
+	</bean>
+
+	<bean id="DictFightSoulUpgradeExpDAL"  class="com.huayi.doupo.base.dal.DictFightSoulUpgradeExpDAL">
 		<property name="jdbcTemplate" ref="JdbcTemplate" />
 	</bean>
 
@@ -296,15 +216,23 @@
 		<property name="jdbcTemplate" ref="JdbcTemplate" />
 	</bean>
 
-	<bean id="DictCardExpDAL"  class="com.huayi.doupo.base.dal.DictCardExpDAL">
-		<property name="jdbcTemplate" ref="JdbcTemplate" />
-	</bean>
-
 	<bean id="InstActivityDAL"  class="com.huayi.doupo.base.dal.InstActivityDAL">
 		<property name="jdbcTemplate" ref="JdbcTemplate" />
 	</bean>
 
+	<bean id="DictCardExpDAL"  class="com.huayi.doupo.base.dal.DictCardExpDAL">
+		<property name="jdbcTemplate" ref="JdbcTemplate" />
+	</bean>
+
 	<bean id="DictKungFuTypeDAL"  class="com.huayi.doupo.base.dal.DictKungFuTypeDAL">
+		<property name="jdbcTemplate" ref="JdbcTemplate" />
+	</bean>
+
+	<bean id="InstPlayerYFireDAL"  class="com.huayi.doupo.base.dal.InstPlayerYFireDAL">
+		<property name="jdbcTemplate" ref="JdbcTemplate" />
+	</bean>
+
+	<bean id="DictUnionWarBattlefieldDAL"  class="com.huayi.doupo.base.dal.DictUnionWarBattlefieldDAL">
 		<property name="jdbcTemplate" ref="JdbcTemplate" />
 	</bean>
 
@@ -332,7 +260,15 @@
 		<property name="jdbcTemplate" ref="JdbcTemplate" />
 	</bean>
 
+	<bean id="DictHoldStarStepDAL"  class="com.huayi.doupo.base.dal.DictHoldStarStepDAL">
+		<property name="jdbcTemplate" ref="JdbcTemplate" />
+	</bean>
+
 	<bean id="DictActivityStrogerHeroDAL"  class="com.huayi.doupo.base.dal.DictActivityStrogerHeroDAL">
+		<property name="jdbcTemplate" ref="JdbcTemplate" />
+	</bean>
+
+	<bean id="DictWingAdvanceDAL"  class="com.huayi.doupo.base.dal.DictWingAdvanceDAL">
 		<property name="jdbcTemplate" ref="JdbcTemplate" />
 	</bean>
 
@@ -352,6 +288,10 @@
 		<property name="jdbcTemplate" ref="JdbcTemplate" />
 	</bean>
 
+	<bean id="DictYFireChipDAL"  class="com.huayi.doupo.base.dal.DictYFireChipDAL">
+		<property name="jdbcTemplate" ref="JdbcTemplate" />
+	</bean>
+
 	<bean id="DictFireGainDAL"  class="com.huayi.doupo.base.dal.DictFireGainDAL">
 		<property name="jdbcTemplate" ref="JdbcTemplate" />
 	</bean>
@@ -368,6 +308,10 @@
 		<property name="jdbcTemplate" ref="JdbcTemplate" />
 	</bean>
 
+	<bean id="InstPlayerRedEquipDAL"  class="com.huayi.doupo.base.dal.InstPlayerRedEquipDAL">
+		<property name="jdbcTemplate" ref="JdbcTemplate" />
+	</bean>
+
 	<bean id="DictFightTypeDAL"  class="com.huayi.doupo.base.dal.DictFightTypeDAL">
 		<property name="jdbcTemplate" ref="JdbcTemplate" />
 	</bean>
@@ -380,6 +324,10 @@
 		<property name="jdbcTemplate" ref="JdbcTemplate" />
 	</bean>
 
+	<bean id="DictMineWeatherDAL"  class="com.huayi.doupo.base.dal.DictMineWeatherDAL">
+		<property name="jdbcTemplate" ref="JdbcTemplate" />
+	</bean>
+
 	<bean id="DictUIDAL"  class="com.huayi.doupo.base.dal.DictUIDAL">
 		<property name="jdbcTemplate" ref="JdbcTemplate" />
 	</bean>
@@ -388,11 +336,19 @@
 		<property name="jdbcTemplate" ref="JdbcTemplate" />
 	</bean>
 
+	<bean id="DictMineBoxThingDAL"  class="com.huayi.doupo.base.dal.DictMineBoxThingDAL">
+		<property name="jdbcTemplate" ref="JdbcTemplate" />
+	</bean>
+
 	<bean id="DictLevelPropDAL"  class="com.huayi.doupo.base.dal.DictLevelPropDAL">
 		<property name="jdbcTemplate" ref="JdbcTemplate" />
 	</bean>
 
 	<bean id="InstPlayerLineupDAL"  class="com.huayi.doupo.base.dal.InstPlayerLineupDAL">
+		<property name="jdbcTemplate" ref="JdbcTemplate" />
+	</bean>
+
+	<bean id="DictActivitySoulChapterDropDAL"  class="com.huayi.doupo.base.dal.DictActivitySoulChapterDropDAL">
 		<property name="jdbcTemplate" ref="JdbcTemplate" />
 	</bean>
 
@@ -424,6 +380,10 @@
 		<property name="jdbcTemplate" ref="JdbcTemplate" />
 	</bean>
 
+	<bean id="DictMagicrefiningDAL"  class="com.huayi.doupo.base.dal.DictMagicrefiningDAL">
+		<property name="jdbcTemplate" ref="JdbcTemplate" />
+	</bean>
+
 	<bean id="DictSpecialRuleDAL"  class="com.huayi.doupo.base.dal.DictSpecialRuleDAL">
 		<property name="jdbcTemplate" ref="JdbcTemplate" />
 	</bean>
@@ -441,6 +401,10 @@
 	</bean>
 
 	<bean id="DictActivityLimitTimeHeroJiFenRewardDAL"  class="com.huayi.doupo.base.dal.DictActivityLimitTimeHeroJiFenRewardDAL">
+		<property name="jdbcTemplate" ref="JdbcTemplate" />
+	</bean>
+
+	<bean id="InstPlayerFightSoulHuntRuleDAL"  class="com.huayi.doupo.base.dal.InstPlayerFightSoulHuntRuleDAL">
 		<property name="jdbcTemplate" ref="JdbcTemplate" />
 	</bean>
 
@@ -465,6 +429,14 @@
 	</bean>
 
 	<bean id="DictChipDAL"  class="com.huayi.doupo.base.dal.DictChipDAL">
+		<property name="jdbcTemplate" ref="JdbcTemplate" />
+	</bean>
+
+	<bean id="DictFightSoulHuntRuleDAL"  class="com.huayi.doupo.base.dal.DictFightSoulHuntRuleDAL">
+		<property name="jdbcTemplate" ref="JdbcTemplate" />
+	</bean>
+
+	<bean id="DictFightSoulUpgradePropDAL"  class="com.huayi.doupo.base.dal.DictFightSoulUpgradePropDAL">
 		<property name="jdbcTemplate" ref="JdbcTemplate" />
 	</bean>
 
@@ -520,11 +492,19 @@
 		<property name="jdbcTemplate" ref="JdbcTemplate" />
 	</bean>
 
+	<bean id="DictWorldBossTimesRewardDAL"  class="com.huayi.doupo.base.dal.DictWorldBossTimesRewardDAL">
+		<property name="jdbcTemplate" ref="JdbcTemplate" />
+	</bean>
+
 	<bean id="InstPlayerPartnerDAL"  class="com.huayi.doupo.base.dal.InstPlayerPartnerDAL">
 		<property name="jdbcTemplate" ref="JdbcTemplate" />
 	</bean>
 
 	<bean id="InstPlayerAchievementValueDAL"  class="com.huayi.doupo.base.dal.InstPlayerAchievementValueDAL">
+		<property name="jdbcTemplate" ref="JdbcTemplate" />
+	</bean>
+
+	<bean id="DictHoldStarGradeDAL"  class="com.huayi.doupo.base.dal.DictHoldStarGradeDAL">
 		<property name="jdbcTemplate" ref="JdbcTemplate" />
 	</bean>
 
@@ -564,11 +544,11 @@
 		<property name="jdbcTemplate" ref="JdbcTemplate" />
 	</bean>
 
-	<bean id="DictPillQualityDAL"  class="com.huayi.doupo.base.dal.DictPillQualityDAL">
+	<bean id="DictactivityTotalCostDAL"  class="com.huayi.doupo.base.dal.DictactivityTotalCostDAL">
 		<property name="jdbcTemplate" ref="JdbcTemplate" />
 	</bean>
 
-	<bean id="DictactivityTotalCostDAL"  class="com.huayi.doupo.base.dal.DictactivityTotalCostDAL">
+	<bean id="DictPillQualityDAL"  class="com.huayi.doupo.base.dal.DictPillQualityDAL">
 		<property name="jdbcTemplate" ref="JdbcTemplate" />
 	</bean>
 
@@ -584,7 +564,15 @@
 		<property name="jdbcTemplate" ref="JdbcTemplate" />
 	</bean>
 
+	<bean id="DictEquipSuitredDAL"  class="com.huayi.doupo.base.dal.DictEquipSuitredDAL">
+		<property name="jdbcTemplate" ref="JdbcTemplate" />
+	</bean>
+
 	<bean id="SysMsgRuleDAL"  class="com.huayi.doupo.base.dal.SysMsgRuleDAL">
+		<property name="jdbcTemplate" ref="JdbcTemplate" />
+	</bean>
+
+	<bean id="InstPlayerGroupDAL"  class="com.huayi.doupo.base.dal.InstPlayerGroupDAL">
 		<property name="jdbcTemplate" ref="JdbcTemplate" />
 	</bean>
 
@@ -604,11 +592,11 @@
 		<property name="jdbcTemplate" ref="JdbcTemplate" />
 	</bean>
 
-	<bean id="DictFunctionOpenDAL"  class="com.huayi.doupo.base.dal.DictFunctionOpenDAL">
+	<bean id="DictTryToPracticeBarrierCardDAL"  class="com.huayi.doupo.base.dal.DictTryToPracticeBarrierCardDAL">
 		<property name="jdbcTemplate" ref="JdbcTemplate" />
 	</bean>
 
-	<bean id="DictTryToPracticeBarrierCardDAL"  class="com.huayi.doupo.base.dal.DictTryToPracticeBarrierCardDAL">
+	<bean id="DictFunctionOpenDAL"  class="com.huayi.doupo.base.dal.DictFunctionOpenDAL">
 		<property name="jdbcTemplate" ref="JdbcTemplate" />
 	</bean>
 
@@ -620,11 +608,23 @@
 		<property name="jdbcTemplate" ref="JdbcTemplate" />
 	</bean>
 
+	<bean id="DictUnionWarAmbushDAL"  class="com.huayi.doupo.base.dal.DictUnionWarAmbushDAL">
+		<property name="jdbcTemplate" ref="JdbcTemplate" />
+	</bean>
+
 	<bean id="DictColorDAL"  class="com.huayi.doupo.base.dal.DictColorDAL">
 		<property name="jdbcTemplate" ref="JdbcTemplate" />
 	</bean>
 
+	<bean id="InstUnionWarAgainstDAL"  class="com.huayi.doupo.base.dal.InstUnionWarAgainstDAL">
+		<property name="jdbcTemplate" ref="JdbcTemplate" />
+	</bean>
+
 	<bean id="InstBlobDataDAL"  class="com.huayi.doupo.base.dal.InstBlobDataDAL">
+		<property name="jdbcTemplate" ref="JdbcTemplate" />
+	</bean>
+
+	<bean id="DictMineTypeDAL"  class="com.huayi.doupo.base.dal.DictMineTypeDAL">
 		<property name="jdbcTemplate" ref="JdbcTemplate" />
 	</bean>
 
@@ -637,6 +637,10 @@
 	</bean>
 
 	<bean id="InstUnionStoreDAL"  class="com.huayi.doupo.base.dal.InstUnionStoreDAL">
+		<property name="jdbcTemplate" ref="JdbcTemplate" />
+	</bean>
+
+	<bean id="DictFightSoulPositionCondDAL"  class="com.huayi.doupo.base.dal.DictFightSoulPositionCondDAL">
 		<property name="jdbcTemplate" ref="JdbcTemplate" />
 	</bean>
 
@@ -661,6 +665,10 @@
 	</bean>
 
 	<bean id="DictCardExpAddDAL"  class="com.huayi.doupo.base.dal.DictCardExpAddDAL">
+		<property name="jdbcTemplate" ref="JdbcTemplate" />
+	</bean>
+
+	<bean id="DictUnionWarInfoDAL"  class="com.huayi.doupo.base.dal.DictUnionWarInfoDAL">
 		<property name="jdbcTemplate" ref="JdbcTemplate" />
 	</bean>
 
@@ -712,6 +720,10 @@
 		<property name="jdbcTemplate" ref="JdbcTemplate" />
 	</bean>
 
+	<bean id="DictActivityBannerDAL"  class="com.huayi.doupo.base.dal.DictActivityBannerDAL">
+		<property name="jdbcTemplate" ref="JdbcTemplate" />
+	</bean>
+
 	<bean id="InstUnionDAL"  class="com.huayi.doupo.base.dal.InstUnionDAL">
 		<property name="jdbcTemplate" ref="JdbcTemplate" />
 	</bean>
@@ -748,6 +760,14 @@
 		<property name="jdbcTemplate" ref="JdbcTemplate" />
 	</bean>
 
+	<bean id="DictActivityGroupGiveZiRuleDAL"  class="com.huayi.doupo.base.dal.DictActivityGroupGiveZiRuleDAL">
+		<property name="jdbcTemplate" ref="JdbcTemplate" />
+	</bean>
+
+	<bean id="DictWingLuckDAL"  class="com.huayi.doupo.base.dal.DictWingLuckDAL">
+		<property name="jdbcTemplate" ref="JdbcTemplate" />
+	</bean>
+
 	<bean id="DictActivityStarStoreDAL"  class="com.huayi.doupo.base.dal.DictActivityStarStoreDAL">
 		<property name="jdbcTemplate" ref="JdbcTemplate" />
 	</bean>
@@ -776,6 +796,10 @@
 		<property name="jdbcTemplate" ref="JdbcTemplate" />
 	</bean>
 
+	<bean id="DictFightSoulDAL"  class="com.huayi.doupo.base.dal.DictFightSoulDAL">
+		<property name="jdbcTemplate" ref="JdbcTemplate" />
+	</bean>
+
 	<bean id="InstCdKeyGetRecordDAL"  class="com.huayi.doupo.base.dal.InstCdKeyGetRecordDAL">
 		<property name="jdbcTemplate" ref="JdbcTemplate" />
 	</bean>
@@ -797,6 +821,10 @@
 	</bean>
 
 	<bean id="DictDailyTaskDAL"  class="com.huayi.doupo.base.dal.DictDailyTaskDAL">
+		<property name="jdbcTemplate" ref="JdbcTemplate" />
+	</bean>
+
+	<bean id="DictYFireDAL"  class="com.huayi.doupo.base.dal.DictYFireDAL">
 		<property name="jdbcTemplate" ref="JdbcTemplate" />
 	</bean>
 
@@ -828,6 +856,10 @@
 		<property name="jdbcTemplate" ref="JdbcTemplate" />
 	</bean>
 
+	<bean id="DictHoldStarZodiacDAL"  class="com.huayi.doupo.base.dal.DictHoldStarZodiacDAL">
+		<property name="jdbcTemplate" ref="JdbcTemplate" />
+	</bean>
+
 	<bean id="DictUnionStoreDAL"  class="com.huayi.doupo.base.dal.DictUnionStoreDAL">
 		<property name="jdbcTemplate" ref="JdbcTemplate" />
 	</bean>
@@ -856,6 +888,10 @@
 		<property name="jdbcTemplate" ref="JdbcTemplate" />
 	</bean>
 
+	<bean id="DictWorldBossStoreDAL"  class="com.huayi.doupo.base.dal.DictWorldBossStoreDAL">
+		<property name="jdbcTemplate" ref="JdbcTemplate" />
+	</bean>
+
 	<bean id="DictFireSkillQualityDAL"  class="com.huayi.doupo.base.dal.DictFireSkillQualityDAL">
 		<property name="jdbcTemplate" ref="JdbcTemplate" />
 	</bean>
@@ -868,15 +904,19 @@
 		<property name="jdbcTemplate" ref="JdbcTemplate" />
 	</bean>
 
-	<bean id="DictFireDAL"  class="com.huayi.doupo.base.dal.DictFireDAL">
-		<property name="jdbcTemplate" ref="JdbcTemplate" />
-	</bean>
-
 	<bean id="DictThingExtendDAL"  class="com.huayi.doupo.base.dal.DictThingExtendDAL">
 		<property name="jdbcTemplate" ref="JdbcTemplate" />
 	</bean>
 
+	<bean id="DictFireDAL"  class="com.huayi.doupo.base.dal.DictFireDAL">
+		<property name="jdbcTemplate" ref="JdbcTemplate" />
+	</bean>
+
 	<bean id="InstActivityOnlineRewardsDAL"  class="com.huayi.doupo.base.dal.InstActivityOnlineRewardsDAL">
+		<property name="jdbcTemplate" ref="JdbcTemplate" />
+	</bean>
+
+	<bean id="DictWingDAL"  class="com.huayi.doupo.base.dal.DictWingDAL">
 		<property name="jdbcTemplate" ref="JdbcTemplate" />
 	</bean>
 
@@ -892,11 +932,27 @@
 		<property name="jdbcTemplate" ref="JdbcTemplate" />
 	</bean>
 
+	<bean id="DictActivityHolidayDAL"  class="com.huayi.doupo.base.dal.DictActivityHolidayDAL">
+		<property name="jdbcTemplate" ref="JdbcTemplate" />
+	</bean>
+
 	<bean id="DictEquipQualityDAL"  class="com.huayi.doupo.base.dal.DictEquipQualityDAL">
 		<property name="jdbcTemplate" ref="JdbcTemplate" />
 	</bean>
 
+	<bean id="DictWorldBossDAL"  class="com.huayi.doupo.base.dal.DictWorldBossDAL">
+		<property name="jdbcTemplate" ref="JdbcTemplate" />
+	</bean>
+
+	<bean id="DictWingStrengthenDAL"  class="com.huayi.doupo.base.dal.DictWingStrengthenDAL">
+		<property name="jdbcTemplate" ref="JdbcTemplate" />
+	</bean>
+
 	<bean id="DictTryToPracticeDAL"  class="com.huayi.doupo.base.dal.DictTryToPracticeDAL">
+		<property name="jdbcTemplate" ref="JdbcTemplate" />
+	</bean>
+
+	<bean id="DictHoldStarRewardPosDAL"  class="com.huayi.doupo.base.dal.DictHoldStarRewardPosDAL">
 		<property name="jdbcTemplate" ref="JdbcTemplate" />
 	</bean>
 
@@ -913,6 +969,10 @@
 	</bean>
 
 	<bean id="DictDantaMonsterDAL"  class="com.huayi.doupo.base.dal.DictDantaMonsterDAL">
+		<property name="jdbcTemplate" ref="JdbcTemplate" />
+	</bean>
+
+	<bean id="InstWorldBossDAL"  class="com.huayi.doupo.base.dal.InstWorldBossDAL">
 		<property name="jdbcTemplate" ref="JdbcTemplate" />
 	</bean>
 
@@ -936,6 +996,10 @@
 		<property name="jdbcTemplate" ref="JdbcTemplate" />
 	</bean>
 
+	<bean id="InstPlayerChrisDAL"  class="com.huayi.doupo.base.dal.InstPlayerChrisDAL">
+		<property name="jdbcTemplate" ref="JdbcTemplate" />
+	</bean>
+
 	<bean id="DictEquipSuitReferDAL"  class="com.huayi.doupo.base.dal.DictEquipSuitReferDAL">
 		<property name="jdbcTemplate" ref="JdbcTemplate" />
 	</bean>
@@ -952,6 +1016,10 @@
 		<property name="jdbcTemplate" ref="JdbcTemplate" />
 	</bean>
 
+	<bean id="InstPlayerMineAwardDAL"  class="com.huayi.doupo.base.dal.InstPlayerMineAwardDAL">
+		<property name="jdbcTemplate" ref="JdbcTemplate" />
+	</bean>
+
 	<bean id="InstPlayerPillRecipeDAL"  class="com.huayi.doupo.base.dal.InstPlayerPillRecipeDAL">
 		<property name="jdbcTemplate" ref="JdbcTemplate" />
 	</bean>
@@ -965,6 +1033,18 @@
 	</bean>
 
 	<bean id="DictCardTypeDAL"  class="com.huayi.doupo.base.dal.DictCardTypeDAL">
+		<property name="jdbcTemplate" ref="JdbcTemplate" />
+	</bean>
+
+	<bean id="InstActivityExchangeDAL"  class="com.huayi.doupo.base.dal.InstActivityExchangeDAL">
+		<property name="jdbcTemplate" ref="JdbcTemplate" />
+	</bean>
+
+	<bean id="InstUnionWarContributionRankDAL"  class="com.huayi.doupo.base.dal.InstUnionWarContributionRankDAL">
+		<property name="jdbcTemplate" ref="JdbcTemplate" />
+	</bean>
+
+	<bean id="DictStrogerEquipDAL"  class="com.huayi.doupo.base.dal.DictStrogerEquipDAL">
 		<property name="jdbcTemplate" ref="JdbcTemplate" />
 	</bean>
 
@@ -1000,6 +1080,10 @@
 		<property name="jdbcTemplate" ref="JdbcTemplate" />
 	</bean>
 
+	<bean id="DictHoldStarRewardRefreshTimesDAL"  class="com.huayi.doupo.base.dal.DictHoldStarRewardRefreshTimesDAL">
+		<property name="jdbcTemplate" ref="JdbcTemplate" />
+	</bean>
+
 	<bean id="DictStarLevelDAL"  class="com.huayi.doupo.base.dal.DictStarLevelDAL">
 		<property name="jdbcTemplate" ref="JdbcTemplate" />
 	</bean>
@@ -1016,7 +1100,7 @@
 		<property name="jdbcTemplate" ref="JdbcTemplate" />
 	</bean>
 
-	<bean id="DictEquipWashDAL"  class="com.huayi.doupo.base.dal.DictEquipWashDAL">
+	<bean id="InstPlayerFightSoulDAL"  class="com.huayi.doupo.base.dal.InstPlayerFightSoulDAL">
 		<property name="jdbcTemplate" ref="JdbcTemplate" />
 	</bean>
 
@@ -1024,31 +1108,7 @@
 		<property name="jdbcTemplate" ref="JdbcTemplate" />
 	</bean>
 
-	<bean id="DictMineTypeDAL"  class="com.huayi.doupo.base.dal.DictMineTypeDAL">
-		<property name="jdbcTemplate" ref="JdbcTemplate" />
-	</bean>
-
-	<bean id="DictMineBoxThingDAL"  class="com.huayi.doupo.base.dal.DictMineBoxThingDAL">
-		<property name="jdbcTemplate" ref="JdbcTemplate" />
-	</bean>
-
-	<bean id="InstPlayerMineAwardDAL"  class="com.huayi.doupo.base.dal.InstPlayerMineAwardDAL">
-		<property name="jdbcTemplate" ref="JdbcTemplate" />
-	</bean>
-
-	<bean id="DictMineWeatherDAL"  class="com.huayi.doupo.base.dal.DictMineWeatherDAL">
-		<property name="jdbcTemplate" ref="JdbcTemplate" />
-	</bean>
-
-	<bean id="DictYFireDAL"  class="com.huayi.doupo.base.dal.DictYFireDAL">
-		<property name="jdbcTemplate" ref="JdbcTemplate" />
-	</bean>
-
-	<bean id="InstPlayerYFireDAL"  class="com.huayi.doupo.base.dal.InstPlayerYFireDAL">
-		<property name="jdbcTemplate" ref="JdbcTemplate" />
-	</bean>
-
-	<bean id="DictYFireChipDAL"  class="com.huayi.doupo.base.dal.DictYFireChipDAL">
+	<bean id="DictEquipWashDAL"  class="com.huayi.doupo.base.dal.DictEquipWashDAL">
 		<property name="jdbcTemplate" ref="JdbcTemplate" />
 	</bean>
 

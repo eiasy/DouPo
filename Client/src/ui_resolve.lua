@@ -873,6 +873,7 @@ local function addFunction(flag)
     btn_replaceAddFunc()
     local resolveList = ""
     if flag == 1 then
+        addEquip.flag = false
         local pEquip = autoAddEquip()
         for i = 1, #addEquip.info do
             resolveList = resolveList .. addEquip.info[i].int["1"] .. ";"
@@ -892,6 +893,7 @@ local function addFunction(flag)
         end
 
     elseif flag == 2 then
+        addCard.flag = false
         local pCard = autoAddCard()
         for i = 1, #addCard.info do
             resolveList = resolveList .. addCard.info[i].int["1"] .. ";"
@@ -907,6 +909,7 @@ local function addFunction(flag)
             sendReViewdData(addFlag, resolveList)
         end
     elseif flag == 4 then
+        addMagic.flag = false
         local pMagic = autoAddMagic()
         for i = 1, #addMagic.info do
             resolveList = resolveList .. addMagic.info[i].int["1"] .. ";"

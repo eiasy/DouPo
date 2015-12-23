@@ -161,7 +161,7 @@
                             <Scale ScaleX="1.0000" ScaleY="1.0000" />
                             <CColor A="255" R="255" G="255" B="255" />
                             <PrePosition X="0.4952" Y="-0.1359" />
-                            <PreSize X="0.4381" Y="0.2233" />
+                            <PreSize X="1.3143" Y="0.2816" />
                             <FontResource Type="Normal" Path="data/ui_font.ttf" Plist="" />
                             <OutlineColor A="255" R="255" G="0" B="0" />
                             <ShadowColor A="255" R="110" G="110" B="110" />
@@ -181,16 +181,16 @@
                           <AbstractNodeData Name="image_star" ActionTag="-1095443690" UserData="ignoreSize" Tag="801" IconVisible="False" LeftMargin="69.5000" RightMargin="8.5000" TopMargin="69.5000" BottomMargin="6.5000" Scale9Width="27" Scale9Height="27" ctype="ImageViewObjectData">
                             <Size X="27.0000" Y="27.0000" />
                             <Children>
-                              <AbstractNodeData Name="text_star" ActionTag="271736151" Tag="803" IconVisible="False" LeftMargin="-38.8925" RightMargin="26.8925" TopMargin="1.4177" BottomMargin="-2.4177" FontSize="22" LabelText="135" ctype="TextObjectData">
-                                <Size X="39.0000" Y="28.0000" />
+                              <AbstractNodeData Name="text_star" ActionTag="271736151" Tag="803" IconVisible="False" LeftMargin="-38.8925" RightMargin="26.8925" TopMargin="1.4177" BottomMargin="-2.4177" FontSize="22" LabelText="135" OutlineSize="2" OutlineEnabled="True" ctype="TextObjectData">
+                                <Size X="51.0000" Y="32.0000" />
                                 <AnchorPoint ScaleX="1.0000" ScaleY="0.5000" />
                                 <Position X="0.1075" Y="11.5823" />
                                 <Scale ScaleX="1.0000" ScaleY="1.0000" />
-                                <CColor A="255" R="7" G="248" B="7" />
+                                <CColor A="255" R="255" G="255" B="0" />
                                 <PrePosition X="0.0040" Y="0.4290" />
                                 <PreSize X="0.2188" Y="0.0486" />
                                 <FontResource Type="Normal" Path="data/ui_font.ttf" Plist="" />
-                                <OutlineColor A="255" R="255" G="0" B="0" />
+                                <OutlineColor A="255" R="0" G="0" B="0" />
                                 <ShadowColor A="255" R="110" G="110" B="110" />
                               </AbstractNodeData>
                             </Children>
@@ -261,16 +261,16 @@
                           <AbstractNodeData Name="image_star" ActionTag="314940498" UserData="ignoreSize" Tag="808" IconVisible="False" LeftMargin="69.5000" RightMargin="8.5000" TopMargin="69.5000" BottomMargin="6.5000" Scale9Width="27" Scale9Height="27" ctype="ImageViewObjectData">
                             <Size X="27.0000" Y="27.0000" />
                             <Children>
-                              <AbstractNodeData Name="text_star" ActionTag="375390550" Tag="809" IconVisible="False" LeftMargin="-38.8925" RightMargin="26.8925" TopMargin="1.4177" BottomMargin="-2.4177" FontSize="22" LabelText="135" ctype="TextObjectData">
-                                <Size X="39.0000" Y="28.0000" />
+                              <AbstractNodeData Name="text_star" ActionTag="375390550" Tag="809" IconVisible="False" LeftMargin="-38.8925" RightMargin="26.8925" TopMargin="1.4177" BottomMargin="-2.4177" FontSize="22" LabelText="135" OutlineSize="2" OutlineEnabled="True" ctype="TextObjectData">
+                                <Size X="51.0000" Y="32.0000" />
                                 <AnchorPoint ScaleX="1.0000" ScaleY="0.5000" />
                                 <Position X="0.1075" Y="11.5823" />
                                 <Scale ScaleX="1.0000" ScaleY="1.0000" />
-                                <CColor A="255" R="7" G="248" B="7" />
+                                <CColor A="255" R="255" G="255" B="0" />
                                 <PrePosition X="0.0040" Y="0.4290" />
                                 <PreSize X="0.2188" Y="0.0486" />
                                 <FontResource Type="Normal" Path="data/ui_font.ttf" Plist="" />
-                                <OutlineColor A="255" R="255" G="0" B="0" />
+                                <OutlineColor A="255" R="0" G="0" B="0" />
                                 <ShadowColor A="255" R="110" G="110" B="110" />
                               </AbstractNodeData>
                             </Children>
@@ -341,16 +341,16 @@
                           <AbstractNodeData Name="image_star" ActionTag="678454595" UserData="ignoreSize" Tag="814" IconVisible="False" LeftMargin="69.5000" RightMargin="8.5000" TopMargin="69.5000" BottomMargin="6.5000" Scale9Width="27" Scale9Height="27" ctype="ImageViewObjectData">
                             <Size X="27.0000" Y="27.0000" />
                             <Children>
-                              <AbstractNodeData Name="text_star" ActionTag="1244565952" Tag="815" IconVisible="False" LeftMargin="-38.8925" RightMargin="26.8925" TopMargin="1.4177" BottomMargin="-2.4177" FontSize="22" LabelText="135" ctype="TextObjectData">
-                                <Size X="39.0000" Y="28.0000" />
+                              <AbstractNodeData Name="text_star" ActionTag="1244565952" Tag="815" IconVisible="False" LeftMargin="-38.8925" RightMargin="26.8925" TopMargin="1.4177" BottomMargin="-2.4177" FontSize="22" LabelText="135" OutlineSize="2" OutlineEnabled="True" ctype="TextObjectData">
+                                <Size X="51.0000" Y="32.0000" />
                                 <AnchorPoint ScaleX="1.0000" ScaleY="0.5000" />
                                 <Position X="0.1075" Y="11.5823" />
                                 <Scale ScaleX="1.0000" ScaleY="1.0000" />
-                                <CColor A="255" R="7" G="248" B="7" />
+                                <CColor A="255" R="255" G="255" B="0" />
                                 <PrePosition X="0.0040" Y="0.4290" />
                                 <PreSize X="0.2188" Y="0.0486" />
                                 <FontResource Type="Normal" Path="data/ui_font.ttf" Plist="" />
-                                <OutlineColor A="255" R="255" G="0" B="0" />
+                                <OutlineColor A="255" R="0" G="0" B="0" />
                                 <ShadowColor A="255" R="110" G="110" B="110" />
                               </AbstractNodeData>
                             </Children>
@@ -421,16 +421,16 @@
                           <AbstractNodeData Name="image_star" ActionTag="485975436" UserData="ignoreSize" Tag="820" IconVisible="False" LeftMargin="69.5000" RightMargin="8.5000" TopMargin="69.5000" BottomMargin="6.5000" Scale9Width="27" Scale9Height="27" ctype="ImageViewObjectData">
                             <Size X="27.0000" Y="27.0000" />
                             <Children>
-                              <AbstractNodeData Name="text_star" ActionTag="-617634259" Tag="821" IconVisible="False" LeftMargin="-38.8925" RightMargin="26.8925" TopMargin="1.4177" BottomMargin="-2.4177" FontSize="22" LabelText="135" ctype="TextObjectData">
-                                <Size X="39.0000" Y="28.0000" />
+                              <AbstractNodeData Name="text_star" ActionTag="-617634259" Tag="821" IconVisible="False" LeftMargin="-38.8925" RightMargin="26.8925" TopMargin="1.4177" BottomMargin="-2.4177" FontSize="22" LabelText="135" OutlineSize="2" OutlineEnabled="True" ctype="TextObjectData">
+                                <Size X="51.0000" Y="32.0000" />
                                 <AnchorPoint ScaleX="1.0000" ScaleY="0.5000" />
                                 <Position X="0.1075" Y="11.5823" />
                                 <Scale ScaleX="1.0000" ScaleY="1.0000" />
-                                <CColor A="255" R="7" G="248" B="7" />
+                                <CColor A="255" R="255" G="255" B="0" />
                                 <PrePosition X="0.0040" Y="0.4290" />
                                 <PreSize X="0.2188" Y="0.0486" />
                                 <FontResource Type="Normal" Path="data/ui_font.ttf" Plist="" />
-                                <OutlineColor A="255" R="255" G="0" B="0" />
+                                <OutlineColor A="255" R="0" G="0" B="0" />
                                 <ShadowColor A="255" R="110" G="110" B="110" />
                               </AbstractNodeData>
                             </Children>
@@ -501,16 +501,16 @@
                           <AbstractNodeData Name="image_star" ActionTag="977612704" UserData="ignoreSize" Tag="826" IconVisible="False" LeftMargin="69.5000" RightMargin="8.5000" TopMargin="69.5000" BottomMargin="6.5000" Scale9Width="27" Scale9Height="27" ctype="ImageViewObjectData">
                             <Size X="27.0000" Y="27.0000" />
                             <Children>
-                              <AbstractNodeData Name="text_star" ActionTag="856251320" Tag="827" IconVisible="False" LeftMargin="-38.8925" RightMargin="26.8925" TopMargin="1.4177" BottomMargin="-2.4177" FontSize="22" LabelText="135" ctype="TextObjectData">
-                                <Size X="39.0000" Y="28.0000" />
+                              <AbstractNodeData Name="text_star" ActionTag="856251320" Tag="827" IconVisible="False" LeftMargin="-38.8925" RightMargin="26.8925" TopMargin="1.4177" BottomMargin="-2.4177" FontSize="22" LabelText="135" OutlineSize="2" OutlineEnabled="True" ctype="TextObjectData">
+                                <Size X="51.0000" Y="32.0000" />
                                 <AnchorPoint ScaleX="1.0000" ScaleY="0.5000" />
                                 <Position X="0.1075" Y="11.5823" />
                                 <Scale ScaleX="1.0000" ScaleY="1.0000" />
-                                <CColor A="255" R="7" G="248" B="7" />
+                                <CColor A="255" R="255" G="255" B="0" />
                                 <PrePosition X="0.0040" Y="0.4290" />
                                 <PreSize X="0.2188" Y="0.0486" />
                                 <FontResource Type="Normal" Path="data/ui_font.ttf" Plist="" />
-                                <OutlineColor A="255" R="255" G="0" B="0" />
+                                <OutlineColor A="255" R="0" G="0" B="0" />
                                 <ShadowColor A="255" R="110" G="110" B="110" />
                               </AbstractNodeData>
                             </Children>
@@ -581,16 +581,16 @@
                           <AbstractNodeData Name="image_star" ActionTag="199960060" UserData="ignoreSize" Tag="832" IconVisible="False" LeftMargin="69.5000" RightMargin="8.5000" TopMargin="69.5000" BottomMargin="6.5000" Scale9Width="27" Scale9Height="27" ctype="ImageViewObjectData">
                             <Size X="27.0000" Y="27.0000" />
                             <Children>
-                              <AbstractNodeData Name="text_star" ActionTag="268490701" Tag="833" IconVisible="False" LeftMargin="-38.8925" RightMargin="26.8925" TopMargin="1.4177" BottomMargin="-2.4177" FontSize="22" LabelText="135" ctype="TextObjectData">
-                                <Size X="39.0000" Y="28.0000" />
+                              <AbstractNodeData Name="text_star" ActionTag="268490701" Tag="833" IconVisible="False" LeftMargin="-38.8925" RightMargin="26.8925" TopMargin="1.4177" BottomMargin="-2.4177" FontSize="22" LabelText="135" OutlineSize="2" OutlineEnabled="True" ctype="TextObjectData">
+                                <Size X="51.0000" Y="32.0000" />
                                 <AnchorPoint ScaleX="1.0000" ScaleY="0.5000" />
                                 <Position X="0.1075" Y="11.5823" />
                                 <Scale ScaleX="1.0000" ScaleY="1.0000" />
-                                <CColor A="255" R="7" G="248" B="7" />
+                                <CColor A="255" R="255" G="255" B="0" />
                                 <PrePosition X="0.0040" Y="0.4290" />
                                 <PreSize X="0.2188" Y="0.0486" />
                                 <FontResource Type="Normal" Path="data/ui_font.ttf" Plist="" />
-                                <OutlineColor A="255" R="255" G="0" B="0" />
+                                <OutlineColor A="255" R="0" G="0" B="0" />
                                 <ShadowColor A="255" R="110" G="110" B="110" />
                               </AbstractNodeData>
                             </Children>
@@ -661,16 +661,16 @@
                           <AbstractNodeData Name="image_star" ActionTag="-105249754" UserData="ignoreSize" Tag="838" IconVisible="False" LeftMargin="69.5000" RightMargin="8.5000" TopMargin="69.5000" BottomMargin="6.5000" Scale9Width="27" Scale9Height="27" ctype="ImageViewObjectData">
                             <Size X="27.0000" Y="27.0000" />
                             <Children>
-                              <AbstractNodeData Name="text_star" ActionTag="-970459692" Tag="839" IconVisible="False" LeftMargin="-38.8925" RightMargin="26.8925" TopMargin="1.4177" BottomMargin="-2.4177" FontSize="22" LabelText="135" ctype="TextObjectData">
-                                <Size X="39.0000" Y="28.0000" />
+                              <AbstractNodeData Name="text_star" ActionTag="-970459692" Tag="839" IconVisible="False" LeftMargin="-38.8925" RightMargin="26.8925" TopMargin="1.4177" BottomMargin="-2.4177" FontSize="22" LabelText="135" OutlineSize="2" OutlineEnabled="True" ctype="TextObjectData">
+                                <Size X="51.0000" Y="32.0000" />
                                 <AnchorPoint ScaleX="1.0000" ScaleY="0.5000" />
                                 <Position X="0.1075" Y="11.5823" />
                                 <Scale ScaleX="1.0000" ScaleY="1.0000" />
-                                <CColor A="255" R="7" G="248" B="7" />
+                                <CColor A="255" R="255" G="255" B="0" />
                                 <PrePosition X="0.0040" Y="0.4290" />
                                 <PreSize X="0.2188" Y="0.0486" />
                                 <FontResource Type="Normal" Path="data/ui_font.ttf" Plist="" />
-                                <OutlineColor A="255" R="255" G="0" B="0" />
+                                <OutlineColor A="255" R="0" G="0" B="0" />
                                 <ShadowColor A="255" R="110" G="110" B="110" />
                               </AbstractNodeData>
                             </Children>
@@ -741,16 +741,16 @@
                           <AbstractNodeData Name="image_star" ActionTag="-870494896" UserData="ignoreSize" Tag="844" IconVisible="False" LeftMargin="69.5000" RightMargin="8.5000" TopMargin="69.5000" BottomMargin="6.5000" Scale9Width="27" Scale9Height="27" ctype="ImageViewObjectData">
                             <Size X="27.0000" Y="27.0000" />
                             <Children>
-                              <AbstractNodeData Name="text_star" ActionTag="-85160325" Tag="845" IconVisible="False" LeftMargin="-38.8925" RightMargin="26.8925" TopMargin="1.4177" BottomMargin="-2.4177" FontSize="22" LabelText="135" ctype="TextObjectData">
-                                <Size X="39.0000" Y="28.0000" />
+                              <AbstractNodeData Name="text_star" ActionTag="-85160325" Tag="845" IconVisible="False" LeftMargin="-38.8925" RightMargin="26.8925" TopMargin="1.4177" BottomMargin="-2.4177" FontSize="22" LabelText="135" OutlineSize="2" OutlineEnabled="True" ctype="TextObjectData">
+                                <Size X="51.0000" Y="32.0000" />
                                 <AnchorPoint ScaleX="1.0000" ScaleY="0.5000" />
                                 <Position X="0.1075" Y="11.5823" />
                                 <Scale ScaleX="1.0000" ScaleY="1.0000" />
-                                <CColor A="255" R="7" G="248" B="7" />
+                                <CColor A="255" R="255" G="255" B="0" />
                                 <PrePosition X="0.0040" Y="0.4290" />
                                 <PreSize X="0.2188" Y="0.0486" />
                                 <FontResource Type="Normal" Path="data/ui_font.ttf" Plist="" />
-                                <OutlineColor A="255" R="255" G="0" B="0" />
+                                <OutlineColor A="255" R="0" G="0" B="0" />
                                 <ShadowColor A="255" R="110" G="110" B="110" />
                               </AbstractNodeData>
                             </Children>
@@ -821,16 +821,16 @@
                           <AbstractNodeData Name="image_star" ActionTag="232417479" UserData="ignoreSize" Tag="850" IconVisible="False" LeftMargin="69.5000" RightMargin="8.5000" TopMargin="69.5000" BottomMargin="6.5000" Scale9Width="27" Scale9Height="27" ctype="ImageViewObjectData">
                             <Size X="27.0000" Y="27.0000" />
                             <Children>
-                              <AbstractNodeData Name="text_star" ActionTag="-1173787744" Tag="851" IconVisible="False" LeftMargin="-38.8925" RightMargin="26.8925" TopMargin="1.4177" BottomMargin="-2.4177" FontSize="22" LabelText="135" ctype="TextObjectData">
-                                <Size X="39.0000" Y="28.0000" />
+                              <AbstractNodeData Name="text_star" ActionTag="-1173787744" Tag="851" IconVisible="False" LeftMargin="-38.8925" RightMargin="26.8925" TopMargin="1.4177" BottomMargin="-2.4177" FontSize="22" LabelText="135" OutlineSize="2" OutlineEnabled="True" ctype="TextObjectData">
+                                <Size X="51.0000" Y="32.0000" />
                                 <AnchorPoint ScaleX="1.0000" ScaleY="0.5000" />
                                 <Position X="0.1075" Y="11.5823" />
                                 <Scale ScaleX="1.0000" ScaleY="1.0000" />
-                                <CColor A="255" R="7" G="248" B="7" />
+                                <CColor A="255" R="255" G="255" B="0" />
                                 <PrePosition X="0.0040" Y="0.4290" />
                                 <PreSize X="0.2188" Y="0.0486" />
                                 <FontResource Type="Normal" Path="data/ui_font.ttf" Plist="" />
-                                <OutlineColor A="255" R="255" G="0" B="0" />
+                                <OutlineColor A="255" R="0" G="0" B="0" />
                                 <ShadowColor A="255" R="110" G="110" B="110" />
                               </AbstractNodeData>
                             </Children>
@@ -901,16 +901,16 @@
                           <AbstractNodeData Name="image_star" ActionTag="1625789281" UserData="ignoreSize" Tag="856" IconVisible="False" LeftMargin="69.5000" RightMargin="8.5000" TopMargin="69.5000" BottomMargin="6.5000" Scale9Width="27" Scale9Height="27" ctype="ImageViewObjectData">
                             <Size X="27.0000" Y="27.0000" />
                             <Children>
-                              <AbstractNodeData Name="text_star" ActionTag="-359390350" Tag="857" IconVisible="False" LeftMargin="-38.8925" RightMargin="26.8925" TopMargin="1.4177" BottomMargin="-2.4177" FontSize="22" LabelText="135" ctype="TextObjectData">
-                                <Size X="39.0000" Y="28.0000" />
+                              <AbstractNodeData Name="text_star" ActionTag="-359390350" Tag="857" IconVisible="False" LeftMargin="-38.8925" RightMargin="26.8925" TopMargin="1.4177" BottomMargin="-2.4177" FontSize="22" LabelText="135" OutlineSize="2" OutlineEnabled="True" ctype="TextObjectData">
+                                <Size X="51.0000" Y="32.0000" />
                                 <AnchorPoint ScaleX="1.0000" ScaleY="0.5000" />
                                 <Position X="0.1075" Y="11.5823" />
                                 <Scale ScaleX="1.0000" ScaleY="1.0000" />
-                                <CColor A="255" R="7" G="248" B="7" />
+                                <CColor A="255" R="255" G="255" B="0" />
                                 <PrePosition X="0.0040" Y="0.4290" />
                                 <PreSize X="0.2188" Y="0.0486" />
                                 <FontResource Type="Normal" Path="data/ui_font.ttf" Plist="" />
-                                <OutlineColor A="255" R="255" G="0" B="0" />
+                                <OutlineColor A="255" R="0" G="0" B="0" />
                                 <ShadowColor A="255" R="110" G="110" B="110" />
                               </AbstractNodeData>
                             </Children>

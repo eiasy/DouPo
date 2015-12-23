@@ -536,6 +536,40 @@ StaticMsgRule = {
 
 		intoLimitActivity = 1270,--进入限时活动
 
+		unionReplay = 1300,--盟战观看录像
+
+		unionContribution = 1301,--盟战查看上轮贡献
+
+		unionSchedule = 1302,--盟战赛程
+
+		fightxxxx = 1303,--盟战入阵
+
+		fightxx = 1304,--盟战入阵
+
+		clearUnionApplay = 1305,--联盟申请全部清空
+
+		openPlayerRank = 1306,--打开排行玩家界面
+
+		intoOverflowExchange = 1307,--进入超值兑换
+
+		overflowExchange = 1308,--超值兑换
+
+		christmasDay = 1309,--圣诞活动
+
+		intoGroup = 1310,--进入交易会
+
+		buyGroupBox = 1311,--购买团购箱子
+
+		intoGroupGift = 1312,--进入团购豪礼
+
+		getGroupBoxReward = 1313,--领取团购箱子奖励
+
+		lookGroupRank = 1314,--查看团购排行
+
+		intoHoldStarReward = 1315,--占星进入奖励界面
+
+        mineFail = 1316,--占矿失败
+
 		testGuid = 3002,--测试引导
 
 		testGiveName = 3003,--测试起名字

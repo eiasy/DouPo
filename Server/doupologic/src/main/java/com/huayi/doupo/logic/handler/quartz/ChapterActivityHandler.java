@@ -75,6 +75,14 @@ public class ChapterActivityHandler extends BaseHandler implements Job {
 			// 过幼儿期初始化活动
 			initActivity();
 			
+			// 如果当前日期和团购会开启日期相同，重置开团购箱子相关
+			SysActivity dictActivity = DictMap.sysActivityMap.get(StaticActivity.groupon + "");
+			if (dictActivity.getStartTime() != null && !dictActivity.getStartTime().equals("") && dictActivity.getEndTime() != null && !dictActivity.getEndTime().equals("")) {
+				if (DateUtil.getYmdDate(dictActivity.getStartTime()).equals(DateUtil.getYmdDate())) {
+					getInstActivityDAL().update("update Inst_Player_Group set openGroupBoxNum = 0, giveZiList = ''");
+				}
+			}
+			
 			//从活动服拿数据
 			InitUtil.loadDataFromActivityServer();
 

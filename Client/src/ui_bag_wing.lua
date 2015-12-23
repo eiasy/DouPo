@@ -34,8 +34,12 @@ function UIBagWing.freshViewItem( obj )
                     UIWingAdvance.setData( obj )
                     UIManager.pushScene( "ui_wing_advance" )
                 elseif sender == btn_change then
-                    UIWingChange.setData( obj )
-                    UIManager.pushScene( "ui_wing_change" )
+                    if obj.int["3"] >= 5 then
+                        UIManager.showToast("全属性翅膀不需要转换")
+                    else
+                        UIWingChange.setData( obj )
+                        UIManager.pushScene( "ui_wing_change" )
+                    end
                 end
             end
         end
@@ -161,12 +165,16 @@ local function setScrollViewItem( item , obj )
                     end
                     UIManager.pushScene( "ui_wing_advance" )
                 elseif sender == btn_change then
-                    if obj.int["6"] == 0 then
-                        UIWingChange.setData( obj )
+                    if obj.int["3"] >= 5 then
+                        UIManager.showToast("全属性翅膀不需要转换")
                     else
-                        UIWingChange.setData( obj , net.InstPlayerCard[tostring(obj.int["6"])].int["3"] )
+                        if obj.int["6"] == 0 then
+                            UIWingChange.setData( obj )
+                        else
+                            UIWingChange.setData( obj , net.InstPlayerCard[tostring(obj.int["6"])].int["3"] )
+                        end
+                        UIManager.pushScene( "ui_wing_change" )
                     end
-                    UIManager.pushScene( "ui_wing_change" )
                 end
             end
         end
@@ -182,8 +190,11 @@ local function setScrollViewItem( item , obj )
         local image_frame_wing = ccui.Helper:seekNodeByName( item , "image_frame_wing" )
 
         local image_wing_0 = image_frame_wing:getChildByName( "image_wing_0" )
-        image_wing_0:loadTexture( "ui/wing_"..DictWing[ tostring( obj.int["3"] ) ].sname..".png" )
-        
+        if obj.int["3"] >= 5 then
+            image_wing_0:loadTexture( "ui/wing_all.png" )
+        else
+            image_wing_0:loadTexture( "ui/wing_"..DictWing[ tostring( obj.int["3"] ) ].sname..".png" )
+        end
         local text_name_wing = ccui.Helper:seekNodeByName( item , "text_name_wing" )
         text_name_wing:setString( DictWing[ tostring( obj.int["3"] ) ].name )
         local text_lv = ccui.Helper:seekNodeByName( item , "text_lv" )

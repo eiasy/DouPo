@@ -430,6 +430,28 @@ public class StaticMsgRule{
 
 		public static final Integer login2 = new Integer(3001);//玩家登陆,只有数据库操作
 
+		public static final Integer join = new Integer(1260);//盟战报名
+
+		public static final Integer disjoin = new Integer(1261);//盟战取消报名
+
+		public static final Integer sort = new Integer(1262);//盟战排序
+
+		public static final Integer ambush = new Integer(1263);//盟战设置伏兵
+
+		public static final Integer unambush = new Integer(1264);//盟战取消设伏
+
+		public static final Integer fight = new Integer(1265);//盟战入阵
+
+		public static final Integer unionReplay = new Integer(1300);//盟战观看录像
+
+		public static final Integer unionContribution = new Integer(1301);//盟战查看上轮贡献
+
+		public static final Integer unionSchedule = new Integer(1302);//盟战赛程
+
+		public static final Integer fightxxxx = new Integer(1303);//盟战入阵
+
+		public static final Integer fightxx = new Integer(1304);//盟战入阵
+
 		public static final Integer testGuid = new Integer(3002);//测试引导
 
 		public static final Integer testGiveName = new Integer(3003);//测试起名字
@@ -449,6 +471,8 @@ public class StaticMsgRule{
 		public static final Integer pushMarquee = new Integer(10004);//推送跑马灯
 
 		public static final Integer pushRechargeSucc = new Integer(10005);//推送充值成功通知
+
+		public static final Integer pushUnionWar = new Integer(10006);//推送盟战
 
 		public static final Integer quickUpgrade = new Integer(11000);//快速升级（战队）
 

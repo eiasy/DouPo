@@ -133,7 +133,7 @@ DictCardLuck["131"]={id=131,name="魂飘神荡",cardId=41,lucks="13_28",fightVal
 DictCardLuck["132"]={id=132,name="安魂定魄",cardId=41,lucks="13_18",fightValues="3_13",description="装备定魂铃；法攻提升13%"}
 DictCardLuck["133"]={id=133,name="授业恩师",cardId=88,lucks="7_135",fightValues="2_18",description="与药老齐上阵；物攻提升18%"}
 DictCardLuck["134"]={id=134,name="两小无猜",cardId=88,lucks="7_136",fightValues="1_15",description="与萧薰儿齐上阵；生命提升15%"}
-DictCardLuck["135"]={id=135,name="横扫千军",cardId=88,lucks="7_144;7_136;7_135",fightValues="1_40",description="与美杜莎、萧薰儿、药老齐上阵；生命提升40%"}
+DictCardLuck["135"]={id=135,name="横扫千军",cardId=88,lucks="7_144;7_136;7_135",fightValues="1_40;8_15;9_15",description="与美杜莎、萧薰儿、药老齐上阵；生命提升40%、物防和法防各提升15%"}
 DictCardLuck["136"]={id=136,name="焚天灭地",cardId=88,lucks="13_19",fightValues="2_17",description="装备焚诀；物攻提升17%"}
 DictCardLuck["137"]={id=137,name="异火之莲",cardId=88,lucks="13_2",fightValues="1_19",description="装备青莲座；生命提升19%"}
 DictCardLuck["138"]={id=138,name="舐犊情深",cardId=43,lucks="7_71",fightValues="3_16",description="与琥乾齐上阵；法攻提升16%"}
@@ -273,16 +273,16 @@ DictCardLuck["271"]={id=271,name="音同神转",cardId=59,lucks="13_21",fightVal
 DictCardLuck["272"]={id=272,name="塔震山河",cardId=59,lucks="13_14",fightValues="3_15",description="装备玲珑塔；法攻提升15%"}
 DictCardLuck["273"]={id=273,name="授业恩师",cardId=135,lucks="7_88",fightValues="3_19",description="与萧炎齐上阵；法攻提升19%"}
 DictCardLuck["274"]={id=274,name="生死之交",cardId=135,lucks="7_112",fightValues="1_16",description="与风尊者齐上阵；生命提升16%"}
-DictCardLuck["275"]={id=275,name="横扫千军",cardId=135,lucks="7_88;7_136;7_144",fightValues="1_40",description="与萧炎、萧薰儿、美杜莎齐上阵；生命提升40%"}
+DictCardLuck["275"]={id=275,name="横扫千军",cardId=135,lucks="7_88;7_136;7_144",fightValues="1_40;8_15;9_15",description="与萧炎、萧薰儿、美杜莎齐上阵；生命提升40%、物防和法防各提升15%"}
 DictCardLuck["276"]={id=276,name="梵音靡靡",cardId=135,lucks="13_23",fightValues="1_17",description="装备天章九梵；生命提升17%"}
 DictCardLuck["277"]={id=277,name="五轮天印",cardId=135,lucks="13_12",fightValues="3_18",description="装备翻天印；法攻提升18%"}
 DictCardLuck["278"]={id=278,name="两小无猜",cardId=136,lucks="7_88",fightValues="1_20",description="与萧炎齐上阵；生命提升20%"}
 DictCardLuck["279"]={id=279,name="守望相助",cardId=136,lucks="7_89",fightValues="3_17",description="与小医仙齐上阵；法攻提升17%"}
-DictCardLuck["280"]={id=280,name="横扫千军",cardId=136,lucks="7_144;7_135;7_88",fightValues="1_35",description="与美杜莎、药老、萧炎齐上阵；生命提升35%"}
+DictCardLuck["280"]={id=280,name="横扫千军",cardId=136,lucks="7_144;7_135;7_88",fightValues="1_35;8_15;9_15",description="与美杜莎、药老、萧炎齐上阵；生命提升35%、物防和法防各提升15%"}
 DictCardLuck["281"]={id=281,name="神印无双",cardId=136,lucks="13_12",fightValues="3_18",description="装备翻天印；法攻提升18%"}
 DictCardLuck["282"]={id=282,name="帝印护体",cardId=136,lucks="13_24",fightValues="1_18",description="装备帝印决；生命提升18%"}
 DictCardLuck["283"]={id=283,name="欢喜冤家",cardId=144,lucks="7_88",fightValues="2_19",description="与萧炎齐上阵；物攻提升19%"}
-DictCardLuck["284"]={id=284,name="横扫千军",cardId=144,lucks="7_88;7_135;7_136",fightValues="1_30",description="与萧炎、药老、萧薰儿齐上阵；生命提升30%"}
+DictCardLuck["284"]={id=284,name="横扫千军",cardId=144,lucks="7_88;7_135;7_136",fightValues="1_30;8_15;9_15",description="与萧炎、药老、萧薰儿齐上阵；生命提升30%、物防和法防各提升15%"}
 DictCardLuck["285"]={id=285,name="实力封印",cardId=144,lucks="7_94",fightValues="2_18",description="与海波东齐上阵；物攻提升18%"}
 DictCardLuck["286"]={id=286,name="九天落雷",cardId=144,lucks="13_20",fightValues="1_18",description="装备九字风雷；生命提升18%"}
 DictCardLuck["287"]={id=287,name="女王座驾",cardId=144,lucks="13_2",fightValues="2_18",description="装备青莲座；物攻提升18%"}
@@ -474,5 +474,5 @@ DictCardLuck["472"]={id=472,name="丹书玄印",cardId=116,lucks="13_24",fightVa
 DictCardLuck["473"]={id=473,name="垂涎三尺",cardId=115,lucks="7_89",fightValues="1_20",description="与小医仙齐上阵；生命提升20%"}
 DictCardLuck["474"]={id=474,name="狼狈为奸",cardId=115,lucks="7_107",fightValues="1_20",description="与青海尊者齐上阵；生命提升20%"}
 DictCardLuck["475"]={id=475,name="功法相近",cardId=115,lucks="7_94",fightValues="3_18",description="与海波东齐上阵；法攻提升18%"}
-DictCardLuck["476"]={id=476,name="玄冰幡",cardId=115,lucks="13_13",fightValues="3_18",description="装备七星幡；法攻提升18%"}
+DictCardLuck["476"]={id=476,name="玄冰幡",cardId=115,lucks="13_14",fightValues="3_18",description="装备玲珑塔；法攻提升18%"}
 DictCardLuck["477"]={id=477,name="九梵之冰",cardId=115,lucks="13_23",fightValues="1_20",description="装备天章九梵；生命提升20%"}

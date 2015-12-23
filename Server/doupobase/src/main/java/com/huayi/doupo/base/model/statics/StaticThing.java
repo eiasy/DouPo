@@ -300,14 +300,10 @@ public class StaticThing{
 
 		public static final Integer thing1015 = new Integer(1015);//重阳礼盒
 
+		public static final Integer groupBox = new Integer(1026);//团购宝箱
+		
+		public static final Integer bigGroupBox = new Integer(1027);//大团购宝箱
+		
 		public static final Integer lihezuidazhi = new Integer(1200);//幸运礼盒
-		
-		public static final Integer wingChip1 = new Integer(1300);//一阶神羽碎片
-		
-		public static final Integer wingChip2 = new Integer(1301);//二阶神羽碎片
-		
-		public static final Integer wingChip3 = new Integer(1302);//三阶神羽碎片
-		
-		public static final Integer wingStrogerStone = new Integer(1303);//神羽强化石
 
 }

@@ -2,6 +2,11 @@ package com.huayi.doupo.base.dal.factory;
 
 public class SpringDalContext {
 
+	public static final String InstActivityExchangeDAL = "InstActivityExchangeDAL";
+	public static final String DictActivityGroupGiveZiRuleDAL = "DictActivityGroupGiveZiRuleDAL";
+	public static final String InstPlayerGroupDAL = "InstPlayerGroupDAL";
+	public static final String DictActivityGroupDiscountDAL = "DictActivityGroupDiscountDAL";
+	public static final String DictActivityGroupRateDAL = "DictActivityGroupRateDAL";
 	public static final String DictHoldStarGradeRewardDAL = "DictHoldStarGradeRewardDAL";
 	public static final String DictHoldStarRewardRefreshTimesDAL = "DictHoldStarRewardRefreshTimesDAL";
 	public static final String DictHoldStarStepDAL = "DictHoldStarStepDAL";
@@ -263,6 +268,16 @@ public class SpringDalContext {
 	public static final String DictYFireDAL = "DictYFireDAL";
 	public static final String InstPlayerYFireDAL = "InstPlayerYFireDAL";
 	public static final String DictYFireChipDAL = "DictYFireChipDAL";
+	public static final String DictEquipAdvanceredDAL = "DictEquipAdvanceredDAL";
+	public static final String DictEquipSuitredDAL = "DictEquipSuitredDAL";
+	public static final String InstPlayerRedEquipDAL = "InstPlayerRedEquipDAL";
+	public static final String DictMagicrefiningDAL = "DictMagicrefiningDAL";
+	public static final String DictUnionWarAmbushDAL = "DictUnionWarAmbushDAL";
+	public static final String DictUnionWarBattlefieldDAL = "DictUnionWarBattlefieldDAL";
+	public static final String DictUnionWarInfoDAL = "DictUnionWarInfoDAL";
+	public static final String InstUnionWarAgainstDAL = "InstUnionWarAgainstDAL";
+	public static final String InstUnionWarContributionRankDAL = "InstUnionWarContributionRankDAL";
+	public static final String InstPlayerChrisDAL = "InstPlayerChrisDAL";
 
 	public static final String BeautyCardHandler = "BeautyCardHandler";
 	public static final String PlayerHandler = "PlayerHandler";
@@ -288,4 +303,6 @@ public class SpringDalContext {
 	public static final String WingHandler = "WingHandler";
 	public static final String YFireHandler = "YFireHandler";
 	public static final String HoldStarHandler = "HoldStarHandler";
+	public static final String UnionWarHandler = "UnionWarHandler";
+	public static final String ChristmasHandler = "ChristmasHandler";
 }

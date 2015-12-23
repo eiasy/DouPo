@@ -5,6 +5,26 @@ import com.huayi.doupo.base.util.logic.system.SpringUtil;
 
 public class DALFactory {
 
+	public static InstActivityExchangeDAL getInstActivityExchangeDAL() {
+		return (InstActivityExchangeDAL)SpringUtil.GetObjectWithSpringContext(SpringDalContext.InstActivityExchangeDAL);
+	}
+	
+	public static DictActivityGroupGiveZiRuleDAL getDictActivityGroupGiveZiRuleDAL() {
+		return (DictActivityGroupGiveZiRuleDAL)SpringUtil.GetObjectWithSpringContext(SpringDalContext.DictActivityGroupGiveZiRuleDAL);
+	}
+	
+	public static InstPlayerGroupDAL getInstPlayerGroupDAL() {
+		return (InstPlayerGroupDAL)SpringUtil.GetObjectWithSpringContext(SpringDalContext.InstPlayerGroupDAL);
+	}
+
+	public static DictActivityGroupDiscountDAL getDictActivityGroupDiscountDAL() {
+		return (DictActivityGroupDiscountDAL)SpringUtil.GetObjectWithSpringContext(SpringDalContext.DictActivityGroupDiscountDAL);
+	}
+
+	public static DictActivityGroupRateDAL getDictActivityGroupRateDAL() {
+		return (DictActivityGroupRateDAL)SpringUtil.GetObjectWithSpringContext(SpringDalContext.DictActivityGroupRateDAL);
+	}
+	
 	public static DictHoldStarGradeRewardDAL getDictHoldStarGradeRewardDAL() {
 		return (DictHoldStarGradeRewardDAL)SpringUtil.GetObjectWithSpringContext(SpringDalContext.DictHoldStarGradeRewardDAL);
 	}
@@ -1047,6 +1067,46 @@ public class DALFactory {
 
 	public static DictYFireChipDAL getDictYFireChipDAL() {
 		return (DictYFireChipDAL)SpringUtil.GetObjectWithSpringContext(SpringDalContext.DictYFireChipDAL);
+	}
+
+	public static DictEquipAdvanceredDAL getDictEquipAdvanceredDAL() {
+		return (DictEquipAdvanceredDAL)SpringUtil.GetObjectWithSpringContext(SpringDalContext.DictEquipAdvanceredDAL);
+	}
+
+	public static DictEquipSuitredDAL getDictEquipSuitredDAL() {
+		return (DictEquipSuitredDAL)SpringUtil.GetObjectWithSpringContext(SpringDalContext.DictEquipSuitredDAL);
+	}
+
+	public static InstPlayerRedEquipDAL getInstPlayerRedEquipDAL() {
+		return (InstPlayerRedEquipDAL)SpringUtil.GetObjectWithSpringContext(SpringDalContext.InstPlayerRedEquipDAL);
+	}
+
+	public static DictMagicrefiningDAL getDictMagicrefiningDAL() {
+		return (DictMagicrefiningDAL)SpringUtil.GetObjectWithSpringContext(SpringDalContext.DictMagicrefiningDAL);
+	}
+
+	public static DictUnionWarAmbushDAL getDictUnionWarAmbushDAL() {
+		return (DictUnionWarAmbushDAL)SpringUtil.GetObjectWithSpringContext(SpringDalContext.DictUnionWarAmbushDAL);
+	}
+
+	public static DictUnionWarBattlefieldDAL getDictUnionWarBattlefieldDAL() {
+		return (DictUnionWarBattlefieldDAL)SpringUtil.GetObjectWithSpringContext(SpringDalContext.DictUnionWarBattlefieldDAL);
+	}
+
+	public static DictUnionWarInfoDAL getDictUnionWarInfoDAL() {
+		return (DictUnionWarInfoDAL)SpringUtil.GetObjectWithSpringContext(SpringDalContext.DictUnionWarInfoDAL);
+	}
+
+	public static InstUnionWarAgainstDAL getInstUnionWarAgainstDAL() {
+		return (InstUnionWarAgainstDAL)SpringUtil.GetObjectWithSpringContext(SpringDalContext.InstUnionWarAgainstDAL);
+	}
+
+	public static InstUnionWarContributionRankDAL getInstUnionWarContributionRankDAL() {
+		return (InstUnionWarContributionRankDAL)SpringUtil.GetObjectWithSpringContext(SpringDalContext.InstUnionWarContributionRankDAL);
+	}
+
+	public static InstPlayerChrisDAL getInstPlayerChrisDAL() {
+		return (InstPlayerChrisDAL)SpringUtil.GetObjectWithSpringContext(SpringDalContext.InstPlayerChrisDAL);
 	}
 
 }

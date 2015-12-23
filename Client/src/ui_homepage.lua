@@ -188,10 +188,10 @@ function UIHomePage.init()
 	local btn_time = ccui.Helper:seekNodeByName(UIHomePage.Widget, "btn_time")              --限时特惠
 	local btn_change = ccui.Helper:seekNodeByName(UIHomePage.Widget, "btn_change")          --无敌兑换
     local btn_fuli = ccui.Helper:seekNodeByName(UIHomePage.Widget, "btn_fuli")              --福利
+    local btn_purchase = ccui.Helper:seekNodeByName(UIHomePage.Widget, "btn_purchase")      --超值团购
     local btn_welfare_recharge = ccui.Helper:seekNodeByName(UIHomePage.Widget, "btn_welfare_recharge")  --充值福利
     local btn_star = ccui.Helper:seekNodeByName(UIHomePage.Widget , "btn_star")--占星
     btn_star:getChildByName("image_hint"):setVisible(false)
-    btn_star:setVisible(false) --暂时关闭
 	local panel_main = ccui.Helper:seekNodeByName(UIHomePage.Widget, "panel")				--首页弹框
 	local panel_resolve = ccui.Helper:seekNodeByName(UIHomePage.Widget,"panel_resolve") 	--异火
 	local panel_relic = ccui.Helper:seekNodeByName(UIHomePage.Widget,"panel_relic") 		--远古遗迹
@@ -223,6 +223,7 @@ function UIHomePage.init()
     btn_time:setPressedActionEnabled(true)
     btn_change:setPressedActionEnabled(true)
     btn_fuli:setPressedActionEnabled(true)
+    btn_purchase:setPressedActionEnabled(true)
     btn_star:setPressedActionEnabled(true)
 
 	btn_recharge:setLocalZOrder(UIHomePage.zOrder.BUTTON)
@@ -249,6 +250,7 @@ function UIHomePage.init()
     btn_time:setLocalZOrder(UIHomePage.zOrder.BUTTON)
     btn_change:setLocalZOrder(UIHomePage.zOrder.BUTTON)
     btn_fuli:setLocalZOrder(UIHomePage.zOrder.BUTTON)
+    btn_purchase:setLocalZOrder(UIHomePage.zOrder.BUTTON)
     btn_star:setLocalZOrder(UIHomePage.zOrder.BUTTON)
 
 	panel_resolve:setTouchEnabled(true)
@@ -297,6 +299,12 @@ function UIHomePage.init()
 	particleRecharge:setPosition(rechargePox)
 	UIHomePage.Widget:addChild(particleRecharge,UIHomePage.zOrder.BUTTON+1)
 
+    local purchasePosX, purchasePosY = btn_purchase:getPosition()
+    local particlePurchase = cc.ParticleSystemQuad:create("particle/shouye_action_effect_star_2.plist")
+	particlePurchase:setPosition(cc.p(purchasePosX, purchasePosY))
+    particlePurchase:setName("ui_particlePurchase")
+	UIHomePage.Widget:addChild(particlePurchase,UIHomePage.zOrder.BUTTON+1)
+
     local rechargeBg = cc.Sprite:create("image/shouye_recharge_bg.png")
     rechargeBg:setPosition(rechargePox)
     UIHomePage.Widget:addChild(rechargeBg,UIHomePage.zOrder.BUTTON-1)
@@ -316,7 +324,7 @@ function UIHomePage.init()
         local image = ccui.ImageView:create("ui/ui_zhaoren.png")
         node:addChild(image)
         node:setName("paopao")
-        node:setPosition(cc.p(250, 190))
+        node:setPosition(cc.p(190, 120))
         panel_alliance:addChild(node,UIHomePage.zOrder.BUTTON)
     end
 
@@ -377,9 +385,66 @@ function UIHomePage.init()
 		cloudTable.cloud3:runAction(createAction(2,time3))
 		UIHomePage.Widget:addChild(cloudTable.cloud3, UIHomePage.zOrder.CLOUD)
 	end
+    local function createChristmas()
+        local node = ccui.Layout:create()
+        local animPath = "ani/ui_anim/ui_anim" .. 61 .. "/"
+        ccs.ArmatureDataManager:getInstance():removeArmatureFileInfo(animPath .. "ui_anim" .. 61 .. ".ExportJson")
+        ccs.ArmatureDataManager:getInstance():addArmatureFileInfo(animPath .. "ui_anim" .. 61 .. ".ExportJson")
+        local animation = ccs.Armature:create("ui_anim" .. 61)
+        animation:getAnimation():play( "ui_anim61" )      
+        node:setAnchorPoint( cc.p( 0.5 , 0.5 ) )
+        node:setContentSize( cc.size( 130 , 200 ) )
+        animation:setPosition( cc.p( node:getContentSize().width / 2 , node:getContentSize().height / 2 - 20 ) )
+        node:addChild( animation )
+        node:setName("christmasTree")
+        node:setPosition( cc.p( UIManager.screenSize.width / 2 , UIManager.screenSize.height / 2 ) )
+        UIHomePage.Widget:addChild( node , UIHomePage.zOrder.BUTTON )
+
+        local particle1 = cc.ParticleSystemQuad:create("particle/snow/ui_anim_snow_1.plist" )
+        --particle1:setPositionType(cc.POSITION_TYPE_RELATIVE)
+        particle1:setName("christmasSnow")
+        particle1:setPosition( cc.p( UIManager.screenSize.width / 2 , UIManager.screenSize.height ) )
+        UIHomePage.Widget:addChild(particle1 , UIHomePage.zOrder.BUTTON)
+
+--        particle1 = cc.ParticleSystemQuad:create("particle/snow/ui_anim_snow_2.plist" )
+--        --particle1:setPositionType(cc.POSITION_TYPE_RELATIVE)
+--        particle1:setPosition( cc.p( UIManager.screenSize.width / 2 , UIManager.screenSize.height * 3 / 4 ) )
+--        UIHomePage.Widget:addChild(particle1 , UIHomePage.zOrder.BUTTON)
+
+--        particle1 = cc.ParticleSystemQuad:create("particle/snow/ui_anim_snow_3.plist" )
+--        --particle1:setPositionType(cc.POSITION_TYPE_RELATIVE)
+--        particle1:setPosition( cc.p( UIManager.screenSize.width / 2 , UIManager.screenSize.height / 4 ) )
+--        UIHomePage.Widget:addChild(particle1 , UIHomePage.zOrder.BUTTON)
+        
+        local function onEventChristmas( sender , eventType )
+            if eventType == ccui.TouchEventType.ended then
+                if sender == node then
+                    UIManager.hideWidget("ui_team_info")
+                    UIManager.showWidget("ui_activity_time")
+                    UIActivityTime.jumpName( "Christmas" )
+                end
+            end
+        end
+        node:setTouchEnabled( true )
+        node:addTouchEventListener( onEventChristmas )
+    end
 	--创建云朵
 	createCloud()	
     createPaoPao()
+    createChristmas()
+ 
+    btn_purchase:runAction(cc.RepeatForever:create(cc.Sequence:create(
+--        cc.Spawn:create(  ),
+        cc.DelayTime:create(3),
+        cc.RotateTo:create(0.1, 5),
+        cc.RotateTo:create(0.1, -5),
+        cc.RotateTo:create(0.1, 5),
+        cc.RotateTo:create(0.1, -5),
+        cc.RotateTo:create(0.1, 5),
+        cc.RotateTo:create(0.1, -5),
+        cc.RotateTo:create(0.1, 0)
+    )))
+
 	local function btnTouchEvent(sender, eventType)
 		if eventType == ccui.TouchEventType.ended then
 			AudioEngine.playEffect("sound/button.mp3")
@@ -421,7 +486,8 @@ function UIHomePage.init()
                 elseif UIGuidePeople.levelStep == "10_1" then
                     UIGuidePeople.isGuide(btn_lv,UIHomePage)
                 end
-                
+            elseif sender == btn_purchase then
+                UIActivityPurchaseManager.show()
 			elseif sender == btn_lv then 
 				UIAwardGift.setOperateType(UIAwardGift.OperateType.lv)
 			elseif sender == btn_gift then 
@@ -619,6 +685,7 @@ function UIHomePage.init()
     btn_time:addTouchEventListener(btnTouchEvent)
     btn_change:addTouchEventListener(btnTouchEvent)
     btn_fuli:addTouchEventListener(btnTouchEvent)
+    btn_purchase:addTouchEventListener(btnTouchEvent)
     btn_star:addTouchEventListener(btnTouchEvent)
 
 	panel_resolve:addTouchEventListener(btnTouchEvent)
@@ -657,6 +724,7 @@ function UIHomePage.init()
 end
 
 function UIHomePage.setup()
+    
     if UIHomePage.accessCount <= 1 then
         UIHomePage.accessCount = UIHomePage.accessCount + 1
     end
@@ -688,6 +756,7 @@ function UIHomePage.setup()
     local btn_time = ccui.Helper:seekNodeByName(UIHomePage.Widget, "btn_time")              --限时特惠
 	local btn_change = ccui.Helper:seekNodeByName(UIHomePage.Widget, "btn_change")          --无敌兑换
     local btn_fuli = ccui.Helper:seekNodeByName(UIHomePage.Widget, "btn_fuli")              --福利
+    local btn_purchase = ccui.Helper:seekNodeByName(UIHomePage.Widget, "btn_purchase")      --超值团购
     local panel_main = ccui.Helper:seekNodeByName(UIHomePage.Widget, "panel")				--首页弹框
     local btn_welfare_recharge = ccui.Helper:seekNodeByName(UIHomePage.Widget, "btn_welfare_recharge") --充值福利
     local panel_alliance = ccui.Helper:seekNodeByName(UIHomePage.Widget,"panel_alliance") 	--联盟
@@ -947,6 +1016,49 @@ function UIHomePage.setup()
     	btn_prize:setVisible(false)
     end
 
+    -------------------超值团购----------------------
+    btn_purchase:setVisible(false)
+    if net.SysActivity then
+        UIHomePage.time = 0
+        for key, obj in pairs(net.SysActivity) do
+            if obj.string["9"] == "groupon" then
+                local _startTime = obj.string["4"]
+                local _endTime = obj.string["5"]
+                local _currentTime = utils.getCurrentTime()
+                if _startTime and _endTime and _startTime ~= "" and _endTime ~= "" and utils.GetTimeByDate(_startTime) <= _currentTime and _currentTime <= utils.GetTimeByDate(_endTime) then
+                    btn_purchase:setVisible(true)
+                else
+                    if UIHomePage.Widget:getChildByName("ui_particlePurchase") then
+                        UIHomePage.Widget:getChildByName("ui_particlePurchase"):removeFromParent()
+                    end
+                end
+                break
+            end
+        end
+    end
+
+     -------------------圣诞狂欢----------------------
+    UIHomePage.Widget:getChildByName("christmasTree"):setVisible( false )
+    UIHomePage.Widget:getChildByName("christmasSnow"):setVisible( false )
+    if net.SysActivity then
+        for key, obj in pairs(net.SysActivity) do
+            if obj.string["9"] == "Christmas" then
+                local _startTime = obj.string["4"]
+                local _endTime = obj.string["5"]
+                local _currentTime = utils.getCurrentTime()
+                if _startTime and _endTime and _startTime ~= "" and _endTime ~= "" and utils.GetTimeByDate(_startTime) <= _currentTime and _currentTime <= utils.GetTimeByDate(_endTime) then
+                    UIHomePage.Widget:getChildByName("christmasTree"):setVisible( true )
+                    UIHomePage.Widget:getChildByName("christmasSnow"):setVisible( true )
+                    AudioEngine.playMusic("sound/chirstmasHome.mp3", true)
+                    for key , value in pairs( CustomDictWorldBoss ) do
+                        CustomDictWorldBoss[key].cardId = 2001
+                    end
+                end
+                break
+            end
+        end
+    end
+
     -------------聊天----------------
     btn_talk:getChildByName("image_hint"):setVisible(false)
 
@@ -1092,3 +1204,7 @@ end
 --	UIHomePage.btn_time_RedPoint = _visible
 --	-----------------限时特惠-------------------
 --end
+
+function UIHomePage.free()
+    AudioEngine.playMusic("sound/bg_music.mp3", true)
+end

@@ -5,10 +5,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.huayi.doupo.logic.handler.util.*;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.google.common.collect.Lists;
+import com.huayi.doupo.base.model.DictActivityGroupGiveZiRule;
 import com.huayi.doupo.base.model.DictActivityHoliday;
 import com.huayi.doupo.base.model.DictGenerBoxThing;
 import com.huayi.doupo.base.model.DictSpecialBoxThing;
@@ -21,6 +23,7 @@ import com.huayi.doupo.base.model.InstPlayerBoxCount;
 import com.huayi.doupo.base.model.InstPlayerCard;
 import com.huayi.doupo.base.model.InstPlayerEquip;
 import com.huayi.doupo.base.model.InstPlayerFire;
+import com.huayi.doupo.base.model.InstPlayerGroup;
 import com.huayi.doupo.base.model.InstPlayerMagic;
 import com.huayi.doupo.base.model.InstPlayerResolveTemp;
 import com.huayi.doupo.base.model.InstPlayerStore;
@@ -48,15 +51,6 @@ import com.huayi.doupo.base.util.logic.system.DictMapUtil;
 import com.huayi.doupo.base.util.logic.system.LogUtil;
 import com.huayi.doupo.base.util.logic.system.LogicLogUtil;
 import com.huayi.doupo.logic.handler.base.BaseHandler;
-import com.huayi.doupo.logic.handler.util.AchievementUtil;
-import com.huayi.doupo.logic.handler.util.ActivityUtil;
-import com.huayi.doupo.logic.handler.util.CardUtil;
-import com.huayi.doupo.logic.handler.util.DictUtil;
-import com.huayi.doupo.logic.handler.util.FightSoulUtil;
-import com.huayi.doupo.logic.handler.util.FormulaUtil;
-import com.huayi.doupo.logic.handler.util.OrgFrontMsgUtil;
-import com.huayi.doupo.logic.handler.util.PlayerUtil;
-import com.huayi.doupo.logic.handler.util.ThingUtil;
 import com.huayi.doupo.logic.handler.util.marquee.MarqueeUtil;
 import com.huayi.doupo.logic.util.MessageData;
 import com.huayi.doupo.logic.util.MessageUtil;
@@ -228,7 +222,9 @@ public class ThingHandler extends BaseHandler {
 		if (resolveType == 1) {
 			for (String equipId : resolveList.split(";")) {
 				int instPlayerEquipId = ConvertUtil.toInt(equipId);
-				getInstPlayerEquipDAL().deleteById(instPlayerEquipId, instPlayerId);
+//				getInstPlayerEquipDAL().deleteById(instPlayerEquipId, instPlayerId);
+				//Update by cui @date 2015/12/09,删除装备时需要多部操作、所以封装到一个方法上
+				EquipUtil.deletePlayerEquip(instPlayerEquipId, instPlayerId);
 				OrgFrontMsgUtil.orgSyncMsgData(StaticSyncState.delete, new InstPlayerEquip(), instPlayerEquipId, "", syncMsgData);
 			}
 		} else if (resolveType == 2) {
@@ -392,7 +388,9 @@ public class ThingHandler extends BaseHandler {
 			}
 			for(InstPlayerEquip instPlayerEquip:sellList){
 				// 处理装备
-				getInstPlayerEquipDAL().deleteById(instPlayerEquip.getId(), instPlayerId);
+//				getInstPlayerEquipDAL().deleteById(instPlayerEquip.getId(), instPlayerId);
+				//Update by cui @date 2015/12/09,删除装备时需要多部操作、所以封装到一个方法上
+				EquipUtil.deletePlayerEquip(instPlayerEquip.getId(), instPlayerId);
 				OrgFrontMsgUtil.orgSyncMsgData(StaticSyncState.delete, instPlayerEquip, instPlayerEquip.getId(), "", syncMsgData);
 
 				// 删除装备镶嵌、洗练相关数据
@@ -825,7 +823,7 @@ public class ThingHandler extends BaseHandler {
 		}
 
 		// 验证是否已经达到最高等级
-		if (instPlayerThing.getLevel() == 6) {
+		if (instPlayerThing.getLevel() == 8) {
 			MessageUtil.sendFailMsg(channelId, msgMap, StaticCnServer.fail_upLevel);
 			return;
 		}
@@ -1146,6 +1144,14 @@ public class ThingHandler extends BaseHandler {
 		InstPlayerThing instPlayerThing = getInstPlayerThingDAL().getModel(instPlayerThingId, instPlayerId);
 
 		int thingId = instPlayerThing.getThingId();
+
+		if (thingId == StaticThing.groupBox) {
+			if (num > 10) {
+				MessageUtil.sendFailMsg(channelId, msgMap, StaticCnServer.fail_openBox_ten);
+				return;
+			}
+		}
+		
 		DictThing thingObj = DictMap.dictThingMap.get(thingId + "");
 		if (thingId == StaticThing.copperKey) {
 			thingId = StaticThing.copperBox;
@@ -1342,6 +1348,73 @@ public class ThingHandler extends BaseHandler {
 		}
 
 		Map<String, String> thingMap = new HashMap<String, String>();
+		
+		if (thingId == StaticThing.groupBox) {
+			List<InstPlayerGroup> instPlayerGroupList = getInstPlayerGroupDAL().getList("instPlayerId = " + instPlayerId, 0);
+			if (instPlayerGroupList.size() > 0) {
+				InstPlayerGroup instPlayerGroup = instPlayerGroupList.get(0);
+				int calcBoxNum = instPlayerGroup.getOpenGroupBoxNum() + num;//按加上本次的箱子数量来计算
+				instPlayerGroup.setOpenGroupBoxNum(calcBoxNum);
+				
+				//将此箱子数量能必得的id获取出来
+				List<Integer> calcList = new ArrayList<>();
+				for (DictActivityGroupGiveZiRule obj : DictList.dictActivityGroupGiveZiRuleList) {
+					if (calcBoxNum >= obj.getStartBuyNum()) {
+						calcList.add(obj.getId());
+					}
+				}
+				
+				//和本地保存的做比较,没有的话给固定的,并记录
+				List<String> guThingList = new ArrayList<>();
+				int ownNum = 0;
+				for (int ziRuleId : calcList) {
+					if (!StringUtil.contains(instPlayerGroup.getGiveZiList(), ziRuleId + "", ";")) {
+						//如果不包含,给固定的物品
+						ownNum ++;
+						int generBoxId = 0;
+						int randomBase = 0;
+						DictActivityGroupGiveZiRule dictActivityGroupGiveZiRule = DictMap.dictActivityGroupGiveZiRuleMap.get(ziRuleId + "");
+						List<DictGenerBoxThing> hsGenerBoxThingList = new ArrayList<>();
+						for (DictGenerBoxThing generBoxThing : DictList.dictGenerBoxThingList) {
+							if (generBoxThing.getType() == dictActivityGroupGiveZiRule.getEndBuyNum()) {
+								hsGenerBoxThingList.add(generBoxThing);
+								randomBase += generBoxThing.getChance();
+							}
+						}
+						int randomNum = RandomUtil.getRangeInt(1, randomBase);
+						int randomSum = 0;
+						for (DictGenerBoxThing generBoxThing : hsGenerBoxThingList) {
+							randomSum += generBoxThing.getChance();
+							if (randomNum <= randomSum) {
+								generBoxId = generBoxThing.getId();
+								break;
+							}
+						}
+						guThingList.add("1_" + generBoxId);
+						if (instPlayerGroup.getGiveZiList().equals("")) {
+							instPlayerGroup.setGiveZiList(ziRuleId + "");
+						} else {
+							instPlayerGroup.setGiveZiList(instPlayerGroup.getGiveZiList() + ";" + ziRuleId);
+						}
+//						break;//按一个处理
+					}
+				}
+				
+				if (ownNum != 0) {
+					String[] openThingArray = openedThingIdList.split(";");
+					for (String guThingObj : guThingList) {
+						int randomIndex = RandomUtil.getRandomInt(openThingArray.length);
+						openThingArray [randomIndex] = guThingObj;//有可能会出现重复，就算了吧（因为单次开箱子最大只能开10个,放出的箱子数又有限）
+					}
+					openedThingIdList = "";
+					for (String thingString : openThingArray) {
+						openedThingIdList += thingString + ";";
+					}
+				}
+				getInstPlayerGroupDAL().update(instPlayerGroup, 0);
+			}
+		}
+		
 		// 添加箱子开出的物品
 		for (String thing : openedThingIdList.split(";")) {
 			int tableTypeId = 0;
@@ -1377,12 +1450,11 @@ public class ThingHandler extends BaseHandler {
 		// [格式为1_1;2_2; 下划线前面的数为1或2两个值, 等于1 表示去Dict_Gener_BoxThing表查, 等于2 表示去Dict_Special_BoxThing表查； 下划线后边的数为表的id；字符串最后不包含分号]
 		MessageData retMsgData = new MessageData();
 		retMsgData.putStringItem("1", StringUtil.noContainLastString(openedThingIdList));
-
+		
 		// 跑马灯相关
 		MarqueeUtil.putMsgToMarquee(channelId, StringUtil.noContainLastString(openedThingIdList), CustomMarqueeType.MARQUEE_TYPE_EQUIP, CustomMarqueeType.MARQUEE_SOURCE_OPENBOX);
 
 		MessageUtil.sendSyncMsg(channelId, syncMsgData);
 		MessageUtil.sendSuccMsg(channelId, msgMap, retMsgData);
 	}
-
 }

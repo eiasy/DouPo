@@ -18,7 +18,7 @@ import com.huayi.doupo.base.util.base.FileUtil;
 
 public class GenerDaoTemPlate {
 	
-	private static int whichDB = 0;
+	private static int whichDB = 6;
 	private static Connection conn;
 	private static String outPath="E:/doupoout/DaoOut";
 	private static Map<Integer, String> dbInfoMap = new HashMap<Integer, String>();

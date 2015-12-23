@@ -160,6 +160,32 @@ public class GmUtil extends DALFactory {
 	}
 	
 	/**
+	 * 序列化团购返元宝
+	 * @author mp
+	 * @date 2015-12-21 上午10:05:20
+	 * @Description
+	 */
+	public static void seriGroupRetGold () {
+		String path = System.getProperty("user.dir") + "/config/";
+		String fileName = "groupRetGold.txt";
+		FileUtil.createFile(path, fileName);
+		FileUtil.writeFile(path + fileName, SerializeUtil.serialize(ParamConfig.groupRetGoldMap));
+	}
+	
+	/**
+	 * 序列化团购前十名额外返利
+	 * @author mp
+	 * @date 2015-12-21 上午10:05:50
+	 * @Description
+	 */
+	public static void seriGroupRankRetGold () {
+		String path = System.getProperty("user.dir") + "/config/";
+		String fileName = "groupRankRetGold.txt";
+		FileUtil.createFile(path, fileName);
+		FileUtil.writeFile(path + fileName, SerializeUtil.serialize(ParamConfig.groupRankRetGoldMap));
+	}
+	
+	/**
 	 * 序列化竞技场奖励
 	 * @author mp
 	 * @date 2015-10-8 下午4:42:26

@@ -91,6 +91,7 @@ import com.huayi.doupo.logic.handler.util.PlayerUtil;
 import com.huayi.doupo.logic.handler.util.ThingUtil;
 import com.huayi.doupo.logic.handler.util.UserUtil;
 import com.huayi.doupo.logic.handler.util.YFireUtil;
+import com.huayi.doupo.logic.handler.util.unionwar.UnionWarUtil;
 import com.huayi.doupo.logic.util.ChannelMapUtil;
 import com.huayi.doupo.logic.util.MessageData;
 import com.huayi.doupo.logic.util.MessageUtil;
@@ -763,6 +764,9 @@ public class PlayerHandler extends BaseHandler{
 		} catch (Exception e) {
 			LogUtil.error("加载累计消耗时异常", e);
 		}
+		
+		UnionWarUtil.addViewer(instUser.getId());
+		
 //		System.out.println("--------------------------Login ----------" + (DateUtil.getCurrMill() - start));
 		
 	}
@@ -1779,7 +1783,7 @@ public class PlayerHandler extends BaseHandler{
 		}
 		
 		MessageUtil.sendSuccMsg(channelId, msgMap);
-		
+		UnionWarUtil.addViewer(instUser.getId());
 	}
 	
 	/**
@@ -3058,6 +3062,40 @@ public class PlayerHandler extends BaseHandler{
 		PlayerUtil.addPlayerMail(oppoPlayer, oppoPlayerId, oppoContent, 0, 0, ownPlayer.getPlayerName(), 3);
 		
 		MessageUtil.sendSuccMsg(channelId, msgMap);
+	}
+	
+	/**
+	 * 打开排行玩家界面
+	 * @author mp
+	 * @date 2015-12-16 上午9:58:09
+	 * @param msgMap
+	 * @param channelId
+	 * @throws Exception
+	 * @Description
+	 */
+	public void openPlayerRank (Map<String, Object> msgMap, String channelId) throws Exception {
+		
+		int instPlayerId = getInstPlayerId(channelId);// 玩家实例Id
+		if (instPlayerId == 0) {
+			MessageUtil.sendFailMsg(channelId, msgMap, StaticCnServer.fail_PlayerIdVerfy);
+			return;
+		}
+		
+		int pId = (int)msgMap.get("pId");//玩家实例Id
+		InstPlayer instPlayer = getInstPlayerDAL().getModel(pId, 0);
+		
+		if (instPlayer == null) {
+			MessageUtil.sendFailMsg(channelId, msgMap, StaticCnServer.fail_holdStar_noThePlayer);
+			return;
+		}
+		
+		int pVipLevel = instPlayer.getVipLevel();
+		int fightValue = PlayerFightValueMapUtil.getPlayerFightValue(pId);
+		
+		MessageData retMsgData = new MessageData();
+		retMsgData.putIntItem("1", pVipLevel);//vip等级
+		retMsgData.putIntItem("2", fightValue);//战斗力值
+		MessageUtil.sendSuccMsg(channelId, msgMap, retMsgData);
 	}
 	
 	/**

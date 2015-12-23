@@ -187,6 +187,9 @@ function Fighter:setCardID(cardID)
 		self:getBone("Card"):removeDisplay(0)
 		--Fix
         local skin = ActionManager.getCardBreatheAnimation(imagePath, 3)
+        if cardData.id == 2001 then
+            skin:setScale( 0.56 )
+        end
 		self:getBone("Card"):addDisplay(skin,0)
 	end
 	--"SBs_NN" 闪避上             "SBx_NN" 闪避上

@@ -124,4 +124,22 @@ public class HoldStarEnt extends BaseHandler{
 		}
 	}
 	
+	/**
+	 * 占星进入奖励界面
+	 * @author mp
+	 * @date 2015-12-18 下午6:06:17
+	 * @param msgMap
+	 * @param channelId
+	 * @Description
+	 */
+	public void intoHoldStarReward (HashMap<String, Object> msgMap, String channelId) {
+		try {
+			HandlerFactory.getHoldStarHandler().intoHoldStarReward(msgMap, channelId);
+		} catch (Exception e) {
+			LogUtil.error("instPlayerId = " + PlayerMapUtil.getPlayerIdByChannelId(channelId) + ", " + DictMap.sysMsgRuleMap.get((int)msgMap.get("header") + "").getName() + ",  " + msgMap, e);
+			e.printStackTrace();
+			MessageUtil.sendFailMsg(channelId, msgMap, errorHint(msgMap));
+		}
+	}
+	
 }

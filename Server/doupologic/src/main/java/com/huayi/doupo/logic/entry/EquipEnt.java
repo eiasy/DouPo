@@ -203,4 +203,21 @@ public class EquipEnt extends BaseHandler{
 		}
 	}
 
+	/**
+	 * 使用淬炼石
+	 * @author cui
+	 * @date	2015/12/08
+	 * @param msgMap
+	 * @param channelId
+	 */
+	public void useAdvanceThing (HashMap<String, Object> msgMap, String channelId){
+		try {
+			HandlerFactory.getEquipHandler().useAdvanceThing(msgMap, channelId);
+		} catch (Exception e) {
+			LogUtil.error("instPlayerId = " + PlayerMapUtil.getPlayerIdByChannelId(channelId) + ", " + DictMap.sysMsgRuleMap.get((int)msgMap.get("header") + "").getName() + ",  " + msgMap, e);
+			e.printStackTrace();
+			MessageUtil.sendFailMsg(channelId, msgMap, errorHint(msgMap));
+		}
+	}
+
 }

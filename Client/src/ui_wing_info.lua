@@ -108,7 +108,11 @@ local function propThing( obj )
         image_name:getChildByName("text_name"):setVisible( true )
         image_name:getChildByName("text_name"):setString(DictWing[tostring(thingData.int["3"])].name)
         image_quality:setVisible( true )
-        image_quality:loadTexture( "ui/wing_"..DictWing[ tostring( thingData.int["3"] ) ].sname..".png" )
+        if  thingData.int["3"] >= 5 then
+            image_quality:loadTexture( "ui/wing_all.png" )
+        else
+            image_quality:loadTexture( "ui/wing_"..DictWing[ tostring( thingData.int["3"] ) ].sname..".png" )
+        end
         local str = "一阶神羽"
         if thingData.int["5"] == 1 then
         elseif thingData.int["5"] == 2 then
@@ -119,8 +123,12 @@ local function propThing( obj )
         ccui.Helper:seekNodeByName( image_down , "text_name" ):setTextColor(cc.c3b(255,255,255))
         ccui.Helper:seekNodeByName( image_down , "text_name" ):setString(str)
         local pageViewItem = ui_pageView:getPage(_curPageViewIndex)
-        utils.addArmature( pageViewItem , 54 + thingData.int["5"] , thingData.int["5"]..DictWing[tostring(thingData.int["3"])].sname , pageViewItem:getContentSize().width / 2, pageViewItem:getContentSize().height / 2 - 30 , -2 , pageViewItem:getChildByName("image_card"):getScale() )
-        
+        local actionName = DictWing[tostring(thingData.int["3"])].actionName
+        if actionName and actionName ~= "" then
+            utils.addArmature( pageViewItem , 54 + thingData.int["5"] , actionName , pageViewItem:getContentSize().width / 2, pageViewItem:getContentSize().height / 2 - 30 , -2 , pageViewItem:getChildByName("image_card"):getScale() )
+        else
+            utils.addArmature( pageViewItem , 54 + thingData.int["5"] , "0"..thingData.int["5"]..DictWing[tostring(thingData.int["3"])].sname , pageViewItem:getContentSize().width / 2, pageViewItem:getContentSize().height / 2 - 30 , -2 , pageViewItem:getChildByName("image_card"):getScale() )
+        end
         btn_up:setVisible( false )
         
         if cardWingLucks then
@@ -157,7 +165,7 @@ local function propThing( obj )
                     if i < 3 and tonumber( wingLucks[ i ] ) <= thingData.int["5"] then
                         wingLuckName:setTextColor(cc.c4b(18, 239, 18, 255))
 						wingCondition:setVisible(false)
-                    elseif i == 3 and tonumber( wingLucks[ i ] ) == thingData.int["3"] then
+                    elseif i == 3 and ( tonumber( wingLucks[ i ] ) == thingData.int["3"] or thingData.int["3"] >= 5 ) then
                         wingLuckName:setTextColor(cc.c4b(18, 239, 18, 255))
 						wingCondition:setVisible(false)
                     end
@@ -293,8 +301,12 @@ function UIWingInfo.init()
                 end
             elseif sender == btn_inlay then--转换
                 if thingData then
-                    UIWingChange.setData( thingData , ui_pageView:getPage(_curPageViewIndex):getTag() )
-                    UIManager.pushScene("ui_wing_change")
+                    if thingData.int["3"] >= 5 then
+                        UIManager.showToast("全属性翅膀不需要转换")
+                    else
+                        UIWingChange.setData( thingData , ui_pageView:getPage(_curPageViewIndex):getTag() )
+                        UIManager.pushScene("ui_wing_change")
+                    end
                 else
                     UIManager.showToast("未佩戴任何神羽")
                 end

@@ -38,13 +38,13 @@
                     <OutlineColor A="255" R="255" G="0" B="0" />
                     <ShadowColor A="255" R="110" G="110" B="110" />
                   </AbstractNodeData>
-                  <AbstractNodeData Name="view_page" ActionTag="39" ZOrder="1" Tag="509109" IconVisible="False" LeftMargin="101.0000" RightMargin="99.0000" TopMargin="87.0000" BottomMargin="602.0000" TouchEnable="True" ClipAble="True" BackColorAlpha="100" ColorAngle="270.0000" ScrollDirectionType="0" ctype="PageViewObjectData">
-                    <Size X="440.0000" Y="366.0000" />
+                  <AbstractNodeData Name="view_page" ActionTag="39" ZOrder="1" Tag="509109" IconVisible="False" LeftMargin="7.0000" RightMargin="7.0000" TopMargin="87.0000" BottomMargin="602.0000" TouchEnable="True" ClipAble="True" BackColorAlpha="100" ColorAngle="270.0000" ScrollDirectionType="0" ctype="PageViewObjectData">
+                    <Size X="626.0000" Y="366.0000" />
                     <Children>
                       <AbstractNodeData Name="panel" ActionTag="40" Tag="509110" IconVisible="False" TouchEnable="True" BackColorAlpha="100" ColorAngle="270.0000" ctype="PanelObjectData">
-                        <Size X="440.0000" Y="366.0000" />
+                        <Size X="626.0000" Y="366.0000" />
                         <Children>
-                          <AbstractNodeData Name="image_di_name" ActionTag="26" ZOrder="1" UserData="ignoreSize" Tag="506673" IconVisible="False" LeftMargin="-16.0000" RightMargin="-14.0000" TopMargin="293.0000" BottomMargin="-3.0000" ctype="ImageViewObjectData">
+                          <AbstractNodeData Name="image_di_name" ActionTag="26" ZOrder="1" UserData="ignoreSize" Tag="506673" IconVisible="False" LeftMargin="78.0000" RightMargin="78.0000" TopMargin="293.0000" BottomMargin="-3.0000" ctype="ImageViewObjectData">
                             <Size X="470.0000" Y="76.0000" />
                             <Children>
                               <AbstractNodeData Name="text_name" ActionTag="20" Tag="509099" IconVisible="False" LeftMargin="165.0000" RightMargin="165.0000" TopMargin="16.0000" BottomMargin="16.0000" FontSize="35" LabelText="慕骨老人" ctype="TextObjectData">
@@ -83,30 +83,30 @@
                               </AbstractNodeData>
                             </Children>
                             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                            <Position X="219.0000" Y="35.0000" />
+                            <Position X="313.0000" Y="35.0000" />
                             <Scale ScaleX="1.0000" ScaleY="1.0000" />
                             <CColor A="255" R="255" G="255" B="255" />
-                            <PrePosition X="0.4977" Y="0.0956" />
+                            <PrePosition X="0.5000" Y="0.0956" />
                             <PreSize X="1.0682" Y="0.2077" />
                             <FileData Type="Normal" Path="ui/quality_middle_bar_blue.png" Plist="" />
                           </AbstractNodeData>
-                          <AbstractNodeData Name="image_property" ActionTag="37" ZOrder="1" UserData="ignoreSize" Tag="509107" IconVisible="False" LeftMargin="24.0000" RightMargin="346.0000" TopMargin="15.0000" BottomMargin="209.0000" ctype="ImageViewObjectData">
+                          <AbstractNodeData Name="image_property" ActionTag="37" ZOrder="1" UserData="ignoreSize" Tag="509107" IconVisible="False" LeftMargin="121.0000" RightMargin="435.0000" TopMargin="15.0000" BottomMargin="209.0000" ctype="ImageViewObjectData">
                             <Size X="70.0000" Y="142.0000" />
                             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                            <Position X="59.0000" Y="280.0000" />
+                            <Position X="156.0000" Y="280.0000" />
                             <Scale ScaleX="1.0000" ScaleY="1.0000" />
                             <CColor A="255" R="255" G="255" B="255" />
-                            <PrePosition X="0.1341" Y="0.7650" />
+                            <PrePosition X="0.2492" Y="0.7650" />
                             <PreSize X="0.1591" Y="0.3880" />
                             <FileData Type="Normal" Path="ui/kpxx_kongzhixing.png" Plist="" />
                           </AbstractNodeData>
-                          <AbstractNodeData Name="image_card" ActionTag="25" UserData="ignoreSize" Tag="506669" IconVisible="False" LeftMargin="-0.5000" RightMargin="1.5000" TopMargin="-33.0000" BottomMargin="-51.0000" ctype="ImageViewObjectData">
+                          <AbstractNodeData Name="image_card" ActionTag="25" UserData="ignoreSize" Tag="506669" IconVisible="False" LeftMargin="93.5000" RightMargin="93.5000" TopMargin="-33.0000" BottomMargin="-51.0000" ctype="ImageViewObjectData">
                             <Size X="439.0000" Y="450.0000" />
                             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                            <Position X="219.0000" Y="174.0000" />
+                            <Position X="313.0000" Y="174.0000" />
                             <Scale ScaleX="1.0000" ScaleY="1.0000" />
                             <CColor A="255" R="255" G="255" B="255" />
-                            <PrePosition X="0.4977" Y="0.4754" />
+                            <PrePosition X="0.5000" Y="0.4754" />
                             <PreSize X="0.9977" Y="1.2295" />
                             <FileData Type="Normal" Path="ui/yafei.png" Plist="" />
                           </AbstractNodeData>
@@ -123,11 +123,11 @@
                         <ColorVector ScaleX="0.0000" ScaleY="-1.0000" />
                       </AbstractNodeData>
                     </Children>
-                    <AnchorPoint />
-                    <Position X="101.0000" Y="602.0000" />
+                    <AnchorPoint ScaleX="1.0000" />
+                    <Position X="633.0000" Y="602.0000" />
                     <Scale ScaleX="1.0000" ScaleY="1.0000" />
                     <CColor A="255" R="255" G="255" B="255" />
-                    <PrePosition X="0.1578" Y="0.5706" />
+                    <PrePosition X="0.9891" Y="0.5706" />
                     <PreSize X="0.6875" Y="0.3469" />
                     <SingleColor A="255" R="150" G="150" B="100" />
                     <FirstColor A="255" R="255" G="255" B="255" />
@@ -158,34 +158,6 @@
                         <PrePosition X="0.5000" Y="0.3574" />
                         <PreSize X="0.4684" Y="0.5721" />
                         <FileData Type="Normal" Path="ui/zb_diwen.png" Plist="" />
-                      </AbstractNodeData>
-                      <AbstractNodeData Name="btn_l" ActionTag="41" UserData="ignoreSize" Tag="509111" Rotation="-90.0000" RotationSkewX="-90.0000" RotationSkewY="-90.0000" IconVisible="False" LeftMargin="163.5000" RightMargin="145.5000" TopMargin="540.0000" BottomMargin="6.0000" TouchEnable="True" FlipX="True" FontSize="14" ctype="ButtonObjectData">
-                        <Size X="71.0000" Y="78.0000" />
-                        <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                        <Position X="199.0000" Y="45.0000" />
-                        <Scale ScaleX="1.0000" ScaleY="1.0000" />
-                        <CColor A="255" R="255" G="255" B="255" />
-                        <PrePosition X="0.5237" Y="0.0721" />
-                        <PreSize X="0.1868" Y="0.1250" />
-                        <TextColor A="255" R="255" G="255" B="255" />
-                        <PressedFileData Type="Normal" Path="ui/tk_j_jiantou.png" Plist="" />
-                        <NormalFileData Type="Normal" Path="ui/tk_j_jiantou.png" Plist="" />
-                        <OutlineColor A="255" R="255" G="0" B="0" />
-                        <ShadowColor A="255" R="110" G="110" B="110" />
-                      </AbstractNodeData>
-                      <AbstractNodeData Name="btn_r" ActionTag="43" UserData="ignoreSize" Tag="509113" Rotation="-90.0000" RotationSkewX="-90.0000" RotationSkewY="-90.0000" IconVisible="False" LeftMargin="163.5000" RightMargin="145.5000" TopMargin="6.0000" BottomMargin="540.0000" TouchEnable="True" FontSize="14" ctype="ButtonObjectData">
-                        <Size X="71.0000" Y="78.0000" />
-                        <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                        <Position X="199.0000" Y="579.0000" />
-                        <Scale ScaleX="1.0000" ScaleY="1.0000" />
-                        <CColor A="255" R="255" G="255" B="255" />
-                        <PrePosition X="0.5237" Y="0.9279" />
-                        <PreSize X="0.1868" Y="0.1250" />
-                        <TextColor A="255" R="255" G="255" B="255" />
-                        <PressedFileData Type="Normal" Path="ui/tk_j_jiantou.png" Plist="" />
-                        <NormalFileData Type="Normal" Path="ui/tk_j_jiantou.png" Plist="" />
-                        <OutlineColor A="255" R="255" G="0" B="0" />
-                        <ShadowColor A="255" R="110" G="110" B="110" />
                       </AbstractNodeData>
                     </Children>
                     <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
@@ -1337,6 +1309,34 @@
                     <DisabledFileData Type="Normal" Path="ui/bb_btn03.png" Plist="" />
                     <PressedFileData Type="Normal" Path="ui/genghuan.png" Plist="" />
                     <NormalFileData Type="Normal" Path="ui/genghuan.png" Plist="" />
+                    <OutlineColor A="255" R="255" G="0" B="0" />
+                    <ShadowColor A="255" R="110" G="110" B="110" />
+                  </AbstractNodeData>
+                  <AbstractNodeData Name="btn_l" ActionTag="41" UserData="ignoreSize" Tag="509111" Rotation="180.0000" RotationSkewX="180.0000" RotationSkewY="180.0000" IconVisible="False" LeftMargin="54.3135" RightMargin="514.6865" TopMargin="246.0000" BottomMargin="731.0000" TouchEnable="True" FontSize="14" ctype="ButtonObjectData">
+                    <Size X="71.0000" Y="78.0000" />
+                    <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                    <Position X="89.8135" Y="770.0000" />
+                    <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                    <CColor A="255" R="255" G="255" B="255" />
+                    <PrePosition X="0.1403" Y="0.7299" />
+                    <PreSize X="0.1868" Y="0.1250" />
+                    <TextColor A="255" R="255" G="255" B="255" />
+                    <PressedFileData Type="Normal" Path="ui/tk_j_jiantou.png" Plist="" />
+                    <NormalFileData Type="Normal" Path="ui/tk_j_jiantou.png" Plist="" />
+                    <OutlineColor A="255" R="255" G="0" B="0" />
+                    <ShadowColor A="255" R="110" G="110" B="110" />
+                  </AbstractNodeData>
+                  <AbstractNodeData Name="btn_r" ActionTag="43" UserData="ignoreSize" Tag="509113" IconVisible="False" LeftMargin="519.2366" RightMargin="49.7634" TopMargin="246.0000" BottomMargin="731.0000" TouchEnable="True" FontSize="14" ctype="ButtonObjectData">
+                    <Size X="71.0000" Y="78.0000" />
+                    <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                    <Position X="554.7366" Y="770.0000" />
+                    <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                    <CColor A="255" R="255" G="255" B="255" />
+                    <PrePosition X="0.8668" Y="0.7299" />
+                    <PreSize X="0.1868" Y="0.1250" />
+                    <TextColor A="255" R="255" G="255" B="255" />
+                    <PressedFileData Type="Normal" Path="ui/tk_j_jiantou.png" Plist="" />
+                    <NormalFileData Type="Normal" Path="ui/tk_j_jiantou.png" Plist="" />
                     <OutlineColor A="255" R="255" G="0" B="0" />
                     <ShadowColor A="255" R="110" G="110" B="110" />
                   </AbstractNodeData>

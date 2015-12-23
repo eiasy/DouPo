@@ -5,6 +5,7 @@ local ui_userFight = nil
 local ui_userUnio = nil
 local ui_headIcon = nil
 local ui_vip = nil
+local ui_vipText = nil
 local userData = nil
 local function netCallbackFunc(msgData)
     local code = tonumber(msgData.header)
@@ -194,6 +195,7 @@ function UIAllianceTalk.init()
     local icon_img = ccui.Helper:seekNodeByName( user_bg_1 , "image_frame_title" ) 
     ui_headIcon = ccui.Helper:seekNodeByName( icon_img , "image_title" )
     ui_vip = ccui.Helper:seekNodeByName( icon_img , "image_vip" )
+    ui_vipText = ccui.Helper:seekNodeByName( user_bg_1 , "text_vip" )
     local btn_talk = ccui.Helper:seekNodeByName( UIAllianceTalk.Widget , "btn_cancel" )
     local btn_email = ccui.Helper:seekNodeByName( UIAllianceTalk.Widget , "btn_ok" )
     local btn_look = ccui.Helper:seekNodeByName(UIAllianceTalk.Widget, "btn_look")
@@ -211,8 +213,8 @@ function UIAllianceTalk.init()
                     UITalk.freshToUser( ui_userName:getString() )
                 end
             elseif sender == btn_email then
-                if dp.getUserData().roleLevel < 22 then
-                    UIManager.showToast("需要等级达到22级")
+                if dp.getUserData().roleLevel < 10 then
+                    UIManager.showToast("需要等级达到10级")
                 else
                     showEmailInfo()
                 end
@@ -252,6 +254,7 @@ function UIAllianceTalk.freshInfo( userName , userLvl , userFight , userUnio , h
     else
          ui_vip:setVisible( true )
     end
+    ui_vipText:setString("VIP " .. vip)
 end
 function UIAllianceTalk.setup()
 end

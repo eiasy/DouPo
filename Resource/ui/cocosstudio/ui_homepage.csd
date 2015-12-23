@@ -161,32 +161,6 @@
                 <PreSize X="0.1281" Y="0.0880" />
                 <FileData Type="Normal" Path="ui/home_more_zi.png" Plist="" />
               </AbstractNodeData>
-              <AbstractNodeData Name="btn_prize" ActionTag="11" UserData="ignoreSize" Tag="126073" IconVisible="False" LeftMargin="535.9275" RightMargin="11.0725" TopMargin="137.0916" BottomMargin="902.9084" TouchEnable="True" FontSize="30" Scale9Width="93" Scale9Height="96" ctype="ButtonObjectData">
-                <Size X="93.0000" Y="96.0000" />
-                <Children>
-                  <AbstractNodeData Name="image_hint" ActionTag="45" UserData="ignoreSize" Tag="223102" IconVisible="False" LeftMargin="68.4982" RightMargin="-4.4982" TopMargin="-1.4988" BottomMargin="68.4988" Scale9Width="29" Scale9Height="29" ctype="ImageViewObjectData">
-                    <Size X="29.0000" Y="29.0000" />
-                    <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                    <Position X="82.9982" Y="82.9988" />
-                    <Scale ScaleX="1.0000" ScaleY="1.0000" />
-                    <CColor A="255" R="255" G="255" B="255" />
-                    <PrePosition X="0.8925" Y="0.8646" />
-                    <PreSize X="0.3118" Y="0.3021" />
-                    <FileData Type="Normal" Path="ui/jiao.png" Plist="" />
-                  </AbstractNodeData>
-                </Children>
-                <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                <Position X="582.4275" Y="950.9084" />
-                <Scale ScaleX="1.0000" ScaleY="1.0000" />
-                <CColor A="255" R="255" G="255" B="255" />
-                <PrePosition X="0.9100" Y="0.8371" />
-                <PreSize X="0.1453" Y="0.0845" />
-                <TextColor A="255" R="255" G="255" B="255" />
-                <PressedFileData Type="Normal" Path="ui/home_lingjiangzhongxin.png" Plist="" />
-                <NormalFileData Type="Normal" Path="ui/home_lingjiangzhongxin.png" Plist="" />
-                <OutlineColor A="255" R="255" G="0" B="0" />
-                <ShadowColor A="255" R="110" G="110" B="110" />
-              </AbstractNodeData>
               <AbstractNodeData Name="btn_wing" ActionTag="-1636946835" UserData="ignoreSize" Tag="98" IconVisible="False" LeftMargin="535.9501" RightMargin="22.0499" TopMargin="770.6284" BottomMargin="265.3716" TouchEnable="True" FontSize="30" Scale9Width="82" Scale9Height="100" ctype="ButtonObjectData">
                 <Size X="82.0000" Y="100.0000" />
                 <Children>
@@ -393,6 +367,58 @@
                 <TextColor A="255" R="255" G="255" B="255" />
                 <PressedFileData Type="Normal" Path="ui/home_trial.png" Plist="" />
                 <NormalFileData Type="Normal" Path="ui/home_trial.png" Plist="" />
+                <OutlineColor A="255" R="255" G="0" B="0" />
+                <ShadowColor A="255" R="110" G="110" B="110" />
+              </AbstractNodeData>
+              <AbstractNodeData Name="btn_prize" ActionTag="11" UserData="ignoreSize" Tag="126073" IconVisible="False" LeftMargin="535.9275" RightMargin="11.0725" TopMargin="137.0916" BottomMargin="902.9084" TouchEnable="True" FontSize="30" Scale9Width="93" Scale9Height="96" ctype="ButtonObjectData">
+                <Size X="93.0000" Y="96.0000" />
+                <Children>
+                  <AbstractNodeData Name="image_hint" ActionTag="45" UserData="ignoreSize" Tag="223102" IconVisible="False" LeftMargin="68.4982" RightMargin="-4.4982" TopMargin="-1.4988" BottomMargin="68.4988" Scale9Width="29" Scale9Height="29" ctype="ImageViewObjectData">
+                    <Size X="29.0000" Y="29.0000" />
+                    <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                    <Position X="82.9982" Y="82.9988" />
+                    <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                    <CColor A="255" R="255" G="255" B="255" />
+                    <PrePosition X="0.8925" Y="0.8646" />
+                    <PreSize X="0.3118" Y="0.3021" />
+                    <FileData Type="Normal" Path="ui/jiao.png" Plist="" />
+                  </AbstractNodeData>
+                </Children>
+                <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                <Position X="582.4275" Y="950.9084" />
+                <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                <CColor A="255" R="255" G="255" B="255" />
+                <PrePosition X="0.9100" Y="0.8371" />
+                <PreSize X="0.1453" Y="0.0845" />
+                <TextColor A="255" R="255" G="255" B="255" />
+                <PressedFileData Type="Normal" Path="ui/home_lingjiangzhongxin.png" Plist="" />
+                <NormalFileData Type="Normal" Path="ui/home_lingjiangzhongxin.png" Plist="" />
+                <OutlineColor A="255" R="255" G="0" B="0" />
+                <ShadowColor A="255" R="110" G="110" B="110" />
+              </AbstractNodeData>
+              <AbstractNodeData Name="btn_purchase" ActionTag="529755968" UserData="ignoreSize" Tag="74" IconVisible="False" LeftMargin="-0.5000" RightMargin="527.5000" TopMargin="226.0950" BottomMargin="793.9050" TouchEnable="True" FontSize="30" Scale9Width="113" Scale9Height="116" ctype="ButtonObjectData">
+                <Size X="113.0000" Y="116.0000" />
+                <Children>
+                  <AbstractNodeData Name="image_hint" ActionTag="-1705256732" UserData="ignoreSize" Tag="75" IconVisible="False" LeftMargin="78.7316" RightMargin="5.2684" TopMargin="6.0013" BottomMargin="80.9987" Scale9Width="29" Scale9Height="29" ctype="ImageViewObjectData">
+                    <Size X="29.0000" Y="29.0000" />
+                    <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                    <Position X="93.2316" Y="95.4987" />
+                    <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                    <CColor A="255" R="255" G="255" B="255" />
+                    <PrePosition X="0.8251" Y="0.8233" />
+                    <PreSize X="0.3118" Y="0.3021" />
+                    <FileData Type="Normal" Path="ui/jiao.png" Plist="" />
+                  </AbstractNodeData>
+                </Children>
+                <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                <Position X="56.0000" Y="851.9050" />
+                <Scale ScaleX="0.8000" ScaleY="0.8000" />
+                <CColor A="255" R="255" G="255" B="255" />
+                <PrePosition X="0.0875" Y="0.7499" />
+                <PreSize X="0.1766" Y="0.1021" />
+                <TextColor A="255" R="255" G="255" B="255" />
+                <PressedFileData Type="Normal" Path="ui/home_purchase.png" Plist="" />
+                <NormalFileData Type="Normal" Path="ui/home_purchase.png" Plist="" />
                 <OutlineColor A="255" R="255" G="0" B="0" />
                 <ShadowColor A="255" R="110" G="110" B="110" />
               </AbstractNodeData>

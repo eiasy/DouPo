@@ -526,6 +526,14 @@ StaticSysConfig = {
 
 		holdStarFreeRefreshTimes = 263, --每天可免费刷新占星次数
 
-		holdStarCanHoldTimes = 264 --每天可占星次数
+		holdStarCanHoldTimes = 264, --每天可占星次数
+
+		openGroupBoxScore = 265, --多少开启度能打开豪华箱子
+
+		getGroupBoxThingScore = 266, --个人多少开启度可领豪华箱子物品
+
+		canLookRank = 267, --团购排行可查看前多少名的玩家
+
+		canRetRank = 268 --团购排行多少名可得到返利
 
 }

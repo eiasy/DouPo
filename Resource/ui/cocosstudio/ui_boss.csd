@@ -268,7 +268,7 @@
                     <PreSize X="0.7469" Y="0.0780" />
                     <FileData Type="Normal" Path="ui/quality_small_bar_purple.png" Plist="" />
                   </AbstractNodeData>
-                  <AbstractNodeData Name="image_time" Visible="False" ActionTag="83" UserData="ignoreSize" Tag="369779" IconVisible="False" LeftMargin="126.3846" RightMargin="126.6154" TopMargin="679.5539" BottomMargin="185.4461" ctype="ImageViewObjectData">
+                  <AbstractNodeData Name="image_time" ActionTag="83" UserData="ignoreSize" Tag="369779" IconVisible="False" LeftMargin="126.3846" RightMargin="126.6154" TopMargin="679.5539" BottomMargin="185.4461" ctype="ImageViewObjectData">
                     <Size X="387.0000" Y="58.0000" />
                     <Children>
                       <AbstractNodeData Name="image_countdown" Visible="False" ActionTag="85" UserData="ignoreSize" Tag="369781" IconVisible="False" LeftMargin="76.4988" RightMargin="75.5012" TopMargin="79.0046" BottomMargin="-57.0046" ctype="ImageViewObjectData">
@@ -431,25 +431,25 @@
                         <OutlineColor A="255" R="255" G="255" B="255" />
                         <ShadowColor A="255" R="110" G="110" B="110" />
                       </AbstractNodeData>
-                      <AbstractNodeData Name="text_name" ActionTag="-1513468586" Tag="157" IconVisible="False" LeftMargin="-44.5769" RightMargin="311.5769" TopMargin="-57.6431" BottomMargin="78.6431" FontSize="26" LabelText="魂灭世子" OutlineSize="2" OutlineEnabled="True" ShadowOffsetX="2" ShadowOffsetY="-2" ctype="TextObjectData">
-                        <Size X="120.0000" Y="37.0000" />
+                      <AbstractNodeData Name="text_name" ActionTag="-1513468586" Tag="157" IconVisible="False" LeftMargin="-41.5770" RightMargin="316.5770" TopMargin="-54.4873" BottomMargin="78.4873" FontSize="24" LabelText="魂灭世子" OutlineSize="2" OutlineEnabled="True" ShadowOffsetX="2" ShadowOffsetY="-2" ctype="TextObjectData">
+                        <Size X="112.0000" Y="34.0000" />
                         <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                        <Position X="15.4231" Y="97.1431" />
+                        <Position X="14.4230" Y="95.4873" />
                         <Scale ScaleX="1.0000" ScaleY="1.0000" />
                         <CColor A="255" R="255" G="0" B="0" />
-                        <PrePosition X="0.0399" Y="1.6749" />
+                        <PrePosition X="0.0373" Y="1.6463" />
                         <PreSize />
                         <FontResource Type="Normal" Path="data/ui_font.ttf" Plist="" />
                         <OutlineColor A="255" R="255" G="255" B="255" />
                         <ShadowColor A="255" R="110" G="110" B="110" />
                       </AbstractNodeData>
-                      <AbstractNodeData Name="text_award" ActionTag="-411687284" Tag="79" IconVisible="False" LeftMargin="160.7688" RightMargin="-109.7688" TopMargin="-54.6432" BottomMargin="78.6432" FontSize="24" LabelText="大量银币、元宝及屠魔积分" OutlineSize="2" OutlineEnabled="True" ShadowOffsetX="2" ShadowOffsetY="-2" ctype="TextObjectData">
+                      <AbstractNodeData Name="text_award" ActionTag="-411687284" Tag="79" IconVisible="False" LeftMargin="160.7688" RightMargin="-109.7688" TopMargin="-54.4873" BottomMargin="78.4873" FontSize="24" LabelText="大量银币、元宝及屠魔积分" OutlineSize="2" OutlineEnabled="True" ShadowOffsetX="2" ShadowOffsetY="-2" ctype="TextObjectData">
                         <Size X="336.0000" Y="34.0000" />
                         <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                        <Position X="328.7688" Y="95.6432" />
+                        <Position X="328.7688" Y="95.4873" />
                         <Scale ScaleX="1.0000" ScaleY="1.0000" />
                         <CColor A="255" R="255" G="0" B="0" />
-                        <PrePosition X="0.8495" Y="1.6490" />
+                        <PrePosition X="0.8495" Y="1.6463" />
                         <PreSize />
                         <FontResource Type="Normal" Path="data/ui_font.ttf" Plist="" />
                         <OutlineColor A="255" R="255" G="255" B="255" />
@@ -464,7 +464,7 @@
                     <PreSize X="0.8377" Y="1.7576" />
                     <FileData Type="Normal" Path="ui/boss_08.png" Plist="" />
                   </AbstractNodeData>
-                  <AbstractNodeData Name="image_basedi_info" ActionTag="96" ZOrder="1" Tag="369792" IconVisible="False" LeftMargin="46.9986" RightMargin="47.0014" TopMargin="717.4996" BottomMargin="124.5004" ctype="ImageViewObjectData">
+                  <AbstractNodeData Name="image_basedi_info" Visible="False" ActionTag="96" ZOrder="1" Tag="369792" IconVisible="False" LeftMargin="46.9986" RightMargin="47.0014" TopMargin="717.4996" BottomMargin="124.5004" ctype="ImageViewObjectData">
                     <Size X="546.0000" Y="81.0000" />
                     <Children>
                       <AbstractNodeData Name="text_ranking" Visible="False" ActionTag="105" Tag="369801" IconVisible="False" LeftMargin="38.0000" RightMargin="367.0000" TopMargin="12.0005" BottomMargin="42.9995" FontSize="21" LabelText="当前排名：111" ctype="TextObjectData">
@@ -825,13 +825,13 @@
                     <PreSize X="0.8531" Y="0.0878" />
                     <FileData Type="Normal" Path="ui/pai_zidi.png" Plist="" />
                   </AbstractNodeData>
-                  <AbstractNodeData Name="Panel_card" ActionTag="11" Tag="370178" IconVisible="False" TopMargin="71.0000" BottomMargin="349.0000" TouchEnable="True" ClipAble="True" BackColorAlpha="100" ColorAngle="270.0000" ctype="PanelObjectData">
+                  <AbstractNodeData Name="Panel_card" ActionTag="11" Tag="370178" IconVisible="False" LeftMargin="-0.0009" RightMargin="0.0010" TopMargin="52.0005" BottomMargin="367.9995" TouchEnable="True" ClipAble="True" BackColorAlpha="100" ColorAngle="270.0000" ctype="PanelObjectData">
                     <Size X="640.0000" Y="503.0000" />
                     <AnchorPoint />
-                    <Position Y="349.0000" />
+                    <Position X="-0.0009" Y="367.9995" />
                     <Scale ScaleX="1.0000" ScaleY="1.0000" />
                     <CColor A="255" R="255" G="255" B="255" />
-                    <PrePosition Y="0.3781" />
+                    <PrePosition X="0.0000" Y="0.3987" />
                     <PreSize X="1.0000" Y="0.5450" />
                     <SingleColor A="255" R="150" G="200" B="255" />
                     <FirstColor A="255" R="255" G="255" B="255" />

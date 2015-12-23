@@ -7,42 +7,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import com.huayi.doupo.base.model.*;
 import org.junit.Test;
 
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.huayi.doupo.base.dal.factory.DALFactory;
-import com.huayi.doupo.base.model.DictAcupointNode;
-import com.huayi.doupo.base.model.DictAdvance;
-import com.huayi.doupo.base.model.DictBeautyCardExp;
-import com.huayi.doupo.base.model.DictCard;
-import com.huayi.doupo.base.model.DictCardExp;
-import com.huayi.doupo.base.model.DictCardExpAdd;
-import com.huayi.doupo.base.model.DictChapterActivityVip;
-import com.huayi.doupo.base.model.DictEquipStrengthen;
-import com.huayi.doupo.base.model.DictEquipment;
-import com.huayi.doupo.base.model.DictFire;
-import com.huayi.doupo.base.model.DictFireExp;
-import com.huayi.doupo.base.model.DictKungFu;
-import com.huayi.doupo.base.model.DictKungFuQuality;
-import com.huayi.doupo.base.model.DictKungFuTierAdd;
-import com.huayi.doupo.base.model.DictLevelProp;
-import com.huayi.doupo.base.model.DictMagicLevel;
-import com.huayi.doupo.base.model.DictManualSkillExp;
-import com.huayi.doupo.base.model.DictPill;
-import com.huayi.doupo.base.model.DictQuality;
-import com.huayi.doupo.base.model.DictRecruitCard;
-import com.huayi.doupo.base.model.DictRecruitSpecialCard;
-import com.huayi.doupo.base.model.DictRecruitType;
-import com.huayi.doupo.base.model.DictTitleDetail;
-import com.huayi.doupo.base.model.DictVIP;
-import com.huayi.doupo.base.model.InstPlayer;
-import com.huayi.doupo.base.model.InstPlayerCard;
-import com.huayi.doupo.base.model.InstPlayerFire;
-import com.huayi.doupo.base.model.InstPlayerFormation;
-import com.huayi.doupo.base.model.InstPlayerKungFu;
-import com.huayi.doupo.base.model.InstPlayerMagic;
 import com.huayi.doupo.base.model.dict.DictData;
 import com.huayi.doupo.base.model.dict.DictList;
 import com.huayi.doupo.base.model.dict.DictMap;
@@ -1453,6 +1424,7 @@ public class FormulaUtil extends DALFactory{
 	 * 返回此经验下法宝跟功法能达到多少级和剩余经验
 	 * @author hzw
 	 * @date 2014-6-26下午3:01:29
+	 * @update	by cui 2015/12/09
 	 * @param instPlayerMagic  法宝跟功法
 	 * @param exp	 增加的经验值
 	 * @param pcLevel 玩家当前等级
@@ -1463,32 +1435,28 @@ public class FormulaUtil extends DALFactory{
 	public static Map<String, Integer> calcMagicLevel(InstPlayerMagic instPlayerMagic, int exp, int pcLevel) throws Exception{
 		Map<String, Integer> retMap = new HashMap<String, Integer>();
 		int magicLevelId = instPlayerMagic.getMagicLevelId();
+		int magicLevelMax = 40;	//默认上限
+		if(instPlayerMagic.getAdvanceId() > 0){
+			DictMagicrefining dictMagicrefining = DictMap.dictMagicrefiningMap.get(instPlayerMagic.getAdvanceId());
+			magicLevelMax = dictMagicrefining.getMaxStrengthen();
+		}
 		int level = DictMap.dictMagicLevelMap.get(magicLevelId + "").getLevel();
 		List<DictMagicLevel> dictMagicLevelList = (List<DictMagicLevel>)DictMapList.dictMagicLevelMap.get(instPlayerMagic.getMagicType());
-		for(int i = 0; i < dictMagicLevelList.size(); i++){
-			DictMagicLevel dictMagicLevel = dictMagicLevelList.get(i);
-			if(dictMagicLevel.getExp() == 0 && dictMagicLevel.getLevel() == level ){
-				exp = 0;
-				magicLevelId = dictMagicLevel.getId();
-				break;
-			}
-			else if(dictMagicLevel.getExp() <= exp && dictMagicLevel.getLevel() == level){
-				level = dictMagicLevel.getLevel() + 1;
-				exp = exp - dictMagicLevel.getExp();
-			}else if(dictMagicLevel.getExp() > exp && dictMagicLevel.getLevel() == level){
-				magicLevelId = dictMagicLevel.getId();
-				break;
-			}
-			if(level >= pcLevel)
-			{
-				magicLevelId = dictMagicLevelList.get(i + 1).getId();
-				exp = 0;
-				break;
+
+		for (DictMagicLevel magicLevel : dictMagicLevelList){
+			if(magicLevel.getLevel() == level){
+				magicLevelId = magicLevel.getId();
+				if(level >= magicLevelMax || level >= pcLevel){
+					break;
+				}
+				if(exp < magicLevel.getExp()){
+					break;
+				}
+				exp -= magicLevel.getExp();
+				level += 1;
 			}
 		}
-		
-		
-		
+
 		retMap.put("magicLevelId", magicLevelId);
 		retMap.put("exp", exp);
 		return retMap;

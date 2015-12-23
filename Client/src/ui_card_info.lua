@@ -72,8 +72,8 @@ local function setBottomBtn(enabled)
 	local friendBtnChange = ccui.Helper:seekNodeByName(UICardInfo.Widget, "btn_change_bottom") --小伙伴更换按钮
 	local friendBtnDown = ccui.Helper:seekNodeByName(UICardInfo.Widget, "btn_down_bottom") --小伙伴卸下按钮
 	local image_di_card = ccui.Helper:seekNodeByName(UICardInfo.Widget, "image_di_card")
-	local btn_l = image_di_card:getChildByName("btn_l")
-	local btn_r = image_di_card:getChildByName("btn_r")
+	local btn_l = ccui.Helper:seekNodeByName(UICardInfo.Widget, "btn_l")--image_di_card:getChildByName("btn_l")
+	local btn_r = ccui.Helper:seekNodeByName(UICardInfo.Widget, "btn_r") --image_di_card:getChildByName("btn_r")
 	btn_change:setTouchEnabled(enabled)
 	btn_change:setVisible(enabled)
 	btn_medicine:setTouchEnabled(enabled)
@@ -376,7 +376,7 @@ local function pageViewEvent(sender, eventType)
                             if i < 3 and tonumber( wingLucks[ i ] ) <= _wingObj.int["5"] then
                                 wingLuckName:setTextColor(cc.c4b(2, 99, 2, 255))
 						        wingCondition:setVisible(false)
-                            elseif i == 3 and tonumber( wingLucks[ i ] ) == _wingObj.int["3"] then
+                            elseif i == 3 and ( tonumber( wingLucks[ i ] ) == _wingObj.int["3"] or _wingObj.int["3"] >= 5 ) then
                                 wingLuckName:setTextColor(cc.c4b(2, 99, 2, 255))
 						        wingCondition:setVisible(false)
                             end
@@ -593,8 +593,8 @@ function UICardInfo.init()
 	local friendBtnChange = ccui.Helper:seekNodeByName(UICardInfo.Widget, "btn_change_bottom") --小伙伴更换按钮
 	local friendBtnDown = ccui.Helper:seekNodeByName(UICardInfo.Widget, "btn_down_bottom") --小伙伴卸下按钮
 	local image_di_card = ccui.Helper:seekNodeByName(UICardInfo.Widget, "image_di_card")
-	local btn_l = image_di_card:getChildByName("btn_l")
-	local btn_r = image_di_card:getChildByName("btn_r")
+	local btn_l = ccui.Helper:seekNodeByName(UICardInfo.Widget, "btn_l")--image_di_card:getChildByName("btn_l")
+	local btn_r = ccui.Helper:seekNodeByName(UICardInfo.Widget, "btn_r")--image_di_card:getChildByName("btn_r")
 
 	btn_close:setPressedActionEnabled(true)
 	btn_change:setPressedActionEnabled(true)
@@ -729,6 +729,9 @@ function UICardInfo.init()
 
 	ui_pageView = ccui.Helper:seekNodeByName(UICardInfo.Widget, "view_page")
 	ui_pageViewItem = ui_pageView:getChildByName("panel"):clone()
+
+    btn_l:setLocalZOrder( ui_pageView:getLocalZOrder() + 1 )
+    btn_r:setLocalZOrder( ui_pageView:getLocalZOrder() + 1 )
 end
 
 function UICardInfo.setup()
@@ -784,7 +787,12 @@ function UICardInfo.setup()
                 if net.InstPlayerWing then
                     for key , value in pairs( net.InstPlayerWing ) do
                         if value.int["6"] == obj.instId then
-                            utils.addArmature( pageViewItem , 54 + value.int["5"] , value.int["5"]..DictWing[tostring(value.int["3"])].sname , pageViewItem:getContentSize().width / 2, pageViewItem:getContentSize().height / 2 , 0 , ui_cardImg:getScale() )
+                            local actionName = DictWing[tostring(value.int["3"])].actionName
+                            if actionName and actionName ~= "" then
+                                utils.addArmature( pageViewItem , 54 + value.int["5"] , actionName , pageViewItem:getContentSize().width / 2, pageViewItem:getContentSize().height / 2 , 0 , ui_cardImg:getScale() )
+                            else
+                                utils.addArmature( pageViewItem , 54 + value.int["5"] , "0"..value.int["5"]..DictWing[tostring(value.int["3"])].sname , pageViewItem:getContentSize().width / 2, pageViewItem:getContentSize().height / 2 , 0 , ui_cardImg:getScale() )
+                            end
                             break
                         end
                     end

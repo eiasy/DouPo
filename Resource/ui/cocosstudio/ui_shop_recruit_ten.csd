@@ -38,7 +38,7 @@
                     <OutlineColor A="255" R="255" G="0" B="0" />
                     <ShadowColor A="255" R="110" G="110" B="110" />
                   </AbstractNodeData>
-                  <AbstractNodeData Name="text_hint" ActionTag="100" Tag="44989" IconVisible="False" LeftMargin="127.2575" RightMargin="-194.2574" TopMargin="752.0001" BottomMargin="-21.0001" FontSize="22" LabelText="再购买8次后，下次购买必赠送一张橙卡~" ctype="TextObjectData">
+                  <AbstractNodeData Name="text_hint" ActionTag="100" Tag="44989" IconVisible="False" LeftMargin="120.2575" RightMargin="-201.2575" TopMargin="752.0001" BottomMargin="-21.0001" FontSize="22" LabelText="再购买8次后，下次购买必赠送一张橙卡~" ctype="TextObjectData">
                     <Size X="401.0000" Y="28.0000" />
                     <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
                     <Position X="320.7575" Y="-7.0001" />
@@ -606,16 +606,16 @@
                     <PreSize X="0.3281" Y="0.1357" />
                     <FileData Type="Normal" Path="ui/card_small_green.png" Plist="" />
                   </AbstractNodeData>
-                  <AbstractNodeData Name="image_base_name" ActionTag="64" ZOrder="2" UserData="ignoreSize" Tag="51186" IconVisible="False" LeftMargin="200.0000" RightMargin="-130.0000" TopMargin="561.0000" BottomMargin="138.0000" ctype="ImageViewObjectData">
-                    <Size X="250.0000" Y="60.0000" />
+                  <AbstractNodeData Name="image_base_name" ActionTag="64" ZOrder="2" UserData="ignoreSize" Tag="51186" IconVisible="False" LeftMargin="157.0000" RightMargin="-173.0000" TopMargin="562.0002" BottomMargin="122.9998" Scale9Width="336" Scale9Height="74" ctype="ImageViewObjectData">
+                    <Size X="336.0000" Y="74.0000" />
                     <Children>
-                      <AbstractNodeData Name="text_name" ActionTag="65" Tag="51187" IconVisible="False" LeftMargin="75.0000" RightMargin="75.0000" TopMargin="16.5000" BottomMargin="12.5000" FontSize="25" LabelText="若琳导师" ctype="TextObjectData">
+                      <AbstractNodeData Name="text_name" ActionTag="65" Tag="51187" IconVisible="False" LeftMargin="118.0000" RightMargin="118.0000" TopMargin="21.5000" BottomMargin="21.5000" FontSize="25" LabelText="若琳导师" ctype="TextObjectData">
                         <Size X="100.0000" Y="31.0000" />
                         <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                        <Position X="125.0000" Y="28.0000" />
+                        <Position X="168.0000" Y="37.0000" />
                         <Scale ScaleX="1.0000" ScaleY="1.0000" />
                         <CColor A="255" R="255" G="255" B="255" />
-                        <PrePosition X="0.5000" Y="0.4667" />
+                        <PrePosition X="0.5000" Y="0.5000" />
                         <PreSize X="0.4000" Y="0.4167" />
                         <FontResource Type="Normal" Path="data/ui_font.ttf" Plist="" />
                         <OutlineColor A="255" R="255" G="0" B="0" />
@@ -623,12 +623,12 @@
                       </AbstractNodeData>
                     </Children>
                     <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                    <Position X="325.0000" Y="168.0000" />
+                    <Position X="325.0000" Y="159.9998" />
                     <Scale ScaleX="1.0000" ScaleY="1.0000" />
                     <CColor A="255" R="255" G="255" B="255" />
-                    <PrePosition X="1.0156" Y="0.2213" />
-                    <PreSize X="0.7813" Y="0.0791" />
-                    <FileData Type="Normal" Path="ui/di_hero_name.png" Plist="" />
+                    <PrePosition X="1.0156" Y="0.2108" />
+                    <PreSize X="1.0500" Y="0.0975" />
+                    <FileData Type="Normal" Path="ui/wing_title.png" Plist="" />
                   </AbstractNodeData>
                   <AbstractNodeData Name="animationLayer" ActionTag="1" Tag="222912" IconVisible="False" LeftMargin="4.0000" RightMargin="-4.0000" TopMargin="-4.0000" BottomMargin="4.0000" BackColorAlpha="100" ColorAngle="270.0000" ctype="PanelObjectData">
                     <Size X="320.0000" Y="759.0000" />

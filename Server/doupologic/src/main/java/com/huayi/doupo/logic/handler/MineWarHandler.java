@@ -2024,6 +2024,97 @@ public class MineWarHandler extends BaseHandler {
         }
     }
 
+    /**
+     * 抢矿或占矿 失败
+     * @author  cui
+     * @date    2015/12/22
+     * @param msgMap
+     * @param channelId
+     * @throws Exception
+     */
+    @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
+    public void mineFail(Map<String, Object> msgMap, String channelId) throws Exception {
+        int instPlayerId = getInstPlayerId(channelId);    // 玩家实例Id
+
+        if (instPlayerId == 0) {
+            MessageUtil.sendFailMsg(channelId, msgMap, StaticCnServer.fail_PlayerIdVerfy);
+
+            return;
+        }
+
+        InstPlayer instPlayer = getInstPlayerDAL().getModel(instPlayerId, instPlayerId);
+        if (!checkRecognize(msgMap, channelId, instPlayer)) {
+            return;
+        }
+
+        //读取协议数据
+        int mineid = (Integer) msgMap.get("mineId");            //矿ID
+
+        if (mineid <= 0) { //矿ID不许是0
+            MessageUtil.sendFailMsg(channelId, msgMap, StaticCnServer.fail_PlayerIdVerfy);
+            return;
+        }
+
+        //检查矿数据数据有效性
+        int zoneType = mineid / 10000;
+        int pageIndex = (mineid % 10000) / 10;
+        int mineIndex = mineid % 10;
+
+
+        int mineMaxPage = DictMapUtil.getSysConfigIntValue(StaticSysConfig.mineMaxPage);    // 高级矿最大页数
+        if (pageIndex > mineMaxPage) {
+            //刷新高级区域
+            MessageData playerMsgData = refreshSenior(channelId, 1);//第一页
+            MessageUtil.sendFailMsg(channelId, msgMap, StaticCnServer.fail_mineRefresh, playerMsgData);
+            return;
+        }
+
+        if (mineIndex == 0) {
+            //越界了
+            MessageUtil.sendFailMsg(channelId, msgMap, StaticCnServer.fail_mineRefresh);
+            return;
+        }
+        if (zoneType == 0 && mineIndex > MineUtil.MINE_JUNIOR_ARRAY.length) {
+            //越界了
+            MessageUtil.sendFailMsg(channelId, msgMap, StaticCnServer.fail_mineRefresh);
+            return;
+        }
+        if (zoneType > 0 && mineIndex > MineUtil.MINE_SENIOR_ARRAY.length) {
+            //越界了
+            MessageUtil.sendFailMsg(channelId, msgMap, StaticCnServer.fail_mineRefresh);
+            return;
+        }
+
+        //为了防止客户端乱发 区域
+        if (zoneType > 1) {
+            //越界了
+            MessageUtil.sendFailMsg(channelId, msgMap, StaticCnServer.fail_mineRefresh);
+            return;
+        }
+
+        int mineType = (zoneType == 0) ? MineUtil.MINE_JUNIOR_ARRAY[mineIndex - 1] : MineUtil.MINE_SENIOR_ARRAY[mineIndex - 1];
+
+        //高级矿有些是动态变动的 所以得需要查库获得矿类型
+        if(zoneType > 0) {
+            List<InstPlayerMine> list = getInstPlayerMineDAL().getList(" mineId = " + mineid, 0);
+            if (list.size() > 0) {
+                InstPlayerMine mineTmp = list.get(0);
+                mineType = mineTmp.getMineType();
+            }
+        }
+
+        //消耗检查
+        if (!checkCost(msgMap, channelId, instPlayer, mineType)) {
+            return;
+        }
+        //资源矿的消耗
+        if (!consumeCost(msgMap, channelId, instPlayer, mineType)) {
+            return;
+        }
+
+        MessageUtil.sendSuccMsg(channelId, msgMap, new MessageData());
+
+    }
 
     @Test
     public void testSql() throws Exception {

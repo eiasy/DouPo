@@ -59,3 +59,17 @@ DictPillThing["57"]={id=57,name="天翡果",smallUiId=12113,bigUiId=12114,outBar
 DictPillThing["58"]={id=58,name="厚土芝",smallUiId=12115,bigUiId=12116,outBarrier="1007",sellCopper=100,description="炼制低级经验丹所需材料"}
 DictPillThing["59"]={id=59,name="火灵根",smallUiId=12117,bigUiId=12118,outBarrier="1007",sellCopper=100,description="炼制低级经验丹所需材料"}
 DictPillThing["60"]={id=60,name="青冥果",smallUiId=12119,bigUiId=12120,outBarrier="1007",sellCopper=100,description="炼制低级经验丹所需材料"}
+DictPillThing["61"]={id=61,name="常青花",smallUiId=1225,bigUiId=1226,outBarrier="247;257;267",sellCopper=100,description="炼制七品丹药所需材料"}
+DictPillThing["62"]={id=62,name="地黄精",smallUiId=1227,bigUiId=1228,outBarrier="249;259;269",sellCopper=100,description="炼制七品丹药所需材料"}
+DictPillThing["63"]={id=63,name="骨灵果",smallUiId=1229,bigUiId=1230,outBarrier="246;256;266",sellCopper=100,description="炼制七品斗攻丹主材料"}
+DictPillThing["64"]={id=64,name="火莲果",smallUiId=1231,bigUiId=1232,outBarrier="248;258;268",sellCopper=100,description="炼制七品斗防丹主材料"}
+DictPillThing["65"]={id=65,name="龙血芝",smallUiId=1233,bigUiId=1234,outBarrier="250;260;270",sellCopper=100,description="炼制七品魂攻丹主材料"}
+DictPillThing["66"]={id=66,name="升仙草",smallUiId=1235,bigUiId=1236,outBarrier="252;262;272",sellCopper=100,description="炼制七品魂防丹主材料"}
+DictPillThing["67"]={id=67,name="万年青藤",smallUiId=1237,bigUiId=1238,outBarrier="254;264;274",sellCopper=100,description="炼制七品生命丹主材料"}
+DictPillThing["68"]={id=68,name="玄天青藤",smallUiId=1239,bigUiId=1240,outBarrier="277;287;297",sellCopper=100,description="炼制八品丹药所需材料"}
+DictPillThing["69"]={id=69,name="雪莲子",smallUiId=1241,bigUiId=1242,outBarrier="279;289;299",sellCopper=100,description="炼制八品丹药所需材料"}
+DictPillThing["70"]={id=70,name="血晶草",smallUiId=1243,bigUiId=1244,outBarrier="276;286;296",sellCopper=100,description="炼制八品斗攻丹主材料"}
+DictPillThing["71"]={id=71,name="血蟒枝",smallUiId=1245,bigUiId=1246,outBarrier="278;288;298",sellCopper=100,description="炼制八品斗防丹主材料"}
+DictPillThing["72"]={id=72,name="玉骨果",smallUiId=1247,bigUiId=1248,outBarrier="280;290;300",sellCopper=100,description="炼制八品魂攻丹主材料"}
+DictPillThing["73"]={id=73,name="欲望花",smallUiId=1249,bigUiId=1250,outBarrier="282;292;302",sellCopper=100,description="炼制八品魂防丹主材料"}
+DictPillThing["74"]={id=74,name="云叶草",smallUiId=1251,bigUiId=1252,outBarrier="284;294;304",sellCopper=100,description="炼制八品生命丹主材料"}

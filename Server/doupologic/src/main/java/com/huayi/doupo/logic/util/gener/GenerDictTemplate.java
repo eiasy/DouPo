@@ -43,7 +43,8 @@ public class GenerDictTemplate{
     		"Dict_Restore:qualityId:starLevelId;Dict_Magic_Level:type:level;Dict_Achievement:achievementTypeId:id;Dict_Gener_BoxThing:type;Dict_Special_BoxThing:tableTypeId;Dict_Card:qualityId;" +
     		"Dict_Equipment:equipQualityId;Dict_Magic:type;Dict_Barrier_Drop_Type:type;Dict_Recruit_SpecialCard:areaNo;Dict_Recruit_TimesGet:recruitTypeId;Dict_Activity_SignIn:month:day;Dict_Activity_GrabTheHour:type;" +
     		"Dict_Activity_PrivateSale:type;Dict_Activity_DailyDeals:day;Dict_Activity_MonthCardStore:type;Dict_Equip_Advance:equipTypeId;Dict_FightSoul:fightSoulQualityId;Dict_FightSoul_UpgradeExp:fightSoulQualityId;" +
-    		"Dict_FightSoul_UpgradeProp:fightSoulId;Dict_Mine_BoxThing:type;Dict_Wing_Advance:wingId;Dict_Wing_Strengthen:wingId;Dict_HoldStar_GradeReward:starNum";
+    		"Dict_FightSoul_UpgradeProp:fightSoulId;Dict_Mine_BoxThing:type;Dict_Wing_Advance:wingId;Dict_Wing_Strengthen:wingId;Dict_HoldStar_GradeReward:starNum;"+
+    		"Dict_Equip_Advance_red:equipId;Dict_Magic_refining:MagicId;Dict_Card_Luck:cardId;Dict_Equip_SuitRefer:equipId;Dict_Wing_Luck:cardId";
 
     private static List<DictMapListObj> mapListObjList = new ArrayList<DictMapListObj>();
     

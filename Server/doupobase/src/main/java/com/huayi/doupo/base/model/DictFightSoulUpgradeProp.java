@@ -113,6 +113,23 @@ public class DictFightSoulUpgradeProp implements Serializable
 	}
 
 	/**
+		增加的战斗力
+	*/
+	private int fightValue;
+	public int getFightValue(){
+		return fightValue;
+	}
+	public void setFightValue(int fightValue) {
+		this.fightValue = fightValue;
+		index = 7;
+		result += index + "*int*" + fightValue + "#";
+	}
+
+	public void setFightValue(int fightValue, int bs) {
+		this.fightValue = fightValue;
+	}
+
+	/**
 		出售可获得的银币
 	*/
 	private int sellSilver;
@@ -121,7 +138,7 @@ public class DictFightSoulUpgradeProp implements Serializable
 	}
 	public void setSellSilver(int sellSilver) {
 		this.sellSilver = sellSilver;
-		index = 7;
+		index = 8;
 		result += index + "*int*" + sellSilver + "#";
 	}
 
@@ -138,7 +155,7 @@ public class DictFightSoulUpgradeProp implements Serializable
 	}
 	public void setDescription(String description) {
 		this.description = description;
-		index = 8;
+		index = 9;
 		result += index + "*String*" + description + "#";
 	}
 
@@ -155,7 +172,7 @@ public class DictFightSoulUpgradeProp implements Serializable
 	}
 	public void setVersion(int version) {
 		this.version = version;
-		index = 9;
+		index = 10;
 		result += index + "*int*" + version + "#";
 	}
 
@@ -175,6 +192,7 @@ public class DictFightSoulUpgradeProp implements Serializable
 		extend.setFightPropValueType(this.fightPropValueType);
 		extend.setFightPropValue(this.fightPropValue);
 		extend.setFightPropId(this.fightPropId);
+		extend.setFightValue(this.fightValue);
 		extend.setSellSilver(this.sellSilver);
 		extend.setDescription(this.description);
 		extend.setVersion(this.version);

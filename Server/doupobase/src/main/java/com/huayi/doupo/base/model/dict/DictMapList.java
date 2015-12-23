@@ -44,4 +44,9 @@ public class DictMapList {
 	public static Map<Integer, Object> dictWingAdvanceMap = new HashMap<Integer, Object>();
 	public static Map<Integer, Object> dictWingStrengthenMap = new HashMap<Integer, Object>();
 	public static Map<Integer, Object> dictHoldStarGradeRewardMap = new HashMap<Integer, Object>();
+	public static Map<Integer, Object> dictEquipAdvanceredMap = new HashMap<Integer, Object>();
+	public static Map<Integer, Object> dictMagicrefiningMap = new HashMap<Integer, Object>();
+	public static Map<Integer, Object> dictCardLuckMap = new HashMap<Integer, Object>();
+	public static Map<Integer, Object> dictEquipSuitReferMap = new HashMap<Integer, Object>();
+	public static Map<Integer, Object> dictWingLuckMap = new HashMap<Integer, Object>();
 }

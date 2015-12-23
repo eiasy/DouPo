@@ -87,81 +87,81 @@ function showREmailInfo(name)
     bg_image:addChild(title2)
 
 
-     local text = ccui.RichText:create();
-      local re1 = ccui.RichElementText:create( 1, cc.c3b(0, 0, 0), 255, "最多输入40字"  , dp.FONT , 23 )  
-      text:pushBackElement(re1)
-      local imgBg = ccui.Scale9Sprite:create("ui/tk_di02.png")
-      imgBg:setPreferredSize(cc.size(400 , 120))
-      local msgBox = cc.EditBox:create( cc.size( 400 , 120 ),ccui.Scale9Sprite:create() )
-      --msgBox:setPlaceHolder("最多输入40字")
-      msgBox:setPlaceholderFontSize( 23 )
-      local textContent = ""
-      local function editboxEventHandler(eventType)
---        if eventType == "began" then
---            -- 当编辑框获得焦点并且键盘弹出的时候被调用
---            msgBox:setText(textContent)
---        elseif eventType == "ended" then
---            -- 当编辑框失去焦点并且键盘消失的时候被调用
---            textContent = msgBox:getText()
---            text:removeElement( re1 )
---            re1 = ccui.RichElementText:create( 1, cc.c3b(0, 0, 0), 255, textContent  , dp.FONT , 23 )  
---            --msgBox:
---            text:pushBackElement(re1)
---            if textContent ~= "" then
---                msgBox:setText("   ")
---            end
---        elseif eventType == "changed" then
---            -- 当编辑框的文本被修改的时候被调用
---            text:removeElement( re1 )
---            re1 = ccui.RichElementText:create( 1, cc.c3b(0, 0, 0), 255, msgBox:getText() , dp.FONT , 23 )  
---            --msgBox:
---            text:pushBackElement(re1)
---        elseif eventType == "return" then
---            text:removeElement( re1 )
---            re1 = ccui.RichElementText:create( 1, cc.c3b(0, 0, 0), 255, textContent , dp.FONT , 23 )  
---            --msgBox:
---            text:pushBackElement(re1)
---            -- 当用户点击编辑框的键盘以外的区域，或者键盘的Return按钮被点击时所调用
---        end
+    local text = ccui.RichText:create();
+    local re1 = ccui.RichElementText:create(1, cc.c3b(0, 0, 0), 255, "最多输入40字", dp.FONT, 23)
+    text:pushBackElement(re1)
+    local imgBg = ccui.Scale9Sprite:create("ui/tk_di02.png")
+    imgBg:setPreferredSize(cc.size(400, 120))
+    local msgBox = cc.EditBox:create(cc.size(400, 120), ccui.Scale9Sprite:create())
+    -- msgBox:setPlaceHolder("最多输入40字")
+    msgBox:setPlaceholderFontSize(23)
+    local textContent = ""
+    local function editboxEventHandler(eventType)
+        --        if eventType == "began" then
+        --            -- 当编辑框获得焦点并且键盘弹出的时候被调用
+        --            msgBox:setText(textContent)
+        --        elseif eventType == "ended" then
+        --            -- 当编辑框失去焦点并且键盘消失的时候被调用
+        --            textContent = msgBox:getText()
+        --            text:removeElement( re1 )
+        --            re1 = ccui.RichElementText:create( 1, cc.c3b(0, 0, 0), 255, textContent  , dp.FONT , 23 )
+        --            --msgBox:
+        --            text:pushBackElement(re1)
+        --            if textContent ~= "" then
+        --                msgBox:setText("   ")
+        --            end
+        --        elseif eventType == "changed" then
+        --            -- 当编辑框的文本被修改的时候被调用
+        --            text:removeElement( re1 )
+        --            re1 = ccui.RichElementText:create( 1, cc.c3b(0, 0, 0), 255, msgBox:getText() , dp.FONT , 23 )
+        --            --msgBox:
+        --            text:pushBackElement(re1)
+        --        elseif eventType == "return" then
+        --            text:removeElement( re1 )
+        --            re1 = ccui.RichElementText:create( 1, cc.c3b(0, 0, 0), 255, textContent , dp.FONT , 23 )
+        --            --msgBox:
+        --            text:pushBackElement(re1)
+        --            -- 当用户点击编辑框的键盘以外的区域，或者键盘的Return按钮被点击时所调用
+        --        end
 
         local isIOS = device.platform == "ios"
-		if eventType == "return" then
-			text:removeElement( re1 )           
+        if eventType == "return" then
+            text:removeElement(re1)
             textContent = msgBox:getText()
             if msgBox:getText() == "" then
-                msgBox:setZOrder( 2 )
-                re1 = ccui.RichElementText:create( 1, cc.c3b(0, 0, 0), 255, "最多输入40字" , dp.FONT , 23 )  
+                msgBox:setZOrder(2)
+                re1 = ccui.RichElementText:create(1, cc.c3b(0, 0, 0), 255, "最多输入40字", dp.FONT, 23)
             else
-                re1 = ccui.RichElementText:create( 1, cc.c3b(0, 0, 0), 255, msgBox:getText() , dp.FONT , 23 )  
+                re1 = ccui.RichElementText:create(1, cc.c3b(0, 0, 0), 255, msgBox:getText(), dp.FONT, 23)
             end
-            
+
             text:pushBackElement(re1)
         elseif eventType == "began" then
-            msgBox:setZOrder( 0 )
-            if isIOS then text:setVisible(false) msgBox:setZOrder( 2 ) end
+            msgBox:setZOrder(0)
+            if isIOS then text:setVisible(false) msgBox:setZOrder(2) end
         elseif eventType == "ended" then
-            if isIOS then text:setVisible(true) msgBox:setZOrder( 0 ) end
-		end
-      end
-     -- msgLabel:setString(msg)
-      msgBox:setFontName(dp.FONT)
-      msgBox:setFontSize( 23 )  
-      msgBox:setFontColor(cc.c3b( 0 , 0 , 0 ))
-      msgBox:setMaxLength( 40 )
-      msgBox:setPosition(cc.p(bgSize.width / 2, bgSize.height / 2 + 10 ) )
-      msgBox:registerScriptEditBoxHandler(editboxEventHandler)
-      bg_image:addChild(msgBox , 2 )
+            if isIOS then text:setVisible(true) msgBox:setZOrder(0) end
+        end
+    end
+    -- msgLabel:setString(msg)
+    msgBox:setFontName(dp.FONT)
+    msgBox:setFontSize(23)
+    msgBox:setFontColor(cc.c3b(0, 0, 0))
+    msgBox:setMaxLength(40)
+    msgBox:setPosition(cc.p(bgSize.width / 2, bgSize.height / 2 + 10))
+    msgBox:registerScriptEditBoxHandler(editboxEventHandler)
+    bg_image:addChild(msgBox, 2)
 
-      imgBg:setPosition(cc.p(bgSize.width / 2, bgSize.height / 2 + 10 ) )
-      bg_image:addChild(imgBg , 1 )
+    imgBg:setPosition(cc.p(bgSize.width / 2, bgSize.height / 2 + 10))
+    bg_image:addChild(imgBg, 1)
 
-      text:setContentSize( cc.size( msgBox:getContentSize().width - 20 , msgBox:getContentSize().height - 20 ) )
-      text:ignoreContentAdaptWithSize( false )
+    text:setContentSize(cc.size(msgBox:getContentSize().width - 20, msgBox:getContentSize().height - 20))
+    text:ignoreContentAdaptWithSize(false)
     --  text:setTextHorizontalAlignment(cc.TEXT_ALIGNMENT_CENTER)
     --  text:setTextVerticalAlignment(cc.TEXT_ALIGNMENT_CENTER)
-     -- text:setAnchorPoint( cc.p( 0 , 1 ) )
-      text:setPosition(cc.p( msgBox:getPositionX() , msgBox:getPositionY()  ) )
-      bg_image:addChild(text , 2)
+    -- text:setAnchorPoint( cc.p( 0 , 1 ) )
+    text:setPosition(cc.p(msgBox:getPositionX(), msgBox:getPositionY()))
+    bg_image:addChild(text, 2)
 
 
 
@@ -221,6 +221,8 @@ local function netErrorCallbackFunc(pack)
     local msgdata = pack.msgdata
     if protocol == StaticMsgRule.mineFightWin then
         UIOre.showFightResult(UIActivityEmail, -1, msgdata)
+    elseif protocol == StaticMsgRule.mineFail then
+        UIOre.showFightResult(UIActivityEmail, 0)
     end
 end
 
@@ -242,7 +244,7 @@ local function netCallbackFunc(pack)
                         }
                     } , netCallbackFunc, netErrorCallbackFunc)
                 else
-                    UIOre.showFightResult(UIActivityEmail, 0)
+                    netSendPackage( { header = StaticMsgRule.mineFail, msgdata = { int = { mineId = UIOreInfo.warParam[3] } } }, netCallbackFunc, netErrorCallbackFunc)
                 end
             end )
             if not UIFightMain.Widget or not UIFightMain.Widget:getParent() then
@@ -252,8 +254,9 @@ local function netCallbackFunc(pack)
             end
         end
     elseif protocol == StaticMsgRule.mineFightWin then
-        UITeam.checkRecoverState()
         UIOre.showFightResult(UIActivityEmail, 1, msgdata)
+    elseif protocol == StaticMsgRule.mineFail then
+        UIOre.showFightResult(UIActivityEmail, 0)
     end
 end
 

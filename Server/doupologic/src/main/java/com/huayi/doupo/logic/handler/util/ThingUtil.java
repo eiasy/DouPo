@@ -37,12 +37,17 @@ import com.huayi.doupo.base.model.InstPlayerBagExpand;
 import com.huayi.doupo.base.model.InstPlayerBigTable;
 import com.huayi.doupo.base.model.InstPlayerCard;
 import com.huayi.doupo.base.model.InstPlayerCardSoul;
+import com.huayi.doupo.base.model.InstPlayerChip;
 import com.huayi.doupo.base.model.InstPlayerConstell;
 import com.huayi.doupo.base.model.InstPlayerEquip;
+import com.huayi.doupo.base.model.InstPlayerFightSoul;
 import com.huayi.doupo.base.model.InstPlayerMagic;
 import com.huayi.doupo.base.model.InstPlayerManualSkill;
+import com.huayi.doupo.base.model.InstPlayerPill;
 import com.huayi.doupo.base.model.InstPlayerStore;
 import com.huayi.doupo.base.model.InstPlayerThing;
+import com.huayi.doupo.base.model.InstPlayerWing;
+import com.huayi.doupo.base.model.InstPlayerYFire;
 import com.huayi.doupo.base.model.InstUnionMember;
 import com.huayi.doupo.base.model.dict.DictData;
 import com.huayi.doupo.base.model.dict.DictList;
@@ -56,6 +61,7 @@ import com.huayi.doupo.base.model.statics.StaticSysConfig;
 import com.huayi.doupo.base.model.statics.StaticTableType;
 import com.huayi.doupo.base.model.statics.StaticThing;
 import com.huayi.doupo.base.model.statics.StaticThingType;
+import com.huayi.doupo.base.model.statics.StaticWing;
 import com.huayi.doupo.base.model.statics.custom.GoldStaticsType;
 import com.huayi.doupo.base.util.base.ConvertUtil;
 import com.huayi.doupo.base.util.base.DateUtil;
@@ -77,6 +83,201 @@ import com.huayi.doupo.logic.util.PlayerMapUtil;
  */
 public class ThingUtil extends DALFactory {
 
+	/**
+	 * 消耗物品公共方法
+	 * @author mp
+	 * @date 2015-12-18 下午1:37:19
+	 * @param instPlayer
+	 * @param things
+	 * @param thingsMap
+	 * @param syncMsgData
+	 * @param msgMap
+	 * @throws Exception
+	 * @Description
+	 */
+	@SuppressWarnings("unchecked")
+	public static void  consumThings (InstPlayer instPlayer, String things, Map<String, Object> thingsMap, MessageData syncMsgData, Map<String, Object> msgMap) throws Exception{
+		int instPlayerId = instPlayer.getId();
+		for (String thing : things.split(";")) {
+			int tableTypeId = ConvertUtil.toInt(thing.split("_")[0]);
+			int tableFieldId = ConvertUtil.toInt(thing.split("_")[1]);
+			int value = ConvertUtil.toInt(thing.split("_")[2]);
+			
+			//丹药
+			if (tableTypeId == StaticTableType.DictPill) {
+				InstPlayerPill instPlayerPill = (InstPlayerPill)thingsMap.get(thing);
+				int afterNum = instPlayerPill.getNum() - value;
+				if (afterNum <= 0) {
+					getInstPlayerPillDAL().deleteById(instPlayerPill.getId(), instPlayerId);
+					OrgFrontMsgUtil.orgSyncMsgData(StaticSyncState.delete, instPlayerPill, instPlayerPill.getId(), "", syncMsgData);
+				} else {
+					instPlayerPill.setNum(afterNum);
+					getInstPlayerPillDAL().update(instPlayerPill, instPlayerId);
+					OrgFrontMsgUtil.orgSyncMsgData(StaticSyncState.update, instPlayerPill, instPlayerPill.getId(), instPlayerPill.getResult(), syncMsgData);
+				}
+			}
+			//物品
+			else if (tableTypeId == StaticTableType.DictThing) {
+				InstPlayerThing instPlayerThing = (InstPlayerThing)thingsMap.get(thing);
+				if (tableFieldId != StaticThing.goldBox) {//非金宝箱
+					int afterNum = instPlayerThing.getNum() - value;
+					if (afterNum <= 0) {
+						getInstPlayerThingDAL().deleteById(instPlayerThing.getId(), instPlayerId);
+						OrgFrontMsgUtil.orgSyncMsgData(StaticSyncState.delete, instPlayerThing, instPlayerThing.getId(), "", syncMsgData);
+					} else {
+						instPlayerThing.setNum(afterNum);
+						getInstPlayerThingDAL().update(instPlayerThing, instPlayerId);
+						OrgFrontMsgUtil.orgSyncMsgData(StaticSyncState.update, instPlayerThing, instPlayerThing.getId(), instPlayerThing.getResult(), syncMsgData);
+					}
+				} else {//金宝箱-物品总数 = level + num
+					int levelNum = instPlayerThing.getLevel();
+					int num = instPlayerThing.getNum();
+					if (levelNum >= value) {
+						levelNum = levelNum - value;
+					} else {
+						levelNum = 0;
+						num = num - (value - levelNum);
+					}
+					if (levelNum == 0 && num == 0) {
+						getInstPlayerThingDAL().deleteById(instPlayerThing.getId(), instPlayerId);
+						OrgFrontMsgUtil.orgSyncMsgData(StaticSyncState.delete, instPlayerThing, instPlayerThing.getId(), "", syncMsgData);
+					} else {
+						instPlayerThing.setLevel(levelNum);
+						instPlayerThing.setNum(num);
+						getInstPlayerThingDAL().update(instPlayerThing, instPlayerId);
+						OrgFrontMsgUtil.orgSyncMsgData(StaticSyncState.update, instPlayerThing, instPlayerThing.getId(), instPlayerThing.getResult(), syncMsgData);
+					}
+				}
+			}
+			//玩家属性
+			else if (tableTypeId == StaticTableType.DictPlayerBaseProp) {
+				if (tableFieldId == StaticPlayerBaseProp.copper) {//银币
+					instPlayer.setCopper((ConvertUtil.toLong(instPlayer.getCopper()) - value) + "");
+				} else if (tableFieldId == StaticPlayerBaseProp.gold) {//金币
+					PlayerUtil.goldStatics(instPlayer, GoldStaticsType.del, value, msgMap);
+				} else if (tableFieldId == StaticPlayerBaseProp.culture) {//火能石
+					instPlayer.setCulture(instPlayer.getCulture() - value);
+				} else if (tableFieldId == StaticPlayerBaseProp.offer) {//联盟贡献
+					InstUnionMember instUnionMember = (InstUnionMember)thingsMap.get(thing);
+					instUnionMember.setSumOffer(instUnionMember.getSumOffer() - value);
+					getInstUnionMemberDAL().update(instUnionMember, instPlayerId);
+					OrgFrontMsgUtil.orgSyncMsgData(StaticSyncState.update, instUnionMember, instUnionMember.getId(), instUnionMember.getResult(), syncMsgData);
+				} else if (tableFieldId == StaticPlayerBaseProp.prestige) {//威望
+					InstPlayerArena instPlayerArena = (InstPlayerArena)thingsMap.get(thing);
+					instPlayerArena.setPrestige(instPlayerArena.getPrestige() - value);
+					getInstPlayerArenaDAL().update(instPlayerArena, 0);
+					OrgFrontMsgUtil.orgSyncMsgData(StaticSyncState.update, instPlayerArena, instPlayerArena.getId(), instPlayerArena.getResult(), syncMsgData);
+				} else if (tableFieldId == StaticPlayerBaseProp.bossIntegral) {//屠魔积分
+					InstPlayerBigTable instPlayerBigTable = (InstPlayerBigTable)thingsMap.get(thing);
+					instPlayerBigTable.setValue1((ConvertUtil.toInt(instPlayerBigTable.getValue1()) - value) + "");
+					getInstPlayerBigTableDAL().update(instPlayerBigTable, 0);
+				}
+				if (tableFieldId == StaticPlayerBaseProp.copper || tableFieldId == StaticPlayerBaseProp.gold || tableFieldId == StaticPlayerBaseProp.culture) {
+					getInstPlayerDAL().update(instPlayer, instPlayerId);
+					OrgFrontMsgUtil.orgSyncMsgData(StaticSyncState.update, instPlayer, instPlayer.getId(), instPlayer.getResult(), syncMsgData);
+				}
+			}
+			//装备(初始装备：未装备在卡牌上，0级的，进阶是0的，未镶嵌的，这样的装备)
+			else if (tableTypeId == StaticTableType.DictEquipment) {
+				List<InstPlayerEquip> instPlayerEquipList = (List<InstPlayerEquip>)thingsMap.get(thing);
+				int index = 0;
+				for (InstPlayerEquip obj : instPlayerEquipList) {
+					index ++;
+					if (index > value) {
+						break;
+					}
+					getInstPlayerEquipDAL().deleteById(obj.getId(), instPlayerId);
+					OrgFrontMsgUtil.orgSyncMsgData(StaticSyncState.delete, obj, obj.getId(), "", syncMsgData);
+				}
+			}
+			//卡牌(初始卡牌：未上阵的，等级是1的，经验是0的，这样的卡牌)
+			else if (tableTypeId == StaticTableType.DictCard) {
+				List<InstPlayerCard> instPlayerCardList = (List<InstPlayerCard>)thingsMap.get(thing);
+				int index = 0;
+				for (InstPlayerCard obj : instPlayerCardList) {
+					index ++;
+					if (index > value) {
+						break;
+					}
+					getInstPlayerCardDAL().deleteById(obj.getId(), instPlayerId);
+					OrgFrontMsgUtil.orgSyncMsgData(StaticSyncState.delete, obj, obj.getId(), "", syncMsgData);
+				}
+			}
+			//卡牌魂魄
+			else if (tableTypeId == StaticTableType.DictCardSoul) {
+				InstPlayerCardSoul instPlayerCardSoul = (InstPlayerCardSoul)thingsMap.get(thing);
+				int afterNum = instPlayerCardSoul.getNum() - value;
+				if (afterNum <= 0) {
+					getInstPlayerCardSoulDAL().deleteById(instPlayerCardSoul.getId(), instPlayerId);
+					OrgFrontMsgUtil.orgSyncMsgData(StaticSyncState.delete, instPlayerCardSoul, instPlayerCardSoul.getId(), "", syncMsgData);
+				} else {
+					instPlayerCardSoul.setNum(afterNum);
+					getInstPlayerCardSoulDAL().update(instPlayerCardSoul, instPlayerId);
+					OrgFrontMsgUtil.orgSyncMsgData(StaticSyncState.update, instPlayerCardSoul, instPlayerCardSoul.getId(), instPlayerCardSoul.getResult(), syncMsgData);
+				}
+			}
+			//功法法宝碎片
+			else if (tableTypeId == StaticTableType.DictChip) {
+				InstPlayerChip instPlayerChip = (InstPlayerChip)thingsMap.get(thing);
+				int afterNum = instPlayerChip.getNum() - value;
+				if (afterNum <= 0) {
+					getInstPlayerChipDAL().deleteById(instPlayerChip.getId(), instPlayerId);
+					OrgFrontMsgUtil.orgSyncMsgData(StaticSyncState.delete, instPlayerChip, instPlayerChip.getId(), "", syncMsgData);
+				} else {
+					instPlayerChip.setNum(afterNum);
+					getInstPlayerChipDAL().update(instPlayerChip, instPlayerId);
+					OrgFrontMsgUtil.orgSyncMsgData(StaticSyncState.update, instPlayerChip, instPlayerChip.getId(), instPlayerChip.getResult(), syncMsgData);
+				}
+			}
+			//功法法宝(初始功法法宝：未在卡牌身上, 初始等级,经验是0的功法法宝)
+			else if (tableTypeId == StaticTableType.DictMagic) {
+				List<InstPlayerMagic> instPlayerMagicList = (List<InstPlayerMagic>)thingsMap.get(thing);
+				int index = 0;
+				for (InstPlayerMagic obj : instPlayerMagicList) {
+					index ++;
+					if (index > value) {
+						break;
+					}
+					getInstPlayerMagicDAL().deleteById(obj.getId(), instPlayerId);
+					OrgFrontMsgUtil.orgSyncMsgData(StaticSyncState.delete, obj, obj.getId(), "", syncMsgData);
+				}
+			}
+			//异火碎片
+			else if (tableTypeId == StaticTableType.DictYFireChip) {
+				InstPlayerYFire instPlayerYFire = (InstPlayerYFire)thingsMap.get(thing);
+				instPlayerYFire.setChipCount(instPlayerYFire.getChipCount() - value);
+				getInstPlayerYFireDAL().update(instPlayerYFire, instPlayerId);
+				OrgFrontMsgUtil.orgSyncMsgData(StaticSyncState.update, instPlayerYFire, instPlayerYFire.getId(), instPlayerYFire.getResult(), syncMsgData);
+			}
+			//翅膀(初始翅膀：等级是0,星数是1,未配在卡牌身上的)
+			else if (tableTypeId == StaticTableType.DictWing) {
+				List<InstPlayerWing> instPlayerWingList = (List<InstPlayerWing>)thingsMap.get(thing);
+				int index = 0;
+				for (InstPlayerWing obj : instPlayerWingList) {
+					index++;
+					if (index > value) {
+						break;
+					}
+					getInstPlayerWingDAL().deleteById(obj.getId(), instPlayerId);
+					OrgFrontMsgUtil.orgSyncMsgData(StaticSyncState.delete, obj, obj.getId(), "", syncMsgData);
+				}
+			}
+			//斗魂(初始斗魂：未附着在卡牌身上，等级为1，经验为0的斗魂)
+			else if (tableTypeId == StaticTableType.DictFightSoul) {
+				List<InstPlayerFightSoul> instPlayerFightSoulList = (List<InstPlayerFightSoul>)thingsMap.get(thing);
+				int index = 0;
+				for (InstPlayerFightSoul obj : instPlayerFightSoulList) {
+					index++;
+					if (index > value) {
+						break;
+					}
+					getInstPlayerFightSoulDAL().deleteById(obj.getId(), instPlayerId);
+					OrgFrontMsgUtil.orgSyncMsgData(StaticSyncState.delete, obj, obj.getId(), "", syncMsgData);
+				}
+			}
+		}
+	}
+	
 	/**
 	 * 根据开箱子值获取specialBoxRuleId
 	 * 
@@ -846,8 +1047,14 @@ public class ThingUtil extends DALFactory {
 			//异火碎片获得逻辑
 			YFireUtil.addInstPlayerYFire(instPlayerId,tableFieldId, value,syncMsgData);
 		} else if (tableTypeId == StaticTableType.DictWing) {//翅膀逻辑
-			for (int i = 0; i < value; i++) {
-				WingUtil.addWing(tableFieldId, instPlayerId, syncMsgData);
+			if (tableFieldId == StaticWing.shen) {
+				for (int i = 0; i < value; i++) {
+					WingUtil.addSpecialWing(tableFieldId, instPlayerId, syncMsgData);
+				}
+			} else {
+				for (int i = 0; i < value; i++) {
+					WingUtil.addWing(tableFieldId, instPlayerId, syncMsgData);
+				}
 			}
 		} else if (tableTypeId == StaticTableType.DictFightSoul) {//斗魂逻辑
 			for (int i = 0; i < value; i++) {

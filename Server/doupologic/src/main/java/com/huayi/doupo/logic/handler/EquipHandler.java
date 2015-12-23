@@ -4,22 +4,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import com.huayi.doupo.base.model.*;
+import com.huayi.doupo.logic.handler.util.*;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.huayi.doupo.base.model.DictEquipAdvance;
-import com.huayi.doupo.base.model.DictEquipQuality;
-import com.huayi.doupo.base.model.DictEquipment;
-import com.huayi.doupo.base.model.DictFunctionOpen;
-import com.huayi.doupo.base.model.DictHoleConsume;
-import com.huayi.doupo.base.model.DictThing;
-import com.huayi.doupo.base.model.InstEquipGem;
-import com.huayi.doupo.base.model.InstPlayer;
-import com.huayi.doupo.base.model.InstPlayerCard;
-import com.huayi.doupo.base.model.InstPlayerEquip;
-import com.huayi.doupo.base.model.InstPlayerFormation;
-import com.huayi.doupo.base.model.InstPlayerLineup;
-import com.huayi.doupo.base.model.InstPlayerThing;
 import com.huayi.doupo.base.model.dict.DictMap;
 import com.huayi.doupo.base.model.dict.DictMapList;
 import com.huayi.doupo.base.model.statics.StaticCnServer;
@@ -35,12 +24,6 @@ import com.huayi.doupo.base.util.logic.system.DictMapUtil;
 import com.huayi.doupo.base.util.logic.system.LogUtil;
 import com.huayi.doupo.base.util.logic.system.LogicLogUtil;
 import com.huayi.doupo.logic.handler.base.BaseHandler;
-import com.huayi.doupo.logic.handler.util.AchievementUtil;
-import com.huayi.doupo.logic.handler.util.DictUtil;
-import com.huayi.doupo.logic.handler.util.EquipmentUtil;
-import com.huayi.doupo.logic.handler.util.OrgFrontMsgUtil;
-import com.huayi.doupo.logic.handler.util.PlayerUtil;
-import com.huayi.doupo.logic.handler.util.ThingUtil;
 import com.huayi.doupo.logic.util.MessageData;
 import com.huayi.doupo.logic.util.MessageUtil;
 import com.huayi.doupo.logic.util.PlayerMapUtil;
@@ -782,6 +765,7 @@ public class EquipHandler extends BaseHandler{
 	 * 装备进阶
 	 * @author hzw
 	 * @date 2015-7-2上午11:43:58
+	 * @update	2015/12/08 by cui
 	 * @param msgMap
 	 * @param channelId
 	 * @throws Exception
@@ -791,7 +775,7 @@ public class EquipHandler extends BaseHandler{
 	@Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
 	public void equipAdvance(HashMap<String, Object> msgMap, String channelId) throws Exception {
 
-		MessageData syncMsgData = new MessageData();
+
 		int instPlayerId = getInstPlayerId(channelId);
 		
 		if (instPlayerId == 0) {
@@ -826,11 +810,127 @@ public class EquipHandler extends BaseHandler{
 		
 		List<DictEquipAdvance> equipAdvanceList = (List<DictEquipAdvance>)DictMapList.dictEquipAdvanceMap.get(playerEquip.getEquipTypeId());
 		int equipAdvanceId = playerEquip.getEquipAdvanceId();
-		
+
+		//Updated by cui
+		MessageData syncMsgData = new MessageData();
+
 		//验证当前是否已经为满级了,满级了不允许再次操作
+//		if (equipAdvanceId != 0) {
+//			DictEquipAdvance dictEquipAdvanceYz = DictMap.dictEquipAdvanceMap.get(equipAdvanceId + "");
+//			if(dictEquipAdvanceYz.getEquipQualityId() > 4){ //红品质装备
+//				if(dictEquipAdvanceYz.getStarLevel() >= 5){
+//					MessageUtil.sendFailMsg(channelId, msgMap, StaticCnServer.fail_equipUpAdavance);
+//					return;
+//				}
+//				//判断消费是否可进阶
+//				List<DictEquipAdvancered> dictEquipAdvancereds = (List<DictEquipAdvancered>) DictMapList.dictEquipAdvanceredMap.get(playerEquip.getEquipId());
+//				int contions  = 0;
+//				for (DictEquipAdvancered obj : dictEquipAdvancereds){
+//					if(obj.getStarLevel() <= dictEquipAdvanceYz.getStarLevel()) {
+//						contions += Integer.parseInt(obj.getContions());
+//					}
+//				}
+//
+//				if(contions == 0){ //可能没有开放，所以强制返回
+//					MessageUtil.sendFailMsg(channelId, msgMap, StaticCnServer.fail_equipUpAdavance);
+//					return;
+//				}
+//				List<InstPlayerRedEquip> instPlayerRedEquip = getInstPlayerRedEquipDAL().getList(playerEquip.getId() + "",instPlayerId);
+//				if(instPlayerRedEquip == null || contions > instPlayerRedEquip.get(0).getContions()){
+//					MessageUtil.sendFailMsg(channelId, msgMap, "淬炼值不足");
+//					return;
+//				}
+//				int playerContions = instPlayerRedEquip.get(0).getContions();
+//
+//				//进阶到红装
+//				DictEquipAdvance dictEquipAdvanceNew = null;
+//				for(DictEquipAdvance obj : equipAdvanceList){
+//					if(obj.getEquipQualityId() == 5 && obj.getStarLevel() == dictEquipAdvanceYz.getStarLevel() + 1){
+//						dictEquipAdvanceNew = obj;
+//						break;
+//					}
+//				}
+//				if(dictEquipAdvanceNew == null){
+//					MessageUtil.sendFailMsg(channelId, msgMap, StaticCnServer.fail_equipUpAdavance);
+//					return;
+//				}
+//				playerEquip.setEquipAdvanceId(dictEquipAdvanceNew.getId());
+//
+//				getInstPlayerEquipDAL().update(playerEquip, instPlayerId);
+//				OrgFrontMsgUtil.orgSyncMsgData(StaticSyncState.update, playerEquip, playerEquip.getId(), playerEquip.getResult(), syncMsgData);
+//
+//				MessageData retMsgData = new MessageData();
+//				retMsgData.putIntItem("1", 1);
+//
+//				//记录日志
+//				String log = "装备进阶红色：instPlayerId=" + instPlayerId + " 当前淬炼值=" + playerContions + " 进阶等级=" + dictEquipAdvanceNew.getId() + " 进阶结果=成功";
+//				LogUtil.info(log);
+//
+//				MessageUtil.sendSyncMsg(channelId, syncMsgData);
+//				MessageUtil.sendSuccMsg(channelId, msgMap, retMsgData);
+//				return;
+//			}else if(dictEquipAdvanceYz.getEquipQualityId() == 4 && dictEquipAdvanceYz.getStarLevel() >= 5){
+//				//判断消费是否可进阶
+//				List<DictEquipAdvancered> dictEquipAdvancereds = (List<DictEquipAdvancered>) DictMapList.dictEquipAdvanceredMap.get(playerEquip.getEquipId());
+//				int contions  = 0;
+//				for (DictEquipAdvancered obj : dictEquipAdvancereds){
+//					if(obj.getStarLevel() == 0) {
+//						contions += Integer.parseInt(obj.getContions());
+//						break;
+//					}
+//				}
+//				if(contions == 0){ //可能没有开放，所以强制返回
+//					MessageUtil.sendFailMsg(channelId, msgMap, StaticCnServer.fail_equipUpAdavance);
+//					return;
+//				}
+//				List<InstPlayerRedEquip> instPlayerRedEquip = getInstPlayerRedEquipDAL().getList(playerEquip.getId() + "",instPlayerId);
+//				if(instPlayerRedEquip == null || contions > instPlayerRedEquip.get(0).getContions()){
+//					MessageUtil.sendFailMsg(channelId, msgMap, StaticCnServer.fail_equipUpAdavance);
+//					return;
+//				}
+//				int playerContions = instPlayerRedEquip.get(0).getContions();
+//
+//				//进阶到红装
+//				DictEquipAdvance dictEquipAdvanceNew = null;
+//				for(DictEquipAdvance obj : equipAdvanceList){
+//					if(obj.getEquipQualityId() == 5 && obj.getStarLevel() == 0){
+//						dictEquipAdvanceNew = obj;
+//						break;
+//					}
+//				}
+//				if(dictEquipAdvanceNew == null){
+//					MessageUtil.sendFailMsg(channelId, msgMap, StaticCnServer.fail_equipUpAdavance);
+//					return;
+//				}
+//				playerEquip.setEquipAdvanceId(dictEquipAdvanceNew.getId());
+//
+//				getInstPlayerEquipDAL().update(playerEquip, instPlayerId);
+//				OrgFrontMsgUtil.orgSyncMsgData(StaticSyncState.update, playerEquip, playerEquip.getId(), playerEquip.getResult(), syncMsgData);
+//
+//				MessageData retMsgData = new MessageData();
+//				retMsgData.putIntItem("1", 1);
+//
+//				//记录日志
+//				String log = "装备进阶红色：instPlayerId=" + instPlayerId + " 当前淬炼值=" + playerContions + " 进阶等级=" + dictEquipAdvanceNew.getId() + " 进阶结果=成功";
+//				LogUtil.info(log);
+//
+//				MessageUtil.sendSyncMsg(channelId, syncMsgData);
+//				MessageUtil.sendSuccMsg(channelId, msgMap, retMsgData);
+//				return;
+//			}else{
+//				if (dictEquipAdvanceYz.getEquipQualityId() < 3 || (dictEquipAdvanceYz.getEquipQualityId() == 3 && dictEquipAdvanceYz.getStarLevel() >= 3)) {
+//					MessageUtil.sendFailMsg(channelId, msgMap, StaticCnServer.fail_equipUpAdavance);
+//					return;
+//				}
+//			}
+//
+//		}
+
+
+		//验证当前是否已经为满级了,满级了不允许再次操作   ,红卡时不通过这个协议
 		if (equipAdvanceId != 0) {
 			DictEquipAdvance dictEquipAdvanceYz = DictMap.dictEquipAdvanceMap.get(equipAdvanceId + "");
-			if (dictEquipAdvanceYz.getStarLevel() >= 5) {
+			if (dictEquipAdvanceYz.getStarLevel() >= 5 || dictEquipAdvanceYz.getEquipQualityId() > 4) {
 				MessageUtil.sendFailMsg(channelId, msgMap, StaticCnServer.fail_equipUpAdavance);
 				return;
 			}
@@ -915,7 +1015,9 @@ public class EquipHandler extends BaseHandler{
 		//消耗装备
 		String consumEquips = "";
 		for(int i = 0; i < ConvertUtil.toInt(conditions[0]); i++){
-			getInstPlayerEquipDAL().deleteById(instPlayerEquipList.get(i).getId(), instPlayerId);
+//			getInstPlayerEquipDAL().deleteById(instPlayerEquipList.get(i).getId(), instPlayerId);
+			//Update by cui @date 2015/12/09,删除装备时需要多部操作、所以封装到一个方法上
+			EquipUtil.deletePlayerEquip(instPlayerEquipList.get(i).getId(), instPlayerId);
 			OrgFrontMsgUtil.orgSyncMsgData(StaticSyncState.delete, instPlayerEquipList.get(i), instPlayerEquipList.get(i).getId(), "", syncMsgData);
 			consumEquips += DictMap.dictEquipmentMap.get(instPlayerEquipList.get(i).getEquipId() + "").getName() + ";";
 		}
@@ -997,6 +1099,156 @@ public class EquipHandler extends BaseHandler{
 		
 		MessageUtil.sendSyncMsg(channelId, syncMsgData);		
 		MessageUtil.sendSuccMsg(channelId, msgMap, retMsgData);
+	}
+
+	/**
+	 * 使用淬炼石
+	 * @author cui
+	 * @date	2015/12/08
+	 * @param msgMap
+	 * @param channelId
+	 * @throws Exception
+	 */
+	@SuppressWarnings("unchecked")
+	@Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
+	public void useAdvanceThing(HashMap<String, Object> msgMap, String channelId) throws Exception {
+		int instPlayerId = getInstPlayerId(channelId);
+
+
+		if (instPlayerId == 0) {
+			MessageUtil.sendFailMsg(channelId, msgMap, StaticCnServer.fail_PlayerIdVerfy);
+			return;
+		}
+
+		int instPlayerEquipId = (Integer) msgMap.get("instPlayerEquipId"); //装备ID
+		int thingid = (Integer) msgMap.get("thingid");//使用的淬炼石实力ID
+		int count = (Integer) msgMap.get("count");//淬炼石个数
+
+		//验证参数
+		InstPlayerEquip playerEquip = getInstPlayerEquipDAL().getModel(instPlayerEquipId, instPlayerId);
+		if (playerEquip.getInstPlayerId() != instPlayerId) {
+			MessageUtil.sendFailMsg(channelId, msgMap, StaticCnServer.fail_differentPlayers);
+			return;
+		}
+
+		if (count <= 0) {
+			MessageUtil.sendFailMsg(channelId, msgMap, "非法数据-1");
+			return;
+		}
+
+		int equipAdvanceId = playerEquip.getEquipAdvanceId();
+		if (equipAdvanceId == 0) {
+			MessageUtil.sendFailMsg(channelId, msgMap, "对这装备无法使用淬炼石");
+			return;
+		}
+
+		DictEquipAdvance dictEquipAdvance = DictMap.dictEquipAdvanceMap.get(equipAdvanceId + "");
+		if (dictEquipAdvance.getEquipQualityId() < 4 || (dictEquipAdvance.getEquipQualityId() == 4 && dictEquipAdvance.getStarLevel() < 5)) {
+			MessageUtil.sendFailMsg(channelId, msgMap, "对这装备无法使用淬炼石");
+			return;
+		}
+
+		if (dictEquipAdvance.getEquipQualityId() == 5 && dictEquipAdvance.getStarLevel() >= 5) {
+			MessageUtil.sendFailMsg(channelId, msgMap, StaticCnServer.fail_equipUpAdavance);
+			return;
+		}
+
+
+
+		//判断玩家身上有没有这么多淬炼石
+		List<InstPlayerThing> instPlayerThings = getInstPlayerThingDAL().getList("instPlayerId = " + instPlayerId + " and id = " + thingid, instPlayerId);
+		if (instPlayerThings == null || instPlayerThings.size() == 0 || instPlayerThings.get(0).getNum() < count) {
+			MessageUtil.sendFailMsg(channelId, msgMap, "淬炼石不足");
+			return;
+		}
+
+
+		//判断消费是否可进阶
+		List<DictEquipAdvancered> dictEquipAdvancereds = (List<DictEquipAdvancered>) DictMapList.dictEquipAdvanceredMap.get(playerEquip.getEquipId());
+		int contions = 0;
+		for (DictEquipAdvancered obj : dictEquipAdvancereds) {
+			if(dictEquipAdvance.getEquipQualityId() >= 5) {
+				if (obj.getStarLevel() <= dictEquipAdvance.getStarLevel()) {
+					contions += Integer.parseInt(obj.getContions());
+				}
+				//因橙色物品变成红色时也会使用到淬炼值，所以这里必须额外多增加淬炼值
+				if(obj.getStarLevel() == 0){
+					contions += Integer.parseInt(obj.getContions());
+				}
+			}else{
+				if(obj.getStarLevel() == 0){
+					contions = Integer.parseInt(obj.getContions());
+					break;
+				}
+			}
+		}
+
+		if (contions == 0) {
+			MessageUtil.sendFailMsg(channelId, msgMap, StaticCnServer.fail_equipUpAdavance);
+			return;
+		}
+
+		List<InstPlayerRedEquip> instPlayerRedEquipList = getInstPlayerRedEquipDAL().getList("equipInstId = " + playerEquip.getId(), instPlayerId);
+//		if (instPlayerRedEquipList != null && instPlayerRedEquipList.size() > 0 && contions <= instPlayerRedEquipList.get(0).getContions()) {
+//			MessageUtil.sendFailMsg(channelId, msgMap, "淬炼值已满，快快进阶吧");
+//			return;
+//		}
+
+		int playerContions = (instPlayerRedEquipList != null && instPlayerRedEquipList.size() > 0)?instPlayerRedEquipList.get(0).getContions():0;
+		InstPlayerRedEquip instPlayerRedEquip = (instPlayerRedEquipList != null && instPlayerRedEquipList.size() > 0)?instPlayerRedEquipList.get(0):null;
+
+		//计算淬炼值增加多少
+		int dictThingid = instPlayerThings.get(0).getThingId();
+		DictThing dictThing = DictMap.dictThingMap.get(dictThingid + "");
+		if (dictThing == null) {
+			MessageUtil.sendFailMsg(channelId, msgMap, "物品不存在");
+			return;
+		}
+		if (dictThing.getLevel() <= 0) {
+			MessageUtil.sendFailMsg(channelId, msgMap, "数据异常");
+			return;
+		}
+		int addValue = dictThing.getLevel() * count;
+
+		//判断物品是否使用过量，当使用过量时进行智能处理
+		int overrage = (playerContions + addValue - contions) / dictThing.getLevel();
+		int consumeCount = count;
+		if (overrage > 0) {
+			consumeCount = count - overrage;
+			addValue = dictThing.getLevel() * consumeCount;
+		}
+
+		MessageData syncMsgData = new MessageData();
+		//消耗物品
+		InstPlayerThing instPlayerThing = instPlayerThings.get(0);
+		ThingUtil.updateInstPlayerThing(instPlayerId, instPlayerThing, consumeCount, syncMsgData, msgMap);
+
+		//增加淬炼值
+		if(instPlayerRedEquip == null){
+			InstPlayerRedEquip newRedEquip = new InstPlayerRedEquip();
+			newRedEquip.setContions(addValue);
+			newRedEquip.setEquipInstId(instPlayerEquipId);
+			newRedEquip.setInstPlayerId(instPlayerId);
+			newRedEquip.setVersion(0);
+			getInstPlayerRedEquipDAL().add(newRedEquip,instPlayerId);
+			OrgFrontMsgUtil.orgSyncMsgData(StaticSyncState.add, newRedEquip, newRedEquip.getId(), newRedEquip.getResult(), syncMsgData);
+		}else{
+			instPlayerRedEquip.setContions(playerContions + addValue);
+			getInstPlayerRedEquipDAL().update(instPlayerRedEquip,instPlayerId);
+			OrgFrontMsgUtil.orgSyncMsgData(StaticSyncState.update, instPlayerRedEquip, instPlayerRedEquip.getId(), instPlayerRedEquip.getResult(), syncMsgData);
+		}
+
+		MessageData retMsgData = new MessageData();
+		//判断是否能进阶
+		retMsgData.putIntItem("isAc", 0);  //不会进阶
+		if (contions <= playerContions + addValue) {
+			EquipUtil.checkEquipAdvance(syncMsgData,retMsgData,playerEquip,instPlayerId);
+		}
+
+
+		MessageUtil.sendSyncMsg(channelId, syncMsgData);
+		MessageUtil.sendSuccMsg(channelId, msgMap, retMsgData);
+
 	}
 	
 	

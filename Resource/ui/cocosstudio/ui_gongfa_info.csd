@@ -38,13 +38,13 @@
                     <OutlineColor A="255" R="255" G="0" B="0" />
                     <ShadowColor A="255" R="110" G="110" B="110" />
                   </AbstractNodeData>
-                  <AbstractNodeData Name="btn_exit" ActionTag="127" UserData="ignoreSize" Tag="12286" IconVisible="False" LeftMargin="40.0000" RightMargin="440.0000" TopMargin="810.5000" BottomMargin="34.5000" TouchEnable="True" FontSize="35" ButtonText="更换" ctype="ButtonObjectData">
+                  <AbstractNodeData Name="btn_exit" ActionTag="127" UserData="ignoreSize" Tag="12286" IconVisible="False" LeftMargin="6.5156" RightMargin="473.4844" TopMargin="816.3324" BottomMargin="28.6676" TouchEnable="True" FontSize="35" ButtonText="更换" ctype="ButtonObjectData">
                     <Size X="164.0000" Y="73.0000" />
                     <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                    <Position X="122.0000" Y="71.0000" />
-                    <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                    <Position X="88.5156" Y="65.1676" />
+                    <Scale ScaleX="0.9000" ScaleY="0.9000" />
                     <CColor A="255" R="255" G="255" B="255" />
-                    <PrePosition X="0.1894" Y="0.0773" />
+                    <PrePosition X="0.1374" Y="0.0710" />
                     <PreSize X="0.2547" Y="0.0795" />
                     <FontResource Type="Normal" Path="data/ui_font.ttf" Plist="" />
                     <TextColor A="255" R="255" G="255" B="255" />
@@ -54,13 +54,13 @@
                     <OutlineColor A="255" R="255" G="0" B="0" />
                     <ShadowColor A="255" R="110" G="110" B="110" />
                   </AbstractNodeData>
-                  <AbstractNodeData Name="btn_onekey" ActionTag="128" UserData="ignoreSize" Tag="12287" IconVisible="False" LeftMargin="240.0000" RightMargin="240.0000" TopMargin="810.5000" BottomMargin="34.5000" TouchEnable="True" FontSize="35" ButtonText="卸下" ctype="ButtonObjectData">
+                  <AbstractNodeData Name="btn_onekey" ActionTag="128" UserData="ignoreSize" Tag="12287" IconVisible="False" LeftMargin="162.6829" RightMargin="317.3171" TopMargin="816.3324" BottomMargin="28.6676" TouchEnable="True" FontSize="35" ButtonText="卸下" ctype="ButtonObjectData">
                     <Size X="164.0000" Y="73.0000" />
                     <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                    <Position X="322.0000" Y="71.0000" />
-                    <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                    <Position X="244.6829" Y="65.1676" />
+                    <Scale ScaleX="0.9000" ScaleY="0.9000" />
                     <CColor A="255" R="255" G="255" B="255" />
-                    <PrePosition X="0.5000" Y="0.0773" />
+                    <PrePosition X="0.3799" Y="0.0710" />
                     <PreSize X="0.2547" Y="0.0795" />
                     <FontResource Type="Normal" Path="data/ui_font.ttf" Plist="" />
                     <TextColor A="255" R="255" G="255" B="255" />
@@ -70,19 +70,35 @@
                     <OutlineColor A="255" R="255" G="0" B="0" />
                     <ShadowColor A="255" R="110" G="110" B="110" />
                   </AbstractNodeData>
-                  <AbstractNodeData Name="btn_lineup" ActionTag="129" UserData="ignoreSize" Tag="12288" IconVisible="False" LeftMargin="440.0000" RightMargin="40.0000" TopMargin="810.5000" BottomMargin="34.5000" TouchEnable="True" FontSize="35" ButtonText="强化" ctype="ButtonObjectData">
+                  <AbstractNodeData Name="btn_lineup" ActionTag="129" UserData="ignoreSize" Tag="12288" IconVisible="False" LeftMargin="318.8503" RightMargin="161.1497" TopMargin="816.3324" BottomMargin="28.6676" TouchEnable="True" FontSize="35" ButtonText="强化" ctype="ButtonObjectData">
                     <Size X="164.0000" Y="73.0000" />
                     <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                    <Position X="522.0000" Y="71.0000" />
-                    <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                    <Position X="400.8503" Y="65.1676" />
+                    <Scale ScaleX="0.9000" ScaleY="0.9000" />
                     <CColor A="255" R="255" G="255" B="255" />
-                    <PrePosition X="0.8106" Y="0.0773" />
+                    <PrePosition X="0.6224" Y="0.0710" />
                     <PreSize X="0.2547" Y="0.0795" />
                     <FontResource Type="Normal" Path="data/ui_font.ttf" Plist="" />
                     <TextColor A="255" R="255" G="255" B="255" />
                     <DisabledFileData Type="Normal" Path="ui/tk_btn02.png" Plist="" />
                     <PressedFileData Type="Normal" Path="ui/tk_btn01.png" Plist="" />
                     <NormalFileData Type="Normal" Path="ui/tk_btn01.png" Plist="" />
+                    <OutlineColor A="255" R="255" G="0" B="0" />
+                    <ShadowColor A="255" R="110" G="110" B="110" />
+                  </AbstractNodeData>
+                  <AbstractNodeData Name="btn_refining" ActionTag="1640711909" UserData="ignoreSize" Tag="272" IconVisible="False" LeftMargin="475.0177" RightMargin="4.9823" TopMargin="816.3324" BottomMargin="28.6676" TouchEnable="True" FontSize="35" ButtonText="精练" Scale9Width="164" Scale9Height="73" ctype="ButtonObjectData">
+                    <Size X="164.0000" Y="73.0000" />
+                    <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                    <Position X="557.0177" Y="65.1676" />
+                    <Scale ScaleX="0.9000" ScaleY="0.9000" />
+                    <CColor A="255" R="255" G="255" B="255" />
+                    <PrePosition X="0.8649" Y="0.0710" />
+                    <PreSize X="0.2547" Y="0.0795" />
+                    <FontResource Type="Normal" Path="data/ui_font.ttf" Plist="" />
+                    <TextColor A="255" R="255" G="255" B="255" />
+                    <DisabledFileData Type="Normal" Path="ui/tk_btn02.png" Plist="" />
+                    <PressedFileData Type="Normal" Path="ui/yh_sq_btn01.png" Plist="" />
+                    <NormalFileData Type="Normal" Path="ui/yh_sq_btn01.png" Plist="" />
                     <OutlineColor A="255" R="255" G="0" B="0" />
                     <ShadowColor A="255" R="110" G="110" B="110" />
                   </AbstractNodeData>
@@ -209,101 +225,189 @@
                           <AbstractNodeData Name="image_base_property" ActionTag="85" ZOrder="2" UserData="ignoreSize" Tag="254586" IconVisible="False" LeftMargin="51.5000" RightMargin="6.5000" TopMargin="24.5000" BottomMargin="356.5000" ctype="ImageViewObjectData">
                             <Size X="255.0000" Y="343.0000" />
                             <Children>
-                              <AbstractNodeData Name="text_prop_now" ActionTag="176" Tag="254674" IconVisible="False" LeftMargin="28.0000" RightMargin="119.0000" TopMargin="27.0000" BottomMargin="282.0000" FontSize="27" LabelText="当前属性" ctype="TextObjectData">
-                                <Size X="108.0000" Y="34.0000" />
-                                <AnchorPoint ScaleY="0.5000" />
-                                <Position X="28.0000" Y="299.0000" />
-                                <Scale ScaleX="1.0000" ScaleY="1.0000" />
-                                <CColor A="255" R="255" G="255" B="0" />
-                                <PrePosition X="0.1098" Y="0.8717" />
-                                <PreSize X="0.4235" Y="0.0787" />
-                                <FontResource Type="Normal" Path="data/ui_font.ttf" Plist="" />
-                                <OutlineColor A="255" R="255" G="0" B="0" />
-                                <ShadowColor A="255" R="110" G="110" B="110" />
-                              </AbstractNodeData>
-                              <AbstractNodeData Name="text_prop1" ActionTag="86" Tag="254587" IconVisible="False" LeftMargin="42.0000" RightMargin="171.0000" TopMargin="73.0000" BottomMargin="244.0000" FontSize="21" LabelText="生命" ctype="TextObjectData">
-                                <Size X="42.0000" Y="26.0000" />
-                                <AnchorPoint ScaleY="0.5000" />
-                                <Position X="42.0000" Y="257.0000" />
+                              <AbstractNodeData Name="view_info" ActionTag="2100442807" Tag="165" IconVisible="False" LeftMargin="10.5262" RightMargin="9.4738" TopMargin="10.4744" BottomMargin="10.5256" TouchEnable="True" ClipAble="True" BackColorAlpha="102" ColorAngle="90.0000" ScrollDirectionType="Vertical" ctype="ScrollViewObjectData">
+                                <Size X="235.0000" Y="322.0000" />
+                                <Children>
+                                  <AbstractNodeData Name="text_prop_now" ActionTag="176" Tag="254674" IconVisible="False" LeftMargin="27.9999" RightMargin="99.0001" TopMargin="3.2567" BottomMargin="412.7433" FontSize="27" LabelText="当前属性" ctype="TextObjectData">
+                                    <Size X="108.0000" Y="34.0000" />
+                                    <AnchorPoint ScaleY="0.5000" />
+                                    <Position X="27.9999" Y="429.7433" />
+                                    <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                                    <CColor A="255" R="255" G="255" B="0" />
+                                    <PrePosition X="0.1191" Y="0.9550" />
+                                    <PreSize X="0.4235" Y="0.0787" />
+                                    <FontResource Type="Normal" Path="data/ui_font.ttf" Plist="" />
+                                    <OutlineColor A="255" R="255" G="0" B="0" />
+                                    <ShadowColor A="255" R="110" G="110" B="110" />
+                                  </AbstractNodeData>
+                                  <AbstractNodeData Name="text_prop1" ActionTag="86" Tag="254587" IconVisible="False" LeftMargin="42.0001" RightMargin="150.9999" TopMargin="39.2843" BottomMargin="384.7157" FontSize="21" LabelText="生命" ctype="TextObjectData">
+                                    <Size X="42.0000" Y="26.0000" />
+                                    <AnchorPoint ScaleY="0.5000" />
+                                    <Position X="42.0001" Y="397.7157" />
+                                    <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                                    <CColor A="255" R="255" G="255" B="255" />
+                                    <PrePosition X="0.1787" Y="0.8838" />
+                                    <PreSize X="0.1647" Y="0.0612" />
+                                    <FontResource Type="Normal" Path="data/ui_font.ttf" Plist="" />
+                                    <OutlineColor A="255" R="255" G="0" B="0" />
+                                    <ShadowColor A="255" R="110" G="110" B="110" />
+                                  </AbstractNodeData>
+                                  <AbstractNodeData Name="text_prop2" ActionTag="170" Tag="254668" IconVisible="False" LeftMargin="42.0001" RightMargin="150.9999" TopMargin="68.2840" BottomMargin="355.7160" FontSize="21" LabelText="生命" ctype="TextObjectData">
+                                    <Size X="42.0000" Y="26.0000" />
+                                    <AnchorPoint ScaleY="0.5000" />
+                                    <Position X="42.0001" Y="368.7160" />
+                                    <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                                    <CColor A="255" R="255" G="255" B="255" />
+                                    <PrePosition X="0.1787" Y="0.8194" />
+                                    <PreSize X="0.1647" Y="0.0612" />
+                                    <FontResource Type="Normal" Path="data/ui_font.ttf" Plist="" />
+                                    <OutlineColor A="255" R="255" G="0" B="0" />
+                                    <ShadowColor A="255" R="110" G="110" B="110" />
+                                  </AbstractNodeData>
+                                  <AbstractNodeData Name="text_prop3" ActionTag="171" Tag="254669" IconVisible="False" LeftMargin="42.0001" RightMargin="150.9999" TopMargin="97.2849" BottomMargin="326.7151" FontSize="21" LabelText="生命" ctype="TextObjectData">
+                                    <Size X="42.0000" Y="26.0000" />
+                                    <AnchorPoint ScaleY="0.5000" />
+                                    <Position X="42.0001" Y="339.7151" />
+                                    <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                                    <CColor A="255" R="255" G="255" B="255" />
+                                    <PrePosition X="0.1787" Y="0.7549" />
+                                    <PreSize X="0.1647" Y="0.0612" />
+                                    <FontResource Type="Normal" Path="data/ui_font.ttf" Plist="" />
+                                    <OutlineColor A="255" R="255" G="0" B="0" />
+                                    <ShadowColor A="255" R="110" G="110" B="110" />
+                                  </AbstractNodeData>
+                                  <AbstractNodeData Name="text_prop_begin" ActionTag="178" Tag="254676" IconVisible="False" LeftMargin="27.9999" RightMargin="99.0001" TopMargin="137.4469" BottomMargin="278.5531" FontSize="27" LabelText="解锁属性" ctype="TextObjectData">
+                                    <Size X="108.0000" Y="34.0000" />
+                                    <AnchorPoint ScaleY="0.5000" />
+                                    <Position X="27.9999" Y="295.5531" />
+                                    <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                                    <CColor A="255" R="255" G="222" B="173" />
+                                    <PrePosition X="0.1191" Y="0.6568" />
+                                    <PreSize X="0.4235" Y="0.0787" />
+                                    <FontResource Type="Normal" Path="data/ui_font.ttf" Plist="" />
+                                    <OutlineColor A="255" R="255" G="0" B="0" />
+                                    <ShadowColor A="255" R="110" G="110" B="110" />
+                                  </AbstractNodeData>
+                                  <AbstractNodeData Name="text_prop4" ActionTag="172" Tag="254670" IconVisible="False" LeftMargin="41.9998" RightMargin="151.0002" TopMargin="171.4741" BottomMargin="252.5259" FontSize="21" LabelText="生命" ctype="TextObjectData">
+                                    <Size X="42.0000" Y="26.0000" />
+                                    <AnchorPoint ScaleY="0.5000" />
+                                    <Position X="41.9998" Y="265.5259" />
+                                    <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                                    <CColor A="255" R="255" G="255" B="255" />
+                                    <PrePosition X="0.1787" Y="0.5901" />
+                                    <PreSize X="0.1647" Y="0.0612" />
+                                    <FontResource Type="Normal" Path="data/ui_font.ttf" Plist="" />
+                                    <OutlineColor A="255" R="255" G="0" B="0" />
+                                    <ShadowColor A="255" R="110" G="110" B="110" />
+                                  </AbstractNodeData>
+                                  <AbstractNodeData Name="text_prop5" ActionTag="173" Tag="254671" IconVisible="False" LeftMargin="41.9998" RightMargin="151.0002" TopMargin="199.2104" BottomMargin="224.7896" FontSize="21" LabelText="生命" ctype="TextObjectData">
+                                    <Size X="42.0000" Y="26.0000" />
+                                    <AnchorPoint ScaleY="0.5000" />
+                                    <Position X="41.9998" Y="237.7896" />
+                                    <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                                    <CColor A="255" R="255" G="255" B="255" />
+                                    <PrePosition X="0.1787" Y="0.5284" />
+                                    <PreSize X="0.1647" Y="0.0612" />
+                                    <FontResource Type="Normal" Path="data/ui_font.ttf" Plist="" />
+                                    <OutlineColor A="255" R="255" G="0" B="0" />
+                                    <ShadowColor A="255" R="110" G="110" B="110" />
+                                  </AbstractNodeData>
+                                  <AbstractNodeData Name="text_prop6" ActionTag="9" Tag="723666" IconVisible="False" LeftMargin="41.9996" RightMargin="151.0004" TopMargin="229.0533" BottomMargin="194.9467" FontSize="21" LabelText="生命" ctype="TextObjectData">
+                                    <Size X="42.0000" Y="26.0000" />
+                                    <AnchorPoint ScaleY="0.5000" />
+                                    <Position X="41.9996" Y="207.9467" />
+                                    <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                                    <CColor A="255" R="255" G="255" B="255" />
+                                    <PrePosition X="0.1787" Y="0.4621" />
+                                    <PreSize X="0.1647" Y="0.0816" />
+                                    <FontResource Type="Normal" Path="data/ui_font.ttf" Plist="" />
+                                    <OutlineColor A="255" R="255" G="0" B="0" />
+                                    <ShadowColor A="255" R="110" G="110" B="110" />
+                                  </AbstractNodeData>
+                                  <AbstractNodeData Name="text_prop_refining" ActionTag="-349768309" Tag="166" IconVisible="False" LeftMargin="27.9999" RightMargin="99.0001" TopMargin="270.9637" BottomMargin="145.0363" FontSize="27" LabelText="精练属性" ctype="TextObjectData">
+                                    <Size X="108.0000" Y="34.0000" />
+                                    <AnchorPoint ScaleY="0.5000" />
+                                    <Position X="27.9999" Y="162.0363" />
+                                    <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                                    <CColor A="255" R="0" G="246" B="255" />
+                                    <PrePosition X="0.1191" Y="0.3601" />
+                                    <PreSize X="0.4235" Y="0.0787" />
+                                    <FontResource Type="Normal" Path="data/ui_font.ttf" Plist="" />
+                                    <OutlineColor A="255" R="255" G="0" B="0" />
+                                    <ShadowColor A="255" R="110" G="110" B="110" />
+                                  </AbstractNodeData>
+                                  <AbstractNodeData Name="text_prop7" ActionTag="-338585824" Tag="167" IconVisible="False" LeftMargin="41.9998" RightMargin="151.0002" TopMargin="310.8725" BottomMargin="113.1275" FontSize="21" LabelText="生命" ctype="TextObjectData">
+                                    <Size X="42.0000" Y="26.0000" />
+                                    <AnchorPoint ScaleY="0.5000" />
+                                    <Position X="41.9998" Y="126.1275" />
+                                    <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                                    <CColor A="255" R="255" G="255" B="255" />
+                                    <PrePosition X="0.1787" Y="0.2803" />
+                                    <PreSize X="0.1647" Y="0.0612" />
+                                    <FontResource Type="Normal" Path="data/ui_font.ttf" Plist="" />
+                                    <OutlineColor A="255" R="255" G="0" B="0" />
+                                    <ShadowColor A="255" R="110" G="110" B="110" />
+                                  </AbstractNodeData>
+                                  <AbstractNodeData Name="text_prop8" ActionTag="1642368086" Tag="168" IconVisible="False" LeftMargin="41.9998" RightMargin="151.0002" TopMargin="338.2152" BottomMargin="85.7848" FontSize="21" LabelText="生命" ctype="TextObjectData">
+                                    <Size X="42.0000" Y="26.0000" />
+                                    <AnchorPoint ScaleY="0.5000" />
+                                    <Position X="41.9998" Y="98.7848" />
+                                    <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                                    <CColor A="255" R="255" G="255" B="255" />
+                                    <PrePosition X="0.1787" Y="0.2195" />
+                                    <PreSize X="0.1647" Y="0.0612" />
+                                    <FontResource Type="Normal" Path="data/ui_font.ttf" Plist="" />
+                                    <OutlineColor A="255" R="255" G="0" B="0" />
+                                    <ShadowColor A="255" R="110" G="110" B="110" />
+                                  </AbstractNodeData>
+                                  <AbstractNodeData Name="text_prop9" ActionTag="-708704420" Tag="169" IconVisible="False" LeftMargin="41.9998" RightMargin="151.0002" TopMargin="365.5578" BottomMargin="58.4422" FontSize="21" LabelText="生命" ctype="TextObjectData">
+                                    <Size X="42.0000" Y="26.0000" />
+                                    <AnchorPoint ScaleY="0.5000" />
+                                    <Position X="41.9998" Y="71.4422" />
+                                    <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                                    <CColor A="255" R="255" G="255" B="255" />
+                                    <PrePosition X="0.1787" Y="0.1588" />
+                                    <PreSize X="0.1647" Y="0.0816" />
+                                    <FontResource Type="Normal" Path="data/ui_font.ttf" Plist="" />
+                                    <OutlineColor A="255" R="255" G="0" B="0" />
+                                    <ShadowColor A="255" R="110" G="110" B="110" />
+                                  </AbstractNodeData>
+                                  <AbstractNodeData Name="text_prop10" ActionTag="-592307038" Tag="170" IconVisible="False" LeftMargin="41.9998" RightMargin="151.0002" TopMargin="392.8998" BottomMargin="31.1002" FontSize="21" LabelText="生命" ctype="TextObjectData">
+                                    <Size X="42.0000" Y="26.0000" />
+                                    <AnchorPoint ScaleY="0.5000" />
+                                    <Position X="41.9998" Y="44.1002" />
+                                    <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                                    <CColor A="255" R="255" G="255" B="255" />
+                                    <PrePosition X="0.1787" Y="0.0980" />
+                                    <PreSize X="0.1647" Y="0.0816" />
+                                    <FontResource Type="Normal" Path="data/ui_font.ttf" Plist="" />
+                                    <OutlineColor A="255" R="255" G="0" B="0" />
+                                    <ShadowColor A="255" R="110" G="110" B="110" />
+                                  </AbstractNodeData>
+                                  <AbstractNodeData Name="text_prop11" ActionTag="-122860909" Tag="171" IconVisible="False" LeftMargin="41.9998" RightMargin="151.0002" TopMargin="420.2423" BottomMargin="3.7577" FontSize="21" LabelText="生命" ctype="TextObjectData">
+                                    <Size X="42.0000" Y="26.0000" />
+                                    <AnchorPoint ScaleY="0.5000" />
+                                    <Position X="41.9998" Y="16.7577" />
+                                    <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                                    <CColor A="255" R="255" G="255" B="255" />
+                                    <PrePosition X="0.1787" Y="0.0372" />
+                                    <PreSize X="0.1647" Y="0.0816" />
+                                    <FontResource Type="Normal" Path="data/ui_font.ttf" Plist="" />
+                                    <OutlineColor A="255" R="255" G="0" B="0" />
+                                    <ShadowColor A="255" R="110" G="110" B="110" />
+                                  </AbstractNodeData>
+                                </Children>
+                                <AnchorPoint />
+                                <Position X="10.5262" Y="10.5256" />
                                 <Scale ScaleX="1.0000" ScaleY="1.0000" />
                                 <CColor A="255" R="255" G="255" B="255" />
-                                <PrePosition X="0.1647" Y="0.7493" />
-                                <PreSize X="0.1647" Y="0.0612" />
-                                <FontResource Type="Normal" Path="data/ui_font.ttf" Plist="" />
-                                <OutlineColor A="255" R="255" G="0" B="0" />
-                                <ShadowColor A="255" R="110" G="110" B="110" />
-                              </AbstractNodeData>
-                              <AbstractNodeData Name="text_prop2" ActionTag="170" Tag="254668" IconVisible="False" LeftMargin="42.0000" RightMargin="171.0000" TopMargin="103.0000" BottomMargin="214.0000" FontSize="21" LabelText="生命" ctype="TextObjectData">
-                                <Size X="42.0000" Y="26.0000" />
-                                <AnchorPoint ScaleY="0.5000" />
-                                <Position X="42.0000" Y="227.0000" />
-                                <Scale ScaleX="1.0000" ScaleY="1.0000" />
-                                <CColor A="255" R="255" G="255" B="255" />
-                                <PrePosition X="0.1647" Y="0.6618" />
-                                <PreSize X="0.1647" Y="0.0612" />
-                                <FontResource Type="Normal" Path="data/ui_font.ttf" Plist="" />
-                                <OutlineColor A="255" R="255" G="0" B="0" />
-                                <ShadowColor A="255" R="110" G="110" B="110" />
-                              </AbstractNodeData>
-                              <AbstractNodeData Name="text_prop3" ActionTag="171" Tag="254669" IconVisible="False" LeftMargin="42.0000" RightMargin="171.0000" TopMargin="131.0000" BottomMargin="186.0000" FontSize="21" LabelText="生命" ctype="TextObjectData">
-                                <Size X="42.0000" Y="26.0000" />
-                                <AnchorPoint ScaleY="0.5000" />
-                                <Position X="42.0000" Y="199.0000" />
-                                <Scale ScaleX="1.0000" ScaleY="1.0000" />
-                                <CColor A="255" R="255" G="255" B="255" />
-                                <PrePosition X="0.1647" Y="0.5802" />
-                                <PreSize X="0.1647" Y="0.0612" />
-                                <FontResource Type="Normal" Path="data/ui_font.ttf" Plist="" />
-                                <OutlineColor A="255" R="255" G="0" B="0" />
-                                <ShadowColor A="255" R="110" G="110" B="110" />
-                              </AbstractNodeData>
-                              <AbstractNodeData Name="text_prop_begin" ActionTag="178" Tag="254676" IconVisible="False" LeftMargin="28.0000" RightMargin="119.0000" TopMargin="190.0000" BottomMargin="119.0000" FontSize="27" LabelText="解锁属性" ctype="TextObjectData">
-                                <Size X="108.0000" Y="34.0000" />
-                                <AnchorPoint ScaleY="0.5000" />
-                                <Position X="28.0000" Y="136.0000" />
-                                <Scale ScaleX="1.0000" ScaleY="1.0000" />
-                                <CColor A="255" R="255" G="222" B="173" />
-                                <PrePosition X="0.1098" Y="0.3965" />
-                                <PreSize X="0.4235" Y="0.0787" />
-                                <FontResource Type="Normal" Path="data/ui_font.ttf" Plist="" />
-                                <OutlineColor A="255" R="255" G="0" B="0" />
-                                <ShadowColor A="255" R="110" G="110" B="110" />
-                              </AbstractNodeData>
-                              <AbstractNodeData Name="text_prop4" ActionTag="172" Tag="254670" IconVisible="False" LeftMargin="42.0000" RightMargin="171.0000" TopMargin="234.0000" BottomMargin="83.0000" FontSize="21" LabelText="生命" ctype="TextObjectData">
-                                <Size X="42.0000" Y="26.0000" />
-                                <AnchorPoint ScaleY="0.5000" />
-                                <Position X="42.0000" Y="96.0000" />
-                                <Scale ScaleX="1.0000" ScaleY="1.0000" />
-                                <CColor A="255" R="255" G="255" B="255" />
-                                <PrePosition X="0.1647" Y="0.2799" />
-                                <PreSize X="0.1647" Y="0.0612" />
-                                <FontResource Type="Normal" Path="data/ui_font.ttf" Plist="" />
-                                <OutlineColor A="255" R="255" G="0" B="0" />
-                                <ShadowColor A="255" R="110" G="110" B="110" />
-                              </AbstractNodeData>
-                              <AbstractNodeData Name="text_prop5" ActionTag="173" Tag="254671" IconVisible="False" LeftMargin="42.0000" RightMargin="171.0000" TopMargin="267.0000" BottomMargin="50.0000" FontSize="21" LabelText="生命" ctype="TextObjectData">
-                                <Size X="42.0000" Y="26.0000" />
-                                <AnchorPoint ScaleY="0.5000" />
-                                <Position X="42.0000" Y="63.0000" />
-                                <Scale ScaleX="1.0000" ScaleY="1.0000" />
-                                <CColor A="255" R="255" G="255" B="255" />
-                                <PrePosition X="0.1647" Y="0.1837" />
-                                <PreSize X="0.1647" Y="0.0612" />
-                                <FontResource Type="Normal" Path="data/ui_font.ttf" Plist="" />
-                                <OutlineColor A="255" R="255" G="0" B="0" />
-                                <ShadowColor A="255" R="110" G="110" B="110" />
-                              </AbstractNodeData>
-                              <AbstractNodeData Name="text_prop6" ActionTag="9" Tag="723666" IconVisible="False" LeftMargin="42.0000" RightMargin="171.0000" TopMargin="300.0000" BottomMargin="17.0000" FontSize="21" LabelText="生命" ctype="TextObjectData">
-                                <Size X="42.0000" Y="26.0000" />
-                                <AnchorPoint ScaleY="0.5000" />
-                                <Position X="42.0000" Y="30.0000" />
-                                <Scale ScaleX="1.0000" ScaleY="1.0000" />
-                                <CColor A="255" R="255" G="255" B="255" />
-                                <PrePosition X="0.1647" Y="0.0875" />
-                                <PreSize X="0.1647" Y="0.0816" />
-                                <FontResource Type="Normal" Path="data/ui_font.ttf" Plist="" />
-                                <OutlineColor A="255" R="255" G="0" B="0" />
-                                <ShadowColor A="255" R="110" G="110" B="110" />
+                                <PrePosition X="0.0413" Y="0.0307" />
+                                <PreSize X="0.9216" Y="0.9388" />
+                                <SingleColor A="255" R="255" G="150" B="100" />
+                                <FirstColor A="255" R="255" G="150" B="100" />
+                                <EndColor A="255" R="255" G="255" B="255" />
+                                <ColorVector ScaleY="1.0000" />
+                                <InnerNodeSize Width="235" Height="450" />
                               </AbstractNodeData>
                             </Children>
                             <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />

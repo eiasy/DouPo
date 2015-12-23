@@ -21,7 +21,7 @@ guideInfo = {
     yuanfenGuideLevel = 26,
     -- 缘分
     -- xilianGuideLevel   	= 28,--洗练
-    lianqitaGuideLevel = 28,
+    lianqitaGuideLevel = 17,
     -- 练气塔
     dantaGuideLevel = 32,
     -- 丹塔

@@ -543,6 +543,7 @@ function ui.showFightResult(uiItem, resultCode, msgdata)
         callbackfunc = function()
             audio.playMusic("sound/bg_music.mp3", true)
             if armature and armature:getParent() then armature:removeFromParent() end
+            UITeam.checkRecoverState()
             if uiItem == UIActivityEmail and not isWin then
                 UIManager.showScreen("ui_notice", "ui_menu")
                 UIActivityPanel.scrollByName("mail", "mail")
@@ -553,9 +554,7 @@ function ui.showFightResult(uiItem, resultCode, msgdata)
                 if msgdata then
                     enterMineZone(msgdata)
                 end
-                if isWin then
-                    UITeam.checkRecoverState()
-                end
+
                 if uiItem == UIOreInfo then
                     UIManager.pushScene("ui_ore_info")
                     UIOreInfo.warParam = nil

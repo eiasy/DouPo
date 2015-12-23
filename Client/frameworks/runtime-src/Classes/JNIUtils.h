@@ -7,7 +7,7 @@
 
 using namespace std;
 
-#define PROGRAM_VER "1.5.0"
+#define PROGRAM_VER "1.6.0"
 
 class JNIUtils
 {

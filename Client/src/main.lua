@@ -53,6 +53,9 @@ end
 local function main()
 if SDK.getChannel() == "anysdk" then
     require "DictRecharge"
+elseif SDK.getDeviceInfo().packageName == "com.y2game.doupocangqiong" then
+    require "DictRechargeForIOSBrushList"
+    SHOW_VIDEO = true
 end
 	if false and device.platform == "android" then --todo 解决IOS，暂不缩进了，Android发现也有问题。
 	local lastTime = os.time()

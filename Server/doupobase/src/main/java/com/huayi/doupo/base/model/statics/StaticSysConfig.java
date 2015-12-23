@@ -529,5 +529,13 @@ public class StaticSysConfig{
 		public static final Integer holdStarFreeRefreshTimes = new Integer(263);//每天可免费刷新占星次数
 		
 		public static final Integer holdStarCanHoldTimes = new Integer(264);//每天可占星次数
+		
+		public static final Integer openGroupBoxScore = new Integer(265);//多少开启度能打开豪华箱子
+		
+		public static final Integer getGroupBoxThingScore = new Integer(266);//个人多少开启度可领豪华箱子物品
+		
+		public static final Integer canLookRank = new Integer(267);//团购排行可查看前多少名的玩家
+		
+		public static final Integer canRetRank = new Integer(268);//团购排行多少名可得到返
 
 }

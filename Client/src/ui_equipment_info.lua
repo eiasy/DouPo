@@ -93,9 +93,15 @@ function UIEquipmentInfo.init()
                 UIGuidePeople.isGuide(nil, UIEquipmentIntensify)
             elseif sender == btn_clean then
                 -- 进阶
+                local instEquipData = net.InstPlayerEquip[tostring(_equipInstId)]
+	            local equipAdvanceId = instEquipData.int["8"] --装备进阶字典ID
+	            local dictEquipAdvanceData = DictEquipAdvance[tostring(equipAdvanceId)] --装备进阶字典表    
                 if _equipQualityId == StaticEquip_Quality.white or _equipQualityId == StaticEquip_Quality.green then
                     UIManager.showToast((_equipQualityId == StaticEquip_Quality.white and "绿" or "蓝") .. "品不能进阶！")
-                else
+--                elseif dictEquipAdvanceData and ( ( dictEquipAdvanceData.starLevel == 5 and _equipQualityId == StaticEquip_Quality.purple ) or _equipQualityId > StaticEquip_Quality.purple ) then
+--                    UIEquipmentAdvance.setEquipInstId(_equipInstId)
+--                    UIManager.pushScene("ui_equipment_advance")
+                else                  
                     UIEquipmentClean.show( { InstPlayerEquip_id = _equipInstId })
                 end
             elseif sender == btn_inlay or sender == ui_inlayItems[1] or sender == ui_inlayItems[2] or sender == ui_inlayItems[3] or sender == ui_inlayItems[4] then
@@ -136,6 +142,9 @@ local function setBottomBtn(enabled)
     btn_intensify:setTouchEnabled(enabled)
     btn_clean:setTouchEnabled(enabled)
     btn_inlay:setTouchEnabled(enabled)
+    for i = 1, 4 do
+        ui_inlayItems[i]:setTouchEnabled(enabled)
+    end
 end
 
 function UIEquipmentInfo.setup()
@@ -157,8 +166,11 @@ function UIEquipmentInfo.setup()
         local dictEquipAdvanceData = DictEquipAdvance[tostring(equipAdvanceId)]
         -- 装备进阶字典表
         _equipQualityId = dictEquipData.equipQualityId
+        if dictEquipAdvanceData then
+            _equipQualityId = dictEquipAdvanceData.equipQualityId
+        end
         ui_equipName:setString(dictEquipData.name)
-        ui_equipQualityBg:loadTexture(utils.getQualityImage(dp.Quality.equip, dictEquipData.equipQualityId, dp.QualityImageType.middle, true))
+        ui_equipQualityBg:loadTexture(utils.getQualityImage(dp.Quality.equip, _equipQualityId, dp.QualityImageType.middle, true))
         ui_equipIcon:loadTexture("image/" .. DictUI[tostring(dictEquipData.bigUiId)].fileName)
         ui_equipLevel:setString("LV" .. equipLv)
         ui_equipQuality:setString(tostring(dictEquipData.qualityLevel))
@@ -365,9 +377,11 @@ function UIEquipmentInfo.setup()
         local dictEquipAdvanceData = DictEquipAdvance[tostring(equipAdvanceId)]
         -- 装备进阶字典表
         _equipQualityId = dictEquipData.equipQualityId
-
+        if dictEquipAdvanceData then
+            _equipQualityId = dictEquipAdvanceData.equipQualityId
+        end
         ui_equipName:setString(dictEquipData.name)
-        ui_equipQualityBg:loadTexture(utils.getQualityImage(dp.Quality.equip, dictEquipData.equipQualityId, dp.QualityImageType.middle, true))
+        ui_equipQualityBg:loadTexture(utils.getQualityImage(dp.Quality.equip, _equipQualityId, dp.QualityImageType.middle, true))
         ui_equipIcon:loadTexture("image/" .. DictUI[tostring(dictEquipData.bigUiId)].fileName)
         ui_equipLevel:setString("LV" .. equipLv)
         ui_equipQuality:setString(tostring(dictEquipData.qualityLevel))

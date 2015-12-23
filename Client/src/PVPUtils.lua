@@ -39,7 +39,6 @@ function pvp.loadGameData(pack)
 	-- addInstTable(pack, "InstPlayerBeautyCard")
 end
 
-
 ---判断卡牌缘分（返回true缘分点亮，否则未点亮）
 --@dictCardLuck : 卡牌缘分字典数据
 --@_instFormationId : 阵型实例ID
@@ -193,7 +192,7 @@ function pvp.getEquipSuitAttribute(_instFormationId, _instEquipId, isPvp)
         attribute[obj.id] = 0
     end
     if pvp.InstPlayerEquip and _instEquipId then
-        local suitEquipData = utils.getEquipSuit(tostring(pvp.InstPlayerEquip[tostring(_instEquipId)].int["4"]))
+        local suitEquipData , suitEquipRedData = utils.getEquipSuit(tostring(pvp.InstPlayerEquip[tostring(_instEquipId)].int["4"]))
         if not suitEquipData then
             -- cclog("utils 此物品无套装")
             return { }
@@ -203,13 +202,30 @@ function pvp.getEquipSuitAttribute(_instFormationId, _instEquipId, isPvp)
 
         local suitCount = 0
         local suitStarLvl = 5
+		local suitRedStarLvl = 5
         function addSuitCountAndStarLvl(equipId, isSuitEquip, starLvl, index)
             if _instEquipId ~= equipId and isSuitEquip then
                 suitCount = suitCount + 1
                 table.insert(isInSuit, equipId)
             end
-            if starLvl < suitStarLvl then
-                suitStarLvl = starLvl
+			
+            local instEquipData = pvp.InstPlayerEquip[tostring(equipId)]
+			local tempLvl = starLvl
+			if instEquipData.int["8"] > 0 then
+				local dictEquipAdvanceData = DictEquipAdvance[tostring(instEquipData.int["8"])]
+				if dictEquipAdvanceData.equipQualityId == StaticEquip_Quality.golden then
+					if suitRedStarLvl > tempLvl then
+						suitRedStarLvl = tempLvl
+					end
+					tempLvl = 5
+				else
+					suitRedStarLvl = -1
+				end
+			else
+				suitRedStarLvl = -1
+			end
+            if tempLvl < suitStarLvl then
+                suitStarLvl = tempLvl
             end
         end
         local count = 0
@@ -369,6 +385,36 @@ function pvp.getEquipSuitAttribute(_instFormationId, _instEquipId, isPvp)
                 end
             end
         end
+        if suitEquipRedData then
+		    for i = 1 , 6 do
+			    local propStr = nil
+                if i == 1 then
+                    propStr = suitEquipRedData.suit0StarProp
+                elseif i == 2 then
+                    propStr = suitEquipRedData.suit1StarProp
+                elseif i == 3 then
+                    propStr = suitEquipRedData.suit2StarProp
+                elseif i == 4 then
+                    propStr = suitEquipRedData.suit3StarProp
+                elseif i == 5 then
+                    propStr = suitEquipRedData.suit4StarProp
+			    elseif i == 6 then
+				    propStr = suitEquipRedData.suit5StarProp
+                end
+                if suitCount >= 3 and 5 <= suitStarLvl and i - 1 <= suitRedStarLvl then
+                    local propTable = utils.stringSplit(propStr, ";")
+                    for key, value in pairs(propTable) do
+                        local data = utils.stringSplit(value, "_")
+                        if tonumber(data[2]) < 1 then
+                            attribute[tonumber(data[1])] = attribute[tonumber(data[1])] + math.floor(getAddProp(tonumber(data[1]), tonumber(data[2])))
+                        else
+                            -- cclog( "data[2] : "..data[ 2 ])
+                            attribute[tonumber(data[1])] = attribute[tonumber(data[1])] + tonumber(data[2])
+                        end
+                    end
+                end
+		    end
+        end
     end
     return attribute
 end
@@ -391,7 +437,17 @@ function pvp.getEquipAttribute(instEquipId, isFilter)
 			equipPropData[key] = utils.stringSplit(obj, "_") --[1]:fightPropId, [2]:initValue, [3]:addValue
 		end
 		local attAddValue = 0
+        --红品
+        local isRed = false
+        if  equipAdvanceData and equipAdvanceData.equipQualityId == StaticEquip_Quality.golden then
+            isRed = true
+        end
 		for key, obj in pairs(DictEquipAdvance) do
+            if isRed then
+                if equipTypeId == obj.equipTypeId and equipAdvanceData.equipQualityId == obj.equipQualityId and equipAdvanceId >= obj.id then
+                    attAddValue = attAddValue + obj.propAndAdd
+                end
+            end
 			if equipTypeId == obj.equipTypeId and dictEquipData.equipQualityId == obj.equipQualityId and equipAdvanceId >= obj.id then
 				attAddValue = attAddValue + obj.propAndAdd
 			end
@@ -425,6 +481,7 @@ function pvp.getCardAttribute(instCardId , fightSoulValue )
 	for key, obj in pairs(DictFightProp) do
 		attribute[obj.id] = 0
 	end
+    local magicPercent = {}
 	
 	if instCardId and pvp.InstPlayerCard[tostring(instCardId)] then
 		local instCardData = pvp.InstPlayerCard[tostring(instCardId)]
@@ -464,7 +521,6 @@ function pvp.getCardAttribute(instCardId , fightSoulValue )
 		end
 		
 		if inTeam == 1 then
-			local magicPercent = {}
 			
 			for key, obj in pairs(pvp.InstPlayerFormation) do
 				local _instFormationId = obj.int["1"]
@@ -675,6 +731,27 @@ function pvp.getCardAttribute(instCardId , fightSoulValue )
 									    end
 								    end
                                 end
+
+                                local magicAdvanceId = magicObj.int["10"]
+                                if magicAdvanceId and magicAdvanceId > 0 then
+                                    local magic_refining = {}
+                                    if dictMagicData.magicQualityId <= StaticMagicQuality.DJ then
+                                        for key  ,value in pairs( DictMagicrefining ) do
+                                             if dictMagicData.id == value.MagicId then
+                                                 magic_refining[value.starLevel] = value.id
+                                             end
+                                        end
+                                    end
+                                    local magicRifingingLevel = DictMagicrefining[tostring(magicAdvanceId)].starLevel
+                                    for key ,value in pairs( magic_refining ) do
+                                        if key <= magicRifingingLevel then
+                                            local proValue = DictMagicrefining[ tostring( value ) ]
+                                        --    cclog("magic refining : "..proValue.fightPropId .. "  "..proValue.value)
+                                            attribute[proValue.fightPropId] = attribute[proValue.fightPropId] + tonumber( proValue.value )
+                                        end
+                                    end
+                                end
+
 								if _magicCount >= 2 then
 									break
 								end
@@ -879,7 +956,7 @@ function pvp.getCardAttribute(instCardId , fightSoulValue )
 	if fightSoulValue then
         return attribute , fightSoulValue
     else
-        return attribute
+        return attribute, magicPercent
     end
 end
 

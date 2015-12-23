@@ -324,6 +324,16 @@ public class ParamConfig {
 	public static String strogherHeroNumOnes = "";
 	
 	/**
+	 * 团购返元宝  InstPlayerId <Day , 团购返利>
+	 */
+	public static ConcurrentHashMap<Integer, ConcurrentHashMap<String, Integer>> groupRetGoldMap = new ConcurrentHashMap<Integer, ConcurrentHashMap<String, Integer>>();
+	
+	/**
+	 * 团购排名返元宝  InstPlayerId <Day , 排名_排名返利>
+	 */
+	public static ConcurrentHashMap<Integer, ConcurrentHashMap<String, String>> groupRankRetGoldMap = new ConcurrentHashMap<Integer, ConcurrentHashMap<String, String>>();
+	
+	/**
 	 * 获取SDK配置文件中的值
 	 * @author mp
 	 * @date 2015-6-30 下午3:08:43

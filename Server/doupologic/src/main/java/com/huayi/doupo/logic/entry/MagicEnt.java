@@ -66,6 +66,24 @@ public class MagicEnt extends BaseHandler{
 			MessageUtil.sendFailMsg(channelId, msgMap, errorHint(msgMap));
 		}
 	}
+
+	/**
+	 * 精炼法宝功法
+	 * @author cui
+	 * @date	2015/12/09
+	 * @param msgMap
+	 * @param channelId
+	 */
+	public void magicAdvance(HashMap<String, Object> msgMap, String channelId){
+		try {
+			HandlerFactory.getMagicHandler().magicAdvance(msgMap, channelId);
+		} catch (Exception e) {
+			LogUtil.error("instPlayerId = " + PlayerMapUtil.getPlayerIdByChannelId(channelId) + ", " + DictMap.sysMsgRuleMap.get((int)msgMap.get("header") + "").getName() + ",  " + msgMap, e);
+			e.printStackTrace();
+			MessageUtil.sendFailMsg(channelId, msgMap, errorHint(msgMap));
+		}
+	}
+
 	
 
 }

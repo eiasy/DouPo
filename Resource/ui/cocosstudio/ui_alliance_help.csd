@@ -131,14 +131,14 @@
                         <OutlineColor A="255" R="255" G="0" B="0" />
                         <ShadowColor A="255" R="110" G="110" B="110" />
                       </AbstractNodeData>
-                      <AbstractNodeData Name="text_ore" ActionTag="-101474191" Tag="420" VisibleForFrame="False" IconVisible="False" LeftMargin="8.1591" RightMargin="-1.1591" TopMargin="16.2194" BottomMargin="-359.2194" IsCustomSize="True" FontSize="22" LabelText="活动规则：&#xA;      1.成功击败资源矿的原占领者，可占领该资源矿。&#xA;      2.占领资源矿后，根据占领的时间可获得大量的银币和进阶石奖励。&#xA;      3.奖励在离开矿时进行结算，奖励在领奖中心领取。&#xA;      4.部分矿有特殊奖励，矿主或协助者特殊奖励只有1份，被领取后，该矿的后来的占领者或协助者，将不可获得该矿的特殊奖励。&#xA;      5.矿主特殊奖励，当次活动，矿的第1位持续占领满2小时者可获得；获得特殊奖励后，将不可获得该矿或其他矿的其他特殊奖励。&#xA;      6.协助者特殊奖励，当次活动，矿的第1位持续协助满1小时者可获得；获得特殊奖励后，将不可获得该矿或其他矿的其他特殊奖励。&#xA;      7.每位玩家只能占领或协助一座资源矿，占领资源矿的同时，不可协助资源矿。&#xA;      8.当资源矿被占领时，玩家所在联盟成员可进行协助；资源矿增加协助者，矿主可获得相当于协助者在协助时间内获得收益的%d%%资源作为额外收益，此额外收益不影响协助者的收益。&#xA;      9.收益按照以下规则收益递减，玄天晶矿矿主&gt;紫云晶矿矿主&gt;寒冰晶矿矿主&gt;玄天晶矿协助者&gt;紫云晶矿协助者&gt;寒冰晶矿协助者&gt;翠玉晶矿矿主。&#xA;      10.天气会影响矿场的产量收益，不同页的矿区天气可能会不同。" OutlineSize="1" ShadowOffsetX="2" ShadowOffsetY="-2" ctype="TextObjectData">
-                        <Size X="473.0000" Y="775.0000" />
+                      <AbstractNodeData Name="text_ore" ActionTag="-101474191" Tag="420" VisibleForFrame="False" IconVisible="False" LeftMargin="8.1591" RightMargin="-1.1591" TopMargin="16.2194" BottomMargin="-434.2194" IsCustomSize="True" FontSize="22" LabelText="活动规则：&#xA;      1.成功击败资源矿的原占领者，可占领该资源矿。&#xA;      2.占领资源矿后，根据占领的时间可获得大量的银币和进阶石奖励。&#xA;      3.奖励在离开矿时进行结算，奖励在领奖中心领取。&#xA;      4.占领无人矿和抢夺已有玩家占领的矿，无论成功或失败都要扣除耐力。&#xA;      5.部分矿有特殊奖励，矿主或协助者特殊奖励只有1份，被领取后，该矿的后来的占领者或协助者，将不可获得该矿的特殊奖励。&#xA;      6.矿主特殊奖励，当次活动，矿的第1位持续占领满2小时者可获得；获得特殊奖励后，将不可获得该矿或其他矿的其他特殊奖励。&#xA;      7.协助者特殊奖励，当次活动，矿的第1位持续协助满1小时者可获得；获得特殊奖励后，将不可获得该矿或其他矿的其他特殊奖励。&#xA;      8.每位玩家只能占领或协助一座资源矿，占领资源矿的同时，不可协助资源矿。&#xA;      9.当资源矿被占领时，玩家所在联盟成员可进行协助；资源矿增加协助者，矿主可获得相当于协助者在协助时间内获得收益的%d%%资源作为额外收益，此额外收益不影响协助者的收益。&#xA;      10.收益按照以下规则收益递减，玄天晶矿矿主&gt;紫云晶矿矿主&gt;寒冰晶矿矿主&gt;玄天晶矿协助者&gt;紫云晶矿协助者&gt;寒冰晶矿协助者&gt;翠玉晶矿矿主。&#xA;      11.天气会影响矿场的产量收益，不同页的矿区天气可能会不同。" OutlineSize="1" ShadowOffsetX="2" ShadowOffsetY="-2" ctype="TextObjectData">
+                        <Size X="473.0000" Y="850.0000" />
                         <AnchorPoint ScaleY="1.0000" />
                         <Position X="8.1591" Y="415.7806" />
                         <Scale ScaleX="1.0000" ScaleY="1.0000" />
                         <CColor A="255" R="255" G="255" B="172" />
                         <PrePosition X="0.0170" Y="0.9625" />
-                        <PreSize X="0.9854" Y="1.7940" />
+                        <PreSize X="0.9854" Y="1.9676" />
                         <FontResource Type="Normal" Path="data/ui_font.ttf" Plist="" />
                         <OutlineColor A="255" R="255" G="0" B="0" />
                         <ShadowColor A="255" R="110" G="110" B="110" />
@@ -199,6 +199,66 @@
                         <CColor A="255" R="255" G="255" B="172" />
                         <PrePosition X="0.0170" Y="0.9625" />
                         <PreSize X="0.9854" Y="1.1042" />
+                        <FontResource Type="Normal" Path="data/ui_font.ttf" Plist="" />
+                        <OutlineColor A="255" R="255" G="0" B="0" />
+                        <ShadowColor A="255" R="110" G="110" B="110" />
+                      </AbstractNodeData>
+                      <AbstractNodeData Name="text_war1" ActionTag="-1849275727" Tag="97" VisibleForFrame="False" IconVisible="False" LeftMargin="8.1588" RightMargin="-1.1588" TopMargin="16.2195" BottomMargin="-1225.2195" IsCustomSize="True" FontSize="22" LabelText="【盟战开启】&#xA;本服3级以上联盟超过4个时开启盟战&#xA;&#xA;【参战资格】&#xA;1.排名前八的联盟有资格参加&#xA;2.加入联盟时间不足72小时的玩家不能参加&#xA;&#xA;【盟战时间】&#xA;1.周一凌晨公布本周对阵&#xA;2.周一八强战，周二四强战，周三决赛&#xA;3.布阵时间：0:00—17:00&#xA;4.开战时间：20:20&#xA;&#xA;【积分与获胜】&#xA;1.战场积分：消灭某个战场所有敌人，占领该战场并获取积分&#xA;2.击杀积分：每击杀一个对手获取10积分&#xA;3.存活积分：占领某战场后，计算存活积分，5积分/人&#xA;4.所有战斗结束后，积分高的联盟获胜&#xA;5.积分相同时，存活人数多的联盟获胜&#xA;6.积分和存活人数相同时，排名高的联盟获胜&#xA;&#xA;【战场】&#xA;1.四个战场依次开战&#xA;2.开战前无法查看对手布阵&#xA;&#xA;【参战】&#xA;1.联盟成员可以自由选择加入任意战场&#xA;2.每个成员只能参与一个战场的争夺&#xA;3.联盟成员必须在布阵截止时间前（当日17:00）加入战场，否则将无法出战（伏兵除外）&#xA;4.布阵截止时刻（当日17:00）玩家阵容将被记录作为最终参战阵容&#xA;5.盟主、副盟主可以在布阵阶段调整成员的出战顺序&#xA;&#xA;【伏兵】&#xA;1.由盟主、副盟主指定&#xA;2.盟战开始后，伏兵可以根据战场形势随时选择加入&#xA;3.加入战场后，无法撤离&#xA;4.无法加入已被占领的战场&#xA;5.联盟等级决定伏兵人数上限&#xA;&#xA;【战斗】&#xA;1.双方按顺序出战，采用1v1模式&#xA;2.负者直接淘汰，胜者移至队尾&#xA;3.胜者各项属性衰减20%（衰减值持续累积，上限80%）&#xA;4.伏兵加入时添加至队尾&#xA;&#xA;【贡献与MVP】&#xA;1.贡献值根据击杀人数、击杀敌人等级、击杀敌人衰减度进行计算&#xA;2.盟战胜利方贡献最高的玩家为本场MVP&#xA;3.贡献值相同时，存活的玩家排名靠前&#xA;4.贡献值相同，同时存活，战力高者排名靠前&#xA;" OutlineSize="1" ShadowOffsetX="2" ShadowOffsetY="-2" ctype="TextObjectData">
+                        <Size X="473.0000" Y="1641.0000" />
+                        <AnchorPoint ScaleY="1.0000" />
+                        <Position X="8.1588" Y="415.7805" />
+                        <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                        <CColor A="255" R="255" G="255" B="172" />
+                        <PrePosition X="0.0170" Y="0.9625" />
+                        <PreSize X="0.9854" Y="3.7986" />
+                        <FontResource Type="Normal" Path="data/ui_font.ttf" Plist="" />
+                        <OutlineColor A="255" R="255" G="0" B="0" />
+                        <ShadowColor A="255" R="110" G="110" B="110" />
+                      </AbstractNodeData>
+                      <AbstractNodeData Name="text_war2" ActionTag="197500515" Tag="98" VisibleForFrame="False" IconVisible="False" LeftMargin="8.1588" RightMargin="-1.1588" TopMargin="16.2195" BottomMargin="7.7805" IsCustomSize="True" FontSize="22" LabelText="【伏兵说明】&#xA;1.由盟主、副盟主指定&#xA;2.盟战开始后，伏兵可以根据战场形势随时选择加入&#xA;3.加入战场后，无法撤离&#xA;4.无法加入已被占领的战场&#xA;5.联盟等级决定伏兵人数上限" OutlineSize="1" ShadowOffsetX="2" ShadowOffsetY="-2" ctype="TextObjectData">
+                        <Size X="473.0000" Y="408.0000" />
+                        <AnchorPoint ScaleY="1.0000" />
+                        <Position X="8.1588" Y="415.7805" />
+                        <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                        <CColor A="255" R="255" G="255" B="172" />
+                        <PrePosition X="0.0170" Y="0.9625" />
+                        <PreSize X="0.9854" Y="0.9444" />
+                        <FontResource Type="Normal" Path="data/ui_font.ttf" Plist="" />
+                        <OutlineColor A="255" R="255" G="0" B="0" />
+                        <ShadowColor A="255" R="110" G="110" B="110" />
+                      </AbstractNodeData>
+                      <AbstractNodeData Name="text_war3" ActionTag="1108510911" Tag="99" VisibleForFrame="False" IconVisible="False" LeftMargin="8.1588" RightMargin="-1.1588" TopMargin="16.2195" BottomMargin="-63.2195" IsCustomSize="True" FontSize="22" LabelText="【参战】&#xA;1.联盟成员可以自由选择加入任意战场&#xA;2.每个成员只能参与一个战场的争夺&#xA;3.联盟成员必须在布阵截止时间前（当日17:00）加入战场，否则将无法出战（伏兵除外）&#xA;4.布阵截止时刻（当日17:00）玩家阵容将被记录作为最终参战阵容&#xA;5.盟主、副盟主可以在布阵阶段调整成员的出战顺序&#xA;&#xA;【战斗】&#xA;1.双方按顺序出战，采用1v1模式&#xA;2.负者直接淘汰，胜者移至队尾&#xA;3.胜者各项属性衰减20%（衰减值持续累积，上限80%）&#xA;4.伏兵加入时添加至队尾" OutlineSize="1" ShadowOffsetX="2" ShadowOffsetY="-2" ctype="TextObjectData">
+                        <Size X="473.0000" Y="479.0000" />
+                        <AnchorPoint ScaleY="1.0000" />
+                        <Position X="8.1588" Y="415.7805" />
+                        <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                        <CColor A="255" R="255" G="255" B="172" />
+                        <PrePosition X="0.0170" Y="0.9625" />
+                        <PreSize X="0.9854" Y="1.1088" />
+                        <FontResource Type="Normal" Path="data/ui_font.ttf" Plist="" />
+                        <OutlineColor A="255" R="255" G="0" B="0" />
+                        <ShadowColor A="255" R="110" G="110" B="110" />
+                      </AbstractNodeData>
+                      <AbstractNodeData Name="text_red" ActionTag="233912588" Tag="674" VisibleForFrame="False" IconVisible="False" LeftMargin="8.1590" RightMargin="-1.1590" TopMargin="16.2194" BottomMargin="17.7806" IsCustomSize="True" FontSize="22" LabelText="活动规则：&#xA;      1.橙色5星装备可以进阶为红色神兵装备。&#xA;      2.装备进阶到红装，可以激活额外属性。&#xA;      3.红装进阶需要淬炼度，装备淬炼度满值，装备自动进阶。&#xA;" OutlineSize="1" ShadowOffsetX="2" ShadowOffsetY="-2" ctype="TextObjectData">
+                        <Size X="473.0000" Y="398.0000" />
+                        <AnchorPoint ScaleY="1.0000" />
+                        <Position X="8.1590" Y="415.7806" />
+                        <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                        <CColor A="255" R="255" G="255" B="172" />
+                        <PrePosition X="0.0170" Y="0.9625" />
+                        <PreSize X="0.9854" Y="0.9213" />
+                        <FontResource Type="Normal" Path="data/ui_font.ttf" Plist="" />
+                        <OutlineColor A="255" R="255" G="0" B="0" />
+                        <ShadowColor A="255" R="110" G="110" B="110" />
+                      </AbstractNodeData>
+                      <AbstractNodeData Name="text_purchase" ActionTag="-1765523695" Tag="798" VisibleForFrame="False" IconVisible="False" LeftMargin="8.1589" RightMargin="-1.1589" TopMargin="16.2195" BottomMargin="17.7805" IsCustomSize="True" FontSize="22" LabelText="活动规则：&#xA;      1.玩家初始购买道具是以原价计算。活动结束后，将会按照最后的折扣价格返还玩家多花的元宝。&#xA;      2.活动期间，全服玩家每购买一定数量的超值团购礼盒，就会享受团购折扣，满1500个享9折，2500个8折，3500个7折，4000个6折。&#xA;      3.购买的宝箱，已保存在背包里面，请到背包里使用。珍惜道具在等着你哦。" OutlineSize="1" ShadowOffsetX="2" ShadowOffsetY="-2" ctype="TextObjectData">
+                        <Size X="473.0000" Y="398.0000" />
+                        <AnchorPoint ScaleY="1.0000" />
+                        <Position X="8.1589" Y="415.7805" />
+                        <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                        <CColor A="255" R="255" G="255" B="172" />
+                        <PrePosition X="0.0170" Y="0.9625" />
+                        <PreSize X="0.9854" Y="0.9213" />
                         <FontResource Type="Normal" Path="data/ui_font.ttf" Plist="" />
                         <OutlineColor A="255" R="255" G="0" B="0" />
                         <ShadowColor A="255" R="110" G="110" B="110" />

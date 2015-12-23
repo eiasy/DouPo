@@ -31,6 +31,7 @@ public class DictFightSoulUpgradePropDAL extends DALFather {
 			dictFightSoulUpgradeProp.setFightPropValueType(rs.getInt("fightPropValueType"), 0);
 			dictFightSoulUpgradeProp.setFightPropValue(rs.getFloat("fightPropValue"), 0);
 			dictFightSoulUpgradeProp.setFightPropId(rs.getInt("fightPropId"), 0);
+			dictFightSoulUpgradeProp.setFightValue(rs.getInt("fightValue"), 0);
 			dictFightSoulUpgradeProp.setSellSilver(rs.getInt("sellSilver"), 0);
 			dictFightSoulUpgradeProp.setDescription(rs.getString("description"), 0);
 			dictFightSoulUpgradeProp.setVersion(rs.getInt("version"), 0);
@@ -42,9 +43,9 @@ public class DictFightSoulUpgradePropDAL extends DALFather {
 		try {
 			StringBuilder strSql = new StringBuilder();
 			strSql.append(" insert into Dict_FightSoul_UpgradeProp (");
-			strSql.append("fightSoulId,level,fightPropValueType,fightPropValue,fightPropId,sellSilver,description,version");
+			strSql.append("fightSoulId,level,fightPropValueType,fightPropValue,fightPropId,fightValue,sellSilver,description,version");
 			strSql.append(" )");
-			strSql.append(" values (?,?,?,?,?,?,?,?) ");
+			strSql.append(" values (?,?,?,?,?,?,?,?,?) ");
 
 			final String sql = strSql.toString();
 			KeyHolder keyHolder = new GeneratedKeyHolder();
@@ -57,9 +58,10 @@ public class DictFightSoulUpgradePropDAL extends DALFather {
 					ps.setInt(3, model.getFightPropValueType());
 					ps.setFloat(4, model.getFightPropValue());
 					ps.setInt(5, model.getFightPropId());
-					ps.setInt(6, model.getSellSilver());
-					ps.setString(7, model.getDescription());
-					ps.setInt(8, 0);
+					ps.setInt(6, model.getFightValue());
+					ps.setInt(7, model.getSellSilver());
+					ps.setString(8, model.getDescription());
+					ps.setInt(9, 0);
 					return ps;
 				}
 			},keyHolder);
@@ -79,9 +81,9 @@ public class DictFightSoulUpgradePropDAL extends DALFather {
 	public void batchAdd (final List<DictFightSoulUpgradeProp> list) {
 		StringBuilder sql = new StringBuilder();
 		sql.append(" insert into Dict_FightSoul_UpgradeProp (");
-		sql.append("fightSoulId,level,fightPropValueType,fightPropValue,fightPropId,sellSilver,description,version");
+		sql.append("fightSoulId,level,fightPropValueType,fightPropValue,fightPropId,fightValue,sellSilver,description,version");
 		sql.append(" )");
-		sql.append(" values (?,?,?,?,?,?,?,?) ");
+		sql.append(" values (?,?,?,?,?,?,?,?,?) ");
 		BatchPreparedStatementSetter setter = new BatchPreparedStatementSetter (){
 			public void setValues(PreparedStatement ps, int i) throws SQLException{
 				DictFightSoulUpgradeProp model = (DictFightSoulUpgradeProp)list.get(i);
@@ -90,9 +92,10 @@ public class DictFightSoulUpgradePropDAL extends DALFather {
 					ps.setInt(3, model.getFightPropValueType());
 					ps.setFloat(4, model.getFightPropValue());
 					ps.setInt(5, model.getFightPropId());
-					ps.setInt(6, model.getSellSilver());
-					ps.setString(7, model.getDescription());
-					ps.setInt(8, 0);
+					ps.setInt(6, model.getFightValue());
+					ps.setInt(7, model.getSellSilver());
+					ps.setString(8, model.getDescription());
+					ps.setInt(9, 0);
 			}
 			public int getBatchSize(){
 				return list.size();
@@ -141,9 +144,9 @@ public class DictFightSoulUpgradePropDAL extends DALFather {
 			Object[] params = null;
 			int version = model.getVersion() + 1;
 			StringBuffer sql = new StringBuffer("update Dict_FightSoul_UpgradeProp set ");
-			sql.append("fightSoulId=?,level=?,fightPropValueType=?,fightPropValue=?,fightPropId=?,sellSilver=?,description=?,version=? ");
+			sql.append("fightSoulId=?,level=?,fightPropValueType=?,fightPropValue=?,fightPropId=?,fightValue=?,sellSilver=?,description=?,version=? ");
 			sql.append("where id=? and version=?");
-			params = new Object[] { model.getFightSoulId(),model.getLevel(),model.getFightPropValueType(),model.getFightPropValue(),model.getFightPropId(),model.getSellSilver(),model.getDescription(),version , model.getId(), model.getVersion() };
+			params = new Object[] { model.getFightSoulId(),model.getLevel(),model.getFightPropValueType(),model.getFightPropValue(),model.getFightPropId(),model.getFightValue(),model.getSellSilver(),model.getDescription(),version , model.getId(), model.getVersion() };
 			int count = this.getJdbcTemplate().update(sql.toString(), params);
 			if (count == 0) {
 				throw new Exception("Concurrent Exception");

@@ -1620,7 +1620,7 @@ function Fight.doEffect(pos)
 					--闪避率=0.4*敌方闪避/(敌方闪避+本方命中)+0.6*敌方闪避率*(1-4*本方命中率)
 					local dodgeRatio = (0.4*dst:getDodge()/(dst:getDodge()+src:getHit()) + 0.6*dst:getDodgeRatio()*(1-4*src:getHitRatio()))
 					dodgeRatio = dodgeRatio < 0.0 and 0.0 or dodgeRatio
-					dodgeRatio = dodgeRatio > 0.3 and 0.3 or dodgeRatio
+					dodgeRatio = dodgeRatio > 0.2 and 0.2 or dodgeRatio
 					if Fight.FIX_BUG_OF_GET_RANDOM[pos+0] < dodgeRatio then
 						return true
 					end

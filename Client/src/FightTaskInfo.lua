@@ -1393,6 +1393,346 @@ FightTaskInfo["25"]={
                     },         
                 },         
 }
+FightTaskInfo["26"]={
+           [246]={
+                begin ={
+                    [1] = {data = "7_49",dir = 3,scene = "dh_cj02.png",dialog="云山一死，云岚宗的气势也就到头了，小子，你之后打算怎么办？"},
+                    [2] = {data = "7_88",dir = 3,dialog="魂殿掳我师傅，欺我宗族，这笔账我势必要和他们清算！"},
+                    [3] = {data = "7_49",dir = 3,dialog="近来加玛皇城里妖兽遍布，加刑天等皇室也性格大变，恐怕跟魂殿脱不了干系！"},
+                    [4] = {data = "7_88",dir = 3,dialog="如果真是魂殿的诡计，那我还真的去皇宫走一趟！"}
+                    },
+                },
+           [247]={
+                middle = {
+                        {fight = 1,round = 1,talk = {dir = 1,name="萧炎",cardID=88,dialog = "竟然有这么多魔兽。。。这是闹兽灾么！"}},
+                    },
+                },         
+           [248]={
+                middle = {
+                        {fight = 2,round = 1,talk = {dir = 0,name="小公主",cardID=50,dialog = "魔兽听令，杀！"}},
+                        {fight = 2,round = 1,talk = {dir = 1,name="萧炎",cardID=88,dialog = "我去，小公主你这是怎么了！"}},
+                    },
+                ended = {
+                    [1] = {data = "7_50",dir = 3,scene = "dh_cj01.png",dialog="萧。萧炎？快，快去救救老祖和姐姐，他们都被魂殿控制了！"},
+                    [2] = {data = "7_88",dir = 3,dialog="果然是魂殿搞的鬼！放心，我肯定不会让他们得逞的！"},
+                    },   
+                },
+           [251]={
+                begin ={
+                    [1] = {data = "7_26",dir = 3,scene = "dh_cj02.png",dialog="帝国的荣光照耀着你们，战士们，杀！"},
+                    [2] = {data = "7_88",dir = 3,dialog="我去，女汉子也太彪悍了吧！"},
+                    }, 
+                },
+           [253]={
+                middle = {
+                        {fight = 1,round = 1,talk = {dir = 0,name="飞鹰兽",cardID=552,dialog = "唳！"}},
+                        {fight = 1,round = 1,talk = {dir = 1,name="萧炎",cardID=88,dialog = "啊啊啊！怎么没完没了了啊！"}},
+                    },
+                },
+           [254]={
+                begin ={
+                    [1] = {data = "7_68",dir = 3,scene = "dh_cj02.png",dialog="谁都不能阻挡魂帝大人的灭世之举！都去死吧！"},
+                    [2] = {data = "7_88",dir = 3,dialog="这难道就是传说中的神经病么！偶买噶~药不能停啊~"},
+                    },
+                },
+           [255]={
+                begin ={
+                    [1] = {data = "7_500",dir = 3,scene = "dh_cj02.png",dialog="吼！愚昧的人类！竟敢破坏魂帝大人的计划！"},
+                    [2] = {data = "7_88",dir = 3,dialog="这就是幽海蛟兽么！看起来也不怎么样嘛！"},
+                    [3] = {data = "7_500",dir = 3,dialog="汝等凡人，竟敢小看本尊，受死！"},
+                    [4] = {data = "7_88",dir = 3,dialog="怕你啊！"}
+                    },
+                ended = {
+                    [1] = {data = "7_500",dir = 3,scene = "dh_cj01.png",dialog="大神饶命！小的也是受魂帝一时蒙蔽！大神您英明神武魅力非凡~小的拜服~"},
+                    [2] = {data = "7_88",dir = 3,dialog="。。。魔兽也这么没有节操么。。说，魂殿在哪？"},
+                    [3] = {data = "7_500",dir = 3,dialog="小的也不知道啊！不过魂殿势力庞大！大神您单枪匹马可小心别被弄死了啊~"},
+                    [4] = {data = "7_88",dir = 3,dialog="。。。承你贵言。。"},
+                    [5] = {data = "7_500",dir = 3,dialog="哦吼吼~大神你真客气~"},
+                    [6] = {data = "7_88",dir = 3,dialog="。。。。。"},
+                    },         
+                },         
+}
+FightTaskInfo["27"]={
+           [256]={
+                begin ={
+                    [1] = {data = "7_51",dir = 3,scene = "dh_cj02.png",dialog="这次多亏了你，不然加玛帝国百年基业都被魂殿毁了！"},
+                    [2] = {data = "7_88",dir = 3,dialog="魂殿势力强大，我孤身一人确实无法与之抗衡，是应该找些盟友了~"},
+                    [3] = {data = "7_51",dir = 3,dialog="加玛圣城三大家族势力庞大，不过，想要收服他们，可要拿出你的实力来！"},
+                    [4] = {data = "7_88",dir = 3,dialog="那就让他们看看小爷的威力！"}
+                    },
+                },
+           [258]={
+                middle = {
+                        {fight = 2,round = 1,talk = {dir = 0,name="米特尔",cardID=40,dialog = "小子，打赢我，我米特尔家就归顺于你！"}},
+                        {fight = 2,round = 1,talk = {dir = 1,name="萧炎",cardID=88,dialog = "那我就不客气了~"}},
+                    },
+                },         
+           [261]={
+                begin ={
+                    [1] = {data = "7_95",dir = 3,scene = "dh_cj02.png",dialog="我会试着说服我爹将纳兰家归顺于你的！"},
+                    [2] = {data = "7_88",dir = 3,dialog="纳兰嫣然，你无需如此，至于你纳兰家，我会用我的实力来拿下！"},
+                    [3] = {data = "7_95",dir = 3,dialog="你终究还是不肯原谅我么。。"},
+                    [4] = {data = "7_88",dir = 3,dialog="事已至此，我们都放下吧！"}
+                    },
+                middle = {
+                        {fight = 2,round = 1,talk = {dir = 0,name="纳兰桀",cardID=39,dialog = "小子，纳兰家可不是那么好收服的！"}},
+                        {fight = 2,round = 1,talk = {dir = 1,name="萧炎",cardID=88,dialog = "那就试试看吧！"}},
+                    },
+                },         
+           [264]={
+                middle = {
+                        {fight = 2,round = 1,talk = {dir = 0,name="加刑天",cardID=68,dialog = "想收服我加玛皇室？那就让帝国的战士们看看你的实力吧！"}},
+                        {fight = 2,round = 1,talk = {dir = 1,name="萧炎",cardID=88,dialog = "那就恭敬不如从命了！"}},
+                    },
+                },
+           [265]={
+                begin ={
+                    [1] = {data = "7_51",dir = 3,scene = "dh_cj02.png",dialog="三大家族已经都同意和你联盟，但是还有一个最重要的人！"},
+                    [2] = {data = "7_88",dir = 3,dialog="是谁？"},
+                    [3] = {data = "7_95",dir = 3,dialog="加玛圣城的地下皇帝，天火尊者-曜天火。"},
+                    [4] = {data = "7_88",dir = 3,dialog="听起来很强嘛，那就让我会一会他！"}
+                    },
+                middle = {
+                        {fight = 3,round = 1,talk = {dir = 1,name="萧炎",cardID=88,dialog = "天火尊者么，我来是希望你能加入我的联盟！"}},
+                        {fight = 3,round = 1,talk = {dir = 0,name="曜天火",cardID=110,dialog = "狂妄小子，口出狂言，本尊也是你能收服的！"}},
+                        {fight = 3,round = 1,talk = {dir = 1,name="萧炎",cardID=88,dialog = "看来免不得要打一场了！"}},
+                    },
+                ended = {
+                    [1] = {data = "7_110",dir = 3,scene = "dh_cj01.png",dialog="若不是我灵魂伤重，今日也不会败于你手！"},
+                    [2] = {data = "7_88",dir = 3,dialog="您灵魂受伤了？我是一个炼药师，如果不嫌弃，我可以试着帮您医治！"},
+                    [3] = {data = "7_110",dir = 3,dialog="哈哈，你小子不错，既然如此，那我就加入你的联盟！不知联盟名字是？"},
+                    [4] = {data = "7_88",dir = 3,dialog="炎盟！"},
+                    },         
+                },         
+} 
+FightTaskInfo["28"]={
+           [266]={
+                begin ={
+                    [1] = {data = "7_110",dir = 3,scene = "dh_cj04.png",dialog="炎盟刚刚建立，还有很多事情需要处理，你确定要现在离开么？"},
+                    [2] = {data = "7_88",dir = 3,dialog="嗯，师傅现在生死不明，我要尽快找到魂殿的所在！"},
+                    [3] = {data = "7_110",dir = 3,dialog="既然这样，那你就去吧，炎盟的事务我会处理妥当的！"},
+                    [4] = {data = "7_88",dir = 3,dialog="谢了！"}
+                    },
+                },
+           [268]={
+                begin ={
+                    [1] = {data = "7_519",dir = 3,scene = "dh_cj02.png",dialog="血战佣兵团，你们不要太过分了！"},
+                    [2] = {data = "7_521",dir = 3,dialog="卡岗，我劝你还是乖乖把人交出来！"},
+                    [3] = {data = "7_519",dir = 3,dialog="你们。。我跟你们拼了！"},
+                    [4] = {data = "7_88",dir = 3,dialog="也算是故人了，就帮你一把吧！"}
+                    },
+                ended = {
+                    [1] = {data = "7_519",dir = 3,scene = "dh_cj01.png",dialog="你。。你是当年的小兄弟！谢谢，谢谢你又一次救了我！"},
+                    [2] = {data = "7_88",dir = 3,dialog="也算是缘分吧！"},
+                    [3] = {data = "7_519",dir = 3,dialog="这血战佣兵团是这里新兴的势力，人员众多，小兄弟你可要小心啊！"},
+                    [4] = {data = "7_88",dir = 3,dialog="放心吧，我已经不是当年被追杀的四处逃窜的小子了！"},
+                    },
+                 },         
+           [269]={
+                begin ={
+                    [1] = {data = "7_553",dir = 3,scene = "dh_cj02.png",dialog="吼！"},
+                    [2] = {data = "7_88",dir = 3,dialog="魔兽山脉还是老样子啊！也好，正好练练身手！"},
+                    },
+                },         
+           [272]={
+                begin ={
+                    [1] = {data = "7_508",dir = 3,scene = "dh_cj02.png",dialog="是少主下令捉拿的小子，大家上，别让他跑了！"},
+                    [2] = {data = "7_88",dir = 3,dialog="呵，不自量力，那就陪你们玩玩！"},
+                    },
+                },
+           [274]={
+                begin ={
+                    [1] = {data = "7_530",dir = 3,scene = "dh_cj02.png",dialog="你到底是何人，竟然能逃过我赫家的追杀？"},
+                    [2] = {data = "7_88",dir = 3,dialog="赫家？算什么东西！"},
+                    [3] = {data = "7_530",dir = 3,dialog="你。。嚣张是需要付出代价的！既然来了，就留下吧！"},
+                    [4] = {data = "7_88",dir = 3,dialog="不自量力才需要付出代价！"}
+                    },
+                },
+           [275]={
+                begin ={
+                    [1] = {data = "7_518",dir = 3,scene = "dh_cj02.png",dialog="谢谢你清理了赫家，救了我们！我。。"},
+                    [2] = {data = "7_88",dir = 3,dialog="小事，此事已了，就此拜别吧！"},
+                    [3] = {data = "7_518",dir = 3,dialog="你。。。再见"},
+                    [4] = {data = "7_88",dir = 3,dialog="又回到这里了，也不知道小医仙现在在哪里！谁？！"}
+                    },
+                middle = {
+                        {fight = 3,round = 1,talk = {dir = 0,name="小医仙",cardID=89,dialog = "你为什么还要回来呢！"}},
+                        {fight = 3,round = 1,talk = {dir = 1,name="萧炎",cardID=88,dialog = "这。。这，小医仙，你这是怎么了！是我啊，萧炎啊！"}},
+                    },
+                ended = {
+                    [1] = {data = "7_89",dir = 3,scene = "dh_cj02.png",dialog="我们现在身份对立，还是不要再见面了！"},
+                    [2] = {data = "7_88",dir = 3,dialog="小医仙，你一定要和我对立么！"},
+                    [3] = {data = "7_89",dir = 3,dialog="我。。总之，你走吧！"},
+                    [4] = {data = "7_88",dir = 3,dialog="我一定会救你出来的！你等着我！"},
+                    },         
+                },         
+}
+FightTaskInfo["29"]={
+           [276]={
+                begin ={
+                    [1] = {data = "7_547",dir = 3,scene = "dh_cj02.png",dialog="听说了么，出云帝国联合毒宗、雁落宗已经出兵攻打加玛了！"},
+                    [2] = {data = "7_88",dir = 3,dialog="雁落宗、毒宗和出云帝国么？那就一个一个收拾吧！"},
+                    },
+                },
+           [278]={
+                middle = {
+                        {fight = 2,round = 1,talk = {dir = 0,name="洪辰",cardID=32,dialog = "你是加玛派来的奸细吗！呵呵，就让你见识见识我风雷弟子的厉害！"}},
+                        {fight = 2,round = 1,talk = {dir = 1,name="萧炎",cardID=88,dialog = "风雷阁也掺合进来了是么，呵呵，那就正好，一起收拾你们！"}},
+                    },
+                },         
+           [281]={
+                begin ={
+                    [1] = {data = "7_76",dir = 3,scene = "dh_cj02.png",dialog="竟然偷学我风雷阁秘术-三千雷动，今日必不能饶了你个小贼！"},
+                    [2] = {data = "7_88",dir = 3,dialog="呵，自古异宝能者得之，你们风雷阁学不会就应该早点拿出来！"},
+                    [3] = {data = "7_76",dir = 3,dialog="庶子狂妄！"},
+                    },
+                middle = {
+                        {fight = 1,round = 1,talk = {dir = 0,name="费天",cardID=76,dialog = "今日定要将你千刀万剐！以销我心头之恨！"}},
+                        {fight = 1,round = 1,talk = {dir = 1,name="萧炎",cardID=88,dialog = "放马过来吧！"}},
+                    },
+                },         
+           [284]={
+                begin ={
+                    [1] = {data = "7_82",dir = 3,scene = "dh_cj02.png",dialog="萧姓小贼，竟敢欺我后辈，辱我弟子！受死！"},
+                    [2] = {data = "7_88",dir = 3,dialog="这么大岁数了还喊打喊杀的，也不怕闪了你的老腰！"},
+                    [3] = {data = "7_82",dir = 3,dialog="我洪天啸今日就让你知道狂妄的后果！"},
+                    [4] = {data = "7_88",dir = 3,dialog="洪天啸很了不起么！咬我啊！"}
+                    },
+                },
+           [285]={
+                middle = {
+                        {fight = 3,round = 1,talk = {dir = 1,name="雁落天",cardID=73,dialog = "你在我雁落宗兴风作浪，是不是太不把我放在眼里了！"}},
+                        {fight = 3,round = 1,talk = {dir = 0,name="云山",cardID=69,dialog = "我怎么会把你放眼里呢~，我都是把你放骨灰盒里的啊！"}},
+                        {fight = 3,round = 1,talk = {dir = 1,name="雁落天",cardID=73,dialog = "找死！"}},
+                    },
+                ended = {
+                    [1] = {data = "7_73",dir = 3,scene = "dh_cj01.png",dialog="萧炎小贼，今日之仇来日必当加倍奉还！"},
+                    [2] = {data = "7_88",dir = 3,dialog="雁落宗暂时不成威胁，下一个目标毒宗！呵呵！"},
+                    },         
+                },         
+}
+FightTaskInfo["30"]={
+           [286]={
+                middle = {
+                        {fight = 1,round = 1,talk = {dir = 1,name="萧炎",cardID=88,dialog = "毒宗嘛~呵呵，既然小爷来了，那就给你们好好松松筋骨吧！"}},
+                    },
+                },       
+           [291]={
+                middle = {
+                        {fight = 2,round = 1,talk = {dir = 1,name="萧炎",cardID=88,dialog = "哟，这风雷阁什么时候成了毒宗的走狗，为毒宗卖命了！"}},
+                        {fight = 2,round = 1,talk = {dir = 0,name="沈云",cardID=75,dialog = "你以为只凭你一人之力能拯救加玛么！做梦！"}},
+                    },
+                },
+           [294]={
+                begin ={
+                    [1] = {data = "7_74",dir = 3,scene = "dh_cj02.png",dialog="这位小友闯我宗门，伤我弟子，不知是毒宗哪里得罪了您！"},
+                    [2] = {data = "7_88",dir = 3,dialog="说得罪也说不上~我就是来这带走我的女人的！"},
+                    [3] = {data = "7_89",dir = 3,dialog="萧炎。。你。。（害羞。。）"},
+                    [4] = {data = "7_74",dir = 3,dialog="大胆狂徒，竟敢调戏我毒宗圣女！"}
+                    },
+                },
+           [295]={
+                begin ={
+                    [1] = {data = "7_74",dir = 3,scene = "dh_cj02.png",dialog="凭你一人之力，竟然我毒宗倾覆，玄冥宗主，你还打算旁观么！！"},
+                    [2] = {data = "7_88",dir = 3,dialog="哟，终于知道找帮手了是么！！"},
+                    [3] = {data = "7_79",dir = 3,dialog="此子如此年级便有这般修为，放任下去，早晚会成为我们的大敌！今日便是你的死期！"},
+                    [4] = {data = "7_88",dir = 3,dialog="不不不，今天，是你的死期~"}
+                    },
+                middle = {
+                        {fight = 3,round = 1,talk = {dir = 1,name="萧炎",cardID=88,dialog = "看我的地心火莲！"}},
+                        {fight = 3,round = 1,talk = {dir = 0,name="辰天南",cardID=79,dialog = "这。。这竟然是异火，啊！"}},
+                    },
+                ended = {
+                    [1] = {data = "7_88",dir = 3,scene = "dh_cj01.png",dialog="毒宗强者大都被我击伤，应该无力参与加玛之战了！"},
+                    [2] = {data = "7_89",dir = 3,dialog="萧炎，你这又是何必呢！你救不了我，我已经坠入毒道，纵使你伤我毒宗众人，出云与加玛之战，我还是会出现！"},
+                    [3] = {data = "7_88",dir = 3,dialog="坠入毒道又怎样，你想战，那我便陪你！我会在加玛等着你！"}
+                    },         
+                },         
+}
+FightTaskInfo["31"]={
+           [296]={
+                begin ={
+                    [1] = {data = "7_144",dir = 3,scene = "dh_cj02.png",dialog="出云帝国举国来犯，高手林立，我尽力才维持住局面！"},
+                    [2] = {data = "7_88",dir = 3,dialog="辛苦你了，彩鳞！接下来的便交给我吧！"},
+                    [3] = {data = "7_144",dir = 3,dialog="好！"},
+                    },
+                },
+           [301]={
+                begin ={
+                    [1] = {data = "7_144",dir = 3,scene = "dh_cj02.png",dialog="小心，这是慕兰谷的慕兰三老，他们最擅长的是合体技！"},
+                    [2] = {data = "7_88",dir = 3,dialog="合体技？那就一个一个弄死好了！"},
+                    },
+                },
+           [304]={
+                begin ={
+                    [1] = {data = "7_89",dir = 3,scene = "dh_cj02.png",dialog="你真的要和我作对么？"},
+                    [2] = {data = "7_88",dir = 3,dialog="如果这样才能救你的话！"},
+                    [3] = {data = "7_91",dir = 3,dialog="别再说了！动手吧！动手之后你就会知道，我已经回不去了！"},
+                    },
+                },
+           [305]={
+                begin ={
+                    [1] = {data = "7_73",dir = 3,scene = "dh_cj02.png",dialog="加玛气数已尽，还是乖乖臣服于我们出云帝国吧！"},
+                    [2] = {data = "7_88",dir = 3,dialog="雁落天你是不是傻！没吃药就滚回你出云吃药去！"},
+                    [3] = {data = "7_69",dir = 3,dialog="你！一起上，杀了萧炎，加玛就是我们的了！"},
+                    [4] = {data = "7_88",dir = 3,dialog="唉，药不能停啊！"}
+                    },
+                ended = {
+                    [1] = {data = "7_144",dir = 3,scene = "dh_cj01.png",dialog="出云帝国这次元气大伤，加玛此次的危机算是解了，之后你没事吧？"},
+                    [2] = {data = "7_88",dir = 3,dialog="啊？没。。没事啊！干嘛？"},
+                    [3] = {data = "7_144",dir = 3,dialog="没事最好，跟我去我族里走一趟吧！蛇族长老要见你！"},
+                    [4] = {data = "7_88",dir = 3,dialog="见。。见我。。。0.0"},
+                    },         
+                },         
+}
+FightTaskInfo["32"]={
+           [306]={
+                begin ={
+                    [1] = {data = "7_144",dir = 3,scene = "dh_cj02.png",dialog="这里就是我蛇人族的领地了，我不能带你上山，你只能自己进去！我会在山上等你！"},
+                    [2] = {data = "7_88",dir = 3,dialog="你确定不是叫我来这杀人灭口的么。。怎么感觉这一路。。不会很太平！"},
+                    [3] = {data = "7_144",dir = 3,dialog="^_^，你上来就知道了！"},
+                    [4] = {data = "7_88",dir = 3,dialog="娘的，谁怕谁，走就走！"}
+                    },
+                },
+           [308]={
+                middle = {
+                        {fight = 2,round = 1,talk = {dir = 0,name="墨巴斯",cardID=24,dialog = "女王大人是我的！！杀杀杀！杀了你！"}},
+                        {fight = 2,round = 1,talk = {dir = 1,name="萧炎",cardID=88,dialog = "滚开！老子的女人不是你能觊觎的！"}},
+                    },
+                },             
+           [311]={
+                middle = {
+                        {fight = 2,round = 1,talk = {dir = 0,name="花蛇儿",cardID=23,dialog = "誓死捍卫女王大人荣威！"}},
+                        {fight = 2,round = 1,talk = {dir = 0,name="月魅",cardID=25,dialog = "小小人类，也敢玷污我们女王大人！看招！"}},
+                        {fight = 2,round = 1,talk = {dir = 1,name="萧炎",cardID=88,dialog = "啊啊，男情敌就算了，为什么连女情敌都有！红颜祸水啊！"}},
+                    },
+                },
+           [314]={
+                begin ={
+                    [1] = {data = "7_545",dir = 3,scene = "dh_cj02.png",dialog="小子，你跟我族女王之事，是不是应该给我们个交代？"},
+                    [2] = {data = "7_88",dir = 3,dialog="我。。我说是误会，你能信么！"},
+                    [3] = {data = "7_91",dir = 3,dialog="竟然说出如此不负责任之话！定不能饶你！"},
+                    },
+                },
+           [245]={
+                begin ={
+                    [1] = {data = "7_144",dir = 3,scene = "dh_cj02.png",dialog="长老检测我已经怀了你的骨肉，你要负责！"},
+                    [2] = {data = "7_88",dir = 3,dialog="我去，你说什么？！"},
+                    [3] = {data = "7_144",dir = 3,dialog="你不想负责？- -！"},
+                    [4] = {data = "7_88",dir = 3,dialog="我靠，大姐，别动手啊！"}
+                    },
+                middle = {
+                        {fight = 3,round = 1,talk = {dir = 1,name="萧炎",cardID=88,dialog = "彩鳞，你听我解释啊！"}},
+                        {fight = 3,round = 1,talk = {dir = 0,name="美杜莎",cardID=144,dialog = "我不听，我不听！看招！"}},
+                    },
+                ended = {
+                    [1] = {data = "7_88",dir = 3,scene = "dh_cj01.png",dialog="5555，女人都是这么不可理喻的么！我会负责的！"},
+                    [2] = {data = "7_144",dir = 3,dialog="哼！"},
+                    [3] = {data = "7_88",dir = 3,dialog="不过，彩鳞，你要等我，师傅还在魂殿手上，我必须要把师傅救出来！"},
+                    [4] = {data = "7_144",dir = 3,dialog="我懂！你放心的去吧！家里有我！"},
+                    },         
+                },         
+}
 
 local param = nil 
 function FightTaskInfo.getData(chapterId,barrierId)

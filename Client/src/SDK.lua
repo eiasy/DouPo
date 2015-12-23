@@ -452,7 +452,13 @@ function SDK.notifyTDActivate()
     if device.platform == "windows" then
     elseif device.platform == "android" then
     elseif device.platform == "ios" then
-        require("cocos.cocos2d.luaoc").callStaticMethod("SDK", "tdOnActivate", { appID = "3a3ba201cce94b5aa779fcbcda556df6", channelID = "AppStore" })
+	    local di = SDK.getDeviceInfo()
+        local appID = "3a3ba201cce94b5aa779fcbcda556df6"
+        if di.packageName == "com.y2game.doupocangqiong" then
+            appID = "ceaf80f0dc334ff295ce56b3b243cca2"
+        end
+        
+        require("cocos.cocos2d.luaoc").callStaticMethod("SDK", "tdOnActivate", { appID = appID, channelID = "AppStore" })
     end
 end
 
@@ -475,7 +481,9 @@ end
 function SDK.notifyTDCreateRole(params)
     if device.platform == "windows" then
     elseif device.platform == "android" then
-        require("cocos.cocos2d.luaj").callStaticMethod(CLASS_NAME, "sdkDoADCreateRole", { tostring(params.roleName) })
+        if SDK.getChannel() ~= "qq" then
+            require("cocos.cocos2d.luaj").callStaticMethod(CLASS_NAME, "sdkDoADCreateRole", { tostring(params.roleName) })
+        end
     elseif device.platform == "ios" then
         require("cocos.cocos2d.luaoc").callStaticMethod("SDK", "tdOnCreateRole", params)
     end

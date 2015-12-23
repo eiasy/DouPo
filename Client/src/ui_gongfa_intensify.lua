@@ -11,6 +11,7 @@ local _curCardExp = 0
 local _tempExp = 0 
 local _tempLv = 0
 local _curLevel = 0
+local _maxLevel = 40
 
 local function startFade()
     if _tempLv > _curLevel then
@@ -190,6 +191,14 @@ function UIGongfaIntensify.setup()
 		local magicExp = instMagicData.int["7"]
 		local dictMagicData = DictMagic[tostring(dictMagicId)]
 		_curLevel = DictMagicLevel[tostring(magicLevleId)].level
+
+        local magicAdvanceId = instMagicData.int["10"]
+        if magicAdvanceId and magicAdvanceId > 0 then
+            _maxLevel = DictMagicrefining[tostring(magicAdvanceId)].maxStrengthen
+        else
+            _maxLevel = 40
+        end
+
 		local magicMaxExp = DictMagicLevel[tostring(magicLevleId)].exp
         local ui_expText = ui_magicExpBar:getChildByTag(100)
         if not ui_expText then
@@ -297,7 +306,7 @@ function UIGongfaIntensify.setSelectedInstMagicIds(selectedInstMagicIds)
 		magicFrame:loadTexture("ui/quality_small_white.png")
 		magicFrame:getChildByName("image_card" .. i):loadTexture("ui/frame_tianjia.png")
 	end
-    if _curLevel >= 40 then
+    if _curLevel >= _maxLevel then
         stopFade()
         UIManager.showToast("已达最大等级")
         return

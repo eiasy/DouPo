@@ -38,13 +38,13 @@
                     <OutlineColor A="255" R="255" G="0" B="0" />
                     <ShadowColor A="255" R="110" G="110" B="110" />
                   </AbstractNodeData>
-                  <AbstractNodeData Name="btn_closed" ActionTag="4" UserData="ignoreSize" Tag="726564" IconVisible="False" LeftMargin="229.0000" RightMargin="229.0000" TopMargin="795.5000" BottomMargin="24.5000" TouchEnable="True" FontSize="30" ButtonText="关闭" ctype="ButtonObjectData">
+                  <AbstractNodeData Name="btn_closed" ActionTag="4" UserData="ignoreSize" Tag="726564" IconVisible="False" LeftMargin="357.0015" RightMargin="100.9985" TopMargin="795.4996" BottomMargin="24.5004" TouchEnable="True" FontSize="30" ButtonText="关闭" ctype="ButtonObjectData">
                     <Size X="164.0000" Y="73.0000" />
                     <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
-                    <Position X="311.0000" Y="61.0000" />
+                    <Position X="439.0015" Y="61.0004" />
                     <Scale ScaleX="1.0000" ScaleY="1.0000" />
                     <CColor A="255" R="255" G="255" B="255" />
-                    <PrePosition X="0.5000" Y="0.0683" />
+                    <PrePosition X="0.7058" Y="0.0683" />
                     <PreSize X="0.2637" Y="0.0817" />
                     <FontResource Type="Normal" Path="data/ui_font.ttf" Plist="" />
                     <TextColor A="255" R="255" G="255" B="255" />
@@ -233,6 +233,22 @@
                     <EndColor A="255" R="255" G="150" B="100" />
                     <ColorVector ScaleX="0.0000" ScaleY="-1.0000" />
                     <InnerNodeSize Width="607" Height="657" />
+                  </AbstractNodeData>
+                  <AbstractNodeData Name="btn_clean" ActionTag="1318504140" UserData="ignoreSize" Tag="532" IconVisible="False" LeftMargin="96.0595" RightMargin="361.9405" TopMargin="795.4996" BottomMargin="24.5004" TouchEnable="True" FontSize="30" ButtonText="全部清空" Scale9Width="164" Scale9Height="73" ctype="ButtonObjectData">
+                    <Size X="164.0000" Y="73.0000" />
+                    <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />
+                    <Position X="178.0595" Y="61.0004" />
+                    <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                    <CColor A="255" R="255" G="255" B="255" />
+                    <PrePosition X="0.2863" Y="0.0683" />
+                    <PreSize X="0.2637" Y="0.0817" />
+                    <FontResource Type="Normal" Path="data/ui_font.ttf" Plist="" />
+                    <TextColor A="255" R="255" G="255" B="255" />
+                    <DisabledFileData Type="Normal" Path="ui/tk_btn02.png" Plist="" />
+                    <PressedFileData Type="Normal" Path="ui/tk_btn01.png" Plist="" />
+                    <NormalFileData Type="Normal" Path="ui/tk_btn01.png" Plist="" />
+                    <OutlineColor A="255" R="255" G="0" B="0" />
+                    <ShadowColor A="255" R="110" G="110" B="110" />
                   </AbstractNodeData>
                 </Children>
                 <AnchorPoint ScaleX="0.5000" ScaleY="0.5000" />

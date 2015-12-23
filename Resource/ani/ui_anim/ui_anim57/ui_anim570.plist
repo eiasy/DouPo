@@ -4,6 +4,25 @@
 	<dict>
 		<key>frames</key>
 		<dict>
+			<key>chibang_big_shengdan.png</key>
+			<dict>
+				<key>width</key>
+				<integer>275</integer>
+				<key>height</key>
+				<integer>266</integer>
+				<key>originalWidth</key>
+				<integer>280</integer>
+				<key>originalHeight</key>
+				<integer>280</integer>
+				<key>x</key>
+				<integer>0</integer>
+				<key>y</key>
+				<integer>0</integer>
+				<key>offsetX</key>
+				<real>2.5</real>
+				<key>offsetY</key>
+				<real>0</real>
+			</dict>
 			<key>chibang_big_lei3.png</key>
 			<dict>
 				<key>width</key>
@@ -15,7 +34,7 @@
 				<key>originalHeight</key>
 				<integer>280</integer>
 				<key>x</key>
-				<integer>0</integer>
+				<integer>276</integer>
 				<key>y</key>
 				<integer>0</integer>
 				<key>offsetX</key>
@@ -34,7 +53,7 @@
 				<key>originalHeight</key>
 				<integer>280</integer>
 				<key>x</key>
-				<integer>268</integer>
+				<integer>544</integer>
 				<key>y</key>
 				<integer>0</integer>
 				<key>offsetX</key>
@@ -53,9 +72,9 @@
 				<key>originalHeight</key>
 				<integer>280</integer>
 				<key>x</key>
-				<integer>541</integer>
-				<key>y</key>
 				<integer>0</integer>
+				<key>y</key>
+				<integer>267</integer>
 				<key>offsetX</key>
 				<real>12</real>
 				<key>offsetY</key>
@@ -72,9 +91,9 @@
 				<key>originalHeight</key>
 				<integer>280</integer>
 				<key>x</key>
-				<integer>541</integer>
+				<integer>544</integer>
 				<key>y</key>
-				<integer>272</integer>
+				<integer>279</integer>
 				<key>offsetX</key>
 				<real>7.5</real>
 				<key>offsetY</key>

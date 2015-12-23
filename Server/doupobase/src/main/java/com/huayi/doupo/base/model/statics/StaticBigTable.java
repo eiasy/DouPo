@@ -67,4 +67,9 @@ public class StaticBigTable {
 	 */
 	public static String strogerHeroFirstNames = "strogerHeroFirstNames";
 	
+	/**
+	 * 团购箱子购买数
+	 */
+	public static String groupBoxNum = "groupBoxNum";
+	
 }

@@ -8,6 +8,7 @@ local ui_equipQuality = nil -- 装备品质
 local ui_equipPropPanel = nil -- 属性面板
 local ui_inlayItems = { }
 local ui_equipDescribe = nil -- 装备描述
+local MAX_STAR_LEVEL = 5 --最大星级
 
 local btn_change = nil
 local btn_unload = nil
@@ -31,6 +32,7 @@ local function netCallbackFunc(data)
 end
 
 function UIEquipmentNew.init()
+       
     local ui_infoPanel = ccui.Helper:seekNodeByName(UIEquipmentNew.Widget, "image_basecolour")
     ui_equipQualityBg = ccui.Helper:seekNodeByName(ui_infoPanel, "image_base_name")
     ui_equipName = ui_equipQualityBg:getChildByName("text_name")
@@ -93,10 +95,17 @@ function UIEquipmentNew.init()
                 UIGuidePeople.isGuide(nil, UIEquipmentIntensify)
             elseif sender == btn_clean then
                 -- 进阶
+                local instEquipData = net.InstPlayerEquip[tostring(_equipInstId)]
+	            local equipAdvanceId = instEquipData.int["8"] --装备进阶字典ID
+	            local dictEquipAdvanceData = DictEquipAdvance[tostring(equipAdvanceId)] --装备进阶字典表             
                 if _equipQualityId == StaticEquip_Quality.white or _equipQualityId == StaticEquip_Quality.green then
                     UIManager.showToast((_equipQualityId == StaticEquip_Quality.white and "绿" or "蓝") .. "品不能进阶！")
+--                elseif dictEquipAdvanceData and ( ( dictEquipAdvanceData.starLevel == MAX_STAR_LEVEL and _equipQualityId == StaticEquip_Quality.purple ) or _equipQualityId > StaticEquip_Quality.purple ) then
+--                   UIEquipmentAdvance.setEquipInstId(_equipInstId)
+--                   UIManager.pushScene("ui_equipment_advance")
                 else
-                    UIEquipmentClean.show( { InstPlayerEquip_id = _equipInstId })
+                    
+                    UIEquipmentClean.show( { InstPlayerEquip_id = _equipInstId },2)
                 end
             elseif sender == btn_inlay or sender == ui_inlayItems[1] or sender == ui_inlayItems[2] or sender == ui_inlayItems[3] or sender == ui_inlayItems[4] then
                 -- 镶嵌
@@ -158,13 +167,7 @@ function UIEquipmentNew.setup()
         -- 装备字典表
         local dictEquipAdvanceData = DictEquipAdvance[tostring(equipAdvanceId)]
         -- 装备进阶字典表
-        _equipQualityId = dictEquipData.equipQualityId
-        ui_equipName:setString(dictEquipData.name)
-        ui_equipQualityBg:loadTexture(utils.getQualityImage(dp.Quality.equip, dictEquipData.equipQualityId, dp.QualityImageType.middle, true))
-        ui_equipIcon:loadTexture("image/" .. DictUI[tostring(dictEquipData.bigUiId)].fileName)
-        ui_equipLevel:setString("LV" .. equipLv)
-        ui_equipQuality:setString(tostring(dictEquipData.qualityLevel))
-
+        
         local equipAdvanceData = { }
         for key, obj in pairs(DictEquipAdvance) do
             if _equipTypeId == obj.equipTypeId and dictEquipData.equipQualityId == obj.equipQualityId then
@@ -195,6 +198,12 @@ function UIEquipmentNew.setup()
                 ui_starImg:loadTexture("ui/star02.png")
             end
         end
+        _equipQualityId = dictEquipAdvanceData.equipQualityId
+        ui_equipName:setString(dictEquipData.name)
+        ui_equipQualityBg:loadTexture(utils.getQualityImage(dp.Quality.equip, dictEquipAdvanceData.equipQualityId, dp.QualityImageType.middle, true))
+        ui_equipIcon:loadTexture("image/" .. DictUI[tostring(dictEquipData.bigUiId)].fileName)
+        ui_equipLevel:setString("LV" .. equipLv)
+        ui_equipQuality:setString(tostring(dictEquipData.qualityLevel))
 
 
         local equipPropData = { }
@@ -307,7 +316,7 @@ function UIEquipmentNew.setup()
                 end
             end
         end
-        local dictEquipQualityData = DictEquipQuality[tostring(dictEquipData.equipQualityId)]
+        local dictEquipQualityData = DictEquipQuality[tostring(dictEquipAdvanceData.equipQualityId)]
         -- 装备品质字典表
         local holeNum = dictEquipQualityData.holeNum
         -- 拥有宝石孔数
@@ -366,14 +375,8 @@ function UIEquipmentNew.setup()
         -- 装备字典表
         local dictEquipAdvanceData = DictEquipAdvance[tostring(equipAdvanceId)]
         -- 装备进阶字典表
-        _equipQualityId = dictEquipData.equipQualityId
 
-        ui_equipName:setString(dictEquipData.name)
-        ui_equipQualityBg:loadTexture(utils.getQualityImage(dp.Quality.equip, dictEquipData.equipQualityId, dp.QualityImageType.middle, true))
-        ui_equipIcon:loadTexture("image/" .. DictUI[tostring(dictEquipData.bigUiId)].fileName)
-        ui_equipLevel:setString("LV" .. equipLv)
-        ui_equipQuality:setString(tostring(dictEquipData.qualityLevel))
-
+      
         local equipAdvanceData = { }
         for key, obj in pairs(DictEquipAdvance) do
             if _equipTypeId == obj.equipTypeId and dictEquipData.equipQualityId == obj.equipQualityId then
@@ -384,6 +387,15 @@ function UIEquipmentNew.setup()
         if equipAdvanceId == 0 and(not dictEquipAdvanceData) then
             dictEquipAdvanceData = equipAdvanceData[1]
         end
+
+         _equipQualityId = dictEquipAdvanceData.equipQualityId
+
+        ui_equipName:setString(dictEquipData.name)
+        ui_equipQualityBg:loadTexture(utils.getQualityImage(dp.Quality.equip, dictEquipAdvanceData.equipQualityId, dp.QualityImageType.middle, true))
+        ui_equipIcon:loadTexture("image/" .. DictUI[tostring(dictEquipData.bigUiId)].fileName)
+        ui_equipLevel:setString("LV" .. equipLv)
+        ui_equipQuality:setString(tostring(dictEquipData.qualityLevel))
+
         for i = 1, 5 do
             local ui_starImg = ui_equipIcon:getParent():getChildByName("image_star" .. i)
             if equipAdvanceId ~= 0 and dictEquipAdvanceData.starLevel >= i then
@@ -508,7 +520,7 @@ function UIEquipmentNew.setup()
                 end
             end
         end
-        local dictEquipQualityData = DictEquipQuality[tostring(dictEquipData.equipQualityId)]
+        local dictEquipQualityData = DictEquipQuality[tostring(dictEquipAdvanceData.equipQualityId)]
         -- 装备品质字典表
         local holeNum = dictEquipQualityData.holeNum
         -- 拥有宝石孔数
@@ -769,7 +781,8 @@ function UIEquipmentNew.setup()
 
     local suitCount = 0
     local suitStarLvl = 5
-    local suitEquipData = nil
+	local suitRedStarLvl = 5
+    local suitEquipData , suitEquipDataRed= nil
     if _equipInstId and _equipCardInstId and net.InstPlayerLineup then
         local _instFormationId = nil
         for key, obj in pairs(net.InstPlayerFormation) do
@@ -794,12 +807,28 @@ function UIEquipmentNew.setup()
                 suitCount = suitCount + 1
             end
             -- cclog("startLevel : "..starLvl )
-            if starLvl < suitStarLvl then
-                suitStarLvl = starLvl
+			local instEquipData = net.InstPlayerEquip[tostring(equipId)]
+			local tempStarLevel = starLvl
+			if instEquipData.int["8"] > 0 then
+				local dictEquipAdvanceData = DictEquipAdvance[tostring(instEquipData.int["8"])]
+				if dictEquipAdvanceData.equipQualityId == StaticEquip_Quality.golden then
+					if suitRedStarLvl > tempStarLevel then
+						suitRedStarLvl = tempStarLevel
+					end
+					tempStarLevel = 5
+                    cclog("tempStarLevel : "..tempStarLevel)
+				else
+					suitRedStarLvl = -1
+				end
+			else
+				suitRedStarLvl = -1
+			end
+            if tempStarLevel < suitStarLvl then
+                suitStarLvl = tempStarLevel
             end
         end
         cclog("suitEquipData  Id " .. tostring(net.InstPlayerEquip[tostring(_equipInstId)].int["4"]) .. " _equipInstId : " .. _equipInstId)
-        suitEquipData = utils.getEquipSuit(tostring(net.InstPlayerEquip[tostring(_equipInstId)].int["4"]))
+        suitEquipData , suitEquipDataRed = utils.getEquipSuit(tostring(net.InstPlayerEquip[tostring(_equipInstId)].int["4"]))
         if not suitEquipData then
             cclog("获取套装信息有误")
         end
@@ -833,13 +862,15 @@ function UIEquipmentNew.setup()
                 -- 装备字典数据
                 local equipLevel = instEquipData.int["5"]
                 -- 装备等级
-                local qualityImage = utils.getQualityImage(dp.Quality.equip, dictEquipData.equipQualityId, dp.QualityImageType.small)
-                local qualitySuperscriptImg = utils.getEquipQualitySuperscript(dictEquipData.equipQualityId)
+
+                local qualitySuperscriptImg = nil
                 local equipStarLvl = 0
                 if tonumber(instEquipData.int["8"]) > 0 then
                     local dictEquipAdvanceData = DictEquipAdvance[tostring(instEquipData.int["8"])]
                     -- 装备进阶字典表
                     equipStarLvl = dictEquipAdvanceData.starLevel
+                    cclog("sssssssssssss equipQualityId : "..dictEquipAdvanceData.equipQualityId)
+                    qualitySuperscriptImg = utils.getThingQualityImg(dictEquipAdvanceData.equipQualityId)
                 end
 
                 -- local _isShowHint = isHint(equipTypeId, instEquipId)
@@ -847,6 +878,9 @@ function UIEquipmentNew.setup()
                     -- 护甲
                     local isSuit = false
                     local icon = ccui.Helper:seekNodeByName(imageInfo, "image_frame_gem" .. 2)
+                    if qualitySuperscriptImg then
+                        icon:loadTexture(qualitySuperscriptImg)
+                    end
                     if tonumber(dictEquipData.id) ~= tonumber(suitEquipTable[2]) then
 
                         utils.GrayWidget(icon, true)
@@ -865,6 +899,9 @@ function UIEquipmentNew.setup()
                     -- 头盔
                     local isSuit = false
                     local icon = ccui.Helper:seekNodeByName(imageInfo, "image_frame_gem" .. 3)
+                    if qualitySuperscriptImg then
+                        icon:loadTexture(qualitySuperscriptImg)
+                    end
                     if tonumber(dictEquipData.id) ~= tonumber(suitEquipTable[3]) then
 
                         utils.GrayWidget(icon, true)
@@ -883,6 +920,9 @@ function UIEquipmentNew.setup()
                     -- 饰品
                     local isSuit = false
                     local icon = ccui.Helper:seekNodeByName(imageInfo, "image_frame_gem" .. 4)
+                    if qualitySuperscriptImg then
+                        icon:loadTexture(qualitySuperscriptImg)
+                    end
                     if tonumber(dictEquipData.id) ~= tonumber(suitEquipTable[4]) then
 
                         utils.GrayWidget(icon, true)
@@ -901,6 +941,9 @@ function UIEquipmentNew.setup()
                     -- 武器
                     local isSuit = false
                     local icon = ccui.Helper:seekNodeByName(imageInfo, "image_frame_gem" .. 1)
+                    if qualitySuperscriptImg then
+                        icon:loadTexture(qualitySuperscriptImg)
+                    end
                     if tonumber(dictEquipData.id) ~= tonumber(suitEquipTable[1]) then
 
                         utils.GrayWidget(icon, true)
@@ -924,7 +967,7 @@ function UIEquipmentNew.setup()
         -- cclog("suitCount :"..suitCount .. "  suitStarLvl :"..suitStarLvl )
     elseif _dictEquipId then
 
-        suitEquipData = utils.getEquipSuit(tostring(_dictEquipId))
+        suitEquipData , suitEquipDataRed = utils.getEquipSuit(tostring(_dictEquipId))
         if not suitEquipData then
             cclog("获取套装信息有误")
         end
@@ -1143,7 +1186,7 @@ function UIEquipmentNew.setup()
     for i = 1, 5 do
         local imageStar = ccui.Helper:seekNodeByName(imageInfo, "image_star" .. i)
         local info = imageStar:getChildByName("text_number")
-        info:setString(i .. "星套装")
+        info:setString("橙"..i .."套装")
         if suitCount >= 4 and i < suitStarLvl then
             info:setTextColor(cc.c4b(0, 255, 255, 255))
         end
@@ -1186,6 +1229,48 @@ function UIEquipmentNew.setup()
         end
 
     end
+	for i = 1 , 6 do
+		local imageStar = ccui.Helper:seekNodeByName(imageInfo, "image_star" .. ( 5 + i ) )
+        local info = imageStar:getChildByName("text_number")
+        info:setString("红"..(i - 1) .. "套装")
+		if suitEquipDataRed then
+			if i == 1 then
+				propStr = suitEquipDataRed.suit0StarProp
+			elseif i == 2 then
+				propStr = suitEquipDataRed.suit1StarProp
+			elseif i == 3 then
+				propStr = suitEquipDataRed.suit2StarProp
+			elseif i == 4 then
+				propStr = suitEquipDataRed.suit3StarProp
+			elseif i == 5 then
+				propStr = suitEquipDataRed.suit4StarProp
+			elseif i == 6 then
+				propStr = suitEquipDataRed.suit5StarProp
+			end
+			local propTable = utils.stringSplit(propStr, ";")
+            local imgProp1 = imageStar:getChildByName("text_property1")
+			imgProp1:setVisible( false )
+			local imgProp2 = imageStar:getChildByName("text_property2")
+			imgProp2:setVisible( false )
+			for key, value in pairs(propTable) do
+				local data = utils.stringSplit(value, "_")
+				local imgProp = imageStar:getChildByName("text_property" .. key)
+				imgProp:setVisible( true )
+				if tonumber(data[2]) < 1 then
+					imgProp:setString(DictFightProp[tostring(data[1])].name .. "+" ..(tonumber(data[2]) * 100) .. "%")
+				else
+					imgProp:setString(DictFightProp[tostring(data[1])].name .. "+" .. data[2])
+				end
+				if suitCount >= 3 and 5 <= suitStarLvl and i - 1 <= suitRedStarLvl then
+					imgProp:setTextColor(cc.c4b(0, 255, 255, 255))
+					info:setTextColor(cc.c4b(0, 255, 255, 255))
+				end
+				-- DictFightProp[tostring(StaticFightProp.blood)].name
+			end
+		else
+			imageStar:setVisible(false)
+		end
+	end
 end
 
 function UIEquipmentNew.free()

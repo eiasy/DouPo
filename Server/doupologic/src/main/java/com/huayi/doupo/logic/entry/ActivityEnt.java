@@ -1001,4 +1001,130 @@ public class ActivityEnt extends BaseHandler{
 		}
 	}
 	
+	/**
+	 * 进入超值兑换
+	 * @author mp
+	 * @date 2015-12-17 下午5:00:30
+	 * @param msgMap
+	 * @param channelId
+	 * @Description
+	 */
+	public void intoOverflowExchange (HashMap<String, Object> msgMap, String channelId){
+		try {
+			HandlerFactory.getActivityHandler().intoOverflowExchange (msgMap, channelId);
+		} catch (Exception e) {
+			LogUtil.error("instPlayerId = " + PlayerMapUtil.getPlayerIdByChannelId(channelId) + ", " + DictMap.sysMsgRuleMap.get((int)msgMap.get("header") + "").getName() + ",  " + msgMap, e);
+			e.printStackTrace();
+			MessageUtil.sendFailMsg(channelId, msgMap, errorHint(msgMap));
+		}
+	}
+	
+	/**
+	 * 超值兑换
+	 * @author mp
+	 * @date 2015-12-17 下午5:01:04
+	 * @param msgMap
+	 * @param channelId
+	 * @Description
+	 */
+	public void overflowExchange (HashMap<String, Object> msgMap, String channelId){
+		try {
+			HandlerFactory.getActivityHandler().overflowExchange (msgMap, channelId);
+		} catch (Exception e) {
+			LogUtil.error("instPlayerId = " + PlayerMapUtil.getPlayerIdByChannelId(channelId) + ", " + DictMap.sysMsgRuleMap.get((int)msgMap.get("header") + "").getName() + ",  " + msgMap, e);
+			e.printStackTrace();
+			MessageUtil.sendFailMsg(channelId, msgMap, errorHint(msgMap));
+		}
+	}
+	
+	/**
+	 * 进入交易会
+	 * @author mp
+	 * @date 2015-12-18 下午2:35:43
+	 * @param msgMap
+	 * @param channelId
+	 * @Description
+	 */
+	public void intoGroup (HashMap<String, Object> msgMap, String channelId){
+		try {
+			HandlerFactory.getActivityHandler().intoGroup (msgMap, channelId);
+		} catch (Exception e) {
+			LogUtil.error("instPlayerId = " + PlayerMapUtil.getPlayerIdByChannelId(channelId) + ", " + DictMap.sysMsgRuleMap.get((int)msgMap.get("header") + "").getName() + ",  " + msgMap, e);
+			e.printStackTrace();
+			MessageUtil.sendFailMsg(channelId, msgMap, errorHint(msgMap));
+		}
+	}
+	
+	/**
+	 * 购买团购箱子
+	 * @author mp
+	 * @date 2015-12-18 下午2:36:01
+	 * @param msgMap
+	 * @param channelId
+	 * @Description
+	 */
+	public void buyGroupBox (HashMap<String, Object> msgMap, String channelId){
+		try {
+			HandlerFactory.getActivityHandler().buyGroupBox (msgMap, channelId);
+		} catch (Exception e) {
+			LogUtil.error("instPlayerId = " + PlayerMapUtil.getPlayerIdByChannelId(channelId) + ", " + DictMap.sysMsgRuleMap.get((int)msgMap.get("header") + "").getName() + ",  " + msgMap, e);
+			e.printStackTrace();
+			MessageUtil.sendFailMsg(channelId, msgMap, errorHint(msgMap));
+		}
+	}
+	
+	/**
+	 * 进入团购豪礼
+	 * @author mp
+	 * @date 2015-12-18 下午2:36:14
+	 * @param msgMap
+	 * @param channelId
+	 * @Description
+	 */
+	public void intoGroupGift (HashMap<String, Object> msgMap, String channelId){
+		try {
+			HandlerFactory.getActivityHandler().intoGroupGift (msgMap, channelId);
+		} catch (Exception e) {
+			LogUtil.error("instPlayerId = " + PlayerMapUtil.getPlayerIdByChannelId(channelId) + ", " + DictMap.sysMsgRuleMap.get((int)msgMap.get("header") + "").getName() + ",  " + msgMap, e);
+			e.printStackTrace();
+			MessageUtil.sendFailMsg(channelId, msgMap, errorHint(msgMap));
+		}
+	}
+	
+	/**
+	 * 领取团购箱子奖励
+	 * @author mp
+	 * @date 2015-12-18 下午2:36:41
+	 * @param msgMap
+	 * @param channelId
+	 * @Description
+	 */
+	public void getGroupBoxReward (HashMap<String, Object> msgMap, String channelId){
+		try {
+			HandlerFactory.getActivityHandler().getGroupBoxReward (msgMap, channelId);
+		} catch (Exception e) {
+			LogUtil.error("instPlayerId = " + PlayerMapUtil.getPlayerIdByChannelId(channelId) + ", " + DictMap.sysMsgRuleMap.get((int)msgMap.get("header") + "").getName() + ",  " + msgMap, e);
+			e.printStackTrace();
+			MessageUtil.sendFailMsg(channelId, msgMap, errorHint(msgMap));
+		}
+	}
+
+	/**
+	 * 查看团购排行
+	 * @author mp
+	 * @date 2015-12-18 下午4:44:13
+	 * @param msgMap
+	 * @param channelId
+	 * @Description
+	 */
+	public void lookGroupRank (HashMap<String, Object> msgMap, String channelId){
+		try {
+			HandlerFactory.getActivityHandler().lookGroupRank (msgMap, channelId);
+		} catch (Exception e) {
+			LogUtil.error("instPlayerId = " + PlayerMapUtil.getPlayerIdByChannelId(channelId) + ", " + DictMap.sysMsgRuleMap.get((int)msgMap.get("header") + "").getName() + ",  " + msgMap, e);
+			e.printStackTrace();
+			MessageUtil.sendFailMsg(channelId, msgMap, errorHint(msgMap));
+		}
+	}
+	
 }

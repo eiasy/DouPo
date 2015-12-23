@@ -39,7 +39,8 @@ dp.musicSwitch = true -- 音乐开关
 dp.soundSwitch = true -- 音效开关
 
 local function readConfig()
-    local config = cc.FileUtils:getInstance():getStringFromFile("config")
+    dp.RELEASE = true
+    local config = cc.FileUtils:getInstance():getStringFromFile("hyconfig")
     local a = utils.stringSplit(config, "\n")
     for k, v in pairs(a) do
         if string.find(v, "RELEASE") then
@@ -90,7 +91,8 @@ dp.FightType = {
     -- 试炼日战斗
     FIGHT_PILL_TOWER = "pillTower",
     -- 丹塔战斗
-    FIGHT_MINE = "mine",-- 抢碎片战斗
+    FIGHT_MINE = "mine",-- 抢矿战斗
+    FIGHT_UNION_REPLAY = "unionReplay"
 }
 
 dp.QualityImageType = {
@@ -144,8 +146,8 @@ function dp.getUserData()
         userData.accountId = net.InstPlayer.string["2"]
         userData.roleName = net.InstPlayer.string["3"]
         userData.roleLevel = net.InstPlayer.int["4"]
-        userData.serverId = dp.serverId
-        userData.serverName = dp.serverName
+        userData.serverId = dp.serverId or 0
+        userData.serverName = dp.serverName or ""
         userData.vipLevel = net.InstPlayer.int["19"]
     end
     return userData

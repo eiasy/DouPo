@@ -3,7 +3,7 @@ local obj = nil
 local upgradedObj={}
 local number = nil
 local uiItem = nil
-local MAXUPGRADELEVEL = 6
+local MAXUPGRADELEVEL = 7
 local tempObjNum = 0
 local function netCallbackFunc(pack)
      if obj and tempObjNum > 0 and (tempObjNum - number*3) == 0 then 

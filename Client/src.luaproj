@@ -140,10 +140,12 @@
     <Compile Include="src\DictDantaLayer.lua" />
     <Compile Include="src\DictDantaMonster.lua" />
     <Compile Include="src\DictEquipAdvance.lua" />
+    <Compile Include="src\DictEquipAdvancered.lua" />
     <Compile Include="src\DictEquipment.lua" />
     <Compile Include="src\DictEquipQuality.lua" />
     <Compile Include="src\DictEquipStrengthen.lua" />
     <Compile Include="src\DictEquipSuit.lua" />
+    <Compile Include="src\DictEquipSuitred.lua" />
     <Compile Include="src\DictEquipSuitRefer.lua" />
     <Compile Include="src\DictEquipType.lua" />
     <Compile Include="src\DictEquipWash.lua" />
@@ -180,6 +182,7 @@
     <Compile Include="src\DictMagic.lua" />
     <Compile Include="src\DictMagicLevel.lua" />
     <Compile Include="src\DictMagicQuality.lua" />
+    <Compile Include="src\DictMagicrefining.lua" />
     <Compile Include="src\DictManualSkill.lua" />
     <Compile Include="src\DictManualSkillExp.lua" />
     <Compile Include="src\DictPagodaCard.lua" />
@@ -196,6 +199,7 @@
     <Compile Include="src\DictQuality.lua" />
     <Compile Include="src\DictRecharge.lua" />
     <Compile Include="src\DictRechargeForIOS.lua" />
+    <Compile Include="src\DictRechargeForIOSBrushList.lua" />
     <Compile Include="src\DictRecruitCard.lua" />
     <Compile Include="src\DictRestore.lua" />
     <Compile Include="src\DictSpecialBoxThing.lua" />
@@ -275,6 +279,7 @@
     <Compile Include="src\ui_activity_bath.lua" />
     <Compile Include="src\ui_activity_buy.lua" />
     <Compile Include="src\ui_activity_card.lua" />
+    <Compile Include="src\ui_activity_Christmas.lua" />
     <Compile Include="src\ui_activity_cost_all.lua" />
     <Compile Include="src\ui_activity_dailyDeals.lua" />
     <Compile Include="src\ui_activity_email.lua" />
@@ -291,8 +296,13 @@
     <Compile Include="src\ui_activity_luckdial_preview.lua" />
     <Compile Include="src\ui_activity_MakeMoney.lua" />
     <Compile Include="src\ui_activity_miteer.lua" />
+    <Compile Include="src\ui_activity_normalExchange.lua" />
     <Compile Include="src\ui_activity_panel.lua" />
     <Compile Include="src\ui_activity_privateSale.lua" />
+    <Compile Include="src\ui_activity_purchase_gift.lua" />
+    <Compile Include="src\ui_activity_purchase_manager.lua" />
+    <Compile Include="src\ui_activity_purchase_rank.lua" />
+    <Compile Include="src\ui_activity_purchase_trade.lua" />
     <Compile Include="src\ui_activity_ranking.lua" />
     <Compile Include="src\ui_activity_recharge.lua" />
     <Compile Include="src\ui_activity_rechargeDouble.lua" />
@@ -349,6 +359,7 @@
     <Compile Include="src\ui_card_upgrade.lua" />
     <Compile Include="src\ui_danfang.lua" />
     <Compile Include="src\ui_danyao.lua" />
+    <Compile Include="src\ui_equipment_advance.lua" />
     <Compile Include="src\ui_equipment_clean.lua" />
     <Compile Include="src\ui_equipment_info.lua" />
     <Compile Include="src\ui_equipment_intensify.lua" />
@@ -375,6 +386,7 @@
     <Compile Include="src\ui_gift_vip.lua" />
     <Compile Include="src\ui_gongfa_info.lua" />
     <Compile Include="src\ui_gongfa_intensify.lua" />
+    <Compile Include="src\ui_gongfa_refining.lua" />
     <Compile Include="src\ui_good_info.lua" />
     <Compile Include="src\ui_guide_fight.lua" />
     <Compile Include="src\ui_guide_info.lua" />
@@ -443,10 +455,17 @@
     <Compile Include="src\ui_tower_test.lua" />
     <Compile Include="src\ui_tower_win.lua" />
     <Compile Include="src\ui_tower_win_small.lua" />
+    <Compile Include="src\ui_war.lua" />
+    <Compile Include="src\ui_war_ambush.lua" />
+    <Compile Include="src\ui_war_info.lua" />
+    <Compile Include="src\ui_war_list.lua" />
+    <Compile Include="src\ui_war_rank.lua" />
+    <Compile Include="src\ui_war_schedule.lua" />
     <Compile Include="src\ui_wing_advance.lua" />
     <Compile Include="src\ui_wing_change.lua" />
     <Compile Include="src\ui_wing_common.lua" />
     <Compile Include="src\ui_wing_info.lua" />
+    <Compile Include="src\ui_wing_info_all.lua" />
     <Compile Include="src\ui_wing_intensify.lua" />
     <Compile Include="src\utils.lua" />
     <Compile Include="src\widgetmanager.lua" />

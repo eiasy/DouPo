@@ -30,7 +30,7 @@ dependencies {
     compile project(':mmo.mutual')
     compile project(':mmo.application')
     compile project(':mmo.tools')
-    compile project(':mmo.charge.module')
+    compile project(':mmo.charge.service')
 
     compile 'org.slf4j:slf4j-api:1.7.6'
     compile group: 'log4j', name: 'log4j', version: '1.2.17'

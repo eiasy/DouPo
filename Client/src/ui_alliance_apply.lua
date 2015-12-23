@@ -106,19 +106,26 @@ end
 netCallbackFunc = function(msgData)
 	local code = tonumber(msgData.header)
 	if code == StaticMsgRule.obtainApply then
+        local applyLists = {}
 		local unionApply = msgData.msgdata.message.unionApply
 		if unionApply and unionApply.message then
-			local applyLists = {}
 			for key, obj in pairs(unionApply.message) do
 				applyLists[#applyLists + 1] = obj
 			end
-		layoutScrollView(applyLists, setScrollViewItem)
+		    layoutScrollView(applyLists, setScrollViewItem)
 		end
+        if #applyLists == 0 then
+            UIAllianceInfo.refreshApplyHint(false)
+        else
+            UIAllianceInfo.refreshApplyHint(true)
+        end
 	elseif code == StaticMsgRule.agreeApply or code == StaticMsgRule.refuseApply then
 		if code == StaticMsgRule.agreeApply then
 			userData.currentCount = userData.currentCount + 1
 		end
 		UIAllianceApply.setup()
+    elseif code == StaticMsgRule.clearUnionApplay then
+        UIAllianceApply.setup()
 	end
 end
 
@@ -126,23 +133,30 @@ function UIAllianceApply.init()
 	local image_basemap = UIAllianceApply.Widget:getChildByName("image_basemap")
 	local btn_close = image_basemap:getChildByName("btn_close")
 	local btn_closed = image_basemap:getChildByName("btn_closed")
+    local btn_clean = image_basemap:getChildByName("btn_clean")
 
 	ui_scrollView = image_basemap:getChildByName("view_info")
 	ui_svItem = ui_scrollView:getChildByName("image_di_alliance"):clone()
 
 	btn_close:setPressedActionEnabled(true)
 	btn_closed:setPressedActionEnabled(true)
+	btn_clean:setPressedActionEnabled(true)
 
 	local function onButtonEvent(sender, eventType)
 		if eventType == ccui.TouchEventType.ended then
 			if sender == btn_close or sender == btn_closed then
 				UIManager.popScene()
+            elseif sender == btn_clean then
+                UIManager.showLoading()
+				netSendPackage({header = StaticMsgRule.clearUnionApplay, 
+				msgdata = {int={instUnionId=net.InstUnionMember.int["2"]}}}, netCallbackFunc)
 			end
 		end
 	end
 
 	btn_close:addTouchEventListener(onButtonEvent)
 	btn_closed:addTouchEventListener(onButtonEvent)
+	btn_clean:addTouchEventListener(onButtonEvent)
 end
 
 function UIAllianceApply.setup()

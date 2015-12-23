@@ -11,9 +11,11 @@ import com.huayi.doupo.logic.handler.util.ScheduleUtil;
 import com.huayi.doupo.logic.handler.util.ThreadUtil;
 import com.huayi.doupo.logic.handler.util.marquee.AcrossDayThread;
 import com.huayi.doupo.logic.handler.util.marquee.MarqueeUtil;
+import com.huayi.doupo.logic.handler.util.unionwar.UnionWarUtil;
 import com.huayi.doupo.logic.http.HttpServer4Login;
 import com.huayi.doupo.logic.util.InitUtil;
 import com.huayi.doupo.logic.util.LoadResourceUtil;
+import com.huayi.doupo.logic.util.luafight.LuaFightEngine;
 
 /**
  * 游戏主函数
@@ -45,9 +47,15 @@ public class GameServerMain {
 			//Init Limit Time Hero
 			InitUtil.initLimiHeroJifen();
 			
+			//Init Group
+			InitUtil.initGroup();
+			
+			//Init Exchange
+			InitUtil.initExchange();
+			
 			//Init WorldBoss Info
 			InitUtil.initWorldBossInfo();
-
+			
 			// 启动时必须要做矿检测，主要功能检测是否结算，或还原天气
 			MineUtil.createMine();
 			// Luck turntable
@@ -74,6 +82,12 @@ public class GameServerMain {
 			// 启动调度器-最强强者发奖调度器
 			ScheduleUtil.startAll();
 
+			// 战斗Lua引擎初始化
+			LuaFightEngine.init();
+			
+			// 盟战初始化
+			UnionWarUtil.init();
+
 			// Start Game Server
 			GameServer.start();
 
@@ -85,7 +99,7 @@ public class GameServerMain {
 
 			ThreadManager.initThread();
 			
-			LogUtil.out(" 2015-12-10 15:03  --version-- ++++---- 占星  , 巅峰强者节日版, 限时兑换gm");
+			LogUtil.out(" 2015-12-23 12:54  --version-- ++++---- 宙哥提的圣诞活动过期处理数据");
 			
 //			List<InstBlobData> instActivityList = DALFactory.getInstBlobDataDAL().getList(" type = " + IBlobDataType.TYPE_1_ACTIVITY_LUCK + " limit 0,1", 0);
 //			System.out.println("instActivityList.size()="+instActivityList.size());

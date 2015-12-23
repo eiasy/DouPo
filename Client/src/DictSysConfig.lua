@@ -40,7 +40,7 @@ DictSysConfig["38"]={id=38,name="普通副本购买冷却元宝加成",sname="ch
 DictSysConfig["39"]={id=39,name="普通副本特殊物品是否掉落的概率",sname="chapterWarDropChance",value=0.1,description=""}
 DictSysConfig["40"]={id=40,name="普通副本特殊物品掉落个数",sname="chapterWarDropNum",value=1,description=""}
 DictSysConfig["41"]={id=41,name="精英副本购买战斗次数消耗元宝",sname="chapterEliteBuyGold",value=50,description=""}
-DictSysConfig["42"]={id=42,name="战队最大等级",sname="playerMaxLevel",value=80,description=""}
+DictSysConfig["42"]={id=42,name="战队最大等级",sname="playerMaxLevel",value=100,description=""}
 DictSysConfig["43"]={id=43,name="普通副本一键战斗默认次数",sname="chapterAKeyNum",value=10,description=""}
 DictSysConfig["44"]={id=44,name="普通副本关卡重置战斗次数",sname="common",value=2,description=""}
 DictSysConfig["45"]={id=45,name="精英副本每天可Vip1可购买的攻击次数",sname="chapterEliteBuyVip1",value=1,description="已废弃-后移到vip表"}
@@ -263,3 +263,7 @@ DictSysConfig["261"]={id=261,name="占星刷新需要道具个数",sname="holdSt
 DictSysConfig["262"]={id=262,name="占星刷新需要元宝数",sname="holdStarRefreshGoldNum",value=10,description=""}
 DictSysConfig["263"]={id=263,name="每天可免费刷新占星次数",sname="holdStarFreeRefreshTimes",value=1,description=""}
 DictSysConfig["264"]={id=264,name="每天可占星次数",sname="holdStarCanHoldTimes",value=16,description=""}
+DictSysConfig["265"]={id=265,name="多少开启度能打开豪华箱子",sname="openGroupBoxScore",value=250000,description=""}
+DictSysConfig["266"]={id=266,name="个人多少开启度可领豪华箱子物品",sname="getGroupBoxThingScore",value=1000,description=""}
+DictSysConfig["267"]={id=267,name="团购排行可查看前多少名的玩家",sname="canLookRank",value=20,description=""}
+DictSysConfig["268"]={id=268,name="团购排行多少名可得到返利",sname="canRetRank",value=10,description=""}

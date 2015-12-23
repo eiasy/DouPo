@@ -23,7 +23,7 @@ dependencies {
     //私有类，mina类被修改过
     compile fileTree(dir: '../../JarManager/lib/mina', include: ['mina2.0.7.jar'])
 //    compile group: 'org.apache.mina', name: 'mina-core', version: '2.0.7'
-    compile project(':mmo.account.module')
+    compile project(':mmo.account.service')
     compile project(':mmo.tools')
     compile project(':mmo.application')
     compile project(':mmo.bean')

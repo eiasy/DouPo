@@ -27,6 +27,7 @@ import com.huayi.doupo.base.model.socket.Player;
 import com.huayi.doupo.base.model.statics.StaticActivity;
 import com.huayi.doupo.base.model.statics.StaticBigTable;
 import com.huayi.doupo.base.model.statics.StaticSyncState;
+import com.huayi.doupo.base.util.base.ConvertUtil;
 import com.huayi.doupo.base.util.base.DateUtil;
 import com.huayi.doupo.base.util.base.DateUtil.DateFormat;
 import com.huayi.doupo.base.util.base.RandomUtil;
@@ -36,6 +37,27 @@ import com.huayi.doupo.logic.util.MessageUtil;
 import com.huayi.doupo.logic.util.PlayerMapUtil;
 
 public class ActivityUtil extends DALFactory{
+	
+	/**
+	 * 购买团购箱子-全服处理
+	 * @author mp
+	 * @date 2015-12-18 下午7:01:21
+	 * @Description
+	 */
+	public synchronized static void addGroupBox (int num) throws Exception{
+		List<InstPlayerBigTable> instPlayerBigTableList = getInstPlayerBigTableDAL().getList("instPlayerId = 0 and properties = '" + StaticBigTable.groupBoxNum + "'", 0);
+		if (instPlayerBigTableList.size() <= 0) {
+			InstPlayerBigTable instPlayerBigTable = new InstPlayerBigTable();
+			instPlayerBigTable.setInstPlayerId(0);
+			instPlayerBigTable.setProperties(StaticBigTable.groupBoxNum);
+			instPlayerBigTable.setValue1(num + "");
+			getInstPlayerBigTableDAL().add(instPlayerBigTable, 0);
+		} else {
+			InstPlayerBigTable instPlayerBigTable = instPlayerBigTableList.get(0);
+			instPlayerBigTable.setValue1((ConvertUtil.toInt(instPlayerBigTable.getValue1()) + num) + "");
+			getInstPlayerBigTableDAL().update(instPlayerBigTable, 0);
+		}
+	}
 	
 	/**
 	 * 实例化拍卖行/黑角域数据

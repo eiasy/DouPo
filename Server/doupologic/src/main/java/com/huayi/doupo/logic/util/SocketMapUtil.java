@@ -11,6 +11,7 @@ import com.huayi.doupo.base.model.socket.Player;
 import com.huayi.doupo.base.util.base.DateUtil;
 import com.huayi.doupo.logic.handler.util.PlayerUtil;
 import com.huayi.doupo.logic.handler.util.UserUtil;
+import com.huayi.doupo.logic.handler.util.unionwar.UnionWarUtil;
 
 public class SocketMapUtil {
 
@@ -50,6 +51,7 @@ public class SocketMapUtil {
 			PlayerActivityManager.getInstance().removePlayerActivities(player.getPlayerId());
 			TotalCostManager.getInstance().removePlayerData(player.getPlayerId());
 			ThreadManager.execute(new ResetPlayerDantaDayRun(player.getPlayerId()));
+			UnionWarUtil.delViewer(player.getPlayerId());
 		}
 		
 		//将玩家从ChannelMap中清除

@@ -48,7 +48,11 @@ local function propThing( obj )
     image_name:getChildByName("text_name"):setString(DictWing[ tostring( obj.int["3"] ) ].name)
     local image_quality = ccui.Helper:seekNodeByName( UIWingIntensify.Widget , "image_quality" )
     --image_quality:setString("羽毛属性")
-    image_quality:loadTexture( "ui/wing_"..DictWing[ tostring( obj.int["3"] ) ].sname..".png" )
+    if obj.int["3"] >= 5 then
+        image_quality:loadTexture( "ui/wing_all.png" )
+    else
+        image_quality:loadTexture( "ui/wing_"..DictWing[ tostring( obj.int["3"] ) ].sname..".png" )
+    end
     local image_di_lv = ccui.Helper:seekNodeByName( UIWingIntensify.Widget , "image_di_lv" )
     local str = "一阶神羽"
     if obj.int["5"] == 1 then
@@ -114,7 +118,12 @@ function UIWingIntensify.setup()
     propThing( _obj )
     local image_wing = ccui.Helper:seekNodeByName( UIWingIntensify.Widget , "image_wing")
     image_wing:setVisible( false )
-    utils.addArmature( image_wing:getParent() , 54 + _obj.int["5"] , _obj.int["5"]..DictWing[tostring(_obj.int["3"])].sname , image_wing:getPositionX() , image_wing:getPositionY() , image_wing:getLocalZOrder() , image_wing:getScale() )
+    local actionName = DictWing[tostring(_obj.int["3"])].actionName
+    if actionName and actionName ~= "" then
+        utils.addArmature( image_wing:getParent() , 54 + _obj.int["5"] , actionName , image_wing:getPositionX() , image_wing:getPositionY() , image_wing:getLocalZOrder() , image_wing:getScale() )
+    else
+        utils.addArmature( image_wing:getParent() , 54 + _obj.int["5"] , "0".._obj.int["5"]..DictWing[tostring(_obj.int["3"])].sname , image_wing:getPositionX() , image_wing:getPositionY() , image_wing:getLocalZOrder() , image_wing:getScale() )
+    end
     if _dictId then
         local dictCardData = DictCard[tostring(_dictId)]
 		if dictCardData then			

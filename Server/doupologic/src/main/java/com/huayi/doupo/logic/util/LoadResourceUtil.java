@@ -105,6 +105,12 @@ public class LoadResourceUtil extends DALFactory{
 		//反序列化世界boss排行
 		unWorldBossRank();
 		
+		//反序列化团购返元宝
+		unGroupRetGold();
+		
+		//反序列化团购前十名额外返利
+		unGroupRankRetGold();
+		
 		//初始化 巅峰强强者第一名列表
 		List<InstPlayerBigTable> instPlayerBigTableList = getInstPlayerBigTableDAL().getList("instPlayerId = 0 and properties = '" + StaticBigTable.strogerHeroFirstNames + "'", 0);
 		if (instPlayerBigTableList.size() > 0) {
@@ -295,6 +301,60 @@ public class LoadResourceUtil extends DALFactory{
 				input.read(b);
 				Object obj = SerializeUtil.unserialize(b);
 				ParamConfig.worldBossRankList = (List<WorldBossPlayer>)obj;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			LogUtil.error("反序列化世界Boss排行Error", e);
+		}
+	}
+	
+	/**
+	 * 反序列化团购返元宝
+	 * @author mp
+	 * @date 2015-12-21 上午10:11:51
+	 * @Description
+	 */
+	@SuppressWarnings("unchecked")
+	private static void unGroupRetGold () {
+		try {
+			String path = System.getProperty("user.dir") + "/config/";
+			String fileName = "groupRetGold.txt";
+			File file = new File(path + fileName);
+			if(file.exists()){
+				long length = file.length();
+				FileInputStream input;
+				input = new FileInputStream(file);
+				byte[] b = new byte[(int)length];//设置大小，用文件长度。
+				input.read(b);
+				Object obj = SerializeUtil.unserialize(b);
+				ParamConfig.groupRetGoldMap = (ConcurrentHashMap<Integer, ConcurrentHashMap<String, Integer>>)obj;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			LogUtil.error("反序列化世界Boss排行Error", e);
+		}
+	}
+	
+	/**
+	 * 反序列化团购前十名额外返利
+	 * @author mp
+	 * @date 2015-12-21 上午10:17:27
+	 * @Description
+	 */
+	@SuppressWarnings("unchecked")
+	private static void unGroupRankRetGold () {
+		try {
+			String path = System.getProperty("user.dir") + "/config/";
+			String fileName = "groupRankRetGold.txt";
+			File file = new File(path + fileName);
+			if(file.exists()){
+				long length = file.length();
+				FileInputStream input;
+				input = new FileInputStream(file);
+				byte[] b = new byte[(int)length];//设置大小，用文件长度。
+				input.read(b);
+				Object obj = SerializeUtil.unserialize(b);
+				ParamConfig.groupRankRetGoldMap = (ConcurrentHashMap<Integer, ConcurrentHashMap<String, String>>)obj;
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

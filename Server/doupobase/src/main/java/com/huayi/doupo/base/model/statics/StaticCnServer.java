@@ -480,7 +480,7 @@ public class StaticCnServer {
 	
 	public static final String fail_wing_upSellNum = new String("超过出售列表上限");
 	
-	public static final String fail_wing_upTitle = new String("请升级称号");
+	public static final String fail_wing_upTitle = new String("请升级境界至大斗师");
 	
 	public static final String fail_wing_strongBoneNotEnough = new String("强化石不足");
 	
@@ -503,5 +503,47 @@ public class StaticCnServer {
 	public static final String fail_holdStar_noVip = new String("刷新次数不足,请提升vip等级");
 	
 	public static final String fail_holdStar_noGetThings = new String("无可领取的物品");
+	
+	public static final String fail_holdStar_noThePlayer = new String("查无此人");
+	
+	public static final String fail_costThing_1 = new String("所需丹药不足");
+	
+	public static final String fail_costThing_2 = new String("所需物品不足");
+	
+	public static final String fail_costThing_3_1 = new String("所需元宝不足");
+	
+	public static final String fail_costThing_3_2 = new String("所需银币不足");
+	
+	public static final String fail_costThing_3_4 = new String("所需火能石不足");
+	
+	public static final String fail_costThing_3_7 = new String("所需联盟贡献不足");
+	
+	public static final String fail_costThing_3_5 = new String("所需威望不足");
+	
+	public static final String fail_costThing_3_8 = new String("所需屠魔积分不足");
+	
+	public static final String fail_costThing_6 = new String("所需装备不足");
+	
+	public static final String fail_costThing_7 = new String("所需卡牌不足");
+	
+	public static final String fail_costThing_9 = new String("所需卡牌魂魄不足");
+	
+	public static final String fail_costThing_10 = new String("所需功法法宝碎片不足");
+	
+	public static final String fail_costThing_13 = new String("所需功法法宝不足");
+	
+	public static final String fail_costThing_16 = new String("所需异火碎片不足");
+	
+	public static final String fail_costThing_17 = new String("所需翅膀不足");
+	
+	public static final String fail_costThing_18 = new String("所需斗魂不足");
+	
+	public static final String fail_groupBox_allservergold = new String("开启度不足");
+	
+	public static final String fail_activity_exchange = new String("超过限定兑换次数");
+	
+	public static final String fail_openBox_ten = new String("此箱子单次最多只能开10个");
+	
+	public static final String fail_aren_rank = new String("以您当前排名，无法挑战此名次的玩家");
 	
 }

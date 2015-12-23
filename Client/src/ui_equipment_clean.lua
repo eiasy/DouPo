@@ -12,7 +12,16 @@ local function netCallbackFunc(msgData)
         if UIEquipmentClean.Widget:getChildByTag(STAR_ANIM_TAG) then
             UIEquipmentClean.Widget:getChildByTag(STAR_ANIM_TAG):removeFromParent()
         end
-        UIEquipmentClean.setup()
+        local instEquipData = net.InstPlayerEquip[tostring(userData.InstPlayerEquip_id)]
+	    local equipAdvanceId = instEquipData.int["8"] --装备进阶字典ID
+	    local dictEquipAdvanceData = DictEquipAdvance[tostring(equipAdvanceId)] --装备进阶字典表
+--        if dictEquipAdvanceData and dictEquipAdvanceData.starLevel == MAX_STAR_LEVEL then
+--            UIManager.popScene()
+--            UIEquipmentAdvance.setEquipInstId(userData.InstPlayerEquip_id)
+--            UIManager.pushScene("ui_equipment_advance")
+--        else
+            UIEquipmentClean.setup()
+--        end
 	    UIManager.flushWidget(UIEquipmentInfo)
         UIManager.flushWidget(UIEquipmentNew)
 	    UIManager.flushWidget(UILineup)
@@ -341,8 +350,7 @@ end
 function UIEquipmentClean.show(_tableParams)
 	userData = _tableParams
 	if userData and userData.InstPlayerEquip_id then
-		UIManager.pushScene("ui_equipment_clean")
-		-- UIManager.replaceScene("ui_equipment_clean")
+        UIManager.pushScene("ui_equipment_clean")
 	else
 		UIManager.showToast("ERROR:【参数错误】")
 	end

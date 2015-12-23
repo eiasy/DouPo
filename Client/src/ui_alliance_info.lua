@@ -570,6 +570,22 @@ function UIAllianceInfo.setup()
 	ui_allianceOffer:setString(tostring(net.InstUnionMember.int["5"]))
 	local btn_info = image_title_di:getChildByName("btn_info")
 	btn_info:releaseUpEvent()
+
+    local image_info = image_basemap:getChildByName("image_info")
+    local btn_apply = image_info:getChildByName("btn_apply")
+    if btn_apply:isVisible() then
+        btn_apply:getChildByName("image_hint"):setVisible(userData.isShowHint)
+    end
+end
+
+function UIAllianceInfo.refreshApplyHint(_visible)
+    local image_basemap = UIAllianceInfo.Widget:getChildByName("image_basemap")
+    local image_info = image_basemap:getChildByName("image_info")
+    local btn_apply = image_info:getChildByName("btn_apply")
+    if btn_apply:isVisible() then
+        userData.isShowHint = _visible
+        btn_apply:getChildByName("image_hint"):setVisible(userData.isShowHint)
+    end
 end
 
 function UIAllianceInfo.refreshMemberCount(_params)

@@ -142,6 +142,18 @@
                             <OutlineColor A="255" R="255" G="0" B="0" />
                             <ShadowColor A="255" R="110" G="110" B="110" />
                           </AbstractNodeData>
+                          <AbstractNodeData Name="text_vip" ActionTag="1968166647" Tag="315" IconVisible="False" LeftMargin="220.9991" RightMargin="86.0009" TopMargin="-32.0001" BottomMargin="94.0001" FontSize="22" LabelText="VIP 11" ctype="TextObjectData">
+                            <Size X="66.0000" Y="28.0000" />
+                            <AnchorPoint ScaleY="0.5000" />
+                            <Position X="220.9991" Y="108.0001" />
+                            <Scale ScaleX="1.0000" ScaleY="1.0000" />
+                            <CColor A="255" R="255" G="0" B="0" />
+                            <PrePosition X="0.5925" Y="1.2000" />
+                            <PreSize X="0.1769" Y="0.3111" />
+                            <FontResource Type="Normal" Path="data/ui_font.ttf" Plist="" />
+                            <OutlineColor A="255" R="255" G="0" B="0" />
+                            <ShadowColor A="255" R="110" G="110" B="110" />
+                          </AbstractNodeData>
                           <AbstractNodeData Name="text_fight" ActionTag="1529864736" Tag="438" IconVisible="False" LeftMargin="170.4644" RightMargin="31.5356" TopMargin="14.6620" BottomMargin="49.3380" FontSize="21" LabelText="战斗力：2355054" ctype="TextObjectData">
                             <Size X="171.0000" Y="26.0000" />
                             <AnchorPoint ScaleY="0.5000" />

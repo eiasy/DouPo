@@ -170,7 +170,11 @@ local function initBossCardUI(_bossIndex)
                     local cardAnim, cardAnimName = ActionManager.getCardBreatheAnimation("image/" .. DictUI[tostring(cardData.bigUiId)].fileName)
                     cardAnim:setPosition(cc.p(cardPanel:getContentSize().width / 2, cardPanel:getContentSize().height / 2 - 40))
                     cardPanel:addChild(cardAnim, 0, 1)
-                    cardAnim:setScale(1.2)
+                    if cardData.id==2001 then
+                        cardAnim:setScale(1.1)
+                    else
+                        cardAnim:setScale(1.2)
+                    end
                     _bossCardAnimation = cardAnim
                 end
             end

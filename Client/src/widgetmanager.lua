@@ -184,9 +184,24 @@ require "ui_buy_slive"
 require "ui_boss_award"
 require "ui_boss_hint"
 require "ui_boss_shop"
+require "ui_equipment_advance"
 require "ui_star"
 require "ui_star_lighten"
 require "ui_star_reward"
+require "ui_gongfa_refining"
+require "ui_wing_info_all"
+require "ui_activity_Christmas"
+require "ui_activity_normalExchange"
+require "ui_activity_purchase_manager"
+require "ui_activity_purchase_trade"
+require "ui_activity_purchase_rank"
+require "ui_activity_purchase_gift"
+require "ui_war"
+require "ui_war_ambush"
+require "ui_war_info"
+require "ui_war_list"
+require "ui_war_rank"
+require "ui_war_schedule"
 
 function ccui.Layout:loadTexture(str)
     local name = self:getName() .. "_old"
@@ -398,10 +413,24 @@ local uiMapClass = {
     ui_boss_award = UIBossAward,
     ui_boss_hint = UIBossHint,
     ui_boss_shop = UIBossShop,
-    ui_star = UIStar ,
+	ui_equipment_advance = UIEquipmentAdvance ,
+	ui_star = UIStar ,
     ui_star_lighten = UIStarLighten ,
-    ui_star_reward = UIStarReward
-}
+    ui_star_reward = UIStarReward ,
+    ui_gongfa_refining = UIGongfaRefining ,
+    ui_wing_info_all = UIWingInfoAll ,
+    ui_activity_Christmas = UIActivityChristmas,
+    ui_activity_normalExchange = UIActivityNormalExchange,
+    ui_activity_purchase_manager = UIActivityPurchaseManager,
+    ui_activity_purchase_trade = UIActivityPurchaseTrade,
+    ui_activity_purchase_rank = UIActivityPurchaseRank,
+    ui_activity_purchase_gift = UIActivityPurchaseGift,
+    ui_war = UIWar,
+    ui_war_ambush = UIWarAmbush,
+    ui_war_info = UIWarInfo,
+    ui_war_list = UIWarList,
+    ui_war_rank = UIWarRank,
+    ui_war_schedule = UIWarSchedule}
 
 function WidgetManager.create(jsonFileName)
     if uiMapClass[jsonFileName] and uiMapClass[jsonFileName].Widget then

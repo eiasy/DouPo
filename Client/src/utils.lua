@@ -135,6 +135,7 @@ require "DictUnionBox"
 require "DictUnionStore"
 require "DictEquipSuitRefer"
 require "DictEquipSuit"
+require "DictEquipSuitred"
 require "DictDantaLayer"
 require "DictDantaMonster"
 require "DictDantaDayAward"
@@ -152,13 +153,13 @@ require "DictWingLuck"
 require "CustomDictYFireProp"
 require "CustomDictWorldBoss"
 require "DictWorldBossTimesReward"
+require "DictEquipAdvancered"
 require "DictHoldStarGrade"
 require "DictHoldStarRewardPos"
 require "DictHoldStarZodiac"
 require "DictHoldStarStep"
-require "DictHoldStarGradeReward"
 require "DictHoldStarRewardRefreshTimes"
-
+require "DictMagicrefining"
 utils.enterBackgroundTime = 0
 utils.intervalTime = 0
 utils.countDownScheduleId = nil
@@ -221,6 +222,8 @@ local function getEquipQualityImage(equipQualityId, flag, isBar)
         colorName = "blue"
     elseif tonumber(equipQualityId) == tonumber(StaticEquip_Quality.purple) then
         colorName = "purple"
+    elseif tonumber(equipQualityId) == tonumber(StaticEquip_Quality.golden) then
+        colorName = "red"
     end
     if colorName then
         if flag == dp.QualityImageType.small then
@@ -384,6 +387,8 @@ function utils.getEquipQualitySuperscript(qualityId)
         colorName = "purple"
     elseif tonumber(qualityId) == tonumber(StaticEquip_Quality.purple) then
         colorName = "orange"
+    elseif tonumber(qualityId) == tonumber(StaticEquip_Quality.golden) then
+        colorName = "red"
     end
     if colorName then
         return "ui/quality_lv_" .. colorName .. ".png"
@@ -401,6 +406,8 @@ function utils.getThingQualityImg(qualityId)
         colorName = "blue"
     elseif tonumber(qualityId) == tonumber(StaticEquip_Quality.purple) then
         colorName = "purple"
+    elseif tonumber(qualityId) == tonumber(StaticEquip_Quality.golden) then
+        colorName = "red"
     end
     if colorName then
         return "ui/quality_small_" .. colorName .. ".png"
@@ -710,6 +717,8 @@ function utils.getItemProp(_things, _fieldId)
     return itemProp
 end
 
+local magicPercent = nil
+
 --- 判断卡牌缘分（返回true缘分点亮，否则未点亮）
 -- @dictCardLuck : 卡牌缘分字典数据
 -- @_instFormationId : 阵型实例ID
@@ -920,7 +929,7 @@ function utils.getEquipSuitAttribute(_instFormationId, _instEquipId, isPvp)
         attribute[obj.id] = 0
     end
     if net.InstPlayerEquip and _instEquipId then
-        local suitEquipData = utils.getEquipSuit(tostring(net.InstPlayerEquip[tostring(_instEquipId)].int["4"]))
+        local suitEquipData , suitEquipRedData= utils.getEquipSuit(tostring(net.InstPlayerEquip[tostring(_instEquipId)].int["4"]))
         if not suitEquipData then
             -- cclog("utils 此物品无套装")
             return { }
@@ -930,13 +939,30 @@ function utils.getEquipSuitAttribute(_instFormationId, _instEquipId, isPvp)
 
         local suitCount = 0
         local suitStarLvl = 5
+		local suitRedStarLvl = 5
         function addSuitCountAndStarLvl(equipId, isSuitEquip, starLvl, index)
             if _instEquipId ~= equipId and isSuitEquip then
                 suitCount = suitCount + 1
                 table.insert(isInSuit, equipId)
             end
-            if starLvl < suitStarLvl then
-                suitStarLvl = starLvl
+			
+			local instEquipData = net.InstPlayerEquip[tostring(equipId)]
+			local tempLvl = starLvl
+			if instEquipData.int["8"] > 0 then
+				local dictEquipAdvanceData = DictEquipAdvance[tostring(instEquipData.int["8"])]
+				if dictEquipAdvanceData.equipQualityId == StaticEquip_Quality.golden then
+					if suitRedStarLvl > tempLvl then
+						suitRedStarLvl = tempLvl
+					end
+					tempLvl = 5
+				else
+					suitRedStarLvl = -1
+				end
+			else
+				suitRedStarLvl = -1
+			end
+            if tempLvl < suitStarLvl then
+                suitStarLvl = tempLvl
             end
         end
         local count = 0
@@ -958,7 +984,9 @@ function utils.getEquipSuitAttribute(_instFormationId, _instEquipId, isPvp)
                 if tonumber(instEquipData.int["8"]) > 0 then
                     local dictEquipAdvanceData = DictEquipAdvance[tostring(instEquipData.int["8"])]
                     -- 装备进阶字典表
-                    equipStarLvl = dictEquipAdvanceData.starLevel
+                    if dictEquipAdvanceData then
+                        equipStarLvl = dictEquipAdvanceData.starLevel
+                    end
                 end
 
                 if equipTypeId == StaticEquip_Type.outerwear then
@@ -1096,6 +1124,36 @@ function utils.getEquipSuitAttribute(_instFormationId, _instEquipId, isPvp)
                 end
             end
         end
+        if suitEquipRedData then
+		    for i = 1 , 6 do
+			    local propStr = nil
+                if i == 1 then
+                    propStr = suitEquipRedData.suit0StarProp
+                elseif i == 2 then
+                    propStr = suitEquipRedData.suit1StarProp
+                elseif i == 3 then
+                    propStr = suitEquipRedData.suit2StarProp
+                elseif i == 4 then
+                    propStr = suitEquipRedData.suit3StarProp
+                elseif i == 5 then
+                    propStr = suitEquipRedData.suit4StarProp
+			    elseif i == 6 then
+				    propStr = suitEquipRedData.suit5StarProp
+                end
+                if suitCount >= 3 and 5 <= suitStarLvl and i - 1 <= suitRedStarLvl then
+                    local propTable = utils.stringSplit(propStr, ";")
+                    for key, value in pairs(propTable) do
+                        local data = utils.stringSplit(value, "_")
+                        if tonumber(data[2]) < 1 then
+                            attribute[tonumber(data[1])] = attribute[tonumber(data[1])] + math.floor(getAddProp(tonumber(data[1]), tonumber(data[2])))
+                        else
+                             cclog( "data[2] : "..data[1].."  "..data[ 2 ].." suitRedStarLvl : "..suitRedStarLvl)
+                            attribute[tonumber(data[1])] = attribute[tonumber(data[1])] + tonumber(data[2])
+                        end
+                    end
+                end
+		    end
+        end
     end
     return attribute
 end
@@ -1118,6 +1176,7 @@ function utils.getEquipAttribute(instEquipId, isFilter, isPvp)
         -- 装备进阶字典ID
         local dictEquipData = DictEquipment[tostring(instEquipData.int["4"])]
         -- 装备字典表
+        local equipAdvanceData = DictEquipAdvance[tostring(equipAdvanceId)]
         local equipPropData = { }
         local propData = utils.stringSplit(dictEquipData.propAndAdd, ";")
         for key, obj in pairs(propData) do
@@ -1125,8 +1184,18 @@ function utils.getEquipAttribute(instEquipId, isFilter, isPvp)
             -- [1]:fightPropId, [2]:initValue, [3]:addValue
         end
         local attAddValue = 0
+        --红品
+        local isRed = false
+        if  equipAdvanceData and equipAdvanceData.equipQualityId == StaticEquip_Quality.golden then
+            isRed = true
+        end
         for key, obj in pairs(DictEquipAdvance) do
             -- 装备进阶
+            if isRed then
+                if equipTypeId == obj.equipTypeId and equipAdvanceData.equipQualityId == obj.equipQualityId and equipAdvanceId >= obj.id then
+                    attAddValue = attAddValue + obj.propAndAdd
+                end
+            end
             if equipTypeId == obj.equipTypeId and dictEquipData.equipQualityId == obj.equipQualityId and equipAdvanceId >= obj.id then
                 attAddValue = attAddValue + obj.propAndAdd
             end
@@ -1201,6 +1270,7 @@ function utils.getCardAttribute(instCardId , fightSoulValue )
     for key, obj in pairs(DictFightProp) do
         attribute[obj.id] = 0
     end
+    magicPercent = { }
 
     if instCardId and net.InstPlayerCard[tostring(instCardId)] then
         local instCardData = net.InstPlayerCard[tostring(instCardId)]
@@ -1248,7 +1318,6 @@ function utils.getCardAttribute(instCardId , fightSoulValue )
         end
 
         if inTeam == 1 then
-            local magicPercent = { }
 
             for key, obj in pairs(net.InstPlayerFormation) do
                 local _instFormationId = obj.int["1"]
@@ -1437,6 +1506,7 @@ function utils.getCardAttribute(instCardId , fightSoulValue )
                     -------------法宝和功法属性数据（具体值）---------------
                     if net.InstPlayerMagic then
                         local _magicCount = 0
+                       -- cclog("执行几次啊")
                         for magicKey, magicObj in pairs(net.InstPlayerMagic) do
                             if instCardId == magicObj.int["8"] then
                                 _magicCount = _magicCount + 1
@@ -1460,6 +1530,27 @@ function utils.getCardAttribute(instCardId , fightSoulValue )
                                         end
                                     end
                                 end
+                               
+                                local magicAdvanceId = magicObj.int["10"]
+                                if magicAdvanceId and magicAdvanceId > 0 then
+                                    local magic_refining = {}
+                                    if dictMagicData.magicQualityId <= StaticMagicQuality.DJ then
+                                        for key  ,value in pairs( DictMagicrefining ) do
+                                             if dictMagicData.id == value.MagicId then
+                                                 magic_refining[value.starLevel] = value.id
+                                             end
+                                        end
+                                    end
+                                    local magicRifingingLevel = DictMagicrefining[tostring(magicAdvanceId)].starLevel
+                                    for key ,value in pairs( magic_refining ) do
+                                        if key <= magicRifingingLevel then
+                                            local proValue = DictMagicrefining[ tostring( value ) ]
+                                        --    cclog("magic refining : "..proValue.fightPropId .. "  "..proValue.value)
+                                            attribute[proValue.fightPropId] = attribute[proValue.fightPropId] + tonumber( proValue.value )
+                                        end
+                                    end
+                                end
+
                                 if _magicCount >= 2 then
                                     break
                                 end
@@ -1853,6 +1944,33 @@ function utils.fightVerifyData()
     end
     return str
 end
+
+function utils.addParticleEffect(node, add, config)
+    local size = node:getContentSize()
+    local anchorSize = config and config.anchorSize or 0
+    local offset = config and config.offset or 0
+    local t = config and config.t or 0.8
+    if node:getChildByName("particle1") then
+        node:removeChildByName("particle1")
+        node:removeChildByName("particle2")
+    end
+    if add then
+        for _i = 1, 2 do
+            local effect = cc.ParticleSystemQuad:create("particle/ui_anim8_effect.plist")
+            effect:setName("particle" .. _i)
+            node:addChild(effect)
+            effect:setPositionType(cc.POSITION_TYPE_RELATIVE)
+            if _i == 1 then
+                effect:setPosition(anchorSize + offset, offset)
+                effect:runAction(utils.MyPathFun(anchorSize + offset, size.height - 2 * offset, size.width - 2 * anchorSize - 2 * offset, t, 1))
+            else
+                effect:setPosition(size.width - anchorSize - offset, size.height - offset)
+                effect:runAction(utils.MyPathFun(anchorSize + offset, size.height - 2 * offset, size.width - 2 * anchorSize - 2 * offset, t, 0))
+            end
+        end
+    end
+end
+
 -- 加入套装粒子光效
 function utils.addFrameParticle(item, add , sc , six , offsetW , offsetH )
     if item then
@@ -1874,7 +1992,7 @@ function utils.addFrameParticle(item, add , sc , six , offsetW , offsetH )
         local path1 = nil
         if six then
             path1 = utils.MyPathFunSix(size.width , size.height , 0.8, 1)
-            particle1:setPosition(cc.p(size.width / 4 , 0 ))
+            particle1:setPosition(cc.p(size.width / 4 - 2 , -2 ))
             particle1:setName("particle1")
         else
             path1 = utils.MyPathFun(offX, size.height , size.width, 0.8, 1)
@@ -1891,7 +2009,7 @@ function utils.addFrameParticle(item, add , sc , six , offsetW , offsetH )
         local path2 = nil
         if six then
             path2 = utils.MyPathFunSix( size.width , size.height , 0.8, 2)
-            particle2:setPosition(cc.p(size.width * 3 / 4, size.height ))
+            particle2:setPosition(cc.p(size.width * 3 / 4 + 2 , size.height + 2 ))
             particle2:setName("particle2")
         else
             path2 = utils.MyPathFun(offX, size.height , size.width, 0.8, 2)
@@ -1938,7 +2056,7 @@ function utils.addThingParticle(thing, item, add)
     elseif _tableTypeId == StaticTableType.DictThing then
         local dictData = DictThing[tostring(_tableFieldId)]
         if dictData then
-            if dictData.level == 6 then flag = true end
+            if dictData.level >= 6 then flag = true end
             if dictData.bagTypeId == 3 then
                 -- 装备碎片
                 local tempData = DictEquipment[tostring(dictData.equipmentId)]
@@ -2337,8 +2455,13 @@ function cc.release(_node)
     end
 end
 
+
+
+
+
+
 --- 副本掉落的弹出提示框
--- @_dictData : 字典数据 type 1:魔王试炼 2:活动副本
+-- @_dictData : 字典数据 type 1:魔王试炼 2:活动副本 3:主线副本，4：商店 5：炼气塔 7：远古遗迹:
 function utils.storyDropOutDialog(_dictData , type)
     local visibleSize = cc.Director:getInstance():getVisibleSize()
     local bg_image = cc.Scale9Sprite:create("ui/dialog_bg.png")
@@ -2452,6 +2575,27 @@ function utils.storyDropOutDialog(_dictData , type)
                     ui_button:setEnabled(false)
                     ui_button:setBright(false)
                 end
+              elseif type == 3 then
+                   ui_button:setTitleText("主线副本")
+              elseif type == 4 then
+                   ui_button:setTitleText("商店")
+              elseif type == 5 then
+                   ui_button:setTitleText("天焚炼气塔")
+            elseif type == 7 then
+                ui_button:setTitleText("远古遗迹")
+                local lootOpen = false
+					if net.InstPlayerBarrier then
+				      for key,obj in pairs(net.InstPlayerBarrier) do
+				          if obj.int["3"] == 20 then  --17关开启
+				          	lootOpen = true
+				          	break;
+				          end
+				      end
+				    end
+				    if not lootOpen then 
+				    	ui_button:setEnabled(false)
+                        ui_button:setBright(false)
+					end
             end
             ui_button:setTitleColor(cc.c3b(51, 25, 4))
             local function btnEvent(sender, eventType)
@@ -2467,14 +2611,27 @@ function utils.storyDropOutDialog(_dictData , type)
                         UIManager.showScreen("ui_notice", "ui_team_info", "ui_fight", "ui_menu")
                         UIFightPreView.setChapterId(DictChapter[tostring( tonumber(_dictData.id) - 6 )].id)
                         UIManager.pushScene("ui_fight_preview")
-                    else
-                        UIFight.setFlag(3)
+					elseif type == 2 then                        UIFight.setFlag(3)
                         if UILineup.Widget and UILineup.Widget:getParent() then
                             UIFightActivityChoose.wingTo = true
                         end
                         UIManager.showScreen("ui_notice", "ui_team_info", "ui_fight", "ui_menu")
                         UIFightActivityChoose.setChapter(DictSysConfig[tostring(StaticSysConfig.shcx)].value , 3 )
                         UIManager.pushScene("ui_fight_activity_choose")  
+                    elseif type == 3 then
+                        UIFight.setFlag(2)
+                        UIManager.showWidget("ui_notice", "ui_team_info","ui_fight","ui_menu")
+                        UIManager.pushScene("ui_fight")  
+                    elseif type == 4 then
+                        UIManager.hideWidget("ui_team_info")
+                        UIShop.reset(2)
+                        UIShop.getShopList(1, true) 
+                    elseif type == 5 then         
+                        UITowerShop.setTag(2)         
+                        UIManager.pushScene("ui_tower_shop")
+					elseif type == 7 then
+                        UIManager.hideWidget("ui_team_info")
+						UILoot.show(1,1)
                     end                  
                 end
             end
@@ -2784,6 +2941,172 @@ function utils.showDialog(msg, callBackFunc)
     bg_image:runAction(cc.Sequence:create(cc.ScaleTo:create(0.2, 1.1), cc.ScaleTo:create(0.06, 1)))
 end
 
+function utils.showOpenBoxAnimationUI(_dictBoxDatas)
+    local uiLayout = ccui.Layout:create()
+    uiLayout:setContentSize(UIManager.screenSize)
+    uiLayout:setBackGroundColorType(ccui.LayoutBackGroundColorType.solid)
+    uiLayout:setBackGroundColor(cc.c3b(0, 0, 0))
+    uiLayout:setBackGroundColorOpacity(180)
+    uiLayout:setTouchEnabled(true)
+    uiLayout:retain()
+
+    local uiItems = {}
+    for key, obj in pairs(_dictBoxDatas) do
+        local itemProps = utils.getItemProp(obj.tableTypeId .. "_" .. obj.tableFieldId .. "_" .. obj.value)
+        local uiFrame = ccui.ImageView:create()
+        uiFrame:loadTexture("ui/quality_small_purple.png")
+        if itemProps.frameIcon then
+            uiFrame:loadTexture(itemProps.frameIcon)
+        end
+        if itemProps.smallIcon then
+            local uiIcon = ccui.ImageView:create()
+            uiIcon:loadTexture(itemProps.smallIcon)
+            uiIcon:setPosition(cc.p(uiFrame:getContentSize().width / 2, uiFrame:getContentSize().height / 2))
+            uiFrame:addChild(uiIcon)
+        end
+        if itemProps.name then
+            local uiName = ccui.Text:create()
+            uiName:setFontName(dp.FONT)
+	        uiName:setString(itemProps.name)
+	        uiName:setFontSize(22)
+	        uiName:setTextColor(cc.c4b(255, 255, 255, 255))
+            uiName:setPosition(cc.p(uiFrame:getContentSize().width / 2, -uiName:getContentSize().height))
+            uiFrame:addChild(uiName)
+        end
+        if itemProps.count then
+            local uiCount = ccui.Text:create()
+            uiCount:setFontName(dp.FONT)
+	        uiCount:setString("×" .. itemProps.count)
+	        uiCount:setFontSize(22)
+            uiCount:setAnchorPoint(cc.p(1, 0))
+	        uiCount:setTextColor(cc.c4b(255, 255, 255, 255))
+            uiCount:setPosition(cc.p(uiFrame:getContentSize().width, 0))
+            uiFrame:addChild(uiCount)
+        end
+        uiFrame:setLocalZOrder(1)
+        uiFrame:setPosition(cc.p(uiLayout:getContentSize().width / 2, uiLayout:getContentSize().height * 0.75))
+        uiFrame:setVisible(false)
+        uiLayout:addChild(uiFrame)
+        uiItems[key] = uiFrame
+    end
+
+    local sureBtn = ccui.Button:create("ui/tk_btn_red.png", "ui/tk_btn_red.png")
+    sureBtn:setTitleText("确定")
+    sureBtn:setTitleFontName(dp.FONT)
+    sureBtn:setTitleColor(cc.c3b(255, 255, 255))
+    sureBtn:setTitleFontSize(35)
+    sureBtn:setPressedActionEnabled(true)
+    sureBtn:setTouchEnabled(true)
+    sureBtn:setVisible(false)
+    sureBtn:setPosition(cc.p(uiLayout:getContentSize().width / 2, uiLayout:getContentSize().height * 0.18))
+    uiLayout:addChild(sureBtn)
+
+    UIManager.uiLayer:addChild(uiLayout, 9999)
+
+    local function palyGetThingAnimation(_thingData, _callFunc)
+        local _boxAnim = ActionManager.getEffectAnimation(63, function(armature)
+            armature:getAnimation():stop()
+--            armature:removeFromParent()
+--            if _callFunc then
+--                _callFunc()
+--            end
+        end, 1)
+        _boxAnim:setLocalZOrder(4)
+        _boxAnim:setPosition(cc.p(uiLayout:getContentSize().width / 2, uiLayout:getContentSize().height / 2))
+        if _thingData.bigIcon then
+            _boxAnim:getBone("guge2"):addDisplay(ccs.Skin:create(_thingData.bigIcon), 0)
+        elseif _thingData.smallIcon then
+            _boxAnim:getBone("guge2"):addDisplay(ccs.Skin:create(_thingData.smallIcon), 0)
+        end
+        if _thingData.name then
+            local _name = ccui.Text:create()
+            _name:setFontName(dp.FONT)
+	        _name:setString(_thingData.name)
+	        _name:setFontSize(30)
+	        _name:setTextColor(cc.c4b(255, 255, 255, 255))
+            _boxAnim:getBone("guge1"):addDisplay(_name, 0)
+        end
+        _boxAnim:setName("ui_boxAnim")
+--        uiLayout:addChild(_boxAnim)
+        local tempBgLayout = ccui.Layout:create()
+        tempBgLayout:setContentSize(UIManager.screenSize)
+        tempBgLayout:setBackGroundColorType(ccui.LayoutBackGroundColorType.solid)
+        tempBgLayout:setBackGroundColor(cc.c3b(0, 0, 0))
+        tempBgLayout:setBackGroundColorOpacity(180)
+        tempBgLayout:setTouchEnabled(false)
+        tempBgLayout:setLocalZOrder(3)
+        tempBgLayout:addChild(_boxAnim)
+        tempBgLayout:setName("ui_boxAnim")
+        uiLayout:addChild(tempBgLayout)
+    end
+
+    local _showIndex, _posIndex = 0, 0
+    local _openBoxAnim = ActionManager.getEffectAnimation(63, function(armature)
+--        armature:getAnimation():stop()
+        
+    end, 0)
+    _openBoxAnim:setScale(0.8)
+    _openBoxAnim:setPosition(cc.p(uiLayout:getContentSize().width / 2, uiLayout:getContentSize().height * 0.75))
+    uiLayout:addChild(_openBoxAnim)
+    local function onFrameEvent(bone, evt, originFrameIndex, currentFrameIndex)
+        if evt == "open_event" then
+            _showIndex = _showIndex + 1
+            _posIndex = _posIndex + 1
+            local _posX = _posIndex * (uiLayout:getContentSize().width / 5) - (uiLayout:getContentSize().width / 5 / 2)
+            local _posY = uiLayout:getContentSize().height / 2 + uiItems[_showIndex]:getContentSize().height - 15 - 100
+            if _showIndex > 5 then
+                _posY = uiLayout:getContentSize().height / 2 - uiItems[_showIndex]:getContentSize().height + 15 - 100
+            end
+            uiItems[_showIndex]:setScale(0.3)
+            uiItems[_showIndex]:runAction(cc.Sequence:create(cc.Spawn:create(cc.ScaleTo:create(0.3, 1), cc.RotateBy:create(0.3, 360), cc.MoveTo:create(0.3, cc.p(_posX, _posY))), cc.CallFunc:create(function()
+                local _animCallbackFunc = function()
+                    if _showIndex < #uiItems then
+--                        _openBoxAnim:getAnimation():stop()
+--                        _openBoxAnim:getAnimation():playWithIndex(0)
+                        onFrameEvent(nil, "open_event")
+                    else
+                        sureBtn:setVisible(true)
+                    end
+                end
+                local obj = _dictBoxDatas[_showIndex]
+--                if utils.random(0, 1) == 1 then
+                if obj.description == "1" then
+                    palyGetThingAnimation(utils.getItemProp(obj.tableTypeId .. "_" .. obj.tableFieldId .. "_" .. obj.value), _animCallbackFunc)
+                else
+                    _animCallbackFunc()
+                end
+            end) ))
+            uiItems[_showIndex]:setVisible(true)
+            if _posIndex > 0 and _posIndex % 5 == 0 then
+                _posIndex = 0
+            end
+        end
+    end
+    _openBoxAnim:getAnimation():setFrameEventCallFunc(onFrameEvent)
+
+    local function btnEvent(sender, eventType)
+        if eventType == ccui.TouchEventType.ended then
+            if sender == sureBtn then
+                AudioEngine.playEffect("sound/button.mp3")
+                UIManager.uiLayer:removeChild(uiLayout, true)
+                cc.release(uiLayout)
+            elseif sender == uiLayout then
+                if uiLayout:getChildByName("ui_boxAnim") then
+                    uiLayout:getChildByName("ui_boxAnim"):removeFromParent()
+                    if _showIndex < #uiItems then
+--                        _openBoxAnim:getAnimation():playWithIndex(0)
+                        onFrameEvent(nil, "open_event")
+                    else
+                        sureBtn:setVisible(true)
+                    end
+                end
+            end
+        end
+    end
+    sureBtn:addTouchEventListener(btnEvent)
+    uiLayout:addTouchEventListener(btnEvent)
+end
+
 --- 副本或者分解等 玩家获取的物品
 -- @tableTypeId : 表类型  tableFieldId 表Id  imageType  "big" 大图标 “small” 小图标
 function utils.getDropThing(tableTypeId, tableFieldId, imageType)
@@ -2885,7 +3208,7 @@ function utils.getDropThing(tableTypeId, tableFieldId, imageType)
             end
             local pro = nil
             for key ,value in pairs( DictFightSoulUpgradeProp )do
-                if value.fightSoulId == dictData.id then
+                if value.fightSoulId == dictData.id and value.level == 1 then
                     pro = value
                     break
                 end
@@ -2949,6 +3272,23 @@ function utils.getDropThing(tableTypeId, tableFieldId, imageType)
             end
         end
         return thingName, thingIcon, description
+    elseif tonumber(tableTypeId) == StaticTableType.DictWing then
+        dictData = DictWing[tostring(tableFieldId)]
+        if dictData then
+            thingName = dictData.name
+            description = dictData.description
+            for key , value in pairs( DictWingAdvance ) do
+                if value.wingId == dictData.id then
+                    if imageType == "big" then
+                        thingIcon = "image/" .. DictUI[tostring(value.bigUiId)].fileName
+                    else
+                        thingIcon = "image/" .. DictUI[tostring(value.smallUiId)].fileName
+                    end
+                    break
+                end
+            end
+        end
+        return thingName,thingIcon , description
     end
     if not dictData then
         if DictTableType[tostring(tableTypeId)] then
@@ -3301,6 +3641,8 @@ function utils.updateScrollView(uiItem, scrollView, listItem, thingData, setScro
             ActionManager.ScrollView_SplashAction(scrollView, false, true)
         end
     end
+
+    return scrollingEvent
 end
 
 ----更新scrollView
@@ -3646,12 +3988,13 @@ function utils.sendFightData(param, _fightType, callBackFunc, cbOfCalcResult)
                 local instCardData = pvp.InstPlayerCard[tostring(instCardId)]
                 local cardId = instCardData.int["3"]
                 local dictCardData = DictCard[tostring(cardId)]
-                local cardAttribute = pvp.getCardAttribute(instCardId)
+                local cardAttribute, cardMagicPercent = pvp.getCardAttribute(instCardId)
 
                 ----------------翅膀天赋属性数据--------------
                 local wingId = nil
                 local wingLv = nil
                 local wingEn = false
+                local yokeId = nil
                 if pvp.InstPlayerWing then           
                     for wingKey , wingValue in pairs( pvp.InstPlayerWing ) do
                         if wingValue.int["6"] == instCardId then
@@ -3661,7 +4004,8 @@ function utils.sendFightData(param, _fightType, callBackFunc, cbOfCalcResult)
                                 if value.cardId == cardId then
                                      local lucks = utils.stringSplit( value.lucks , ";" )
                                      local values = utils.stringSplit( value.fightValues , ";" )
-                                     if wingValue.int["3"] == tonumber(lucks[ 3 ]) then
+                                     yokeId = tonumber( lucks[ 3 ] )
+                                     if wingValue.int["3"] == tonumber(lucks[ 3 ]) or wingValue.int["3"] >= 5 then
                                          wingEn = true
                                         -- cclog("true")
                                          break
@@ -3673,7 +4017,8 @@ function utils.sendFightData(param, _fightType, callBackFunc, cbOfCalcResult)
                         end
                     end
                 end
-                enemyCardData.yokeID = wingId
+                enemyCardData.wingID = wingId
+                enemyCardData.yokeID = yokeId
                 enemyCardData.yokeLV = wingLv
                 enemyCardData.yokeEnable = wingEn
 
@@ -3690,6 +4035,12 @@ function utils.sendFightData(param, _fightType, callBackFunc, cbOfCalcResult)
                 enemyCardData.dodge = cardAttribute[StaticFightProp.dodge]
                 enemyCardData.crit = cardAttribute[StaticFightProp.crit]
                 enemyCardData.renxing = cardAttribute[StaticFightProp.flex]
+                if cardMagicPercent then
+                    enemyCardData.hitRatio = cardMagicPercent[StaticFightProp.hit] and cardMagicPercent[StaticFightProp.hit] or 0
+                    enemyCardData.dodgeRatio = cardMagicPercent[StaticFightProp.dodge] and cardMagicPercent[StaticFightProp.dodge] or 0
+                    enemyCardData.critRatio = cardMagicPercent[StaticFightProp.crit] and cardMagicPercent[StaticFightProp.crit] or 0
+                    enemyCardData.renxingRatio = cardMagicPercent[StaticFightProp.flex] and cardMagicPercent[StaticFightProp.flex] or 0
+                end
                 enemyCardData.attPhsc = cardAttribute[StaticFightProp.wAttack]
                 enemyCardData.attMana = cardAttribute[StaticFightProp.fAttack]
                 enemyCardData.defPhsc = cardAttribute[StaticFightProp.wDefense]
@@ -3756,12 +4107,13 @@ function utils.sendFightData(param, _fightType, callBackFunc, cbOfCalcResult)
                 local instCardData = pvp.InstPlayerCard[tostring(instCardId)]
                 local cardId = instCardData.int["3"]
                 local dictCardData = DictCard[tostring(cardId)]
-                local cardAttribute = pvp.getCardAttribute(instCardId)
+                local cardAttribute, cardMagicPercent = pvp.getCardAttribute(instCardId)
 
                 ----------------翅膀天赋属性数据--------------
                 local wingId = nil
                 local wingLv = nil
                 local wingEn = false
+                local yokeId = nil
                 if pvp.InstPlayerWing then           
                     for wingKey , wingValue in pairs( pvp.InstPlayerWing ) do
                         if wingValue.int["6"] == instCardId then
@@ -3771,7 +4123,8 @@ function utils.sendFightData(param, _fightType, callBackFunc, cbOfCalcResult)
                                 if value.cardId == cardId then
                                      local lucks = utils.stringSplit( value.lucks , ";" )
                                      local values = utils.stringSplit( value.fightValues , ";" )
-                                     if wingValue.int["3"] == tonumber(lucks[ 3 ]) then
+                                     yokeId = tonumber( lucks[ 3 ] )
+                                     if wingValue.int["3"] == tonumber(lucks[ 3 ]) or wingValue.int["3"] >= 5 then
                                          wingEn = true
                                         -- cclog("true")
                                          break
@@ -3783,7 +4136,8 @@ function utils.sendFightData(param, _fightType, callBackFunc, cbOfCalcResult)
                         end
                     end
                 end
-                enemyCardData.yokeID = wingId
+                enemyCardData.wingID = wingId
+                enemyCardData.yokeID = yokeId
                 enemyCardData.yokeLV = wingLv
                 enemyCardData.yokeEnable = wingEn
 
@@ -3801,6 +4155,12 @@ function utils.sendFightData(param, _fightType, callBackFunc, cbOfCalcResult)
                 enemyCardData.dodge = cardAttribute[StaticFightProp.dodge]
                 enemyCardData.crit = cardAttribute[StaticFightProp.crit]
                 enemyCardData.renxing = cardAttribute[StaticFightProp.flex]
+                if cardMagicPercent then
+                    enemyCardData.hitRatio = cardMagicPercent[StaticFightProp.hit] and cardMagicPercent[StaticFightProp.hit] or 0
+                    enemyCardData.dodgeRatio = cardMagicPercent[StaticFightProp.dodge] and cardMagicPercent[StaticFightProp.dodge] or 0
+                    enemyCardData.critRatio = cardMagicPercent[StaticFightProp.crit] and cardMagicPercent[StaticFightProp.crit] or 0
+                    enemyCardData.renxingRatio = cardMagicPercent[StaticFightProp.flex] and cardMagicPercent[StaticFightProp.flex] or 0
+                end
                 enemyCardData.attPhsc = cardAttribute[StaticFightProp.wAttack]
                 enemyCardData.attMana = cardAttribute[StaticFightProp.fAttack]
                 enemyCardData.defPhsc = cardAttribute[StaticFightProp.wDefense]
@@ -4172,6 +4532,7 @@ function utils.sendFightData(param, _fightType, callBackFunc, cbOfCalcResult)
                 local wingId = nil
                 local wingLv = nil
                 local wingEn = false
+                local yokeId = nil
                 if net.InstPlayerWing then           
                     for wingKey , wingValue in pairs( net.InstPlayerWing ) do
                         if wingValue.int["6"] == obj.instCardId then
@@ -4181,7 +4542,8 @@ function utils.sendFightData(param, _fightType, callBackFunc, cbOfCalcResult)
                                 if value.cardId == dictCardData.id then
                                      local lucks = utils.stringSplit( value.lucks , ";" )
                                      local values = utils.stringSplit( value.fightValues , ";" )
-                                     if wingValue.int["3"] == tonumber(lucks[ 3 ]) then
+                                     yokeId = tonumber( lucks[ 3 ] )
+                                     if wingValue.int["3"] == tonumber(lucks[ 3 ]) or wingValue.int["3"] >= 5 then
                                          wingEn = true
                                         -- cclog("true")
                                          break
@@ -4193,7 +4555,8 @@ function utils.sendFightData(param, _fightType, callBackFunc, cbOfCalcResult)
                         end
                     end
                 end
-                myCardData.yokeID = wingId
+                myCardData.wingID = wingId
+                myCardData.yokeID = yokeId
                 myCardData.yokeLV = wingLv
                 myCardData.yokeEnable = wingEn
 
@@ -4211,6 +4574,12 @@ function utils.sendFightData(param, _fightType, callBackFunc, cbOfCalcResult)
             myCardData.dodge = cardAttribute[StaticFightProp.dodge]
             myCardData.crit = cardAttribute[StaticFightProp.crit]
             myCardData.renxing = cardAttribute[StaticFightProp.flex]
+            if magicPercent then
+                myCardData.hitRatio = magicPercent[StaticFightProp.hit] and magicPercent[StaticFightProp.hit] or 0
+                myCardData.dodgeRatio = magicPercent[StaticFightProp.dodge] and magicPercent[StaticFightProp.dodge] or 0
+                myCardData.critRatio = magicPercent[StaticFightProp.crit] and magicPercent[StaticFightProp.crit] or 0
+                myCardData.renxingRatio = magicPercent[StaticFightProp.flex] and magicPercent[StaticFightProp.flex] or 0
+            end
             myCardData.attPhsc = cardAttribute[StaticFightProp.wAttack]
             myCardData.attMana = cardAttribute[StaticFightProp.fAttack]
             myCardData.defPhsc = cardAttribute[StaticFightProp.wDefense]
@@ -4286,6 +4655,7 @@ function utils.sendFightData(param, _fightType, callBackFunc, cbOfCalcResult)
                 local wingId = nil
                 local wingLv = nil
                 local wingEn = false
+                local yokeId = nil
                 if net.InstPlayerWing then           
                     for wingKey , wingValue in pairs( net.InstPlayerWing ) do
                         if wingValue.int["6"] == instCardId then
@@ -4295,7 +4665,8 @@ function utils.sendFightData(param, _fightType, callBackFunc, cbOfCalcResult)
                                 if value.cardId == cardId then
                                      local lucks = utils.stringSplit( value.lucks , ";" )
                                      local values = utils.stringSplit( value.fightValues , ";" )
-                                     if wingValue.int["3"] == tonumber(lucks[ 3 ]) then
+                                     yokeId = tonumber( lucks[ 3 ] )
+                                     if wingValue.int["3"] == tonumber(lucks[ 3 ]) or wingValue.int["3"] >= 5 then
                                          wingEn = true
                                         -- cclog("true")
                                          break
@@ -4307,7 +4678,8 @@ function utils.sendFightData(param, _fightType, callBackFunc, cbOfCalcResult)
                         end
                     end
                 end
-                MyCardData.yokeID = wingId
+                MyCardData.wingID = wingId
+                MyCardData.yokeID = yokeId
                 MyCardData.yokeLV = wingLv
                 MyCardData.yokeEnable = wingEn
                
@@ -4328,6 +4700,12 @@ function utils.sendFightData(param, _fightType, callBackFunc, cbOfCalcResult)
                 end
                 MyCardData.crit = cardAttribute[StaticFightProp.crit]
                 MyCardData.renxing = cardAttribute[StaticFightProp.flex]
+                if magicPercent then
+                    MyCardData.hitRatio = magicPercent[StaticFightProp.hit] and magicPercent[StaticFightProp.hit] or 0
+                    MyCardData.dodgeRatio = magicPercent[StaticFightProp.dodge] and magicPercent[StaticFightProp.dodge] or 0
+                    MyCardData.critRatio = magicPercent[StaticFightProp.crit] and magicPercent[StaticFightProp.crit] or 0
+                    MyCardData.renxingRatio = magicPercent[StaticFightProp.flex] and magicPercent[StaticFightProp.flex] or 0
+                end
                 MyCardData.attPhsc = cardAttribute[StaticFightProp.wAttack]
                 MyCardData.attMana = cardAttribute[StaticFightProp.fAttack]
                 MyCardData.defPhsc = cardAttribute[StaticFightProp.wDefense]
@@ -4391,6 +4769,7 @@ function utils.sendFightData(param, _fightType, callBackFunc, cbOfCalcResult)
                 local wingId = nil
                 local wingLv = nil
                 local wingEn = false
+                local yokeId = nil
                 if net.InstPlayerWing then           
                     for wingKey , wingValue in pairs( net.InstPlayerWing ) do
                         if wingValue.int["6"] == instCardId then
@@ -4400,7 +4779,8 @@ function utils.sendFightData(param, _fightType, callBackFunc, cbOfCalcResult)
                                 if value.cardId == cardId then
                                      local lucks = utils.stringSplit( value.lucks , ";" )
                                      local values = utils.stringSplit( value.fightValues , ";" )
-                                     if wingValue.int["3"] == tonumber(lucks[ 3 ]) then
+                                     yokeId = tonumber( lucks[ 3 ] )
+                                     if wingValue.int["3"] == tonumber(lucks[ 3 ]) or wingValue.int["3"] >= 5 then
                                          wingEn = true
                                         -- cclog("true")
                                          break
@@ -4412,7 +4792,8 @@ function utils.sendFightData(param, _fightType, callBackFunc, cbOfCalcResult)
                         end
                     end
                 end
-                MyCardData.yokeID = wingId
+                MyCardData.wingID = wingId
+                MyCardData.yokeID = yokeId
                 MyCardData.yokeLV = wingLv
                 MyCardData.yokeEnable = wingEn
 
@@ -4430,6 +4811,12 @@ function utils.sendFightData(param, _fightType, callBackFunc, cbOfCalcResult)
                 MyCardData.dodge = cardAttribute[StaticFightProp.dodge]
                 MyCardData.crit = cardAttribute[StaticFightProp.crit]
                 MyCardData.renxing = cardAttribute[StaticFightProp.flex]
+                if magicPercent then
+                    MyCardData.hitRatio = magicPercent[StaticFightProp.hit] and magicPercent[StaticFightProp.hit] or 0
+                    MyCardData.dodgeRatio = magicPercent[StaticFightProp.dodge] and magicPercent[StaticFightProp.dodge] or 0
+                    MyCardData.critRatio = magicPercent[StaticFightProp.crit] and magicPercent[StaticFightProp.crit] or 0
+                    MyCardData.renxingRatio = magicPercent[StaticFightProp.flex] and magicPercent[StaticFightProp.flex] or 0
+                end
                 MyCardData.attPhsc = cardAttribute[StaticFightProp.wAttack]
                 MyCardData.attMana = cardAttribute[StaticFightProp.fAttack]
                 MyCardData.defPhsc = cardAttribute[StaticFightProp.wDefense]
@@ -4689,12 +5076,12 @@ end
 ----引导添加粒子旋转的路线 flag 向左 flag向右
 function utils.MyPathFunSix( width , height , time, flag)
     local path = nil
-    local move1 = cc.MoveBy:create(time / 6 , cc.p( width / 2 , 0))
-    local move2 = cc.MoveBy:create(time / 6 , cc.p( width / 4 , height / 2))
-    local move3 = cc.MoveBy:create(time / 6 , cc.p( -width / 4 , height / 2))
-    local move4 = cc.MoveBy:create(time / 6 , cc.p( -width /2 , 0))
-    local move5 = cc.MoveBy:create(time / 6 , cc.p( -width / 4 , -height / 2))
-    local move6 = cc.MoveBy:create(time / 6 , cc.p( width / 4 , -height / 2))
+    local move1 = cc.MoveBy:create(time / 6 , cc.p( width / 2 + 2 , 0))
+    local move2 = cc.MoveBy:create(time / 6 , cc.p( width / 4 + 1 , height / 2 + 2 ))
+    local move3 = cc.MoveBy:create(time / 6 , cc.p( -width / 4 - 1 , height / 2 + 2 ))
+    local move4 = cc.MoveBy:create(time / 6 , cc.p( -width /2 - 2 , 0))
+    local move5 = cc.MoveBy:create(time / 6 , cc.p( -width / 4 - 1 , -height / 2 - 2 ))
+    local move6 = cc.MoveBy:create(time / 6 , cc.p( width / 4 + 1 , -height / 2 - 2 ))
     if flag == 1 then
         path = cc.RepeatForever:create(cc.Sequence:create(move1, move2, move3, move4 , move5 , move6))
     else
@@ -4896,7 +5283,10 @@ end
 --- 点击小图标弹出详情-----------
 function utils.showThingsInfo(uiImage, tableTypeId, tableFieldId)
     local function showInfo()
-        if tonumber(tableTypeId) == StaticTableType.DictCard then
+        if tonumber(tableTypeId) == StaticTableType.DictWing then
+            UIWingInfoAll.setId( tableFieldId )
+            UIManager.pushScene("ui_wing_info_all")
+        elseif tonumber(tableTypeId) == StaticTableType.DictCard then
             -- 卡牌字典表
             UICardInfo.setDictCardId(tableFieldId)
             UIManager.pushScene("ui_card_info")
@@ -5278,8 +5668,9 @@ function utils.getEquipSuit(_equipId)
         -- cclog("utils无此suitId : equipId.. ".._equipId )
         return nil
     end
-    return DictEquipSuit[tostring(suitId)]
+    return DictEquipSuit[tostring(suitId)] , DictEquipSuitred[tostring(suitId)]
 end
+
 -- 播放UI动画
 function utils.playArmature(animId, name, node, offsetX, offsetY, callBack, frameCallBack, frameName, scale, notEnabledTrue)
     --    if node:getChildByName("action") then
@@ -5668,7 +6059,7 @@ function utils.addArmature( node , uiAnimId , uiAnimName , positionX , positionY
 --            animation:getBone("chi_01_an"..i):addDisplay(ccs.Skin:create("image/chibang_big_an"..i..".png"), 0)
 --        end
 --    end
-    animation:getAnimation():play( "ui_anim" .. uiAnimId .. "_0"..uiAnimName )
+    animation:getAnimation():play( "ui_anim" .. uiAnimId .. "_"..uiAnimName )
     animation:setPosition( cc.p( positionX , positionY ) )
     animation:setName("wing")
     if scale then
@@ -5676,4 +6067,14 @@ function utils.addArmature( node , uiAnimId , uiAnimName , positionX , positionY
     end
     node:addChild( animation , zOrder )
     return animation
+end
+
+function utils.recursionTab(t, kkk)
+    for key, value in pairs(t) do
+        if type(value) == "table" then
+            utils.recursionTab(value, kkk .. "." .. tostring(key))
+        else
+            print(kkk .. "." .. tostring(key) .. "=" .. tostring(value or ""))
+        end
+    end
 end

@@ -20,7 +20,7 @@ function UITowerWinSmall.init()
                 --  else
                 --      UIManager.showScreen("ui_notice", "ui_activity_tower", "ui_menu")
                 --  end
-            elseif userData.fightType == dp.FightType.FIGHT_MINE then
+            elseif userData.fightType == dp.FightType.FIGHT_MINE or userData.fightType == dp.FightType.FIGHT_UNION_REPLAY then
                 userData.callbackfunc()
             else
                 local dictPagodaStoreyData = DictPagodaStorey[tostring(userData[1])]
@@ -97,7 +97,7 @@ function UITowerWinSmall.setup()
                 ui_textHint:setString("好可惜，战斗失败了\n今日还有挑战次数，可以再次挑战哦")
             end
         end
-    elseif userData.fightType == dp.FightType.FIGHT_MINE then
+    elseif userData.fightType == dp.FightType.FIGHT_MINE or userData.fightType == dp.FightType.FIGHT_UNION_REPLAY then
         if not userData.isWin then
             utils.GrayWidget(image_basemap:getChildByName("image_basedi"), true)
         end

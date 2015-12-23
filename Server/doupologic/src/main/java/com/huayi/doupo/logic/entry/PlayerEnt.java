@@ -623,6 +623,25 @@ public class PlayerEnt extends BaseHandler{
 		}
 	}
 	
+	/**
+	 * 打开排行玩家界面
+	 * @author mp
+	 * @date 2015-12-16 上午9:56:59
+	 * @param msgMap
+	 * @param channelId
+	 * @Description
+	 */
+	public void openPlayerRank (HashMap<String, Object> msgMap, String channelId) {
+		try {
+			HandlerFactory.getPlayerHandler().openPlayerRank(msgMap, channelId);
+		} catch (Exception e) {
+			LogUtil.error("instPlayerId = " + PlayerMapUtil.getPlayerIdByChannelId(channelId) + ", " + DictMap.sysMsgRuleMap.get((int)msgMap.get("header") + "").getName() + ",  " + msgMap, e);
+			e.printStackTrace();
+			MessageUtil.sendFailMsg(channelId, msgMap, errorHint(msgMap));
+		}
+	}
+	
+	
 	@Test
 	public void test(){
 		try {

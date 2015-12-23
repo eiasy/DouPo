@@ -43,6 +43,8 @@ public class StaticActivity{
 		public static final Integer rechargeDouble = new Integer(107);//充值双倍
 		
 		public static final Integer MakeMoney = new Integer(108);//招财进宝
+		
+		public static final Integer normalExchange = new Integer(109);//超值兑换
 
 		public static final Integer levelSell = new Integer(201);//等级特卖
 
@@ -57,5 +59,7 @@ public class StaticActivity{
 		public static final Integer openServiceBag = new Integer(302);//开服礼包
 
 		public static final Integer signIn = new Integer(303);//签到奖励
+		
+		public static final Integer groupon = new Integer(400);//团购
 
 }

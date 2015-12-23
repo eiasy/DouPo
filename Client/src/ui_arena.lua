@@ -533,6 +533,7 @@ local function setTopButtonLabel(sender)
             initScrollView()
         else
             UIManager.showLoading()
+            initScrollView()
             if sender == btn_Challenge then
                 netSendPackage( { header = StaticMsgRule.arena, msgdata = { } }, netCallbackFunc)
             elseif sender == btn_Ranking then

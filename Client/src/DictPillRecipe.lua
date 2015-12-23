@@ -35,3 +35,13 @@ DictPillRecipe["33"]={id=33,name="高级经验丹方",smallUiId=13005,bigUiId=13
 DictPillRecipe["34"]={id=34,name="低级潜力丹方",smallUiId=13007,bigUiId=13008,pillId=34,thingOne="49_1",thingTwo="50_2",thingThree="51_2",description=""}
 DictPillRecipe["35"]={id=35,name="中级潜力丹方",smallUiId=13009,bigUiId=13010,pillId=35,thingOne="47_1",thingTwo="48_2",thingThree="46_2",description=""}
 DictPillRecipe["36"]={id=36,name="高级潜力丹方",smallUiId=13011,bigUiId=13012,pillId=36,thingOne="52_1",thingTwo="53_2",thingThree="54_2",description=""}
+DictPillRecipe["37"]={id=37,name="七品生命丹方",smallUiId=1221,bigUiId=1222,pillId=37,thingOne="67_25",thingTwo="61_55",thingThree="62_55",description=""}
+DictPillRecipe["38"]={id=38,name="七品物攻丹方",smallUiId=1221,bigUiId=1222,pillId=38,thingOne="63_25",thingTwo="61_55",thingThree="62_55",description=""}
+DictPillRecipe["39"]={id=39,name="七品法攻丹方",smallUiId=1221,bigUiId=1222,pillId=39,thingOne="65_25",thingTwo="61_55",thingThree="62_55",description=""}
+DictPillRecipe["40"]={id=40,name="七品物防丹方",smallUiId=1221,bigUiId=1222,pillId=40,thingOne="64_25",thingTwo="61_55",thingThree="62_55",description=""}
+DictPillRecipe["41"]={id=41,name="七品法防丹方",smallUiId=1221,bigUiId=1222,pillId=41,thingOne="66_25",thingTwo="61_55",thingThree="62_55",description=""}
+DictPillRecipe["42"]={id=42,name="八品生命丹方",smallUiId=1223,bigUiId=1224,pillId=42,thingOne="74_30",thingTwo="68_65",thingThree="69_65",description=""}
+DictPillRecipe["43"]={id=43,name="八品物攻丹方",smallUiId=1223,bigUiId=1224,pillId=43,thingOne="70_30",thingTwo="68_65",thingThree="69_65",description=""}
+DictPillRecipe["44"]={id=44,name="八品法攻丹方",smallUiId=1223,bigUiId=1224,pillId=44,thingOne="72_30",thingTwo="68_65",thingThree="69_65",description=""}
+DictPillRecipe["45"]={id=45,name="八品物防丹方",smallUiId=1223,bigUiId=1224,pillId=45,thingOne="71_30",thingTwo="68_65",thingThree="69_65",description=""}
+DictPillRecipe["46"]={id=46,name="八品法防丹方",smallUiId=1223,bigUiId=1224,pillId=46,thingOne="73_30",thingTwo="68_65",thingThree="69_65",description=""}

@@ -371,6 +371,42 @@ public class InitUtil extends DALFactory {
 	}
 	
 	/**
+	 * 不在活动期内，清空团购数据（防止停服的时候，跨天-本来这个操作在跨天的时候有处理）
+	 * @author mp
+	 * @date 2015-12-21 上午10:27:59
+	 * @throws Exception
+	 * @Description
+	 */
+	public static void initGroup () throws Exception {
+		if (!ActivityUtil.isInActivity(StaticActivity.groupon)) {
+			try {
+				getInstActivityDAL().update("update Inst_Player_Group set buyBoxNum = 0, rewardState = 0, buyBoxTime = ''");
+				getInstPlayerBigTableDAL().deleteByWhere(" instPlayerId = 0 and properties = '" + StaticBigTable.groupBoxNum + "'");
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	/**
+	 * 不在活动期内，清空超值兑换数据
+	 * @author mp
+	 * @date 2015-12-21 上午11:40:34
+	 * @throws Exception
+	 * @Description
+	 */
+	public static void initExchange () throws Exception {
+		if (!ActivityUtil.isInActivity(StaticActivity.normalExchange)) {
+			try {
+				getInstActivityExchangeDAL().deleteByWhere("");
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+//	public static void 
+	/**
 	 * 初始化世界boss信息
 	 * @author mp
 	 * @date 2015-11-26 上午11:22:27
